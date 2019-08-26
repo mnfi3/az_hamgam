@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Field extends Model
+class Course extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['name'];
+  protected $fillable = ['title', 'description', 'image', 'master_id', 'time', 'price'];
 }

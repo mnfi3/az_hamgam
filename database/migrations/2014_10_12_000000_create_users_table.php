@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->boolean('is_male');
             $table->string('mobile')->nullable();
             $table->string('student_number')->nullable();
             $table->string('national_code')->nullable();
