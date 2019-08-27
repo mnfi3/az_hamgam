@@ -49,9 +49,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255', ],
+            'last_name' => ['required', 'string', 'max:255', ],
+            'is_male' => ['required', 'numeric', 'max:1', 'min:0'],
+            'mobile' => ['required', 'string', 'max:15', 'min:8'],
+//            'student_number' => ['required', 'string', 'max:15', 'min:5'],
+            'national_code' => ['required', 'string', 'max:15', ],
+            'field_id' => ['required', 'numeric',],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
@@ -64,7 +70,14 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'is_male' => $data['is_male'],
+            'mobile' => $data['mobile'],
+            'student_number' => $data['student_number'],
+            'national_code' => $data['national_code'],
+            'is_male' => $data['is_male'],
+            'role' => 'student',
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

@@ -9,5 +9,5 @@ class Advice extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['title', 'question', 'answer', 'adviser_id', 'is_seen'];
+  protected $fillable = ['user_id', 'title', 'question', 'answer', 'adviser_id', 'is_seen'];
 }

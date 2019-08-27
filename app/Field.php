@@ -10,4 +10,8 @@ class Field extends Model
   use SoftDeletes;
 
   protected $fillable = ['name'];
+
+  public function jobs(){
+    return $this->belongsToMany('App\Job', 'field_jobs');
+  }
 }

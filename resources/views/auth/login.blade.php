@@ -1,73 +1,61 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+    <!-- Title -->
+    @include('include.page-title')
+    @include('include.bootstrap')
+    @include('include.nav-style-js')
+</head>
+<body>
+@include('include.navigation')
+<div>
+    <div class="pt-5 mt-3 ">
+        <div class="container-fluid">
+            <div class="row mt-2">
+                <div class="col-5 mr-auto ml-auto bottom-line">
+                    <h2 class="text-center  p-2 mt-5 text-dark" style="font-family: Vazir; font-size: 3rem ; text-align: center">ورود</h2>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
+<div class="signup-section">
+    <div class="container" style=" min-height: 450px">
+        <div class="row">
+            <div class="col-12">
+                <form class="login ml-auto mr-auto mt-3" align ="center" method="post" action="{{route('login')}}">
+                    @csrf
+
+                    <input name="email" type="email" required class=" ml-auto mr-auto" placeholder="ایمیل">
+                    @error('email')
+                    <p style="color: #721c24;text-align: right;font-family: Vazir;font-size: 0.8rem">{{ $message }}</p>
+                    @enderror
+                    <input name="password" type="password" required class=" ml-auto mr-auto" placeholder="رمز عبور">
+                    @error('password')
+                    <p style="color: #721c24;text-align: right;font-family: Vazir;font-size: 0.8rem">{{ $message }}</p>
+                    @enderror
+
+                    {{--                    <a href="{{url('/admin/admin')}}" class="text-white">--}}
+                    <button class="custom-btn text-center m-0 "type="submit" >
+                        <span>ورود</span>
+                    </button>
+                    {{--</a>--}}
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@include('include.footer')
+</body>
+
+</html>
