@@ -9,5 +9,5 @@ class VisitIndustry extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['title', 'description', 'time_place'];
+  protected $fillable = ['title', 'description', 'image', 'time_place'];
 }

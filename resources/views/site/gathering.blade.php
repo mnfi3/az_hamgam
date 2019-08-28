@@ -31,9 +31,7 @@
 <div class="decleararion">
     <div class="container-fluid ">
         <p class="my-2 text-right p-3 ">
-
-            سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد. یکی از مهمترین اهداف این سامانه را می توان مدیریت متمرکز کارآموزان در طول دوره کارآموزی به منظور ارتباط فعال صنعت و دانشگاه جهت شناسایی و حل مسائل موجود در صنایع بیان نمود. دانشگاه صنعتی امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان، مهندسین کارآزموده ای برای این مرزوبوم تربیت نماید.
-            سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد. یکی از مهمترین اهداف این سامانه را می توان مدیریت متمرکز کارآموزان در طول دوره کارآموزی به منظور ارتباط فعال صنعت و دانشگاه جهت شناسایی و حل مسائل موجود در صنایع بیان نمود. دانشگاه صنعتی امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان، مهندسین کارآزموده ای برای این مرزوبوم تربیت نماید.
+            {{$gathering}}
         </p>
     </div>
 </div>
@@ -42,13 +40,14 @@
         <div class="row pt-5 m-auto">
             <div class="col-md-4 col-lg-4 pb-3">
                 <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url('img/workshop.png')"></div>
+                    <div class="card-custom-img" style="background-image: url({{asset($workshop_image)}})"></div>
                     <div class="card-custom-avatar">
                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                     </div>
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">کارگاه های آموزشی </h4>
-                        <p class="card-text"> سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
+                        <p class="card-text">
+                            {{substr($workshop, 0, 120)}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -65,13 +64,14 @@
             </div>
             <div class="col-md-4 col-lg-4 pb-3">
                 <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url('/img/industry.jpg');"></div>
+                    <div class="card-custom-img" style="background-image: url({{asset($visit_image)}});"></div>
                     <div class="card-custom-avatar">
                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                     </div>
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">بازدید از صنایع</h4>
-                        <p class="card-text"> سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
+                        <p class="card-text">
+                            {{substr($visit, 0, 120)}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -87,13 +87,14 @@
             </div>
             <div class="col-md-4 col-lg-4 pb-3">
                 <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url('/img/invite.jpg');"></div>
+                    <div class="card-custom-img" style="background-image: url({{asset($invite_image)}});"></div>
                     <div class="card-custom-avatar">
                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                     </div>
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">دعوت از صاحبان صنایع</h4>
-                        <p class="card-text"> سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
+                        <p class="card-text">
+                            {{substr($invite, 0, 120)}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">

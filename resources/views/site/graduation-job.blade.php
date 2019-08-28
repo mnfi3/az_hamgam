@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <div class="row mt-2">
                 <div class="col-5 mr-auto ml-auto bottom-line">
-                    <h2 class="text-center  p-2 mt-5 text-dark" style="font-family: Vazir; font-size: 1.8rem ; text-align: center"> برنامه های بازدید از صنایع </h2>
+                    <h2 class="text-center  p-2 mt-5 text-dark" style="font-family: Vazir; font-size: 1.8rem ; text-align: center">فارغ التحصیلان شاغل دانشگاه</h2>
                 </div>
             </div>
         </div>
@@ -32,32 +32,33 @@
 <div class="page-sections">
     <div class="container bg-light">
         <div class="row pt-5 m-auto">
-            @foreach($visits as $visit)
-            <div class="col-md-4 col-lg-4 pb-3">
-                <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url({{asset($visit->image)}})"></div>
-                    <div class="card-custom-avatar">
-                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                    </div>
-                    <div class="card-body pt-2" style="overflow-y: hidden">
-                        <h4 class="card-title">{{$visit->title}}</h4>
-                        <p class="card-text">
-                            {{substr($visit->description, 0, 120)}} ...
-                        </p>
-                        <p>زمان و مکان حرکت :{{$visit->time_place}}  </p>
-                    </div>
-                    <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <div align="right">
-{{--                            <a href="{{url('/skill-learning/courses')}}">--}}
-                                <button class="custom-btn text-center m-0 "type="submit" >
-                                    <span>ثبت نام</span>
-                                </button>
-                            {{--</a>--}}
 
+            @foreach($mans as $man)
+                <div class="col-md-4 col-lg-4 pb-3">
+                    <div class="card card-custom bg-white border-white border-0">
+                        <div class="card-custom-img" style="background-image: url({{asset($man->image)}})"></div>
+                        <div class="card-custom-avatar">
+                            {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                         </div>
+                        <div class="card-body pt-2" style="overflow-y: hidden">
+                            <h4 class="card-title">{{$man->name}}</h4>
+                            <p class="card-text">
+                                {{$man->description}}
+                            </p>
+                            <p>شغل : {{$man->job}}</p>
+                            <p>رشته تحصیلی : {{$man->field}}</p>
+                        </div>
+                        {{--<div class="card-footer" style="background: inherit; border-color: inherit;">--}}
+                        {{--<div align="right">--}}
+                        {{--<a href="{{url('/skill-learning/courses')}}">--}}
+                        {{--<button class="custom-btn text-center m-0 "type="submit" >--}}
+                        {{--<span>ثبت نام</span>--}}
+                        {{--</button>--}}
+                        {{--</a>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
@@ -67,7 +68,8 @@
         <div class="row ">
             <div class="col-8 " align="center">
                 <div class="pagination ">
-                    {{$visits->links()}}
+
+                    {{$mans->links()}}
                     {{--<a href="#">&laquo;</a>--}}
                     {{--<a href="#">1</a>--}}
                     {{--<a href="#" class="active">2</a>--}}

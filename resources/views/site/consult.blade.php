@@ -44,6 +44,9 @@
                     <button  class="custom-btn text-center m-0 "type="submit" >
                         <span>ارسال پرسش </span>
                     </button>
+                    @guest
+                        <br><span>برای ارسال سوال باید وارد حساب کاربری خود شوید </span>
+                    @endguest
                 </form>
             </div>
         </div>

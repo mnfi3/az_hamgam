@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Suggest extends Model
+class GraduatesEmployed extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['user_id', 'title'];
+  protected $fillable = ['name', 'image', 'description', 'job', 'field'];
 }

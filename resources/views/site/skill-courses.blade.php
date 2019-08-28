@@ -37,50 +37,51 @@
             </div>
 
 
-            <div class="flex-item text-dark  mr-5 ">
-                <p>: دانشکده  </p>
-            </div>
-            <div class="flex-item text-dark">
-                <select class="browser-default custom-select " id="faculties">
-                    <option selected>همه دانشکده ها</option>
-                    <option value="1"> فنی</option>
-                    <option value="2">علوم پایه</option>
-                    <option value="3">کامپیوتر</option>
-                    <option value="3">برق</option>
-                </select>
-            </div>
-            <div class="flex-item text-dark  mr-2 ">
-                <p>: رشته  </p>
-            </div>
+            <form method="get" action="{{url('/skill-learning/courses')}}">
+                <div class="flex-item text-dark  mr-5 ">
+                    <p>: دانشکده  </p>
+                </div>
+                <div class="flex-item text-dark">
+                    <select class="browser-default custom-select " id="faculties" name="">
+                        <option selected>همه دانشکده ها</option>
+                        <option value="1"> فنی</option>
+                        <option value="2">علوم پایه</option>
+                        <option value="3">کامپیوتر</option>
+                        <option value="3">برق</option>
+                    </select>
+                </div>
+                <div class="flex-item text-dark  mr-2 ">
+                    <p>: رشته  </p>
+                </div>
 
-            <div class="flex-item text-dark ">
-                <select class="browser-default custom-select" id="fields">
-                    <option selected>همه رشته ها</option>
-                    <option value="1"> آی تی</option>
-                    <option value="2">علوم کامپیوتر</option>
-                    <option value="3">نرم افزار</option>
-                    <option value="3">سیستم های اطلاعاتی</option>
-                </select>
-            </div>
-            <div class="flex-item text-dark  mr-2 ">
-                <p>: نیم سال  </p>
-            </div>
+                <div class="flex-item text-dark ">
+                    <select class="browser-default custom-select" id="fields" name="field_id">
+                        <option value="0" selected>همه رشته ها</option>
+                        @foreach($fields as $field)
+                        <option value="{{$field->id}}" @if($field_id == $field->id) selected @endif> {{$field->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="flex-item text-dark  mr-2 ">
+                    <p>: نیم سال  </p>
+                </div>
 
-            <div class="flex-item text-dark ">
-                <select class="browser-default custom-select" id="schedule">
-                    <option selected>همه</option>
-                    <option value="1"> اول</option>
-                    <option value="2">دوم</option>
-                    <option value="3">تابستان</option>
-                </select>
-            </div>
-            <div class="flex-item text-dark ">
-                <a href="{{url('/')}}">
-                    <button class="custom-btn text-center mr-2 "type="submit" style="max-width: 130px">
-                        <span>جستجو</span>
-                    </button>
-                </a>
-            </div>
+                <div class="flex-item text-dark ">
+                    <select class="browser-default custom-select" id="schedule" name="term">
+                        <option value="0" selected>همه</option>
+                        <option value="1" @if($term == 1) selected @endif> اول</option>
+                        <option value="2" @if($term == 2) selected @endif>دوم</option>
+                        <option value="3" @if($term == 3) selected @endif>تابستان</option>
+                    </select>
+                </div>
+                <div class="flex-item text-dark ">
+                    <a href="{{url('/')}}">
+                        <button class="custom-btn text-center mr-2 "type="submit" style="max-width: 130px">
+                            <span>جستجو</span>
+                        </button>
+                    </a>
+                </div>
+            </form>
 
 
 
@@ -92,19 +93,35 @@
 <div class="page-sections">
     <div class="container bg-light">
         <div class="row pt-5 m-auto">
+            @foreach($courses as $course)
             <div class="col-md-4 col-lg-4 pb-3">
                 <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url('/img/change.jpg')"></div>
+                    <div class="card-custom-img" style="background-image: url({{asset($course->image)}})"></div>
                     <div class="card-custom-avatar">
                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                     </div>
                     <div class="card-body pt-2" style="overflow-y: hidden">
-                        <h4 class="card-title"> Swift دوره آموزش</h4>
-                        <p class="card-text"> سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
+                        <h4 class="card-title"> {{$course->title}}</h4>
+                        <p class="card-text">
+                            @php echo $course->description; @endphp
                         </p>
-                        <p>مدرس : علی عربگری</p>
-                        <p>زمان : شنبه ها ساعت 11</p>
-                        <p>.پیش نیاز : دارد</p>
+                        <p>مدرس :  {{$course->master->first_name . ' ' . $course->master->last_name}}</p>
+                        <p>زمان : {{$course->time}}</p>
+                        @if(count($course->prerequisites) == 0)
+                        <p>: پیش نیاز
+                        <br>
+                        <br>
+                            ندارد
+                        </p>
+                        @else
+                            <p> : پیش نیاز
+                                <br>
+                                <br>
+                            @foreach($course->prerequisites as $prerequisite)
+                                   <span class="m-auto bg-primary p-1"> {{$prerequisite->title}}</span>
+                            @endforeach
+                            </p>
+                        @endif
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <div align="right">
@@ -118,131 +135,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-4 pb-3">
-                <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url('/img/suggest.jpg');"></div>
-                    <div class="card-custom-avatar">
-                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                    </div>
-                    <div class="card-body pt-2" style="overflow-y: hidden">
-                        <h4 class="card-title">آموزش Solid Work 1</h4>
-                        <p class="card-text">
-                            سامانه همگام به منظور برقراری ارتباط فعال و سازنده مین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
-                        </p>
-                        <p>مدرس : علی عربگری</p>
-                        <p>زمان : شنبه ها ساعت 13</p>
-                        <p>.پیش نیاز : ندارد</p>
-                    </div>
-                    <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <div align="right">
-                            <button class="custom-btn text-center m-0 "type="submit" >
-                                <span>ثبت نام</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 pb-3">
-                <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url('/img/suggest.jpg');"></div>
-                    <div class="card-custom-avatar">
-                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                    </div>
-                    <div class="card-body pt-2" style="overflow-y: hidden">
-                        <h4 class="card-title">آموزش Solid Work 1</h4>
-                        <p class="card-text">
-                            سامانه همگام به منظور برقراری ارتباط فعال و سازنده مین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
-                        </p>
-                        <p>مدرس : علی زمانی</p>
-                        <p>زمان : شنبه ها ساعت 15</p>
-                        <p>.پیش نیاز : دارد</p>
-                    </div>
-                    <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <div align="right">
-                            <button class="custom-btn text-center m-0 "type="submit" >
-                                <span>ثبت نام</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row pt-5 m-auto">
-            <div class="col-md-4 col-lg-4 pb-3">
-                <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url('/img/change.jpg')"></div>
-                    <div class="card-custom-avatar">
-                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                    </div>
-                    <div class="card-body pt-2" style="overflow-y: hidden">
-                        <h4 class="card-title"> Swift دوره آموزش</h4>
-                        <p class="card-text"> سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
-                        </p>
-                        <p>مدرس : علی عربگری</p>
-                        <p>زمان : شنبه ها ساعت 11</p>
-                        <p>.پیش نیاز : دارد</p>
-                    </div>
-                    <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <div align="right">
-                            <a href="{{url('/skill-learning/courses')}}">
-                                <button class="custom-btn text-center m-0 "type="submit" >
-                                    <span>ثبت نام</span>
-                                </button>
-                            </a>
+            @endforeach
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 pb-3">
-                <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url('/img/suggest.jpg');"></div>
-                    <div class="card-custom-avatar">
-                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                    </div>
-                    <div class="card-body pt-2" style="overflow-y: hidden">
-                        <h4 class="card-title">آموزش Solid Work 1</h4>
-                        <p class="card-text">
-                            سامانه همگام به منظور برقراری ارتباط فعال و سازنده مین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
-                        </p>
-                        <p>مدرس : علی عربگری</p>
-                        <p>زمان : شنبه ها ساعت 11</p>
-                        <p>.پیش نیاز : دارد</p>
-                    </div>
-                    <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <div align="right">
-                            <button class="custom-btn text-center m-0 "type="submit" >
-                                <span>ثبت نام</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 pb-3">
-                <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url('/img/suggest.jpg');"></div>
-                    <div class="card-custom-avatar">
-                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                    </div>
-                    <div class="card-body pt-2" style="overflow-y: hidden">
-                        <h4 class="card-title">آموزش Solid Work 1</h4>
-                        <p class="card-text">
-                            سامانه همگام به منظور برقراری ارتباط فعال و سازنده مین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
-                        </p>
-                        <p>مدرس : علی عربگری</p>
-                        <p>زمان : شنبه ها ساعت 11</p>
-                        <p>.پیش نیاز : دارد</p>
-                    </div>
-                    <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <div align="right">
-                            <button class="custom-btn text-center m-0 "type="submit" >
-                                <span>ثبت نام</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+
     </div>
 </div>
 <div class="pagination-section">
@@ -250,14 +146,16 @@
         <div class="row ">
             <div class="col-8 " align="center">
                 <div class="pagination ">
-                    <a href="#">&laquo;</a>
-                    <a href="#">1</a>
-                    <a href="#" class="active">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">&raquo;</a>
+                    {{$courses->links()}}
+
+                    {{--<a href="#">&laquo;</a>--}}
+                    {{--<a href="#">1</a>--}}
+                    {{--<a href="#" class="active">2</a>--}}
+                    {{--<a href="#">3</a>--}}
+                    {{--<a href="#">4</a>--}}
+                    {{--<a href="#">5</a>--}}
+                    {{--<a href="#">6</a>--}}
+                    {{--<a href="#">&raquo;</a>--}}
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUtilsTable extends Migration
+class CreateGraduatesEmployedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateUtilsTable extends Migration
      */
     public function up()
     {
-        Schema::create('utils', function (Blueprint $table) {
+        Schema::create('graduates_employeds', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('key')->nullable();
-            $table->string('title')->nullable();
-            $table->text('description')->nullable();
+            $table->string('name')->nullable();
             $table->string('image')->nullable();
-            $table->string('file')->nullable();
+            $table->text('description')->nullable();
+            $table->string('job')->nullable();
+            $table->string('field')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->charset = 'utf8';
@@ -34,6 +34,6 @@ class CreateUtilsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('utils');
+        Schema::dropIfExists('graduates_employeds');
     }
 }

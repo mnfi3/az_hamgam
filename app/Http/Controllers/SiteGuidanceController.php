@@ -28,18 +28,52 @@ class SiteGuidanceController extends Controller
   public function academicGuidance(){
     $description = '';
     $file = '';
-    $goal = '';
+    $jobs = '';
+    $jobs_image = '';
+    $consult = '';
+    $consult_image = '';
+    $purpose = '';
+    $purpose_image = '';
     $change_field = '';
-    $guide = Util::where('type', '=', Util::TYPE_TEXT)->where('key', '=', Util::KEY_ACADEMIC_GUIDANCE)->orderBy('id', 'desc')->first();
-    if(!is_null($guide)) $description = $guide->value;
-    $guide = Util::where('type', '=', 'file')->where('key', '=', Util::KEY_ACADEMIC_GUIDANCE)->orderBy('id', 'desc')->first();
-    if(!is_null($guide)) $file = $guide->value;
-    $guide = Util::where('type', '=', Util::TYPE_TEXT)->where('key', '=', Util::KEY_ACADEMIC_GUIDANCE_GOAL)->orderBy('id', 'desc')->first();
-    if(!is_null($guide)) $goal = $guide->value;
-    $guide = Util::where('type', '=', Util::TYPE_TEXT)->where('key', '=',Util::KEY_ACADEMIC_GUIDANCE_CHANGE_FIELD)->orderBy('id', 'desc')->first();
-    if(!is_null($guide)) $change_field = $guide->value;
+    $change_field_image = '';
+    $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE);
+    if(!is_null($util)) {
+      $description = $util->description;
+      $file = $util->file;
+    }
 
-    return view('site.academic-guidance', compact('description', 'file', 'goal', 'change_field'));
+
+
+    $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_JOBS);
+    if(!is_null($util)) {
+      $jobs = $util->description;
+      $jobs_image = $util->image;
+    }
+
+    $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_CONSULT);
+    if(!is_null($util)) {
+      $consult = $util->description;
+      $consult_image = $util->image;
+    }
+
+    $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_PURPOSE);
+    if(!is_null($util)){
+      $purpose = $util->description;
+      $purpose_image = $util->image;
+    }
+    $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_CHANGE_FIELD);
+    if(!is_null($util)) {
+      $change_field = $util->description;
+      $change_field_image = $util->image;
+    }
+
+
+
+
+
+    return view('site.academic-guidance',
+      compact('description', 'file', 'jobs', 'jobs_image', 'consult', 'consult_image', 'purpose', 'purpose_image', 'change_field', 'change_field_image')
+    );
   }
 
   public function relativeJobs(Request $request){
@@ -74,12 +108,13 @@ class SiteGuidanceController extends Controller
     $description = '';
     $file = '';
     $image = '';
-    $guide = Util::where('type', '=', Util::TYPE_TEXT)->where('key', '=', Util::KEY_ACADEMIC_GUIDANCE_GOAL)->orderBy('id', 'desc')->first();
-    if(!is_null($guide)) $description = $guide->value;
-    $guide = Util::where('type', '=', Util::TYPE_FILE)->where('key', '=', Util::KEY_ACADEMIC_GUIDANCE_GOAL)->orderBy('id', 'desc')->first();
-    if(!is_null($guide)) $file = $guide->value;
-    $guide = Util::where('type', '=', Util::TYPE_IMAGE)->where('key', '=', Util::KEY_ACADEMIC_GUIDANCE_GOAL)->orderBy('id', 'desc')->first();
-    if(!is_null($guide)) $image = $guide->value;
+    $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_PURPOSE);
+    if(!is_null($util)) {
+      $description = $util->description;
+      $image = $util->image;
+      $file = $util->file;
+    }
+
     return view('site.content', compact('description', 'file', 'image'));
   }
 
@@ -88,12 +123,13 @@ class SiteGuidanceController extends Controller
     $description = '';
     $file = '';
     $image = '';
-    $guide = Util::where('type', '=',  Util::TYPE_TEXT)->where('key', '=', Util::KEY_ACADEMIC_GUIDANCE_CHANGE_FIELD)->orderBy('id', 'desc')->first();
-    if(!is_null($guide)) $description = $guide->value;
-    $guide = Util::where('type', '=', Util::TYPE_FILE)->where('key', '=', Util::KEY_ACADEMIC_GUIDANCE_CHANGE_FIELD)->orderBy('id', 'desc')->first();
-    if(!is_null($guide)) $file = $guide->value;
-    $guide = Util::where('type', '=', Util::TYPE_IMAGE)->where('key', '=', Util::KEY_ACADEMIC_GUIDANCE_CHANGE_FIELD)->orderBy('id', 'desc')->first();
-    if(!is_null($guide)) $image = $guide->value;
+    $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_CHANGE_FIELD);
+    if(!is_null($util)) {
+      $description = $util->description;
+      $image = $util->image;
+      $file = $util->file;
+    }
+
     return view('site.content', compact('description', 'file', 'image'));
   }
 

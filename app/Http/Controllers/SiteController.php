@@ -22,8 +22,8 @@ class SiteController extends Controller
     $courses_count = Course::count();
     $questions = FrequentlyQuestion::all();
     $about = '';
-    $ab = Util::where('type', '=', Util::TYPE_TEXT)->where('key', '=', Util::KEY_ABOUT)->orderBy('id', 'desc')->first();
-    if(!is_null($ab)) $about = $ab->value;
+    $util = Util::where('key', '=', Util::KEY_ABOUT)->orderBy('id', 'desc')->first();
+    if(!is_null($util)) $about = $util->description;
     return view('index', compact('sliders', 'masters_count', 'fields_count', 'ideas_count', 'courses_count', 'questions', 'about'));
   }
 }

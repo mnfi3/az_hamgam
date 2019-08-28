@@ -42,19 +42,19 @@
         <div class="row pt-5 m-auto">
             <div class="col-md-6 col-lg-4 pb-3">
                 <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url({{asset('img/purpose.jpg')}})"></div>
+                    <div class="card-custom-img" style="background-image: url({{asset($purpose_image)}})"></div>
                     <div class="card-custom-avatar">
                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                     </div>
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">هدف</h4>
                         <p class="card-text ">
-                            {{substr($goal, 0, 120)}} ...
+                            {{substr($purpose, 0, 120)}} ...
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <div align="right">
-                            <a href="{{url('/academic-guidance/goal')}}">
+                            <a href="{{url('/academic-guidance/purpose')}}">
                                 <button class="custom-btn text-center m-0 "type="submit" >
                                     <span>بیشتر</span>
                                 </button>
@@ -65,13 +65,14 @@
             </div>
             <div class="col-md-6 col-lg-4 pb-3">
                 <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url({{asset('/img/job.jpg')}});"></div>
+                    <div class="card-custom-img" style="background-image: url({{asset($jobs_image)}});"></div>
                     <div class="card-custom-avatar">
                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                     </div>
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">شغل های مرتبط با رشته</h4>
-                        <p class="card-text"> سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
+                        <p class="card-text">
+                            {{substr($jobs, 0, 120)}} ...
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -85,13 +86,14 @@
             </div>
             <div class="col-md-6 col-lg-4 pb-3">
                 <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url({{asset('img/consultation.jpg')}})"></div>
+                    <div class="card-custom-img" style="background-image: url({{asset($consult_image)}})"></div>
                     <div class="card-custom-avatar">
                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                     </div>
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">مشاوره</h4>
-                        <p class="card-text">در این بخش کاربر سوال پرسیده و یا به مشاهور مورد نطر لینک خواهد شد سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
+                        <p class="card-text">
+                            {{substr($consult, 0, 120)}} ...
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -110,7 +112,7 @@
 
             <div class="col-md-6 col-lg-4 pb-3 mr-auto ml-auto">
                 <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url({{asset('img/change.jpg')}})"></div>
+                    <div class="card-custom-img" style="background-image: url({{asset($change_field_image)}})"></div>
                     <div class="card-custom-avatar">
                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                     </div>

@@ -14,4 +14,8 @@ class Field extends Model
   public function jobs(){
     return $this->belongsToMany('App\Job', 'field_jobs');
   }
+
+  public function courses(){
+    return $this->belongsToMany('App\Course', 'course_fields');
+  }
 }

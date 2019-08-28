@@ -19,7 +19,7 @@ class CreateWorkshopsTable extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->integer('master_id')->nullable();
-            $table->string('time')->nullable();
+            $table->date('time')->nullable();
             $table->integer('capacity')->nullable();
             $table->integer('price')->nullable()->default(0);
             $table->date('deadline')->nullable();

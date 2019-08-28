@@ -68,23 +68,18 @@
     <div class="container" style=" min-height: 450px">
         <div class="row">
             <div class="col-12">
-                <form class="login ml-auto mr-auto mt-3" align ="center">
-                    <select class="browser-default custom-select">
-                    <option selected>نوع کاربر</option>
-                    <option value="1">دانشجو</option>
-                    <option value="2">صنایع</option>
-                    <option value="3">مدیریت</option>
-                    <option value="3">انجمن</option>
-                    </select>
-                    <input type="email" required class=" ml-auto mr-auto" placeholder="ایمیل">
-                    <textarea type="text" required class=" ml-auto mr-auto" placeholder="دوره پیشنهادی و توضیحات مربوطه" style="min-height: 190px">
-                    </textarea>
-                    <p>توجه : پاسخدهی به پرسش ها در اسریع وقت انجام خواهد پذیرفت و نتایج آن در پنل کاربری قابل مشاهده خواهد بود</p>
-                    <a href="{{url('/admin/admin')}}" class="text-white">
+                <form class="login ml-auto mr-auto mt-3" align="center" method="post" action="{{url('/skill-learning/offer-insert')}}">
+                    @csrf
+                    <textarea name="title" type="text" required class=" ml-auto mr-auto" placeholder="دوره پیشنهادی و توضیحات مربوطه را وارد کنید" style="min-height: 190px"></textarea>
+                    @if(\Illuminate\Support\Facades\Session::get('msg') != null)
+                        <p>درخواست شما ثبت شد.پاسخ دهی به درخواست ها در اسرع وقت انجام خواهد شد و نتایج آن در پنل کاربری قابل مشاهده خواهد بود</p>
+                    @endif
                         <button  class="custom-btn text-center m-0 "type="submit" >
-                            <span>ارسال پرسش </span>
+                            <span>ارسال درخواست </span>
                         </button>
-                    </a>
+                    @guest
+                        <br><span>برای ارسال درخواست باید وارد حساب کاربری خود شوید </span>
+                    @endguest
                 </form>
             </div>
 

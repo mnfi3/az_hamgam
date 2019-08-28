@@ -30,7 +30,7 @@ Route::get('/academic-guidance', 'SiteGuidanceController@academicGuidance');
 Route::get('/academic-guidance/relative-jobs','SiteGuidanceController@relativeJobs');
 Route::get('/academic-guidance/consult', 'SiteGuidanceController@consult');
 Route::post('/academic-guidance/consult-insert', 'SiteGuidanceController@consultInsert');
-Route::get('/academic-guidance/goal', 'SiteGuidanceController@goal');
+Route::get('/academic-guidance/purpose', 'SiteGuidanceController@goal');
 Route::get('/academic-guidance/change-field', 'SiteGuidanceController@changeField');
 
 
@@ -38,59 +38,71 @@ Route::get('/academic-guidance/change-field', 'SiteGuidanceController@changeFiel
 /*
  * skill section
  */
-
-
 Route::get('/skill-learning','SiteSkillController@skillLearning');
-Route::get('/skill-learning/term','SiteSkillController@term');
-//in this
+Route::get('/skill-learning/termination','SiteSkillController@term');
 Route::get('/skill-learning/courses', 'SiteSkillController@courses');
+Route::get('/skill-learning/offer', 'SiteSkillController@offer');
+Route::post('/skill-learning/offer-insert', 'SiteSkillController@offerInsert');
 
-Route::get('/skill-learning/offer',function (){
-  return view('site.offer');
 
+
+
+/*
+ * gathering section
+ */
+Route::get('/gathering', 'SiteGatheringController@gathering');
+Route::get('/gathering/workshop', 'SiteGatheringController@workshop');
+Route::get('/gathering/visit-industries', 'SiteGatheringController@industry');
+
+
+
+
+/*
+ * idea section
+ */
+Route::get('/idea', 'SiteIdeaController@idea');
+Route::get('/idea/support', 'SiteIdeaController@support');
+Route::get('/idea/startup', 'SiteIdeaController@startup');
+
+
+/*
+ * success section
+ */
+Route::get('/success', 'SiteSuccessController@success');
+Route::get('/success/graduation-job', 'SiteSuccessController@graduation');
+//in this**************************************
+Route::get('/success/university-startups',function (){
+  return view('site.university-startups');
 });
 
 
 
 
 
-Route::get('/success',function (){
-  return view('site.success');
 
-});
 
-Route::get('/gathering',function (){
-  return view('site.gathering');
 
-});
-Route::get('/idea',function (){
-  return view('site.idea');
-
-});
 Route::get('/content',function (){
   return view('site.content');
 
 });
 
 
-
 Route::get('/sent-successfully',function (){
   return view('site.sent-successfully');
 });
-Route::get('/gathering/workshop',function (){
-  return view('site.workshop');
-});
-Route::get('/gathering/visit-industries',function (){
-  return view('site.industry-visit');
-});
-//Auth
 
-//Route::get('/signup',function (){
-//  return view('auth.register');
-//});
-//Route::get('/signin',function (){
-//  return view('auth.sign-in');
-//});
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -26,14 +26,18 @@
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
                                     <a class="nav-link dropdown-toggle" href="{{url('/success')}}">موفقیت</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">الگوهای برتر اشتغال</a>
-                                        <a class="dropdown-item" href="#">فارغ التحصیلان شاغل</a>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{url('/success/graduation-job')}}">فارغ التحصیلان شاغل</a>
+                                        <a class="dropdown-item" href="{{url('/success/university-startups')}}">
                                             گروه های استارت آپی دانشگاه</a>
                                     </div>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                     <a class="nav-link" href="{{url('/idea')}}">ایدها</a>
+                                    <div class="dropdown-menu">
+
+                                        <a class="dropdown-item" href="{{url('/idea/support')}}">ایده و حمایت </a>
+                                        <a class="dropdown-item" href="{{url('/idea/startup')}}">تشکیل گروه های استارت آپی</a>
+                                    </div>
                                 </li>
                                 <li class="nav-item  pl-4 pl-md-0 ml-0 ml-md-4">
                                     <a class="nav-link" href="{{url('/gathering')}}">گردهمایی</a>
@@ -49,7 +53,7 @@
                                     <div class="dropdown-menu">
 
                                         <a class="dropdown-item" href="{{url('/skill-learning/courses')}}">دوره های مهارتی </a>
-                                        <a class="dropdown-item text-right" href="{{url('/skill-learning/term')}}" >ترم بندی دوره های مهارتی </a>
+                                        <a class="dropdown-item text-right" href="{{url('/skill-learning/termination')}}" >ترم بندی دوره های مهارتی </a>
                                         <a class="dropdown-item" href="{{url('/skill-learning/offer')}}">پیشنهاد دوره</a>
                                     </div>
                                 </li>
@@ -58,7 +62,7 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{{url('/academic-guidance/relative-jobs')}}">شغل های مرتبط با رشته </a>
                                         <a class="dropdown-item text-right" href="{{url('/academic-guidance/consult')}}" >مشاوره</a>
-                                        <a class="dropdown-item" href="{{url('/academic-guidance/goal')}}">هدف</a>
+                                        <a class="dropdown-item" href="{{url('/academic-guidance/purpose')}}">هدف</a>
                                         <a class="dropdown-item" href="{{url('/academic-guidance/change-field')}}">تغییر رشته</a>
                                     </div>
                                 </li>
