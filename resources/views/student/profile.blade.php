@@ -25,36 +25,43 @@
     <div class="container my-4 " id="profile">
         <div class="row">
             <div class="col-md-12">
-                <form action=" " class="row">
+                <form action="{{url('/student/profile-update')}}" method="post" class="row">
+                    @csrf
                     <div class="col-6">
                         <div class="form-group row">
-                            <input type="text" class="col-md-7 form-control" name="name" required placeholder="" value="بهرام">
-                            <label for="name" class="col-md-3 mt-1">: نام خانوادگی </label>
+                            <input  type="text" class="col-md-7 form-control" name="last_name" required placeholder="نام خانوادگی" value="{{$user->last_name}}">
+                            <label for="name" class="col-md-4 mt-1">: نام خانوادگی </label>
                         </div>
                         <div class="form-group row">
-                            <input type="text" class="col-md-7 form-control" name="name" required placeholder="" value="بهرام">
-                            <label for="name" class="col-md-3 mt-1">: رشته تحصیلی </label>
+                            <select name="field_id" class="col-md-7 form-control" >
+                                @foreach($fields as $field)
+                                    <option value="{{$field->id}}" @if($user->studentField->id ==  $field->id) selected @endif>{{$field->name}}</option>
+                                @endforeach
+                            </select>
+                            <label for="name" class="col-md-4 mt-1">: رشته تحصیلی </label>
                         </div>
                         <div class="form-group row">
-                            <input type="number" class="col-md-7 form-control" name="name" required placeholder="موبایل" value="">
+                            <input type="number" class="col-md-7 form-control" name="student_number" required placeholder="شماره دانشجویی" value="{{$user->student_number}}">
                             <label for="name" class="col-md-4 mt-1">: شماره دانشجویی </label>
                         </div>
-                        <div class="form-group row">
-                            <button class="custom-btn text-center" type="submit">ویرایش</button>
-                        </div>
+
                     </div>
                     <div class="col-6">
                         <div class="form-group row">
-                            <input type="text" class="col-md-8 form-control" name="name" required placeholder="" value="بهرام">
-                            <label for="name" class="col-md-2 mt-1">: نام </label>
+                            <input type="text" class="col-md-8 form-control" name="first_name" required placeholder="نام" value="{{$user->first_name}}">
+                            <label for="name" class="col-md-3 mt-1">: نام </label>
                         </div>
                         <div class="form-group row">
-                            <input type="number" class="col-md-8 form-control" name="name" required placeholder="موبایل" value="">
-                            <label for="name" class="col-md-3 mt-1">: شماره تلفن </label>
+                            <input type="number" class="col-md-8 form-control" name="mobile" required placeholder="شماره موبایل" value="{{$user->mobile}}">
+                            <label for="name" class="col-md-3 mt-1">: شماره موبایل </label>
                         </div>
                         <div class="form-group row">
-                            <input type="number" class="col-md-8 form-control" name="name" required placeholder="کد ملی" value="بهرام">
+                            <input type="number" class="col-md-8 form-control" name="national_code" required placeholder="کد ملی" value="{{$user->national_code}}">
                             <label for="name" class="col-md-3 mt-1">: کد ملی </label>
+                        </div>
+
+                        <div class="form-group row">
+                            <button class="custom-btn text-center" type="submit">ویرایش</button>
                         </div>
                     </div>
                 </form>
@@ -64,23 +71,27 @@
             <h5 style="text-align: right;color: #ffffff" class="py-3">:  تغییر رمز عبور </h5>
         <div class="row">
             <div class="col-md-12">
-                <form action=" " class="row">
+                <form action="{{url('/student/change-password')}}" method="post" class="row">
+                    @csrf
                     <div class="col-6 ml-auto">
                         <div class="form-group row">
-                            <input type="password" class="col-md-7 form-control" name="name" required placeholder="">
+                            <input type="password" class="col-md-7 form-control" name="old_password" required placeholder="رمز قبلی">
                             <label for="name" class="col-md-4 mt-1">: رمز قبلی</label>
                         </div>
                         <div class="form-group row">
-                            <input type="password" class="col-md-7 form-control" name="name" required placeholder="" value="">
+                            <input type="password" class="col-md-7 form-control" name="password" required placeholder="رمز جدید (حداقل 6 کاراکتر)" value="">
                             <label for="name" class="col-md-4 mt-1">:  رمز جدید</label>
                         </div>
                         <div class="form-group row">
-                            <input type="password" class="col-md-7 form-control" name="name" required placeholder="" value="">
+                            <input type="password" class="col-md-7 form-control" name="password_confirmation" required placeholder="تکرار رمز جدید" value="">
                             <label for="name" class="col-md-4 mt-1">: تکرار رمز جدید</label>
                         </div>
                         <div class="form-group row">
                             <button class="custom-btn text-center" type="submit">ثبت تغییرات</button>
                         </div>
+                        @if(\Illuminate\Support\Facades\Session::get('password') != null)
+                        <p>{{\Illuminate\Support\Facades\Session::get('password')}}</p>
+                        @endif
                     </div>
                 </form>
             </div>

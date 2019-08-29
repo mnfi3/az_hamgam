@@ -28,19 +28,25 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">عنوان ایده</th>
                 <th scope="col">وضعیت</th>
                 <th scope="col">پاسخ</th>
             </tr>
             </thead>
             <tbody class="text-white" style="font-size: 0.9rem">
+            @php($i=0)
+            @foreach($ideas as $idea)
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{++$i}}</th>
+                <th scope="row">{{$idea->title}}</th>
+                @if(strlen($idea->answer) > 1)
+                <td >پاسخ داده شده</td>
+                @else
                 <td >پاسخ داده نشده</td>
-                <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-
-
-
+                @endif
+                <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal{{$idea->id}}">مشاهده </button></td>
             </tr>
+            @endforeach
             </tbody>
         </table>
 
@@ -48,10 +54,11 @@
         <h5 style="text-align: right;color: #ffffff" class="py-3">:  آپلود فرم ایده برای مدیریت </h5>
         <div class="row">
             <div class="col-md-12">
-                <form action=" " class="row">
+                <form action="{{url('/student/idea-insert')}}" method="post" enctype="multipart/form-data" class="row">
+                    @csrf
                     <div class="col-6 ml-auto">
                         <div class="form-group row">
-                            <input type="text" class="col-md-7 form-control" name="name" required placeholder="عنوان ایده خود را اینجا بنویسید" value="">
+                            <input type="text" class="col-md-7 form-control" name="title" required placeholder="عنوان ایده خود را اینجا بنویسید" value="">
                             <label for="name" class="col-md-3 mt-1">: عنوان ایده </label>
                         </div>
                         <div class="form-group row py-2">
@@ -59,7 +66,7 @@
                                 <div  id="fileInputsContainer">
                                     <div class="d-flex flex-row justify-content-between">
                                         <input type="file" id="images"
-                                               class="form-control-file" name="">
+                                               class="form-control-file" name="file">
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +79,8 @@
                 </form>
             </div>
         </div>
-        <div class="modal fade" id="myModal" style="font-family: Vazir">
+        @foreach($ideas as $idea)
+        <div class="modal fade" id="myModal{{$idea->id}}" style="font-family: Vazir">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -87,9 +95,8 @@
                         <form action="" class="" style="direction: rtl;font-family: Vazir">
                             <div class="form-group row ">
                                 <div class="col-md-12">
-                    <textarea type="text" id="editor1" required="" style="width: 100%;height: 190px;font-size: 0.8rem"
-                              class="form-control" name="description" placeholder="پاسخی دریافت نشده است.">
-                    </textarea>
+                    <span type="text" id="editor1" required="" style="width: 100%;height: 190px;font-size: 0.8rem"
+                              class="form-control" name="description" placeholder="پاسخی دریافت نشده است.">{{$idea->answer}}</span>
                                 </div>
                             </div>
                         </form>
@@ -102,6 +109,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
     <!-- Modal footer -->
 

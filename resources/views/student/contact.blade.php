@@ -28,42 +28,55 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">سوال</th>
+                <th scope="col">پیام</th>
                 <th scope="col">وضعیت</th>
                 <th scope="col">پاسخ</th>
             </tr>
             </thead>
             <tbody class="text-white" style="font-size: 0.9rem">
+            @php($i=0)
+            @foreach($messages as $message)
             <tr>
-                <th scope="row">1</th>
-                <td> امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان</td>
-                <td >پاسخ داده نشده</td>
-                <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-
-
-
+                <th scope="row">{{++$i}}</th>
+                <td>{{$message->question}}</td>
+                @if(strlen($message->answer) > 1)
+                    <td >پاسخ داده شده</td>
+                @else
+                    <td >پاسخ داده نشده</td>
+                @endif
+                <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal{{$message->id}}">مشاهده </button></td>
             </tr>
+                @endforeach
             </tbody>
         </table>
+
+        <div>
+            {{$messages->links()}}
+        </div>
 
         <div style="height: 2px;border-radius: 1px;margin: 10px 30px; background: #721c24; "></div>
         <h5 style="text-align: right;color: #ffffff" class="py-3">:  ارسال پیام به مدیریت </h5>
         <div class="row">
             <div class="col-md-12">
-                <form action=" " class="row">
+                <form action="{{url('/student/send-message')}}" method="post" class="row">
+                    @csrf
                     <div class="col-6 ml-auto">
                         <div class="form-group row">
-                            <textarea type="password" class="col-md-7 form-control" name="name" required placeholder="" style="direction: rtl"></textarea>
+                            <textarea  class="col-md-7 form-control" name="question" required placeholder="متن پیام را وارد کنید" style="direction: rtl"></textarea>
                             <label for="name" class="col-md-4 mt-1">: متن پیام</label>
                         </div>
                         <div class="form-group row">
                             <button class="custom-btn text-center" type="submit">ارسال </button>
+                            @if(\Illuminate\Support\Facades\Session::get('msg') != null)
+                                <p>{{\Illuminate\Support\Facades\Session::get('msg')}}</p>
+                            @endif
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-        <div class="modal fade" id="myModal" style="font-family: Vazir">
+        @foreach($messages as $message)
+        <div class="modal fade" id="myModal{{$message->id}}" style="font-family: Vazir">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -78,9 +91,8 @@
                         <form action="" class="" style="direction: rtl;font-family: Vazir">
                             <div class="form-group row ">
                                 <div class="col-md-12">
-                    <textarea type="text" id="editor1" required="" style="width: 100%;height: 190px;font-size: 0.8rem"
-                              class="form-control" name="description" placeholder="پاسخی دریافت نشده است.">
-                    </textarea>
+                    <span type="text" id="editor1" required="" style="width: 100%;height: 190px;font-size: 0.8rem"
+                              class="form-control" name="description" placeholder="پاسخی دریافت نشده است.">{{$message->answer}}</span>
                                 </div>
                             </div>
                         </form>
@@ -93,6 +105,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
     <!-- Modal footer -->
 

@@ -34,54 +34,26 @@
 <div class="page-sections">
     <div class="container bg-light">
         <div class="row pt-5 m-auto">
-            <div class="col-md-4 col-lg-4 pb-3">
-                <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url('/img/startup.jpg')"></div>
-                    <div class="card-custom-avatar">
-                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                    </div>
-                    <div class="card-body pt-2" style="overflow-y: hidden">
-                        <h4 class="card-title">گروه نوآوران برتر</h4>
-                        <p class="card-text"> سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
-                        </p>
-                        <p>زمینه فعالیت : اینترنت اشیا</p>
-                        <p>زمان : مرکز نوآوری دانشگاه</p>
-                        <p>مسئول گروه :مهدی مهدوی کیا </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 pb-3">
-                <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url('/img/startup.jpg')"></div>
-                    <div class="card-custom-avatar">
-                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                    </div>
-                    <div class="card-body pt-2" style="overflow-y: hidden">
-                        <h4 class="card-title">گروه نوآوران برتر</h4>
-                        <p class="card-text"> سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
-                        </p>
-                        <p>زمینه فعالیت : اینترنت اشیا</p>
-                        <p>زمان : مرکز نوآوری دانشگاه</p>
-                        <p>مسئول گروه :مهدی مهدوی کیا </p>
+
+            @foreach($startups as $startup)
+                <div class="col-md-4 col-lg-4 pb-3">
+                    <div class="card card-custom bg-white border-white border-0">
+                        <div class="card-custom-img" style="background-image: url({{asset($startup->image)}})"></div>
+                        <div class="card-custom-avatar">
+                            {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
+                        </div>
+                        <div class="card-body pt-2" style="overflow-y: hidden">
+                            <h4 class="card-title">{{$startup->title}}</h4>
+                            <p class="card-text">
+                                {{$startup->description}}
+                            </p>
+                            <p>زمینه فعالیت : {{$startup->field}}</p>
+                            <p>زمان : {{$startup->place}}</p>
+                            <p>مسئول گروه :{{$startup->boss}} </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-lg-4 pb-3">
-                <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url('/img/startup.jpg')"></div>
-                    <div class="card-custom-avatar">
-                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                    </div>
-                    <div class="card-body pt-2" style="overflow-y: hidden">
-                        <h4 class="card-title">گروه نوآوران برتر</h4>
-                        <p class="card-text"> سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد.
-                        </p>
-                        <p>زمینه فعالیت : اینترنت اشیا</p>
-                        <p>زمان : مرکز نوآوری دانشگاه</p>
-                        <p>مسئول گروه :مهدی مهدوی کیا </p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
     </div>
@@ -91,14 +63,15 @@
         <div class="row ">
             <div class="col-8 " align="center">
                 <div class="pagination ">
-                    <a href="#">&laquo;</a>
-                    <a href="#">1</a>
-                    <a href="#" class="active">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">&raquo;</a>
+                    {{$startups->links()}}
+                    {{--<a href="#">&laquo;</a>--}}
+                    {{--<a href="#">1</a>--}}
+                    {{--<a href="#" class="active">2</a>--}}
+                    {{--<a href="#">3</a>--}}
+                    {{--<a href="#">4</a>--}}
+                    {{--<a href="#">5</a>--}}
+                    {{--<a href="#">6</a>--}}
+                    {{--<a href="#">&raquo;</a>--}}
                 </div>
             </div>
         </div>

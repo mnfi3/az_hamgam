@@ -25,38 +25,28 @@
     <div class="container my-4 " id="side-list">
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <h5 class="text-white text-right mb-2" style="font-family: Vazir">کارگاه های آموزشی</h5>
+                <h5 class="text-white text-right mb-2" style="font-family: Vazir">دوره های مهارتی</h5>
                 <div style="height: 1px;background-color: #721c24; margin: 10px 5px"></div>
                 <div class="page-sections">
                     <div class="container">
-                        <div class="row pt-2 m-auto">
-
-                            @foreach($workshops as $workshop)
-                            <div class="col-md-4 col-lg-4 pb-3">
+                        <div class="row pt-5 m-auto">
+                            @foreach($courses as $course)
+                            <div class="col-md-4 col-lg-4 pb-1">
                                 <div class="card card-custom bg-white border-white border-0">
-                                    <div class="card-custom-img" style="background-image: url({{asset($workshop->image)}})"></div>
+                                    <div class="card-custom-img" style="background-image: url({{asset($course->image)}})"></div>
                                     <div class="card-custom-avatar">
                                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                                     </div>
                                     <div class="card-body pt-2" style="overflow-y: hidden">
-                                        <h4 class="card-title"> {{$workshop->title}}</h4>
-                                        <p>مدرس : {{$workshop->master->first_name . ' ' . $workshop->master->last_name}}</p>
-                                        @php($date = new \App\Http\Controllers\Util\PDate())
-                                        <p>زمان : {{$date->toPersian($workshop->time, 'Y/m/d')}}</p>
+                                        <h4 class="card-title"> {{$course->title}}</h4>
+                                        </p>
+                                        <p>مدرس : {{$course->master->first_name . ' ' .$course->master->last_name}}</p>
+                                        <p>زمان : {{$course->time}}</p>
                                     </div>
-                                    <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                        <div align="right">
-                                            {{--<a href="{{url('/skill-learning/courses')}}">--}}
-                                                {{--<button class="custom-btn text-center m-0 "type="submit" >--}}
-                                                    {{--<span>جزئیات</span>--}}
-                                                {{--</button>--}}
-                                            {{--</a>--}}
 
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                                @endforeach
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -65,7 +55,7 @@
                         <div class="row ">
                             <div class="col-8 " align="center">
                                 <div class="pagination ">
-                                    {{$workshops->links()}}
+                                    {{$courses->links()}}
                                     {{--<a href="#">&laquo;</a>--}}
                                     {{--<a href="#">1</a>--}}
                                     {{--<a href="#" class="active">2</a>--}}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\GraduatesEmployed;
+use App\Startup;
 use App\Util;
 use Illuminate\Http\Request;
 
@@ -42,6 +43,7 @@ class SiteSuccessController extends Controller
 
 
   public function startup(){
-
+    $startups = Startup::orderBy('id', 'desc')->paginate(9);
+    return view('site.university-startups', compact('startups'));
   }
 }

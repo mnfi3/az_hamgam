@@ -30,39 +30,30 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">موضوع</th>
                         <th scope="col">سوال</th>
                         <th scope="col">وضعیت</th>
                         <th scope="col">پاسخ</th>
                     </tr>
                     </thead>
                     <tbody class="text-white" style="font-size: 0.9rem">
+                    @php($i=0)
+                    @foreach($consults as $consult)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد. یکی از مهمترین اهداف این سامانه را می توان مدیریت متمرکز کارآموزان در طول دوره کارآموزی به منظور ارتباط فعال صنعت و دانشگاه جهت شناسایی و حل مسائل موجود در صنایع بیان نمود. دانشگاه صنعتی امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان</td>
-                        <td >پاسخ داده نشده</td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
+                        <th scope="row">{{++$i}}</th>
+                        <td>{{$consult->title}}</td>
+                        <td>{{$consult->question}}</td>
+                        @if(strlen($consult->answer) > 1)
+                            <td >پاسخ داده شده</td>
+                        @else
+                            <td >پاسخ داده نشده</td>
+                        @endif
+                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal{{$consult->id}}">مشاهده </button></td>
 
 
 
                     </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد. یکی از مهمترین اهداف این سامانه را می توان مدیریت متمرکز کارآموزان در طول دوره کارآموزی به منظور ارتباط فعال صنعت و دانشگاه جهت شناسایی و حل مسائل موجود در صنایع بیان نمود. دانشگاه صنعتی امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان</td>
-                        <td >پاسخ داده نشده</td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-
-
-
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد. یکی از مهمترین اهداف این سامانه را می توان مدیریت متمرکز کارآموزان در طول دوره کارآموزی به منظور ارتباط فعال صنعت و دانشگاه جهت شناسایی و حل مسائل موجود در صنایع بیان نمود. دانشگاه صنعتی امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان</td>
-                        <td >پاسخ داده نشده</td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-
-
-
-                    </tr>
+                        @endforeach
                     </tbody>
                 </table>
 
@@ -71,7 +62,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="myModal" style="font-family: Vazir">
+@foreach($consults as $consult)
+<div class="modal fade" id="myModal{{$consult->id}}" style="font-family: Vazir">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -86,9 +78,8 @@
                 <form action="" class="" style="direction: rtl;font-family: Vazir">
                     <div class="form-group row ">
                         <div class="col-md-12">
-                    <textarea type="text" id="editor1" required="" style="width: 100%;height: 190px;font-size: 0.8rem"
-                              class="form-control" name="description" placeholder="پاسخ دریافتی">
-                    </textarea>
+                    <span type="text" id="editor1" required="" style="width: 100%;height: 190px;font-size: 0.8rem"
+                              class="form-control" name="description" placeholder="پاسخ دریافتی">{{$consult->answer}}</span>
                         </div>
                     </div>
                 </form>
@@ -101,6 +92,7 @@
         </div>
     </div>
 </div>
+@endforeach
 @include('include.footer')
 </body>
 <script>

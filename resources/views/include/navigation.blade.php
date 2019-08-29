@@ -14,6 +14,25 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            @auth
+                                <ul class="navbar-nav py-4 py-md-0">
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
+                                        <form  method="post" action="{{route('logout')}}">
+                                            @csrf
+                                            <a class="nav-link" >
+                                            <button class="nav-link" type="submit">خروج</button>
+                                            </a>
+                                        </form>
+                                    </li>
+
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
+                                        <a class="nav-link" href="{{url('/home')}}">پنل کاربری</a>
+                                    </li>
+
+                                </ul>
+                            @endauth
+
+                            @guest
                             <ul class="navbar-nav py-4 py-md-0">
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
                                     <a class="nav-link" href="{{url('/login')}}">ورود</a>
@@ -22,6 +41,7 @@
                                     <a class="nav-link" href="{{url('/register')}}">ثبت نام</a>
                                 </li>
                             </ul>
+                            @endguest
                             <ul class="navbar-nav ml-auto py-4 py-md-0">
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
                                     <a class="nav-link dropdown-toggle" href="{{url('/success')}}">موفقیت</a>

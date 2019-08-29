@@ -12,6 +12,11 @@
 */
 
 
+Route::get('/test', function (){
+  $user = \Illuminate\Support\Facades\Auth::user();
+  return $user->studentField;
+});
+
 //site
 Route::get('/', 'SiteController@index');
 
@@ -70,10 +75,7 @@ Route::get('/idea/startup', 'SiteIdeaController@startup');
  */
 Route::get('/success', 'SiteSuccessController@success');
 Route::get('/success/graduation-job', 'SiteSuccessController@graduation');
-//in this**************************************
-Route::get('/success/university-startups',function (){
-  return view('site.university-startups');
-});
+Route::get('/success/university-startups', 'SiteSuccessController@startup');
 
 
 
@@ -86,8 +88,6 @@ Route::get('/content',function (){
   return view('site.content');
 
 });
-
-
 Route::get('/sent-successfully',function (){
   return view('site.sent-successfully');
 });
@@ -98,6 +98,18 @@ Route::get('/sent-successfully',function (){
 
 
 
+//student section
+
+Route::get('/student/student', 'Student\StudentController@student');
+Route::get('/student/workshop', 'Student\StudentController@workshop');
+Route::get('/student/consult', 'Student\StudentController@consults');
+Route::get('/student/profile', 'Student\StudentController@profile');
+Route::post('/student/profile-update', 'Student\StudentController@profileUpdate');
+Route::post('/student/change-password', 'Student\StudentController@changePassword');
+Route::get('/student/contact', 'Student\StudentController@contact');
+Route::post('/student/send-message', 'Student\StudentController@sentMessage');
+Route::get('/student/idea', 'Student\StudentController@idea');
+Route::post('/student/idea-insert', 'Student\StudentController@ideaInsert');
 
 
 
@@ -211,31 +223,7 @@ Route::get('/admin/users/master-detailes',function (){
 });
 
 
-//section 2
 
-Route::get('/student/student',function (){
-  return view('student.student');
-});
-
-Route::get('/student/workshop',function (){
-  return view('student.workshop');
-});
-
-Route::get('/student/consult',function (){
-  return view('student.consult');
-});
-
-Route::get('/student/profile',function (){
-  return view('student.profile');
-});
-
-Route::get('/student/contact',function (){
-  return view('student.contact');
-});
-
-Route::get('/student/idea',function (){
-  return view('student.idea');
-});
 
 
 //section 3
