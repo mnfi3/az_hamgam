@@ -28,13 +28,13 @@
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">درباره سامانه همگام</h5>
                 <h6 class="text-white text-right mb-2" style="font-family: Vazir">(وارد کردن توضیحات مختصر برای آشنایی کاربران با سامانه)</h6>
 
-                <form action="" class="px-3" style="direction: rtl">
+                <form action="{{url('/admin/about-hamgam/add')}}" method="post" class="px-3" style="direction: rtl">
+                    @csrf
                     <div class="form-group row py-4">
                     <label class="col-md-2 col-form-label "> متن :</label>
                     <div class="col-md-10 ">
                     <textarea type="text" id="editor1" required=""
-                    class="form-control" name="description" placeholder="set content here">
-                    </textarea>
+                    class="form-control" name="description" placeholder="set content here">{{$about}}</textarea>
                     <script>
                     CKEDITOR.replace( 'editor1' );
                     </script>
@@ -43,7 +43,6 @@
 
                     <div class="d-flex justify-content-around mb-3">
                         <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
-                        <button class="custom-btn text-center" type="submit" style="max-width: 140px">حذف متن قبلی</button>
                     </div>
                 </form>
 

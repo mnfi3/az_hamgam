@@ -30,30 +30,36 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">اطلاعات فردی</th>
+                        <th scope="col">نوع کاربر</th>
+                        <th scope="col">نام</th>
                         <th scope="col">ایمیل</th>
                         <th scope="col">پیام دریافتی</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>Aliarabgary2gmail.com</td>
-                        <td><button class="custom-btn text-center" style="max-width: 150px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>Aliarabgary2gmail.com</td>
-                        <td><button class="custom-btn text-center" style="max-width: 150px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>Aliarabgary2gmail.com</td>
-                        <td><button class="custom-btn text-center" style="max-width: 150px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-                    </tr>
+                    @php($i=0)
+                    @foreach($messages as $message)
+                        <tr>
+                            <th scope="row">{{++$i}}</th>
+                            @if($message->user_id == 0 || $message->user_id == null)
+                                <td>مهمان</td>
+                            @else
+                                @if($message->user->role == 'master')
+                                    <td>استاد</td>
+                                @else
+                                    <td>دانشجو</td>
+                                @endif
+                            @endif
+                            @if($message->user_id == 0 || $message->user_id == null)
+                                <td>{{$message->name}}</td>
+                                <td>{{$message->email}}</td>
+                            @else
+                                <td>{{$message->user->first_name . ' ' . $message->user->last_name}}</td>
+                                <td>{{$message->user->email}}</td>
+                            @endif
+                            <td><button class="custom-btn text-center" style="max-width: 150px" data-toggle="modal" data-target="#myModal{{$message->id}}">مشاهده </button></td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
 
@@ -64,32 +70,63 @@
 </div>
 
 
-<!-- The Modal -->
-<div class="modal fade" id="myModal" style="font-family: Vazir">
-    <div class="modal-dialog">
-        <div class="modal-content">
+@foreach($messages as $message)
+    <div class="modal fade" id="myModal{{$message->id}}" style="font-family: Vazir">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title text-right ml-auto">محتوای پیام</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-right ml-auto">محتوای پیام</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body text-right">
+                    {{$message->question}}
+                </div>
+
+
+                @if($message->user_id != 0 && $message->user_id != null)
+                    <form action="{{url('/admin/message/answer')}}" method="post" class="mt-3 mb-3">
+                        @csrf
+                        <div class="modal-header">
+                            <h5 class="modal-title text-right ml-auto">ارسال پاسخ</h5>
+                        </div>
+
+                        <input type="hidden" name="id" value="{{$message->id}}">
+                        <!-- Modal body -->
+
+                        @if(strlen($message->answer) < 2)
+                            <div class="modal-body text-right">
+                                 <textarea type="text" id="title" required=""
+                                           class="form-control text-right "  name="answer" placeholder="پاسخ">{{$message->answer}}</textarea>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button  class="custom-btn btn-success" style="max-width: 60px">ارسال</button>
+                            </div>
+                        @else
+                            <div class="modal-body text-right">
+                                 <span type="text" id="title" required=""
+                                           class="form-control text-right "  name="answer" placeholder="پاسخ">{{$message->answer}}</span>
+                            </div>
+
+                        @endif
+                    </form>
+                @endif
+
+                <hr>
+
+
+
+
             </div>
-
-            <!-- Modal body -->
-            <div class="modal-body text-right">
-                سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد. یکی از مهمترین اهداف این سامانه را می توان مدیریت متمرکز کارآموزان در طول دوره کارآموزی به منظور ارتباط فعال صنعت و دانشگاه جهت شناسایی و حل مسائل موجود در صنایع بیان نمود. دانشگاه صنعتی امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان، مهندسین کارآزموده ای برای این مرزوبوم تربیت نماید
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="custom-btn btn-danger" data-dismiss="modal" style="max-width: 60px">بستن</button>
-            </div>
-
         </div>
     </div>
-</div>
+    @endforeach
 
-</div>
-@include('include.footer')
+    </div>
+    @include('include.footer')
 </body>
 </html>

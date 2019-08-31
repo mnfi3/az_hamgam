@@ -24,7 +24,17 @@ class Util extends Model
 
 
   //keys
+
+  //site public
   const KEY_ABOUT = 'about';
+  const KEY_PHONE = 'phone';
+  const KEY_ADDRESS = 'address';
+  const KEY_EMAIL = 'email';
+  const KEY_LINK1 = 'link1';
+  const KEY_LINK2 = 'link2';
+  const KEY_LINK3 = 'link3';
+  const KEY_LINK4 = 'link4';
+
 
   //guidance
   const KEY_ACADEMIC_GUIDANCE = 'academic-guidance';

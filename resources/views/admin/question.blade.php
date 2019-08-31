@@ -27,125 +27,32 @@
             <div class="col-md-4 col-sm-12">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">حذف سوالات</h5>
                 <ul style="direction: rtl" class="side-list">
+                    @foreach($questions as $question)
                     <li>
                         <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">سامانه چطور کار میکند؟ </p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
+                            <p class="text-light text-right mb-2 pr-2">{{$question->question}}</p>
+                            <a href="{{url('/admin/question/remove', $question->id)}}" class="custom-btn text-center">حذف</a>
                         </div>
                     </li>
-                    <li>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">چه دوره هایی ارائه میشود؟</p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید مدنی آذربایجان</p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">سامانه چطور کار میکند؟ </p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">چه دوره هایی ارائه میشود؟</p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید مدنی آذربایجان</p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-md-8 col-sm-12">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">اضافه کردن سوال</h5>
 
-                <form action="" class="px-3" style="direction: rtl">
+                <form action="{{url('/admin/question/add')}}" method="post" class="px-3" style="direction: rtl">
+                    @csrf
                     <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> عنوان سوال اول :</label>
+                        <label class="col-md-3 col-form-label " style=""> عنوان سوال :</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="عنوان سوال">
+                               class="form-control col-md-9 "  name="question" placeholder="عنوان سوال">
                     </div>
                     <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> پاسخ سوال اول :</label>
+                        <label class="col-md-3 col-form-label " style=""> پاسخ سوال :</label>
                         <textarea type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="پاسخ">
-                        </textarea>
+                               class="form-control col-md-9 "  name="answer" placeholder="پاسخ"></textarea>
                     </div>
 
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> عنوان سوال دوم :</label>
-                        <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="عنوان سوال">
-                    </div>
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> پاسخ سوال دوم :</label>
-                        <textarea type="text" id="title" required=""
-                                  class="form-control col-md-9 "  name="name" placeholder="پاسخ">
-                        </textarea>
-                    </div>
-
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> عنوان سوال سوم :</label>
-                        <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="عنوان سوال">
-                    </div>
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> پاسخ سوال سوم :</label>
-                        <textarea type="text" id="title" required=""
-                                  class="form-control col-md-9 "  name="name" placeholder="پاسخ">
-                        </textarea>
-                    </div>
-
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> عنوان سوال چهارم :</label>
-                        <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="عنوان سوال">
-                    </div>
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> پاسخ سوال چهارم :</label>
-                        <textarea type="text" id="title" required=""
-                                  class="form-control col-md-9 "  name="name" placeholder="پاسخ">
-                        </textarea>
-                    </div>
-
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> عنوان سوال پنجم :</label>
-                        <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="عنوان سوال">
-                    </div>
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> پاسخ سوال پنجم :</label>
-                        <textarea type="text" id="title" required=""
-                                  class="form-control col-md-9 "  name="name" placeholder="پاسخ">
-                        </textarea>
-                    </div>
-
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> عنوان سوال ششم :</label>
-                        <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="عنوان سوال">
-                    </div>
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> پاسخ سوال ششم :</label>
-                        <textarea type="text" id="title" required=""
-                                  class="form-control col-md-9 "  name="name" placeholder="پاسخ">
-                        </textarea>
-                    </div>
                     <div class="d-flex justify-content-center mb-3">
                         <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
                     </div>

@@ -13,12 +13,12 @@
 
 
 Route::get('/test', function (){
-  $util = new \App\Util();
   return date('Y-m-d');
 });
 
 //site
 Route::get('/', 'SiteController@index');
+Route::post('/question-add', 'SiteController@questionAdd');
 
 Auth::routes();
 
@@ -127,26 +127,19 @@ Route::post('/student/idea-insert', 'Student\StudentController@ideaInsert');
 //Admins
 //section1
 
-Route::get('/admin/admin',function (){
-  return view('admin.admin');
-});
-Route::get('/admin/about-hamgam',function (){
-  return view('admin.about-hamgam');
-});
-Route::get('/admin/statistic',function (){
-  return view('admin.statistic');
-});
-Route::get('/admin/question',function (){
-  return view('admin.question');
-});
+Route::get('/admin/admin', 'Admin\AdminSiteController@admin');
+Route::get('/admin/slider/remove/{id}', 'Admin\AdminSiteController@sliderRemove');
+Route::post('/admin/slider/add', 'Admin\AdminSiteController@sliderAdd');
+Route::get('/admin/about-hamgam', 'Admin\AdminSiteController@about');
+Route::post('/admin/about-hamgam/add', 'Admin\AdminSiteController@aboutAdd');
+Route::get('/admin/question', 'Admin\AdminSiteController@questions');
+Route::post('/admin/question/add', 'Admin\AdminSiteController@questionAdd');
+Route::get('/admin/question/remove/{id}', 'Admin\AdminSiteController@questionRemove');
+Route::get('/admin/connection', 'Admin\AdminSiteController@connection');
+Route::post('/admin/connection/update', 'Admin\AdminSiteController@connectionUpdate');
+Route::get('/admin/inquery', 'Admin\AdminSiteController@messages');
+Route::post('/admin/message/answer', 'Admin\AdminSiteController@messageAnswer');
 
-Route::get('/admin/connection',function (){
-  return view('admin.connection');
-});
-
-Route::get('/admin/inquery',function (){
-  return view('admin.inquery');
-});
 
 Route::get('/admin/purpose',function (){
   return view('admin.purpose');
@@ -264,6 +257,9 @@ Route::get('/admin/gathering',function (){
   return view('admin.gathering');
 });
 
+//Route::get('/admin/statistic',function (){
+//  return view('admin.statistic');
+//});
 
 
 

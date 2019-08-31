@@ -26,11 +26,11 @@
                     درباره سامانه همگام
                 </h2>
                 <p class=" py-3 my-2">
-                    {{$about}}
+                    @php echo $about; @endphp
                 </p>
             </div>
 
-         </div>
+        </div>
     </div>
 </div>
 <div class="statictical-section">
@@ -43,7 +43,7 @@
                     <div class="title"> دوره ارائه شده </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 text-center my-1">
-                    <i class="fa fa-search-plus  "></i>
+                    <i class="fa fa-star "></i>
                     <div class="count">{{$ideas_count}}</div>
                     <div class="title">ایده ثبت شده</div>
                 </div>
@@ -51,6 +51,30 @@
                     <i class="fa fa-user "></i>
                     <div class="count">{{$masters_count}}</div>
                     <div class="title"> استاد </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 text-center my-1">
+                    <i class="fa fa-users"></i>
+                    <div class="count">{{$students_count}}</div>
+                    <div class="title"> دانشجو </div>
+                </div>
+            </div>
+
+            <div class="row py-4">
+                <div class="col-lg-3 col-md-6 col-sm-12 text-center my-1">
+                    <i class="fa fa-industry "></i>
+                    <div class="count">{{$visits_count}}</div>
+                    <div class="title"> بازدید از صنایع </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 text-center my-1">
+                    <i class="fa fa-building-o"></i>
+                    <div class="count">{{$startups_count}}</div>
+                    <div class="title">استارتاپ</div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 text-center my-1">
+                    <i class="fa fa-gears "></i>
+                    <div class="count">{{$workshops_count}}</div>
+                    <div class="title"> کارگاه برگزار شده </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 text-center my-1">
                     <i class="fa fa-book "></i>
@@ -87,7 +111,7 @@
                             </div>
                         @endif
                         @php($i++)
-                        @endforeach
+                    @endforeach
 
 
                 </div>

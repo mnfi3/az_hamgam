@@ -8,20 +8,26 @@
                     </h5>
                     <div class="d-flex flex-column justify-content-center footer-links">
                         <div class="flex-item">
-                             <a href="#">
-                                دانشگاه شهید مدنی آذربایجان
+                             <a href=" {{\App\Util::get(\App\Util::KEY_LINK1)->description}}" target="_blank">
+                                 {{\App\Util::get(\App\Util::KEY_LINK1)->title}}
                             </a>
                         </div>
                         <div class="flex-item">
-                            <a href="#">
-                                وزارت علوم،تحقیقات و فناوری
+                            <a href=" {{\App\Util::get(\App\Util::KEY_LINK2)->description}}" target="_blank">
+                                {{\App\Util::get(\App\Util::KEY_LINK2)->title}}
                             </a>
                         </div>
                         <div class="flex-item">
-                            <a href="#">
-                                پارک علم و فناوری
+                            <a href=" {{\App\Util::get(\App\Util::KEY_LINK3)->description}}" target="_blank">
+                                {{\App\Util::get(\App\Util::KEY_LINK3)->title}}
                             </a>
                         </div>
+                        <div class="flex-item">
+                            <a href=" {{\App\Util::get(\App\Util::KEY_LINK4)->description}}" target="_blank">
+                                {{\App\Util::get(\App\Util::KEY_LINK4)->title}}
+                            </a>
+                        </div>
+
                     </div>
 
 
@@ -30,51 +36,65 @@
                     <h5 class="footer-title">
                         ارسال سوالات و درخواست ها
                     </h5>
-                    <form class="text-right forms mt-3">
+                    <form method="post" action="{{url('/question-add')}}" class="text-right forms mt-3">
+                        @csrf
                         <div class="form-group">
-                            <input required type="email" class="form-control text-right"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=".ایمیل را وارد نمایید">
+                            <input required type="text" class="form-control text-right" name="name" id="name" aria-describedby="name" placeholder="نام خود را وارد کنید">
                         </div>
                         <div class="form-group">
-                            <input required type="text" class="form-control text-right"  id="name" aria-describedby="name" placeholder="نام ">
+                            <input required type="email" class="form-control text-right" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ایمیل خود را وارد نمایید">
                         </div>
                         <div class="form-group">
-                            <textarea required class="form-control" id="questions" placeholder="سوال و درخواست ها">
-
-                            </textarea>
+                            <textarea required class="form-control" id="questions" name="message" placeholder="پیام خود را وارد کنید"></textarea>
                         </div>
                         <div class="button_cont" align="left">
                             <button class="custom-btn text-center"type="submit" >
                                 <span>ارسال</span>
                             </button>
                         </div>
+                        @if(\Illuminate\Support\Facades\Session::get('msg') != null)
+                            <p class="text-success">{{\Illuminate\Support\Facades\Session::get('msg')}}</p>
+                        @endif
+
+
                         {{--<button type="submit" class="btn btn-primary">ارسال</button>--}}
                     </form>
                 </div>
                 <div class="col-md-4">
                     <h5 class="footer-title">
-                        درباره سامانه
+                        ارتباط با ما
                     </h5>
+                    <br>
+
                     <div class="d-flex flex-column justify-content-center">
-                        <div class="flex-item text-white">
 
-
-                            این سامانه از سال 1395 با هدف ساماندهی و تسریع و تسهیل فرایند کارآموزی دانشجویان دانشگاه صنعتی امیر کبیر طراحی شده.
-
-                        </div>
+                        <h7 class="text-right">
+                            تلفن تماس
+                        </h7>
                         <div class="flex-item">
                              <span>
-                                041-34421020
+                               {{\App\Util::get(\App\Util::KEY_PHONE)->description}}
                             </span>
                             <i class="fa fa-phone ml-1" style="color: #ffffff"></i>
                         </div>
+
+
+                        <h7 class="text-right mt-1">
+                            آدرس
+                        </h7>
                         <div class="flex-item">
-                                <span class="text-right "> تبریز - کیلومتر 35 جاده تبریز مراغه - دانشگاه شهید مدنی اذربایجان</span>
-                                <i class="fa fa-address-book mt-3 ml-1" style="color: #ffffff"></i>
+                                <span >{{\App\Util::get(\App\Util::KEY_ADDRESS)->description}}</span>
+                                <i class="fa fa-address-book  ml-1" style="color: #ffffff"></i>
 
                         </div>
+
+
+                        <h7 class="text-right mt-1">
+                            آدرس ایمیل
+                        </h7>
                         <div class="flex-item">
                              <span>
-                                admin@azaruniv.ac.ir
+                                {{\App\Util::get(\App\Util::KEY_EMAIL)->description}}
                             </span>
                             <i class="fa fa-envelope ml-1" style="color: #ffffff"></i>
 

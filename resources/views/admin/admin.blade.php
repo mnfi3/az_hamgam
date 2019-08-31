@@ -27,72 +27,26 @@
             <div class="col-md-4 col-sm-12">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">اسلایدرهای سایت</h5>
                 <ul style="direction: rtl" class="side-list">
+                    @foreach($sliders as $slider)
                     <li>
                         <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
+                            <p class="text-light text-right mb-2 pr-2">{{$slider->title}}</p>
 
-                            <a href="" class="custom-btn text-center">حذف</a>
+                            <a href="{{url('/admin/slider/remove', $slider->id)}}" class="custom-btn text-center">حذف</a>
                         </div>
                     </li>
-                    <li>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید مدنی آذربایجان</p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید مدنی آذربایجان</p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید مدنی آذربایجان</p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید مدنی آذربایجان</p>
-
-                            <a href="" class="custom-btn text-center">حذف</a>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-md-8 col-sm-12">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">اضافه کردن اسلایدر</h5>
 
-                <form action="" class="px-3" style="direction: rtl">
+                <form action="{{url('/admin/slider/add')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl">
+                    @csrf
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style=""> عنوان :</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-10 "  name="name" placeholder="عنوان اسلایدر">
+                               class="form-control col-md-10 "  name="title" placeholder="عنوان اسلایدر">
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label " style="" >تصویر اسلایدر :</label>
@@ -100,15 +54,15 @@
                             <div  id="fileInputsContainer">
                                 <div class="d-flex flex-row justify-content-between">
                                     <input type="file" id="images"
-                                           class="form-control-file" name="images[]">
+                                           class="form-control-file" required name="image">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-4 col-form-label " style=""> لینک (در صورت وجود) :</label>
-                        <input type="text" id="title" required=""
-                               class="form-control col-md-8 "  name="name" placeholder="اختیاری">
+                        <input type="text" id="title"
+                               class="form-control col-md-8 "  name="link" placeholder="اختیاری">
                     </div>
                     <div class="d-flex justify-content-center mb-3">
                         <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>

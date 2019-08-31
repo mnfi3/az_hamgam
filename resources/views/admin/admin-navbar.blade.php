@@ -17,8 +17,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSite">
                         {{--<a class="dropdown-item" href="#">دوره های مهارتی</a>--}}
+                        <a class="dropdown-item" href="{{url('/admin/admin')}}">اسلایدر سایت</a>
                         <a class="dropdown-item" href="{{url('/admin/about-hamgam')}}">درباره سامانه همگام</a>
-                        <a class="dropdown-item" href="{{url('/admin/statistic')}}">آمار سایت</a>
                         <a class="dropdown-item" href="{{url('/admin/question')}}">سوالات متداول</a>
                         <a class="dropdown-item" href="{{url('/admin/connection')}}">راه های ارتباطی و لینک های مرتبط سامانه</a>
                         <a class="dropdown-item" href="{{url('/admin/inquery')}}">سوالات و درخواست های دریافتی</a>
@@ -29,7 +29,7 @@
                 <li class="dropdown nav-item mt-1 mx-2">
                     <a id="adminNavProfessors" class="nav-link nav-hover" href="{{url('/admin/guidance')}}" role="button"   aria-expanded="false">
                         <i class="fa fa-chalkboard-teacher mt-1"></i>
-                        بخش هدایت شغلی
+                        هدایت شغلی
                     </a>
                     <div class="dropdown-menu mr-5" aria-labelledby="navbarSite" style="">
                         {{--<a class="dropdown-item" href="#">دوره های مهارتی</a>--}}
@@ -42,7 +42,7 @@
                 <li  class="dropdown nav-item mt-1 mx-2">
                     <a id="adminNavUsers" class="nav-link nav-hover" href="{{url('/admin/skill-learning')}}" role="button" >
                         <i class="fa fa-users-class mt-1"></i>
-                        بخش مهارت آموزی
+                        مهارت آموزی
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSite">
                         {{--<a class="dropdown-item" hskill-couresref="#">دوره های مهارتی</a>--}}
@@ -54,7 +54,7 @@
                 <li class="navbar-ticket nav-item  mx-2">
                     <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/admin/gathering')}}" id="navbarTicket" role="button">
                         <i class="fa fa-ticket mt-1"></i>
-                        بخش گردهمایی
+                        گردهمایی
                         <span class="new-ticket"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSite">
@@ -67,7 +67,7 @@
                 <li class="navbar-ticket nav-item  mx-2">
                     <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/admin/idea')}}" id="navbarTicket" role="button">
                         <i class="fa fa-ticket mt-1"></i>
-                        بخش ایده ها
+                        ایده ها
                         <span class="new-ticket"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSite">

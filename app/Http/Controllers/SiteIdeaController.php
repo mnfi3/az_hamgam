@@ -22,12 +22,12 @@ class SiteIdeaController extends Controller
     }
     $util = Util::get(Util::KEY_IDEA_SUPPROT);
     if ($util != null){
-      $supprot = $util->dscription;
+      $supprot = $util->description;
       $support_image = $util->image;
     }
     $util = Util::get(Util::KEY_IDEA_STARTUP);
     if ($util != null){
-      $startup = $util->dscription;
+      $startup = $util->description;
       $startup_image = $util->image;
     }
 
