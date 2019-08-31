@@ -18,7 +18,7 @@ class SiteIdeaController extends Controller
 
     $util = Util::get(Util::KEY_IDEA);
     if ($util != null){
-      $idea = $util->dscription;
+      $idea = $util->description;
     }
     $util = Util::get(Util::KEY_IDEA_SUPPROT);
     if ($util != null){

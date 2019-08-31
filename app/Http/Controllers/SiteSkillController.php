@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Field;
+use App\StudentCourses;
 use App\Suggest;
 use App\Util;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class SiteSkillController extends Controller
 {
 
   public function __construct() {
-    $this->middleware('student', ['only' => ['offerInsert']]);
+    $this->middleware('auth', ['only' => ['offerInsert', 'courseRegister']]);
+    $this->middleware('student', ['only' => ['offerInsert', 'courseRegister']]);
   }
 
 
@@ -100,6 +102,74 @@ class SiteSkillController extends Controller
     ]);
 
     return back()->with('msg', 1);
+  }
+
+
+  public function courseDetail($id){
+    $course = Course::find($id);
+    return view('site.skill-course-detailes', compact('course'));
+  }
+
+  public function courseRegister($id){
+    $user = Auth::user();
+    $courses = $user->studentCourses;
+    $course = Course::find($id);
+
+    //check re register
+    foreach ($courses as $item) {
+      if($item->id == $course->id){
+        return back()->with('fail', 'شما قبلا در این دوره ثبت نام کرده اید');
+      }
+    }
+
+    //check deadline
+    if (date('Y-m-d') > $course->deadline){
+      return back()->with('fail', 'مهلت ثبت نام تمام شده است');
+    }
+    //check course capacity
+    if ($course->students()->count() >= $course->capacity){
+      return back()->with('fail', 'ظرفیت دوره پر شده است');
+    }
+
+
+    //check user and course field
+    $fields = $course->fields;
+    $is_exist = false;
+    foreach ($fields as $field){
+      if ($user->studentField->id == $field->id){
+        $is_exist = true;
+        break;
+      }
+    }
+
+    if ($is_exist == false){
+      return back()->with('fail', 'این دوره برای رشته شما ارائه نشده است');
+    }
+
+
+    //check prerequisites
+    foreach ($course->prerequisites as $prerequisite) {
+      $is_exist = false;
+      foreach ($courses as $item){
+        if ($item->id == $prerequisite->id){
+          $is_exist = true;
+          break;
+        }
+      }
+
+      if ($is_exist == false){
+        return back()->with('fail', 'شما پیشنیازهای این دوره را نگذرانده اید');
+      }
+    }
+
+    $userCourse = StudentCourses::create([
+      'student_id' => $user->id,
+      'course_id' => $course->id,
+      'has_certificate' => 0,
+    ]);
+
+    return back()->with('success', 'ثبت نام شما با موفقیت انجام شد');
+
   }
 
 }

@@ -9,5 +9,5 @@ class StudentCourses extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['student_id', 'course_id'];
+  protected $fillable = ['student_id', 'course_id', 'has_certificate'];
 }

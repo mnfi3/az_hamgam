@@ -9,8 +9,14 @@ class Course extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['title', 'description', 'image', 'master_id', 'time', 'price', 'capacity'];
+  protected $fillable = ['title', 'description', 'image', 'master_id', 'time', 'price', 'capacity', 'deadline'];
 
+
+
+
+  public function students(){
+    return $this->belongsToMany('App\User', 'student_courses', 'course_id', 'student_id');
+  }
 
   public function master(){
     return $this->belongsTo('App\User', 'master_id');
@@ -18,5 +24,9 @@ class Course extends Model
 
   public function prerequisites(){
     return $this->belongsToMany('App\Course', 'prerequisites', 'course_id', 'requisite_id');
+  }
+
+  public function fields(){
+    return $this->belongsToMany('App\Field', 'course_fields');
   }
 }

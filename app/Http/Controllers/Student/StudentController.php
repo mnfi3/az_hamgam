@@ -98,7 +98,8 @@ class StudentController extends Controller
     $user->student_number = $request->student_number;
     $user->national_code = $request->national_code;
     $user->save();
-    return back()->with('update', 1);
+    $msg = 'اطلاعات پروفایل با موفقیت بروز شد';
+    return back()->with('update', $msg);
   }
 
   public function changePassword(Request $request){

@@ -74,7 +74,7 @@
                         <td>aliarabgary@gmail.com</td>
                         <td>09365018124</td>
                         <td>
-                            <a href="{{asset('/admin/users/master-detailes')}}" class="custom-btn text-center mt-0" style="max-width: 100px" data-toggle="modal" data-target="#myModal1">ارسال پیام</a>
+                            <a class="custom-btn text-center mt-0" style="max-width: 100px" data-toggle="modal" data-target="#myModal1">ارسال پیام</a>
                         </td>
                     </tr>
                     </tbody>

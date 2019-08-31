@@ -13,7 +13,7 @@
         @php($i=0)
         @foreach($sliders as $slider)
             <div class="carousel-item @if($i==0) active @endif">
-                {{$i++}}
+                @php($i++)
                 <div class="view">
                     <img class="d-block w-100" src="{{asset($slider->image)}}"
                          alt="First slide">

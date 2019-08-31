@@ -27,7 +27,7 @@
     <div class="container my-4 " id="side-list">
         <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
             <div class="form-group row py-4">
-                <label class="col-md-3 col-form-label ">توضیح مختصر دور های مهارتی :</label>
+                <label class="col-md-3 col-form-label ">توضیح مختصر:</label>
                 <div class="col-md-5">
                     <textarea type="text" id="editor1" required=""
                               class="form-control" name="description" placeholder="توضیحات">

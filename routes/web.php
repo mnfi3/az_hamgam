@@ -13,8 +13,8 @@
 
 
 Route::get('/test', function (){
-  $user = \Illuminate\Support\Facades\Auth::user();
-  return $user->studentField;
+  $util = new \App\Util();
+  return date('Y-m-d');
 });
 
 //site
@@ -46,6 +46,8 @@ Route::get('/academic-guidance/change-field', 'SiteGuidanceController@changeFiel
 Route::get('/skill-learning','SiteSkillController@skillLearning');
 Route::get('/skill-learning/termination','SiteSkillController@term');
 Route::get('/skill-learning/courses', 'SiteSkillController@courses');
+Route::get('/skill-learning/course/{id}', 'SiteSkillController@courseDetail');
+Route::get('/skill-learning/course/register/{id}', 'SiteSkillController@courseRegister');
 Route::get('/skill-learning/offer', 'SiteSkillController@offer');
 Route::post('/skill-learning/offer-insert', 'SiteSkillController@offerInsert');
 
@@ -57,6 +59,8 @@ Route::post('/skill-learning/offer-insert', 'SiteSkillController@offerInsert');
  */
 Route::get('/gathering', 'SiteGatheringController@gathering');
 Route::get('/gathering/workshop', 'SiteGatheringController@workshop');
+Route::get('/gathering/workshop-detail/{id}', 'SiteGatheringController@workshopDetail');
+Route::get('/gathering/workshop/register/{id}', 'SiteGatheringController@workshopRegister');
 Route::get('/gathering/visit-industries', 'SiteGatheringController@industry');
 
 
@@ -81,7 +85,9 @@ Route::get('/success/university-startups', 'SiteSuccessController@startup');
 
 
 
-
+Route::get('/skill-learning/courses/detailes',function (){
+  return view('site.skill-course-detailes');
+});
 
 
 Route::get('/content',function (){
@@ -222,11 +228,46 @@ Route::get('/admin/users/master-detailes',function (){
   return view('admin.users.master-detailes');
 });
 
+Route::get('/admin/success/startups',function (){
+  return view('admin.uni-startups');
+});
+
+Route::get('/admin/users/consult',function (){
+  return view('admin.users.consult');
+});
+
+Route::get('/admin/users/forums',function (){
+  return view('admin.users.forums');
+});
+
+Route::get('/admin/success/graduation-jobs',function (){
+  return view('admin.graduation-job');
+});
+
+Route::get('/admin/guidance',function (){
+  return view('admin.guidance');
+});
+
+Route::get('/admin/skill-learning',function (){
+  return view('admin.skill-learning');
+});
+
+Route::get('/admin/idea',function (){
+  return view('admin.idea');
+});
+
+Route::get('/admin/success',function (){
+  return view('admin.success');
+});
+
+Route::get('/admin/gathering',function (){
+  return view('admin.gathering');
+});
 
 
 
 
-//section 3
+//master
 
 Route::get('/master/master',function (){
   return view('master.master');

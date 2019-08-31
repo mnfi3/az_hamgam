@@ -66,15 +66,10 @@
                                 041-34421020
                             </span>
                             <i class="fa fa-phone ml-1" style="color: #ffffff"></i>
-
                         </div>
                         <div class="flex-item">
-
-                            <div class="d-flex ml-auto">
-
-                                <p class="text-right "> تبریز - کیلومتر 35 جاده تبریز مراغه - دانشگاه شهید مدنی اذربایجان</p>
+                                <span class="text-right "> تبریز - کیلومتر 35 جاده تبریز مراغه - دانشگاه شهید مدنی اذربایجان</span>
                                 <i class="fa fa-address-book mt-3 ml-1" style="color: #ffffff"></i>
-                            </div>
 
                         </div>
                         <div class="flex-item">

@@ -27,7 +27,7 @@
                     </div>
                 </li>
                 <li class="dropdown nav-item mt-1 mx-2">
-                    <a id="adminNavProfessors" class="nav-link nav-hover" href="#" role="button"   aria-expanded="false">
+                    <a id="adminNavProfessors" class="nav-link nav-hover" href="{{url('/admin/guidance')}}" role="button"   aria-expanded="false">
                         <i class="fa fa-chalkboard-teacher mt-1"></i>
                         بخش هدایت شغلی
                     </a>
@@ -40,7 +40,7 @@
                     </div>
                 </li>
                 <li  class="dropdown nav-item mt-1 mx-2">
-                    <a id="adminNavUsers" class="nav-link nav-hover" href="#" role="button" >
+                    <a id="adminNavUsers" class="nav-link nav-hover" href="{{url('/admin/skill-learning')}}" role="button" >
                         <i class="fa fa-users-class mt-1"></i>
                         بخش مهارت آموزی
                     </a>
@@ -52,7 +52,7 @@
                     </div>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2">
-                    <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="#" id="navbarTicket" role="button">
+                    <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/admin/gathering')}}" id="navbarTicket" role="button">
                         <i class="fa fa-ticket mt-1"></i>
                         بخش گردهمایی
                         <span class="new-ticket"></span>
@@ -65,7 +65,7 @@
                     </div>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2">
-                    <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="#" id="navbarTicket" role="button">
+                    <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/admin/idea')}}" id="navbarTicket" role="button">
                         <i class="fa fa-ticket mt-1"></i>
                         بخش ایده ها
                         <span class="new-ticket"></span>
@@ -77,16 +77,16 @@
                     </div>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2">
-                    <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="#" id="navbarTicket" role="button">
+                    <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/admin/success')}}" id="navbarTicket" role="button">
                         <i class="fa fa-ticket mt-1"></i>
                         موفقیت
                         <span class="new-ticket"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSite">
                         {{--<a class="dropdown-item" href="#">دوره های مهارتی</a>--}}
-                        <a class="dropdown-item" href="{{url('/admin/idea-support')}}">الگوهای برتر اشتغال</a>
-                        <a class="dropdown-item" href="{{url('/admin/startup')}}">فارغ التحصیلان شاغل</a>
-                        <a class="dropdown-item" href="{{url('/admin/startup')}}">گروه های استارت آپی دانشگاه</a>
+                        {{--<a class="dropdown-item" href="{{url('/admin/idea-support')}}">الگوهای برتر اشتغال</a>--}}
+                        <a class="dropdown-item" href="{{url('/admin/success/graduation-jobs')}}">فارغ التحصیلان شاغل</a>
+                            <a class="dropdown-item" href="{{url('/admin/success/startups')}}">گروه های استارت آپی دانشگاه</a>
                     </div>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2">
@@ -99,9 +99,9 @@
                         {{--<a class="dropdown-item" href="#">دوره های مهارتی</a>--}}
                         <a class="dropdown-item" href="{{url('/admin/users/student')}}">دانشجویان</a>
                         <a class="dropdown-item" href="{{url('/admin/users/master')}}">اساتید</a>
+                        <a class="dropdown-item" href="{{url('/admin/users/consult')}}">مشاور</a>
                         <a class="dropdown-item" href="{{url('/admin/users/forums')}}">انجمن ها</a>
-                        <a class="dropdown-item" href="{{url('/admin/about-hamgam')}}">صنایع</a>
-                        <a class="dropdown-item" href="{{url('/admin/about-hamgam')}}">مشاور</a>
+                        <a class="dropdown-item" href="{{url('/admin/')}}">صنایع</a>
                     </div>
                 </li>
                 {{--<li  class="dropdown nav-item mx-2 btn-primary">--}}

@@ -54,6 +54,21 @@
                 </table>
             </div>
             <div class="col-md-6 col-sm-12">
+                <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+                    <div class="form-group row py-4">
+                        <label class="col-md-3 col-form-label ">توضیح مختصر:</label>
+                        <div class="col-md-5">
+                    <textarea type="text" id="" required=""
+                              class="form-control" name="description" style="font-size: 0.7rem" placeholder="توضیحات">
+                    </textarea>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
+                        </div>
+                    </div>
+                </form>
+                <div style="height: 2px;border-radius: 1px;margin: 10px 30px; background: #721c24; "></div>
+
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">ایده و حمایت</h5>
 
                 <form action="" class="px-3" style="direction: rtl">

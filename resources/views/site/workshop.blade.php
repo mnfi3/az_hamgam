@@ -48,12 +48,13 @@
                             {{substr($workshop->description, 0, 120)}} ...
                         </p>
                         <p>مدرس : {{$workshop->master->first_name . ' ' . $workshop->master->last_name}}</p>
-                        <p>زمان : {{$workshop->time}}</p>
+                        @php($date = new \App\Http\Controllers\Util\PDate())
+                        <p >زمان : {{$date->toPersian($workshop->time, 'Y/m/d')}}</p>
 
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <div align="right">
-                            <a href="{{url('/skill-learning/courses')}}">
+                            <a href="{{url('/gathering/workshop-detail', $workshop->id)}}">
                                 <button class="custom-btn text-center m-0 "type="submit" >
                                     <span>ثبت نام</span>
                                 </button>

@@ -16,6 +16,9 @@ class Util extends Model
 
   public static function get($key){
     $result = Util::where('key', '=', $key)->orderBy('id', 'desc')->first();
+    if (is_null($result)){
+      $result = new Util();
+    }
     return $result;
   }
 

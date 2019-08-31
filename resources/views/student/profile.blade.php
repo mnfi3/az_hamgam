@@ -62,6 +62,9 @@
 
                         <div class="form-group row">
                             <button class="custom-btn text-center" type="submit">ویرایش</button>
+                            @if(\Illuminate\Support\Facades\Session::get('update') != null)
+                                <p>{{\Illuminate\Support\Facades\Session::get('update')}}</p>
+                            @endif
                         </div>
                     </div>
                 </form>

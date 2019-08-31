@@ -101,8 +101,7 @@
                     <label class="col-md-3 col-form-label ">توضیح مختصر دور های مهارتی :</label>
                     <div class="col-md-5">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات">
-                    </textarea>
+                              class="form-control" name="description" placeholder="توضیحات"></textarea>
                     </div>
                         <div class="col-md-3">
                             <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
@@ -174,6 +173,14 @@
                             <option value="1">اول</option>
                             <option value="1">دوم</option>
                             <option value="1">تابستان</option>
+                        </select>
+                    </div>
+                    <div class="form-group row py-4">
+                        <label class="col-md-2 col-form-label " style=""> جنسیت:</label>
+                        <select class="browser-default custom-select col-md-8">
+                            <option selected>مشترک</option>
+                            <option value="1">مرد</option>
+                            <option value="1">زن</option>
                         </select>
                     </div>
 

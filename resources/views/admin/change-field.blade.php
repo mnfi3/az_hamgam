@@ -23,6 +23,19 @@
     </div>
     @include('admin.admin-navbar')
     <div class="container my-4 " id="side-list">
+        <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+            <div class="form-group row py-4">
+                <label class="col-md-3 col-form-label ">توضیح مختصر:</label>
+                <div class="col-md-5">
+                    <textarea type="text" id="" required=""
+                              class="form-control" name="description" style="font-size: 0.7rem" placeholder="توضیحات">
+                    </textarea>
+                </div>
+                <div class="col-md-3">
+                    <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
+                </div>
+            </div>
+        </form>
         <div class="row">
             <div class="col-md-8 col-sm-12 ml-auto">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">تغییر رشته</h5>

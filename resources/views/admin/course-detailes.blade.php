@@ -28,7 +28,8 @@
         <div class="row">
             <div class="col-md-6 col-sm-12 ">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">دانشجویان ثبت نامی</h5>
-                <table class="table table-striped text-center usr-table" style="direction: rtl;font-family: Vazir">
+                <table class="table table-striped text-center " id="testTable" summary="Summary"
+                       rules="groups" frame="hsides" border="2"   style="direction: rtl;font-family: Vazir">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -43,7 +44,7 @@
                     <tbody class="text-white">
                     <tr>
                         <th scope="row">1</th>
-                        <td>علی عربگری</td>
+                        <td>Ali Arabgary</td>
                         <td><button class="custom-btn text-center" style="max-width: 110px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
                         <td class="table-check">
                             <input class="form-control tableCheckBox" form="certForm" type="checkbox" name="cert[]" value="1"  checked="true"/>
@@ -70,6 +71,9 @@
                 <div class="row">
                     <div class="col-md-4">
                         <button class="custom-btn text-center" style="max-width: 110px" onclick="" >ارسال گواهی </button></td>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="custom-btn text-center" style="max-width: 110px" id="btnExport" onclick="tableToExcel('testTable', 'Export HTML Table to Excel')">خروجی اکسل</button></td>
                     </div>
                 </div>
             </div>
@@ -128,6 +132,41 @@
     </div>
 </div>
 @include('include.footer')
+
+<script type="text/javascript">
+  var tableToExcel = (function () {
+    var uri = 'data:application/vnd.ms-excel;base64,'
+      , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+      , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+      , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+    return function (table, name) {
+      if (!table.nodeType) table = document.getElementById(table)
+      var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+      var blob = new Blob([format(template, ctx)]);
+      var blobURL = window.URL.createObjectURL(blob);
+
+      if (ifIE()) {
+        csvData = table.innerHTML;
+        if (window.navigator.msSaveBlob) {
+          var blob = new Blob([format(template, ctx)], {
+            type: "text/html"
+          });
+          navigator.msSaveBlob(blob, '' + name + '.xls');
+        }
+      }
+      else
+        window.location.href = uri + base64(format(template, ctx))
+    }
+  })()
+
+  function ifIE() {
+    var isIE11 = navigator.userAgent.indexOf(".NET CLR") > -1;
+    var isIE11orLess = isIE11 || navigator.appVersion.indexOf("MSIE") != -1;
+    return isIE11orLess;
+  }
+</script>
+
+
 <script type="text/javascript">
   $(document).ready(function() {
     $(".example1").pDatepicker();

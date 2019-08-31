@@ -15,6 +15,12 @@ class Workshop extends Model
   public function master(){
     return $this->belongsTo('App\User', 'master_id');
   }
+
+
+
+  public function students(){
+    return $this->belongsToMany('App\User', 'student_workshops', 'workshop_id', 'student_id');
+  }
   
 
 }
