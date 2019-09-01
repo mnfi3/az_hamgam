@@ -49,7 +49,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">هدف</h4>
                         <p class="card-text ">
-                            {{substr($purpose, 0, 120)}} ...
+                            {{substr(strip_tags($purpose), 0, 120)}} ...
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -119,7 +119,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">تغییر رشته</h4>
                         <p class="card-text">
-                            {{substr($change_field, 0, 120)}} ...
+                            {{substr(strip_tags($change_field), 0, 120)}} ...
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">

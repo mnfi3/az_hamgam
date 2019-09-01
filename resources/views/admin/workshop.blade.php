@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
     <!-- Title -->
     @include('include.page-title')
     @include('include.bootstrap')
     @include('include.nav-style-js')
+    <link type="text/css" rel="stylesheet" href="{{asset('css/persian-datepicker.min.css')}}" />
 
 </head>
 
@@ -32,8 +32,7 @@
                 <label class="col-md-3 col-form-label ">توضیح مختصر:</label>
                 <div class="col-md-5">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات">
-                    </textarea>
+                              class="form-control" name="description" placeholder="توضیحات"></textarea>
                 </div>
                 <div class="col-md-3">
                     <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
@@ -144,19 +143,15 @@
                     <div class="form-group row">
                         <label class="col-form-label col-sm-2 pt-0">زمان برگزاری :</label>
                         <div class="col-sm-10">
-                            <input  type="text" name="" class="form-control start-day example1" required>
+                            <input  type="text"  name="start_date" class="form-control start-day example1" required>
                             {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
                         </div>
-
-
                     </div>
-
-                    <div class="form-group row py-4">
+                    <div class="form-group row">
                         <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
                         <div class="col-md-9 mr-auto">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات">
-                    </textarea>
+                              class="form-control" name="description" placeholder="توضیحات"></textarea>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-3">
@@ -172,6 +167,23 @@
   $(document).ready(function() {
     $(".example1").pDatepicker();
   });
+</script>
+<script src="{{asset('js/jquery.js/jquery.min.js')}}"></script>
+<script src="{{asset('js/persian-date.min.js')}}"></script>
+<script src="{{asset('js/persian-datepicker.min.js')}}"></script>
+<script>
+  (function ($) {
+    $(document).ready(function () {
+        console.log('hello Ali');
+      $(".start-day").persianDatepicker({
+        format: 'YYYY/MM/DD',
+        timePicker: {
+          enabled: false
+        }
+      })
+    });
+  })
+  (window.jQuery);
 </script>
 </body>
 </html>

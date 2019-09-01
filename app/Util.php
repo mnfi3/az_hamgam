@@ -19,6 +19,8 @@ class Util extends Model
     if (is_null($result)){
       $result = new Util();
     }
+    $result->key = $key;
+
     return $result;
   }
 

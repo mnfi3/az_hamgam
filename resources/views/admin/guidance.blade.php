@@ -25,7 +25,8 @@
     </div>
     @include('admin.admin-navbar')
     <div class="container my-4 " id="side-list">
-        <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+        <form action="{{url('admin/guidance/add')}}" method="post" class="px-3" style="direction: rtl;font-family: Vazir">
+            @csrf
             <div class="form-group row py-4">
                 <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
                 <div class="col-md-5">

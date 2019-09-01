@@ -23,25 +23,32 @@
     </div>
     @include('counselor.counselor-navbar')
     <div class="container my-4 " id="profile">
-        <h5 style="text-align: right;color: #ffffff" class="py-3">:  پیام های ارسالی </h5>
+        <h5 style="text-align: right;color: #ffffff" class="py-3">:  پیام های ارسالی و دریافتی</h5>
         <table class="table table-striped text-center" style="direction: rtl;font-family: Vazir">
             <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">نوع پیام</th>
                 <th scope="col">سوال</th>
                 <th scope="col">وضعیت</th>
-                <th scope="col">پاسخ</th>
             </tr>
             </thead>
             <tbody class="text-white" style="font-size: 0.9rem">
             <tr>
                 <th scope="row">1</th>
+                <td >ارسالی</td>
                 <td> امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان</td>
-                <td >پاسخ داده نشده</td>
-                <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-
-
-
+                <td >پاسخ داده نشده
+                    <button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">مشاهده </button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td >دریافتی</td>
+                <td>********</td>
+                <td >
+                    <button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">مشاهده </button>
+                </td>
             </tr>
             </tbody>
         </table>

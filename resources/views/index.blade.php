@@ -48,7 +48,7 @@
                     <div class="title">ایده ثبت شده</div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 text-center my-1">
-                    <i class="fa fa-user "></i>
+                    <i class="fa fa-graduation-cap "></i>
                     <div class="count">{{$masters_count}}</div>
                     <div class="title"> استاد </div>
                 </div>

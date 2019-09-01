@@ -25,19 +25,30 @@
     </div>
     @include('admin.admin-navbar')
     <div class="container my-4 " id="side-list">
-        <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+
+        <form action="{{url('/admin/jobs/update')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+            @csrf
             <div class="form-group row py-4">
                 <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
                 <div class="col-md-5">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات">
-                    </textarea>
+                              class="form-control" name="description" placeholder="توضیحات">{{$util->description}}</textarea>
                 </div>
                 <div class="col-md-3">
                     <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
                 </div>
             </div>
+
+            <div class="form-group row py-4">
+                <label class="col-md-3 col-form-label ">تصویر :</label>
+                <div class="col-md-5">
+                    <input type="file" id="editor1" required=""
+                              class="form-control" name="image" placeholder="توضیحات"/>
+                </div>
+            </div>
         </form>
+
+
         <div style="height: 2px;border-radius: 1px;margin: 10px 30px; background: #721c24; "></div>
 
         <div class="row">
@@ -46,92 +57,53 @@
                     <div class="d-flex flex-column p-2" style="box-shadow: 0px 0px 15px rgba(10, 10, 10, 0.6);border-radius: 5px">
                         <h5 class="text-white" style="font-family: Vazir;text-align: right">اضافه کردن شغل</h5>
                         <div class="container">
-                            <form action="" class="px-3" style="direction: rtl">
+                            <form action="{{url('/admin/job/add')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl">
+                                @csrf
                                 <div class="form-group row py-4 ">
-
                                     <input type="text" id="title" required
-                                           class="form-control col-md-8 mt-1"  name="name" placeholder="عنوان شغل">
-                                    <div class="col-md-2 ">
-                                        <button class="custom-btn text-center " type="submit" style="max-width: 85px; font-size: 0.7rem">اضافه کن</button>
+                                           class="form-control col-md-8 mt-1"  name="title" placeholder="عنوان شغل">
+                                </div>
+                                <div class="form-group row py-4">
+                                    <label class="col-md-2 col-form-label " style="" >تصویر</label>
+                                    <div class="col-md-10 ">
+                                        <div  id="">
+                                            <div class="d-flex flex-row justify-content-between">
+                                                <input type="file"  required
+                                                       class="form-control-file" name="image">
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
+                                <div class="form-group row py-4">
+                                    <label class="col-md-3 col-form-label ">توضیح</label>
+                                    <div class="col-md-8 mr-auto">
+                                        <textarea type="text" id="editor1" required=""
+                                                  class="form-control" name="description" placeholder="توضیحات"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <button class="custom-btn text-center " type="submit" style="max-width: 85px; font-size: 0.7rem">اضافه کن</button>
                                 </div>
                             </form>
                         </div>
                         <div class="" style="background-color:white;min-height: 1px"></div>
                         <ul style="direction: rtl" class="side-list2">
+                            @foreach($jobs as $job)
                             <li>
                                 <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
+                                    <p class="text-light text-right mb-2 pr-2">{{$job->title}}</p>
                                 </div>
                             </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سامانه همگام دانشگاه شهید </p>
-                                </div>
-                            </li>
+                            @endforeach
+
                         </ul>
                     </div>
                     <div class="d-flex flex-column p-2 mt-4" style="box-shadow: 0px 0px 15px rgba(10, 10, 10, 0.6);border-radius: 5px">
                         <h5 class="text-white" style="font-family: Vazir;text-align: right">اضافه کردن رشته</h5>
                         <div class="container">
-                            <form action="" class="px-3" style="direction: rtl">
+                            <form action="{{url('/admin/field/add')}}" method="post" class="px-3" style="direction: rtl">
+                                @csrf
                                 <div class="form-group row py-4 ">
-
                                     <input type="text" id="title" required
                                            class="form-control col-md-8 mt-1"  name="name" placeholder="عنوان رشته">
                                     <div class="col-md-2 ">
@@ -142,27 +114,13 @@
                         </div>
                         <div class="" style="background-color:white;min-height: 1px"></div>
                         <ul style="direction: rtl" class="side-list2">
+                            @foreach($fields as $field)
                             <li>
                                 <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">مهندسی برق </p>
+                                    <p class="text-light text-right mb-2 pr-2">{{$field->name}} </p>
                                 </div>
                             </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">مهندسی کامپیوتر </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">زبان و ادبیات فارسی</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">مطالعات خانواده</p>
-                                </div>
-                            </li>
-
+                             @endforeach
 
                         </ul>
                     </div>
@@ -173,85 +131,25 @@
             <div class="col-md-8 col-sm-12 ">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">شغل های مرتبط</h5>
 
-                <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+                <form action="{{url('/admin/field-job/add')}}" method="post" class="px-3" style="direction: rtl;font-family: Vazir">
+                    @csrf
                     <div class="form-group row py-4">
                         <label class="col-md-4 col-form-label " style=""> عنوان شغل :</label>
-                        <select class="browser-default custom-select col-md-8">
-                            <option selected>نام شغل</option>
-                            <option value="1">مهندسی نرم افزار</option>
-                            <option value="2">مهندسی برق</option>
-                            <option value="3">مدیریت دولتی</option>
-                            <option value="3">مطالعات خانواده</option>
-                            <option value="3">زبان</option>
+                        <select class="browser-default custom-select col-md-8" name="job_id">
+                            @foreach($jobs as $job)
+                            <option value="{{$job->id}}">{{$job->title}}</option>
+                            @endforeach
                         </select>
                     </div>
+
                     <div class="form-group row py-4">
-                        <label class="col-md-2 col-form-label " style="" >تصویر  :</label>
-                        <div class="col-md-10 ">
-                            <div  id="">
-                                <div class="d-flex flex-row justify-content-between">
-                                    <input type="file"  required
-                                           class="form-control-file" name="images[]">
-                                </div>
-                            </div>
-                        </div>
+                        <label class="col-md-4 col-form-label " style=""> عنوان رشته :</label>
+                        <select class="browser-default custom-select col-md-8" name="field_id">
+                            @foreach($fields as $field)
+                                <option value="{{$field->id}}">{{$field->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
-                        <div class="col-md-8 mr-auto">
-                    <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات">
-                    </textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row py-4">
-                        <label class="col-md-2 col-form-label " style="" for="title">رشته(ها) مرتبط :</label>
-                        <div class="col-md-3 text-dark " style="direction: rtl">
-                            <select class="browser-default custom-select ">
-                                <option selected>رشته اول</option>
-                                <option value="1">مهندسی نرم افزار</option>
-                                <option value="2">مهندسی برق</option>
-                                <option value="4">مدیریت دولتی</option>
-                                <option value="5">مطالعات خانواده</option>
-                                <option value="6">زبان</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3 text-dark " style="direction: rtl">
-                            <select class="browser-default custom-select ">
-                                <option selected>رشته دوم</option>
-                                <option value="1">مهندسی نرم افزار</option>
-                                <option value="2">مهندسی برق</option>
-                                <option value="4">مدیریت دولتی</option>
-                                <option value="5">مطالعات خانواده</option>
-                                <option value="6">زبان</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3 text-dark " style="direction: rtl">
-                            <select class="browser-default custom-select ">
-                                <option selected>رشته سوم</option>
-                                <option value="1">مهندسی نرم افزار</option>
-                                <option value="2">مهندسی برق</option>
-                                <option value="4">مدیریت دولتی</option>
-                                <option value="5">مطالعات خانواده</option>
-                                <option value="6">زبان</option>
-                            </select>
-                        </div>
-                    </div>
-                    {{--<div class="form-group row pt-4">--}}
-                    {{--<label class="col-md-3 col-form-label "--}}
-                    {{--style="" for="title">Name :</label>--}}
-                    {{--<div class="col-md-8 mr-auto">--}}
-                    {{--<select name="name" id="" class="form-control">--}}
-                    {{--<option value="1"></option>--}}
-                    {{--<option value="Departments & Courses">Departments & Courses</option>--}}
-                    {{--<option value="How to apply">How to apply</option>--}}
-
-                    {{--</select>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-
-
-
                     <div class="d-flex justify-content-center mb-3">
                         <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
                     </div>

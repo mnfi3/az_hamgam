@@ -31,6 +31,8 @@ class HomeController extends Controller
         return redirect(url('/admin/admin'));
       }elseif ($user->role == 'master'){
 
+      }elseif ($user->role == 'consultant'){
+
       }
 //        return view('home');
     }

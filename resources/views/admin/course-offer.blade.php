@@ -23,13 +23,22 @@
     </div>
     @include('admin.admin-navbar')
     <div class="container my-4 " id="side-list">
-        <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+        <form action="{{url('/admin/course-offer/update')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+            @csrf
             <div class="form-group row py-4">
                 <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
                 <div class="col-md-5">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات">
-                    </textarea>
+                              class="form-control" name="description" placeholder="توضیحات">{{$util->description}}</textarea>
+                </div>
+
+            </div>
+
+            <div class="form-group row py-4">
+                <label class="col-md-3 col-form-label ">تصویر :</label>
+                <div class="col-md-5">
+                    <input type="file" id="editor1" required=""
+                              class="form-control" name="image" >
                 </div>
                 <div class="col-md-3">
                     <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
@@ -48,35 +57,21 @@
                         <th scope="col">اطلاعات فردی</th>
                         <th scope="col">ایمیل</th>
                         <th scope="col">شماره تماس</th>
-                        <th scope="col">نوع کاربر</th>
                         <th scope="col">مشاهده پیشنهاد</th>
                     </tr>
                     </thead>
                     <tbody class="text-white">
+                    @php($i=0)
+                    @foreach($suggests as $suggest)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>Aliarabgary2gmail.com</td>
-                        <td>09367904148</td>
-                        <td>دانشجو</td>
-                        <td><button class="custom-btn text-center" style="max-width: 150px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
+                        <th scope="row">{{++$i}}</th>
+                        <td>{{$suggest->user->first_name.' '.$suggest->user->last_name}}</td>
+                        <td>{{$suggest->user->email}}</td>
+                        <td>{{$suggest->user->mobile}}</td>
+                        <td><button class="custom-btn text-center" style="max-width: 150px" data-toggle="modal" data-target="#myModal{{$suggest->id}}">مشاهده </button></td>
                     </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>Aliarabgary2gmail.com</td>
-                        <td>09367904148</td>
-                        <td>انجمن</td>
-                        <td><button class="custom-btn text-center" style="max-width: 150px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>Aliarabgary2gmail.com</td>
-                        <td>09367904148</td>
-                        <td>صنایع</td>
-                        <td><button class="custom-btn text-center" style="max-width: 150px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-                    </tr>
+                    @endforeach
+
                     </tbody>
                 </table>
 
@@ -85,8 +80,10 @@
         </div>
     </div>
 </div>
+
+@foreach($suggests as $suggest)
 <!-- The Modal -->
-<div class="modal fade" id="myModal" style="font-family: Vazir">
+<div class="modal fade" id="myModal{{$suggest->id}}" style="font-family: Vazir">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -98,7 +95,7 @@
 
             <!-- Modal body -->
             <div class="modal-body text-right">
-                سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد. یکی از مهمترین اهداف این سامانه را می توان مدیریت متمرکز کارآموزان در طول دوره کارآموزی به منظور ارتباط فعال صنعت و دانشگاه جهت شناسایی و حل مسائل موجود در صنایع بیان نمود. دانشگاه صنعتی امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان، مهندسین کارآزموده ای برای این مرزوبوم تربیت نماید
+                {{$suggest->title}}
             </div>
 
             <!-- Modal footer -->
@@ -109,6 +106,8 @@
         </div>
     </div>
 </div>
+
+@endforeach
 </div>
 @include('include.footer')
 </body>

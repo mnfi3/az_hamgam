@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link type="text/css" rel="stylesheet" href="{{asset('css/persian-datepicker.min.css')}}" />
+    <!-- Title -->
 
     <!-- Title -->
     @include('include.page-title')
@@ -42,37 +44,43 @@
                     </tr>
                     </thead>
                     <tbody class="text-white">
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Ali Arabgary</td>
-                        <td><button class="custom-btn text-center" style="max-width: 110px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-                        <td class="table-check">
-                            <input class="form-control tableCheckBox" form="certForm" type="checkbox" name="cert[]" value="1"  checked="true"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td><button class="custom-btn text-center" style="max-width: 110px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-                        <td>
-                            <input type="checkbox" value="">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td><button class="custom-btn text-center" style="max-width: 110px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-                        <td>
-                            <input type="checkbox" value="">
-                        </td>
-                    </tr>
+                    <form action="{{url('/admin/skill-course/send-cert')}}" method="post">
+                        @csrf
+                        <input type="hidden" value="{{$course->id}}" name="course_id">
+
+
+                        @php($i=0)
+                        @foreach($course->students as $student)
+                            @php($bool = false)
+                            <tr>
+                                <th scope="row">{{++$i}}</th>
+                                <td>{{$student->first_name.' '.$student->last_name}}</td>
+                                <td><a href="#" class="custom-btn text-center" style="max-width: 110px" data-toggle="modal" >مشاهده </a></td>
+                                <td>
+                                    @foreach($st_courses as $stc)
+                                        @if($stc->student_id == $student->id && $stc->has_certificate == 1)
+                                            @php($bool=true)
+                                            @break
+                                        @endif
+                                    @endforeach
+                                    <input name="certs[]" @if($bool==true) checked @endif type="checkbox" value="{{$student->id}}">
+                                </td>
+                            </tr>
+                        @endforeach
+                        <div class="row">
+                            <div class="col-md-4">
+                                <button class="custom-btn text-center" style="max-width: 110px" onclick="" >ارسال گواهی </button></td>
+                            </div>
+                        </div>
+                    </form>
+
                     </tbody>
                 </table>
                 <div class="row">
-                    <div class="col-md-4">
-                        <button class="custom-btn text-center" style="max-width: 110px" onclick="" >ارسال گواهی </button></td>
-                    </div>
-                    <div class="col-md-4">
+                    {{--<div class="col-md-4">--}}
+                        {{--<button class="custom-btn text-center" style="max-width: 110px" onclick="" >ارسال گواهی </button></td>--}}
+                    {{--</div>--}}
+                    <div class="col-md-4 mt-5">
                         <button class="custom-btn text-center" style="max-width: 110px" id="btnExport" onclick="tableToExcel('testTable', 'Export HTML Table to Excel')">خروجی اکسل</button></td>
                     </div>
                 </div>
@@ -80,47 +88,90 @@
             <div class="col-md-6 col-sm-12 ">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">جزئیات دوره مهارتی</h5>
 
-                <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+                <form action="{{url('/admin/skill-course/edit')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$course->id}}">
                     <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> عنوان کارگاه :</label>
+                        <label class="col-md-3 col-form-label " style=""> عنوان دوره :</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="نام دوره">
+                               class="form-control col-md-9 "  name="title" value="{{$course->title}}" placeholder="نام دوره">
                     </div>
-                    <div class="form-group row py-4">
+                    <div class="form-group row ">
                         <label class="col-md-3 col-form-label " style="" >تصویر  :</label>
                         <div class="col-md-9 ">
                             <div  id="">
                                 <div class="d-flex flex-row justify-content-between">
-                                    <input type="file"  required
-                                           class="form-control-file" name="images[]">
+                                    <input type="file"
+                                           class="form-control-file" name="image">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row py-4">
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2 pt-0">زمان برگزاری :</label>
+                        <div class="col-sm-10">
+                            <input  type="text"  name="time" value="{{$course->time}}" class="form-control" required>
+                            {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
+                        </div>
+                    </div>
+
+                    <div class="form-group row ">
                         <label class="col-md-3 col-form-label " style=""> مدرس دوره :</label>
-                        <select class="browser-default custom-select col-md-9">
-                            <option selected>نام مدرس</option>
-                            <option value="1">علی صالحی</option>
-                            <option value="2">کاوه آهنگر</option>
-                            <option value="3">فریدون جیرانی</option>
-                            <option value="3">کامران کامروا</option>
+                        <select class="browser-default custom-select col-md-9" name="master_id">
+                            @foreach($masters as $master)
+                            <option value="{{$master->id}}" @if($master->id == $course->master_id) selected @endif >{{$master->first_name.' '.$master->last_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group row py-4">
+                        <label class="col-md-2 col-form-label " style=""> نیم سال:</label>
+                        <select class="browser-default custom-select col-md-8" name="term">
+                            <option value="1" @if($course->term == 1) selected @endif >اول</option>
+                            <option value="2" @if($course->term == 2) selected @endif >دوم</option>
+                            <option value="3" @if($course->term == 3) selected @endif >تابستان</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group row ">
+                        <label class="col-md-2 col-form-label " style=""> جنسیت:</label>
+                        <select class="browser-default custom-select col-md-8" name="gender">
+                            <option value="mixed" @if($course->gender == 'mixed') selected @endif >مشترک</option>
+                            <option value="male" @if($course->gender == 'male') selected @endif >مرد</option>
+                            <option value="female" @if($course->gender == 'female') selected @endif >زن</option>
                         </select>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-3 pt-0">زمان برگزاری :</label>
-                        <input  type="text" name="" class="form-control col-sm-9" required>
-                        {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
+                        <label class="col-form-label col-sm-2 pt-0">ظرفیت (نفر): </label>
+                        <div class="col-sm-10">
+                            <input  type="number"  name="capacity" value="{{$course->capacity}}" class="form-control" required>
+                            {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
+                        </div>
+                    </div>
 
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2 pt-0">هزینه (تومان) : </label>
+                        <div class="col-sm-10">
+                            <input  type="number"  name="price" value="{{$course->price}}" class="form-control" value="0" required>
+                            {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-3 pt-0">آخرین مهلت ثبت نام :</label>
+                        @php($d = new \App\Http\Controllers\Util\PDate())
+                        <input type="text" name="deadline" value="{{$course->deadline}}" class="form-control col-sm-9  start-day example1" required>
+                        {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
                     </div>
 
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
                         <div class="col-md-9 mr-auto">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات">
-                    </textarea>
+                              class="form-control" name="description" placeholder="توضیحات">{{$course->description}}</textarea>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-3">
@@ -132,6 +183,16 @@
     </div>
 </div>
 @include('include.footer')
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".example1").pDatepicker();
+  });
+</script>
+<script src="{{asset('js/jquery.js/jquery.min.js')}}"></script>
+<script src="{{asset('js/persian-date.min.js')}}"></script>
+<script src="{{asset('js/persian-datepicker.min.js')}}"></script>
 
 <script type="text/javascript">
   var tableToExcel = (function () {
@@ -166,11 +227,20 @@
   }
 </script>
 
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $(".example1").pDatepicker();
-  });
+<script>
+  (function ($) {
+    $(document).ready(function () {
+      console.log('hello Ali');
+      $(".start-day").persianDatepicker({
+        format: 'YYYY/MM/DD',
+        timePicker: {
+          enabled: false
+        }
+      })
+    });
+  })
+  (window.jQuery);
 </script>
+
 </body>
 </html>

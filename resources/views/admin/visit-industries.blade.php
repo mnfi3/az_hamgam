@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link type="text/css" rel="stylesheet" href="{{asset('css/persian-datepicker.min.css')}}" />
 
     <!-- Title -->
     @include('include.page-title')
@@ -115,17 +116,19 @@
                         </div>
                     </div>
                     <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> زمان و مکان بازدید :</label>
+                        <label class="col-md-3 col-form-label " style=""> مکان بازدید :</label>
                         <input type="text" id="title" required=""
                                class="form-control col-md-9 "  name="name" placeholder="زمان و مکان">
                     </div>
-
+                    <div class="form-group row py-4 ">
+                        <label class="col-md-3 col-form-label">  زمان :</label>
+                            <input  type="text" name="" class="form-control col-sm-9 start-day example1" required>
+                    </div>
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
                         <div class="col-md-9 mr-auto">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات">
-                    </textarea>
+                              class="form-control" name="description" placeholder="توضیحات"></textarea>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-3">
@@ -141,6 +144,23 @@
   $(document).ready(function() {
     $(".example1").pDatepicker();
   });
+</script>
+<script src="{{asset('js/jquery.js/jquery.min.js')}}"></script>
+<script src="{{asset('js/persian-date.min.js')}}"></script>
+<script src="{{asset('js/persian-datepicker.min.js')}}"></script>
+<script>
+  (function ($) {
+    $(document).ready(function () {
+      console.log('hello Ali');
+      $(".start-day").persianDatepicker({
+        format: 'YYYY/MM/DD',
+        timePicker: {
+          enabled: false
+        }
+      })
+    });
+  })
+  (window.jQuery);
 </script>
 </body>
 </html>

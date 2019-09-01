@@ -37,8 +37,7 @@
                                 <label class="col-md-3 col-form-label ">متن پیام :</label>
                                 <div class="col-md-9 mr-auto">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات" style="min-height: 260px">
-                    </textarea>
+                              class="form-control" name="description" placeholder="توضیحات" style="min-height: 260px"></textarea>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center mb-3">

@@ -44,6 +44,7 @@
                     <tr>
                         <th scope="row">1</th>
                         <td>علی عربگری</td>
+                        <td>علی عربگری</td>
                         <td>Aliarabgary2gmail.com</td>
                         <td>09367904148</td>
                         <td>کارشناسی فناوری اطلاعات</td>

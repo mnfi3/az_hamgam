@@ -85,18 +85,18 @@ Route::get('/success/university-startups', 'SiteSuccessController@startup');
 
 
 
-Route::get('/skill-learning/courses/detailes',function (){
-  return view('site.skill-course-detailes');
-});
-
-
-Route::get('/content',function (){
-  return view('site.content');
-
-});
-Route::get('/sent-successfully',function (){
-  return view('site.sent-successfully');
-});
+//Route::get('/skill-learning/courses/detailes',function (){
+//  return view('site.skill-course-detailes');
+//});
+//
+//
+//Route::get('/content',function (){
+//  return view('site.content');
+//
+//});
+//Route::get('/sent-successfully',function (){
+//  return view('site.sent-successfully');
+//});
 
 
 
@@ -125,7 +125,7 @@ Route::post('/student/idea-insert', 'Student\StudentController@ideaInsert');
 
 
 //Admins
-//section1
+//section site information
 
 Route::get('/admin/admin', 'Admin\AdminSiteController@admin');
 Route::get('/admin/slider/remove/{id}', 'Admin\AdminSiteController@sliderRemove');
@@ -140,38 +140,45 @@ Route::post('/admin/connection/update', 'Admin\AdminSiteController@connectionUpd
 Route::get('/admin/inquery', 'Admin\AdminSiteController@messages');
 Route::post('/admin/message/answer', 'Admin\AdminSiteController@messageAnswer');
 
+//section guidance
+Route::get('/admin/guidance', 'Admin\AdminGuidanceController@guidance');
+Route::post('/admin/guidance/add', 'Admin\AdminGuidanceController@guidanceAdd');
+Route::get('/admin/purpose', 'Admin\AdminGuidanceController@purpose');
+Route::post('/admin/purpose/update', 'Admin\AdminGuidanceController@purposeUpdate');
+Route::get('/admin/jobs', 'Admin\AdminGuidanceController@jobs');
+Route::post('/admin/jobs/update', 'Admin\AdminGuidanceController@jobsUpdate');
+Route::post('/admin/job/add', 'Admin\AdminGuidanceController@jobAdd');
+Route::post('/admin/field/add', 'Admin\AdminGuidanceController@fieldAdd');
+Route::post('/admin/field-job/add', 'Admin\AdminGuidanceController@fieldJobAdd');
+Route::get('/admin/consult', 'Admin\AdminGuidanceController@consult');
+Route::post('/admin/consult/update', 'Admin\AdminGuidanceController@consultUpdate');
+Route::post('/admin/consult/send-to-consultant', 'Admin\AdminGuidanceController@senToConsultant');
+Route::post('/admin/consult/answer', 'Admin\AdminGuidanceController@consultAnswer');
+Route::get('/admin/change-field', 'Admin\AdminGuidanceController@changeField');
+Route::post('/admin/change-field/update', 'Admin\AdminGuidanceController@changeFieldUpdate');
 
-Route::get('/admin/purpose',function (){
-  return view('admin.purpose');
-});
 
-Route::get('/admin/jobs',function (){
-  return view('admin.jobs');
-});
+//section skill
+Route::get('/admin/skill-learning', 'Admin\AdminSkillController@skill');
+Route::post('/admin/skill-learning/update', 'Admin\AdminSkillController@skillUpdate');
+Route::get('/admin/skill-courses', 'Admin\AdminSkillController@courses');
+Route::post('/admin/skill-courses/update', 'Admin\AdminSkillController@coursesUpdate');
+Route::get('/admin/skill-course/remove/{id}', 'Admin\AdminSkillController@courseRemove');
+Route::post('/admin/skill-course/add', 'Admin\AdminSkillController@courseAdd');
+Route::post('/admin/skill-course/edit', 'Admin\AdminSkillController@courseEdit');
+Route::get('/admin/course-detailes/{id}','Admin\AdminSkillController@courseDetail');
+Route::post('/admin/skill-course/send-cert','Admin\AdminSkillController@sendCert');
+Route::get('/admin/course-offer', 'Admin\AdminSkillController@courseOffer');
+Route::post('/admin/course-offer/update', 'Admin\AdminSkillController@courseOfferUpdate');
+Route::get('/admin/schedule', 'Admin\AdminSkillController@schedule');
+Route::post('/admin/schedule/update', 'Admin\AdminSkillController@scheduleUpdate');
 
-Route::get('/admin/consult',function (){
-  return view('admin.consult');
-});
-
-Route::get('/admin/change-field',function (){
-  return view('admin.change-field');
-});
-
-Route::get('/admin/skill-courses',function (){
-  return view('admin.skill-coures');
-});
 
 Route::get('/admin/explanation',function (){
   return view('admin.explanation');
 });
 
-Route::get('/admin/course-offer',function (){
-  return view('admin.course-offer');
-});
 
-Route::get('/admin/schedule',function (){
-  return view('admin.schedule');
-});
 
 Route::get('/admin/workshop',function (){
   return view('admin.workshop');
@@ -181,9 +188,7 @@ Route::get('/admin/workshop-detailes',function (){
   return view('admin.workshop-detailes');
 });
 
-Route::get('/admin/course-detailes',function (){
-  return view('admin.course-detailes');
-});
+
 
 Route::get('/admin/visit-industries',function (){
   return view('admin.visit-industries');
@@ -237,13 +242,9 @@ Route::get('/admin/success/graduation-jobs',function (){
   return view('admin.graduation-job');
 });
 
-Route::get('/admin/guidance',function (){
-  return view('admin.guidance');
-});
 
-Route::get('/admin/skill-learning',function (){
-  return view('admin.skill-learning');
-});
+
+
 
 Route::get('/admin/idea',function (){
   return view('admin.idea');

@@ -22,7 +22,7 @@
                         <a class="dropdown-item" href="{{url('/admin/question')}}">سوالات متداول</a>
                         <a class="dropdown-item" href="{{url('/admin/connection')}}">راه های ارتباطی و لینک های مرتبط سامانه</a>
                         <a class="dropdown-item" href="{{url('/admin/inquery')}}">سوالات و درخواست های دریافتی</a>
-                        <a class="dropdown-item" href="{{url('/admin/explanation')}}">توصیحات هر بخش</a>
+{{--                        <a class="dropdown-item" href="{{url('/admin/explanation')}}">توصیحات هر بخش</a>--}}
 
                     </div>
                 </li>
