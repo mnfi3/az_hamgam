@@ -48,11 +48,11 @@
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <div align="right">
-{{--                            <a href="{{url('/skill-learning/courses')}}">--}}
+                            <a href="{{url('/gathering/visit-industries-details', $visit->id)}}">
                                 <button class="custom-btn text-center m-0 "type="submit" >
                                     <span>ثبت نام</span>
                                 </button>
-                            {{--</a>--}}
+                            </a>
 
                         </div>
                     </div>

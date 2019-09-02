@@ -26,13 +26,21 @@
     </div>
     @include('admin.admin-navbar')
     <div class="container my-4 " id="side-list">
-        <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+        <form action="{{url('/admin/visit-industries/update')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+            @csrf
             <div class="form-group row py-4">
                 <label class="col-md-3 col-form-label ">توضیح مختصر:</label>
                 <div class="col-md-5">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات">
-                    </textarea>
+                              class="form-control" name="description" placeholder="توضیحات">{{$util->description}}</textarea>
+                </div>
+
+            </div>
+            <div class="form-group row py-4">
+                <label class="col-md-3 col-form-label ">تصویر:</label>
+                <div class="col-md-5">
+                    <input type="file" id="editor1" required=""
+                              class="form-control" name="image" >
                 </div>
                 <div class="col-md-3">
                     <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
@@ -47,48 +55,15 @@
                     <div class="d-flex flex-column p-2" style="box-shadow: 0px 0px 15px rgba(10, 10, 10, 0.6);border-radius: 5px">
                         <h5 class="text-white" style="font-family: Vazir;text-align: right">همه بازدید ها</h5>
                         <ul style="direction: rtl" class="side-list2">
+                            @foreach($visits as $visit)
                             <li>
                                 <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">بازدید از گوگل</p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="{{asset('/admin/visit-details')}}" class="custom-btn text-center">جزئیات</a>
+                                    <p class="text-light text-right mb-2 pr-2">{{$visit->title}}</p>
+                                    <a href="{{url('/admin/visit-industries/remove', $visit->id)}}" class="custom-btn text-center">حذف</a>
+                                    <a href="{{url('/admin/visit-details', $visit->id)}}" class="custom-btn text-center">جزئیات</a>
                                 </div>
                             </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">بازدید از تپ30</p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="{{asset('/admin/visit-details')}}" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">بازدید از شهرک سلیمی</p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="{{asset('/admin/visit-details')}}" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">بازدید از گوگل</p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="{{asset('/admin/visit-details')}}" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">بازدید از تپ30</p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="{{asset('/admin/visit-details')}}" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">بازدید از شهرک سلیمی</p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="{{asset('/admin/visit-details')}}" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
+                            @endforeach
 
                         </ul>
                     </div>
@@ -98,11 +73,12 @@
             <div class="col-md-8 col-sm-12 ">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">بازدید از صنایع</h5>
 
-                <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+                <form action="{{url('/admin/visit-industries/add')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+                    @csrf
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label " style=""> عنوان بازدید :</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="عنوان">
+                               class="form-control col-md-9 "  name="title" placeholder="عنوان">
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style="" >تصویر  :</label>
@@ -110,7 +86,7 @@
                             <div  id="">
                                 <div class="d-flex flex-row justify-content-between">
                                     <input type="file"  required
-                                           class="form-control-file" name="images[]">
+                                           class="form-control-file" name="image">
                                 </div>
                             </div>
                         </div>
@@ -118,11 +94,16 @@
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label " style=""> مکان بازدید :</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="زمان و مکان">
+                               class="form-control col-md-9 "  name="time_place" placeholder=" مکان">
+                    </div>
+                    <div class="form-group row py-4">
+                        <label class="col-md-3 col-form-label " style=""> ظرفیت :</label>
+                        <input type="number" id="title" required=""
+                               class="form-control col-md-9 "  name="capacity" value="{{$visit->capacity}}" placeholder=" ظرفیت">
                     </div>
                     <div class="form-group row py-4 ">
                         <label class="col-md-3 col-form-label">  زمان :</label>
-                            <input  type="text" name="" class="form-control col-sm-9 start-day example1" required>
+                            <input  type="text" name="deadline" class="form-control col-sm-9 start-day example1" required>
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label ">توضیح مختصر :</label>

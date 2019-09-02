@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\StudentWorkshops;
+use App\UserVisits;
 use App\Util;
 use App\VisitIndustry;
 use App\Workshop;
@@ -13,7 +14,7 @@ class SiteGatheringController extends Controller
 {
 
   public function __construct() {
-    $this->middleware('auth', ['only' => ['workshopRegister']]);
+    $this->middleware('auth', ['only' => ['workshopRegister', 'industryRegister']]);
     $this->middleware('student', ['only' => ['workshopRegister']]);
   }
 
@@ -76,7 +77,7 @@ class SiteGatheringController extends Controller
     }
 
     //check deadline
-    if (date('Y-m-d') > $workshop->deadline){
+    if (date('Y-m-d') > $workshop->time){
       return back()->with('fail', 'مهلت ثبت نام تمام شده است');
     }
     //check workshop capacity
@@ -98,5 +99,34 @@ class SiteGatheringController extends Controller
   public function industry() {
     $visits = VisitIndustry::orderBy('id', 'desc')->paginate(9);
     return view('site.industry-visit', compact('visits'));
+  }
+
+  public function industryDetail($id){
+    $visit = VisitIndustry::find($id);
+    return view('site.gathering-visit-detailes', compact('visit'));
+  }
+
+  public function industryRegister($id){
+    $user = Auth::user();
+    $visit = VisitIndustry::find($id);
+
+    $user_visits = UserVisits::where('visit_industry_id', '=', $id)->get();
+    foreach ($user_visits as $uv){
+      if ($uv->user_id == $user->id){
+        return back()->with('fail', 'شما قبلا ثبت نام کرده اید');
+      }
+    }
+
+    if($visit->users()->count() >= $visit->capacity){
+      return back()->with('fail', 'ظرفیت ثبت نام پر شده است');
+    }
+
+    $uv = UserVisits::create([
+      'user_id' => $user->id,
+      'visit_industry_id' => $visit->id,
+    ]);
+
+    return back()->with('success', 'ثبت نام با موفقیت انجام شد');
+
   }
 }

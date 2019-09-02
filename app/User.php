@@ -54,5 +54,9 @@ class User extends Authenticatable
     return $this->hasMany('App\Idea');
   }
 
+  public function visits(){
+    return $this->belongsToMany('App\VisitIndustry', 'user_visits', 'user_id', 'visit_industry_id');
+  }
+
 
 }

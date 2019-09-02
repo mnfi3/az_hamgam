@@ -41,7 +41,7 @@
             <div class="form-group row py-4">
                 <label class="col-md-3 col-form-label ">تصویر :</label>
                 <div class="col-md-5">
-                    <input type="file" id="editor1"
+                    <input type="file" id="editor1" required=""
                               class="form-control" name="image">
                 </div>
 
@@ -56,7 +56,7 @@
                         <div class="col-md-9 ">
                             <div  id="">
                                 <div class="d-flex flex-row justify-content-between">
-                                    <input type="file"
+                                    <input type="file"  required
                                            class="form-control-file" name="file">
                                 </div>
                             </div>

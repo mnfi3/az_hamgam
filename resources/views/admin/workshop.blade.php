@@ -27,12 +27,21 @@
     </div>
     @include('admin.admin-navbar')
     <div class="container my-4 " id="side-list">
-        <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+        <form action="{{url('/admin/workshop/update')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+            @csrf
             <div class="form-group row py-4">
                 <label class="col-md-3 col-form-label ">توضیح مختصر:</label>
                 <div class="col-md-5">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات"></textarea>
+                              class="form-control" name="description" placeholder="توضیحات">{{$util->description}}</textarea>
+                </div>
+            </div>
+
+            <div class="form-group row py-4">
+                <label class="col-md-3 col-form-label ">تصویر :</label>
+                <div class="col-md-5">
+                    <input type="file" id="editor1" required=""
+                              class="form-control" name="image" >
                 </div>
                 <div class="col-md-3">
                     <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
@@ -47,62 +56,15 @@
                     <div class="d-flex flex-column p-2" style="box-shadow: 0px 0px 15px rgba(10, 10, 10, 0.6);border-radius: 5px">
                         <h5 class="text-white" style="font-family: Vazir;text-align: right">همه کارگاه ها</h5>
                         <ul style="direction: rtl" class="side-list2">
+                            @foreach($workshops as $workshop)
                             <li>
                                 <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">دوره اموزش Swift </p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="{{asset('/admin/workshop-detailes')}}" class="custom-btn text-center">جزئیات</a>
+                                    <p class="text-light text-right mb-2 pr-2">{{$workshop->title}}</p>
+                                    <a href="{{url('/admin/workshop/remove', $workshop->id)}}" class="custom-btn text-center">حذف</a>
+                                    <a href="{{url('/admin/workshop-detailes', $workshop->id)}}" class="custom-btn text-center">جزئیات</a>
                                 </div>
                             </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">دوره آموزش زبان </p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="{{asset('/admin/workshop-detailes')}}" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">دوره تخصصی Hse </p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="{{asset('/admin/workshop-detailes')}}" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">دوره آموزش زبان </p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="{{asset('/admin/workshop-detailes')}}" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">دوره تخصصی Hse </p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">دوره تخصصی Hse </p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">دوره آموزش زبام </p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">دوره تخصصی Hse </p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                    <a href="" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
+                            @endforeach
 
                         </ul>
                     </div>
@@ -112,11 +74,12 @@
             <div class="col-md-8 col-sm-12 ">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">کارگاه های آموزشی</h5>
 
-                <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+                <form action="{{url('/admin/workshop/add')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+                    @csrf
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style=""> عنوان کارگاه :</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-10 "  name="name" placeholder="نام دوره">
+                               class="form-control col-md-10 "  name="title" placeholder="نام دوره">
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style="" >تصویر  :</label>
@@ -124,31 +87,39 @@
                             <div  id="">
                                 <div class="d-flex flex-row justify-content-between">
                                     <input type="file"  required
-                                           class="form-control-file" name="images[]">
+                                           class="form-control-file" name="image">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style=""> مدرس دوره :</label>
-                        <select class="browser-default custom-select col-md-8">
-                            <option selected>نام مدرس</option>
-                            <option value="1">علی صالحی</option>
-                            <option value="2">کاوه آهنگر</option>
-                            <option value="3">فریدون جیرانی</option>
-                            <option value="3">کامران کامروا</option>
+                        <select class="browser-default custom-select col-md-8" name="master_id">
+                            @foreach($masters as $master)
+                                <option value="{{$master->id}}">{{$master->first_name.' '.$master->last_name}}</option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-form-label col-sm-2 pt-0">زمان برگزاری :</label>
                         <div class="col-sm-10">
-                            <input  type="text"  name="start_date" class="form-control start-day example1" required>
+                            <input  type="text"  name="time" class="form-control start-day example1" required>
                             {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
                         </div>
                     </div>
+                    <div class="form-group row py-4">
+                        <label class="col-md-2 col-form-label " style=""> ظرفیت کارگاه</label>
+                        <input type="number" id="title" required=""
+                               class="form-control col-md-10 "  name="capacity" placeholder="ظرفیت">
+                    </div>
+                    <div class="form-group row py-4">
+                        <label class="col-md-2 col-form-label " style=""> هزینه کارگاه</label>
+                        <input type="number" id="title" required=""
+                               class="form-control col-md-10 "  name="price" placeholder="هزینه (تومان)">
+                    </div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
+                        <label class="col-md-3 col-form-label ">توضیح مختصر </label>
                         <div class="col-md-9 mr-auto">
                     <textarea type="text" id="editor1" required=""
                               class="form-control" name="description" placeholder="توضیحات"></textarea>

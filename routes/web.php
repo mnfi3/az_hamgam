@@ -62,6 +62,8 @@ Route::get('/gathering/workshop', 'SiteGatheringController@workshop');
 Route::get('/gathering/workshop-detail/{id}', 'SiteGatheringController@workshopDetail');
 Route::get('/gathering/workshop/register/{id}', 'SiteGatheringController@workshopRegister');
 Route::get('/gathering/visit-industries', 'SiteGatheringController@industry');
+Route::get('/gathering/visit-industries-details/{id}', 'SiteGatheringController@industryDetail');
+Route::get('/gathering/visit-industries/register/{id}', 'SiteGatheringController@industryRegister');
 
 
 
@@ -174,29 +176,26 @@ Route::get('/admin/schedule', 'Admin\AdminSkillController@schedule');
 Route::post('/admin/schedule/update', 'Admin\AdminSkillController@scheduleUpdate');
 
 
-Route::get('/admin/explanation',function (){
-  return view('admin.explanation');
-});
+
+//section gathering
+Route::get('/admin/gathering', 'Admin\AdminGatheringController@gathering');
+Route::post('/admin/gathering/update', 'Admin\AdminGatheringController@gatheringUpdate');
+Route::get('/admin/workshop', 'Admin\AdminGatheringController@workshops');
+Route::post('/admin/workshop/update', 'Admin\AdminGatheringController@workshopsUpdate');
+Route::get('/admin/workshop/remove/{id}', 'Admin\AdminGatheringController@workshopRemove');
+Route::post('/admin/workshop/add', 'Admin\AdminGatheringController@workshopAdd');
+Route::get('/admin/workshop-detailes/{id}', 'Admin\AdminGatheringController@workshopDetail');
+Route::post('/admin/workshop/edit', 'Admin\AdminGatheringController@workshopEdit');
+Route::post('/admin/workshop/send-cert', 'Admin\AdminGatheringController@workshopSendCert');
+Route::get('/admin/visit-industries', 'Admin\AdminGatheringController@visitIndustry');
+Route::post('/admin/visit-industries/update', 'Admin\AdminGatheringController@visitIndustryUpdate');
+Route::get('/admin/visit-industries/remove/{id}', 'Admin\AdminGatheringController@visitIndustryRemove');
+Route::post('/admin/visit-industries/add', 'Admin\AdminGatheringController@visitIndustryAdd');
+Route::get('/admin/visit-details/{id}', 'Admin\AdminGatheringController@visitIndustryDetail');
+Route::post('/admin/visit-industries/edit', 'Admin\AdminGatheringController@visitIndustryEdit');
 
 
 
-Route::get('/admin/workshop',function (){
-  return view('admin.workshop');
-});
-
-Route::get('/admin/workshop-detailes',function (){
-  return view('admin.workshop-detailes');
-});
-
-
-
-Route::get('/admin/visit-industries',function (){
-  return view('admin.visit-industries');
-});
-
-Route::get('/admin/visit-details',function (){
-  return view('admin.visit-details');
-});
 
 Route::get('/admin/idea-support',function (){
   return view('admin.idea-support');
@@ -254,13 +253,16 @@ Route::get('/admin/success',function (){
   return view('admin.success');
 });
 
-Route::get('/admin/gathering',function (){
-  return view('admin.gathering');
-});
+
 
 //Route::get('/admin/statistic',function (){
 //  return view('admin.statistic');
 //});
+
+//Route::get('/admin/explanation',function (){
+//  return view('admin.explanation');
+//});
+
 
 
 
