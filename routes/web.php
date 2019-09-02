@@ -209,6 +209,24 @@ Route::post('/admin/idea-support/answer', 'Admin\AdminIdeaController@ideaSupport
 Route::get('/admin/startup', 'Admin\AdminIdeaController@startup');
 Route::post('/admin/startup/update', 'Admin\AdminIdeaController@startupUpdate');
 
+
+
+
+//section success
+Route::get('/admin/success', 'Admin\AdminSuccessController@success');
+Route::post('/admin/success/update', 'Admin\AdminSuccessController@successUpdate');
+Route::get('/admin/success/graduation-jobs', 'Admin\AdminSuccessController@graduationJobs');
+Route::post('/admin/success/graduation-jobs/update', 'Admin\AdminSuccessController@graduationJobsUpdate');
+Route::get('/admin/success/graduation-jobs/remove/{id}', 'Admin\AdminSuccessController@graduationJobsRemove');
+Route::post('/admin/success/graduation-jobs/add', 'Admin\AdminSuccessController@graduationJobsAdd');
+Route::get('/admin/success/startups', 'Admin\AdminSuccessController@startups');
+Route::post('/admin/success/startups/update', 'Admin\AdminSuccessController@startupsUpdate');
+Route::post('/admin/success/startup/add', 'Admin\AdminSuccessController@startupAdd');
+Route::get('/admin/success/startup/remove/{id}', 'Admin\AdminSuccessController@startupRemove');
+
+
+
+//section users management
 Route::get('/admin/users/student',function (){
   return view('admin.users.student');
 });
@@ -229,9 +247,7 @@ Route::get('/admin/users/master-detailes',function (){
   return view('admin.users.master-detailes');
 });
 
-Route::get('/admin/success/startups',function (){
-  return view('admin.uni-startups');
-});
+
 
 Route::get('/admin/users/consult',function (){
   return view('admin.users.consult');
@@ -241,9 +257,6 @@ Route::get('/admin/users/forums',function (){
   return view('admin.users.forums');
 });
 
-Route::get('/admin/success/graduation-jobs',function (){
-  return view('admin.graduation-job');
-});
 
 
 
@@ -251,19 +264,8 @@ Route::get('/admin/success/graduation-jobs',function (){
 
 
 
-Route::get('/admin/success',function (){
-  return view('admin.success');
-});
 
 
-
-//Route::get('/admin/statistic',function (){
-//  return view('admin.statistic');
-//});
-
-//Route::get('/admin/explanation',function (){
-//  return view('admin.explanation');
-//});
 
 
 

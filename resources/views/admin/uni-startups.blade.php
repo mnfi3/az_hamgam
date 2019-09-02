@@ -25,13 +25,21 @@
     </div>
     @include('admin.admin-navbar')
     <div class="container my-4 " id="side-list">
-        <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+        <form action="{{url('/admin/success/startups/update')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+            @csrf
             <div class="form-group row py-4">
                 <label class="col-md-3 col-form-label ">توضیح مختصر:</label>
                 <div class="col-md-5">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات">
-                    </textarea>
+                              class="form-control" name="description" placeholder="توضیحات">{{$util->description}}</textarea>
+                </div>
+
+            </div>
+            <div class="form-group row py-4">
+                <label class="col-md-3 col-form-label ">تصویر:</label>
+                <div class="col-md-5">
+                    <input type="file" id="editor1" required=""
+                              class="form-control" name="image">
                 </div>
                 <div class="col-md-3">
                     <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
@@ -46,24 +54,15 @@
                     <div class="d-flex flex-column p-2" style="box-shadow: 0px 0px 15px rgba(10, 10, 10, 0.6);border-radius: 5px">
                         <h5 class="text-white" style="font-family: Vazir;text-align: right">همه گروه ها</h5>
                         <ul style="direction: rtl" class="side-list2">
+                           @foreach($startups as $startup)
                             <li>
                                 <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">ایزی تک</p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
+                                    <p class="text-light text-right mb-2 pr-2">{{$startup->title}}</p>
+                                    <a href="{{url('/admin/success/startup/remove', $startup->id)}}" class="custom-btn text-center">حذف</a>
                                 </div>
                             </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">آذر نیرو گستر</p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">سبلان پایدار</p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                </div>
-                            </li>
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
@@ -72,26 +71,27 @@
             <div class="col-md-8 col-sm-12 ">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">اضافه کردن گروه استارت آپی</h5>
 
-                <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+                <form action="{{url('/admin/success/startup/add')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+                    @csrf
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label " style=""> نام گروه</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="نام گروه">
+                               class="form-control col-md-9 "  name="title" placeholder="نام گروه">
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label " style="">زمینه فعالیت</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="زمینه فعالیت">
+                               class="form-control col-md-9 "  name="field" placeholder="زمینه فعالیت">
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label " style="">محل استقرار</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="محل">
+                               class="form-control col-md-9 "  name="place" placeholder="محل">
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label " style="">مسئول</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="مدیر یا مسئول تیم">
+                               class="form-control col-md-9 "  name="boss" placeholder="مدیر یا مسئول تیم">
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style="" >تصویر  :</label>
@@ -99,7 +99,7 @@
                             <div  id="">
                                 <div class="d-flex flex-row justify-content-between">
                                     <input type="file"  required
-                                           class="form-control-file" name="images[]">
+                                           class="form-control-file" name="image">
                                 </div>
                             </div>
                         </div>
@@ -109,8 +109,7 @@
                         <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
                         <div class="col-md-9 mr-auto">
                     <textarea type="text" id="editor1"
-                              class="form-control" name="description" style="font-size: 0.8rem" placeholder="توضیحات در صورت وجود">
-                    </textarea>
+                              class="form-control" name="description" style="font-size: 0.8rem" placeholder="توضیحات در صورت وجود"></textarea>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-3">

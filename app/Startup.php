@@ -9,5 +9,5 @@ class Startup extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['title', 'description', 'field', 'place', 'boss'];
+  protected $fillable = ['title', 'description', 'image', 'field', 'place', 'boss'];
 }

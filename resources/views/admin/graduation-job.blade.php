@@ -25,13 +25,21 @@
     </div>
     @include('admin.admin-navbar')
     <div class="container my-4 " id="side-list">
-        <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+        <form action="{{url('/admin/success/graduation-jobs/update')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+            @csrf
             <div class="form-group row py-4">
                 <label class="col-md-3 col-form-label ">توضیح مختصر:</label>
                 <div class="col-md-5">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات">
-                    </textarea>
+                              class="form-control" name="description" placeholder="توضیحات">{{$util->description}}</textarea>
+                </div>
+
+            </div>
+            <div class="form-group row py-4">
+                <label class="col-md-3 col-form-label ">تصویر:</label>
+                <div class="col-md-5">
+                    <input type="file" id="editor1" required=""
+                              class="form-control" name="image">
                 </div>
                 <div class="col-md-3">
                     <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
@@ -46,24 +54,15 @@
                     <div class="d-flex flex-column p-2" style="box-shadow: 0px 0px 15px rgba(10, 10, 10, 0.6);border-radius: 5px">
                         <h5 class="text-white" style="font-family: Vazir;text-align: right">همه فارغ التحصیلان</h5>
                         <ul style="direction: rtl" class="side-list2">
+                            @foreach($persons as $person)
                             <li>
                                 <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">علی عربگری</p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
+                                    <p class="text-light text-right mb-2 pr-2">{{$person->name}}</p>
+                                    <a href="{{url('/admin/success/graduation-jobs/remove', $person->id)}}" class="custom-btn text-center">حذف</a>
                                 </div>
                             </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">دیوید بکهام</p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">مک گریگور</p>
-                                    <a href="" class="custom-btn text-center">حذف</a>
-                                </div>
-                            </li>
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
@@ -72,7 +71,10 @@
             <div class="col-md-8 col-sm-12 ">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">اضافه کردن فارغ التحصیل شاغل</h5>
 
-                <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+
+
+                <form action="{{url('/admin/success/graduation-jobs/add')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+                    @csrf
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label " style=""> نام و نام خانوادگی</label>
                         <input type="text" id="title" required=""
@@ -81,7 +83,12 @@
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label " style="">رشته تحصیلی</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="name" placeholder="رشته">
+                               class="form-control col-md-9 "  name="field" placeholder="رشته">
+                    </div>
+                    <div class="form-group row py-4">
+                        <label class="col-md-3 col-form-label " style="">شغل</label>
+                        <input type="text" id="title" required=""
+                               class="form-control col-md-9 "  name="job" placeholder="شغل">
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style="" >تصویر  :</label>
@@ -89,7 +96,7 @@
                             <div  id="">
                                 <div class="d-flex flex-row justify-content-between">
                                     <input type="file"  required
-                                           class="form-control-file" name="images[]">
+                                           class="form-control-file" name="image">
                                 </div>
                             </div>
                         </div>
@@ -99,8 +106,7 @@
                         <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
                         <div class="col-md-9 mr-auto">
                     <textarea type="text" id="editor1"
-                              class="form-control" name="description" style="font-size: 0.8rem" placeholder="توضیحات در صورت وجود">
-                    </textarea>
+                              class="form-control" name="description" style="font-size: 0.8rem" placeholder="توضیحات در صورت وجود"></textarea>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-3">

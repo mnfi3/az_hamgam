@@ -30,6 +30,13 @@
     </div>
 </div>
 
+<div class="decleararion">
+    <div class="container-fluid ">
+        <p class="my-2 text-right p-3 ">
+            {{$util->description}}
+        </p>
+    </div>
+</div>
 
 <div class="page-sections">
     <div class="container bg-light">
@@ -48,7 +55,7 @@
                                 {{$startup->description}}
                             </p>
                             <p>زمینه فعالیت : {{$startup->field}}</p>
-                            <p>زمان : {{$startup->place}}</p>
+                            <p>محل استقرار : {{$startup->place}}</p>
                             <p>مسئول گروه :{{$startup->boss}} </p>
                         </div>
                     </div>

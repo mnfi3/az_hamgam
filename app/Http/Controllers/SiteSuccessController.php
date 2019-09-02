@@ -37,13 +37,15 @@ class SiteSuccessController extends Controller
 
 
   public function graduation(){
+    $util = Util::get(Util::KEY_SUCCESS_GRADUATION);
     $mans = GraduatesEmployed::orderBy('id', 'desc')->paginate(9);
-    return view('site.graduation-job', compact('mans'));
+    return view('site.graduation-job', compact('mans', 'util'));
   }
 
 
   public function startup(){
+    $util = Util::get(Util::KEY_SUCCESS_STARTUP);
     $startups = Startup::orderBy('id', 'desc')->paginate(9);
-    return view('site.university-startups', compact('startups'));
+    return view('site.university-startups', compact('startups', 'util'));
   }
 }
