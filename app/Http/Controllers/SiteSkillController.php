@@ -147,6 +147,14 @@ class SiteSkillController extends Controller
     }
 
 
+    //check gender
+    if($user->is_male == 1 && $course->gender == 'female'){
+      return back()->with('fail', 'این دوره برای خانم ها ارائه شده است');
+    }elseif ($user->is_male == 0 && $course->gender == 'male'){
+      return back()->with('fail', 'این دوره برای آقایان ارائه شده است');
+    }
+
+
     //check prerequisites
     foreach ($course->prerequisites as $prerequisite) {
       $is_exist = false;
