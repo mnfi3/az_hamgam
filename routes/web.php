@@ -197,13 +197,17 @@ Route::post('/admin/visit-industries/edit', 'Admin\AdminGatheringController@visi
 
 
 
-Route::get('/admin/idea-support',function (){
-  return view('admin.idea-support');
-});
 
-Route::get('/admin/startup',function (){
-  return view('admin.startup');
-});
+
+
+//section idea
+Route::get('/admin/idea', 'Admin\AdminIdeaController@idea');
+Route::post('/admin/idea/update', 'Admin\AdminIdeaController@ideaUpdate');
+Route::get('/admin/idea-support', 'Admin\AdminIdeaController@ideaSupport');
+Route::post('/admin/idea-support/update', 'Admin\AdminIdeaController@ideaSupportUpdate');
+Route::post('/admin/idea-support/answer', 'Admin\AdminIdeaController@ideaSupportAnswer');
+Route::get('/admin/startup', 'Admin\AdminIdeaController@startup');
+Route::post('/admin/startup/update', 'Admin\AdminIdeaController@startupUpdate');
 
 Route::get('/admin/users/student',function (){
   return view('admin.users.student');
@@ -245,9 +249,7 @@ Route::get('/admin/success/graduation-jobs',function (){
 
 
 
-Route::get('/admin/idea',function (){
-  return view('admin.idea');
-});
+
 
 Route::get('/admin/success',function (){
   return view('admin.success');

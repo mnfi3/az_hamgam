@@ -23,39 +23,20 @@
     </div>
     @include('admin.admin-navbar')
     <div class="container my-4 " id="side-list">
-        <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
-            <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
-                <div class="form-group row py-4">
-                    <label class="col-md-3 col-form-label ">توضیح مختصر:</label>
-                    <div class="col-md-5">
-                    <textarea type="text" id="" required=""
-                              class="form-control" name="description" style="font-size: 0.7rem" placeholder="توضیحات">
-                    </textarea>
-                    </div>
-                    <div class="col-md-3">
-                        <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
-                    </div>
-                </div>
-            </form>
-        <div style="height: 2px;border-radius: 1px;margin: 10px 30px; background: #721c24; "></div>
 
         <div class="row">
             <div class="col-md-8 col-sm-12 ml-auto">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">تشکیل گروه های استارت آپی</h5>
 
-                <form action="" class="px-3" style="direction: rtl">
-                    <div class="form-group row py-4">
-                        <label class="col-md-4 col-form-label " style=""> عنوان(در صورت وجود) :</label>
-                        <input type="text" id="title" required=""
-                               class="form-control col-md-8 "  name="name" placeholder="اختیاری">
-                    </div>
+                <form action="{{url('/admin/startup/update')}}" method="post" enctype="multipart/form-data"  class="px-3" style="direction: rtl">
+                    @csrf
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style="" >تصویر  :</label>
                         <div class="col-md-10 ">
                             <div  id="fileInputsContainer">
                                 <div class="d-flex flex-row justify-content-between">
-                                    <input type="file" id="images"
-                                           class="form-control-file" name="images[]">
+                                    <input type="file" id="images" required
+                                           class="form-control-file" name="image">
                                 </div>
                             </div>
                         </div>
@@ -64,8 +45,7 @@
                         <label class="col-md-3 col-form-label ">متن :</label>
                         <div class="col-md-8 mr-auto">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="محنوای">
-                    </textarea>
+                              class="form-control" name="description" placeholder="محنوای">@php echo $util->description; @endphp</textarea>
                             <script>
                               CKEDITOR.replace( 'editor1' );
                             </script>
@@ -77,7 +57,7 @@
                             <div  id="fileInputsContainer">
                                 <div class="d-flex flex-row justify-content-between">
                                     <input type="file" id="images"
-                                           class="form-control-file" name="images[]">
+                                           class="form-control-file" name="file">
                                 </div>
                             </div> </div>
                     </div>

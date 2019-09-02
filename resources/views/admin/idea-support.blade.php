@@ -36,87 +36,58 @@
                     </tr>
                     </thead>
                     <tbody class="text-white" style="font-size: 0.8rem">
+                    @php($i=0)
+                    @foreach($ideas as $idea)
                     <tr>
-                        <th scope="row">1</th>
-                        <td >کاشت گیاهان دریای صادراتی</td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" >دانلود </button></td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">پاسخ </button></td>
-                        <td>بررسی شد. </td>
+                        <th scope="row">{{++$i}}</th>
+                        <td >{{$idea->title}}</td>
+                        <td><a href="{{asset($idea->file)}}" download="" > <button class="custom-btn text-center" style="max-width: 100px" >  دانلود</button> </a></td>
+                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal{{$idea->id}}">پاسخ </button></td>
+                        @if(strlen($idea->answer) > 1)
+                        <td>بررسی شده </td>
+                        @else
+                        <td>بررسی نشده </td>
+                        @endif
                     </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td >کاشت گیاهان دریای صادراتی</td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" >دانلود </button></td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">پاسخ </button></td>
-                        <td>بررسی نشد. </td>
-                    </tr>
+                    @endforeach
+
                     </tbody>
                 </table>
             </div>
             <div class="col-md-6 col-sm-12">
-                <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
+                <form action="{{url('/admin/idea-support/update')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+                    @csrf
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label ">توضیح مختصر:</label>
                         <div class="col-md-5">
                     <textarea type="text" id="" required=""
-                              class="form-control" name="description" style="font-size: 0.7rem" placeholder="توضیحات">
-                    </textarea>
+                              class="form-control" name="description" style="font-size: 1.2rem" placeholder="توضیحات">{{$util->description}}</textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row py-4">
+                        <label class="col-md-3 col-form-label ">تصویر:</label>
+                        <div class="col-md-5">
+                    <input type="file" id="" required=""
+                              class="form-control" name="image" >
                         </div>
                         <div class="col-md-3">
                             <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
                         </div>
                     </div>
                 </form>
+
                 <div style="height: 2px;border-radius: 1px;margin: 10px 30px; background: #721c24; "></div>
 
-                <h5 class="text-white text-right mb-2" style="font-family: Vazir">ایده و حمایت</h5>
 
-                <form action="" class="px-3" style="direction: rtl">
-                    <div class="form-group row py-4">
-                        <label class="col-md-4 col-form-label " style=""> عنوان(در صورت وجود) :</label>
-                        <input type="text" id="title" required=""
-                               class="form-control col-md-8 "  name="name" placeholder="اختیاری">
-                    </div>
-                    <div class="form-group row py-2">
-                        <label class="col-md-4 col-form-label " style="" >تصویر  :</label>
-                        <div class="col-md-8 ">
-                            <div  id="fileInputsContainer">
-                                <div class="d-flex flex-row justify-content-between">
-                                    <input type="file" id="images"
-                                           class="form-control-file" name="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label ">متن :</label>
-                        <div class="col-md-8 mr-auto">
-                    <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="محنوای">
-                    </textarea>
-                            <script>
-                              CKEDITOR.replace( 'editor1' );
-                            </script>
-                        </div>
-                    </div>
-                    <div class="form-group row py-4">
-                        <label class="col-md-4 col-form-label " style="" for="title">فایل (در صورت وجود) :</label>
-                        <div class="col-md-8 mr-auto">
-                            <div  id="fileInputsContainer">
-                                <div class="d-flex flex-row justify-content-between">
-                                    <input type="file" id="images"
-                                           class="form-control-file" name="images[]">
-                                </div>
-                            </div> </div>
-                    </div>
-                    <div class="d-flex justify-content-center mb-3">
-                        <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
-                    </div>
-                </form>
+
+
             </div>
         </div>
     </div>
-    <div class="modal fade" id="myModal" style="font-family: Vazir">
+    @foreach($ideas as $idea)
+    <div class="modal fade" id="myModal{{$idea->id}}" style="font-family: Vazir">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -128,18 +99,24 @@
 
                 <!-- Modal body -->
                 <div class="modal-body text-right">
-                    <form action="" class="" style="direction: rtl;font-family: Vazir">
+                    @if(strlen($idea->answer) < 2)
+                    <form action="{{url('/admin/idea-support/answer')}}" method="post" class="" style="direction: rtl;font-family: Vazir">
+                        @csrf
+                        <input type="hidden" name="idea_id" value="{{$idea->id}}">
                         <div class="form-group row ">
                             <div class="col-md-12">
                     <textarea type="text" id="editor1" required="" style="width: 100%;height: 190px;font-size: 0.8rem"
-                              class="form-control" name="description">
-                    </textarea>
+                              class="form-control" name="answer"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="custom-btn btn-danger"  style="max-width: 60px">ارسال</button>
                         </div>
                     </form>
+                    @else
+                        <span type="text" id="editor1" required="" style="width: 100%;height: 190px;font-size: 0.8rem"
+                                  class="form-control" >{{$idea->answer}}</span>
+                    @endif
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
@@ -150,6 +127,7 @@
             </div>
         </div>
     </div>
+    @endforeach
 </div>
 @include('include.footer')
 </body>

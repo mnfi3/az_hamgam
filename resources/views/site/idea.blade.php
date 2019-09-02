@@ -43,7 +43,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">ایده و حمایت</h4>
                         <p class="card-text">
-                            {{substr($supprot, 0, 120)}} ...
+                            {{substr(strip_tags($supprot), 0, 120)}} ...
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -67,7 +67,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">تشکیل گروه های استارت آپی</h4>
                         <p class="card-text">
-                            {{substr($startup, 0, 120)}} ...
+                            {{substr(strip_tags($startup), 0, 120)}} ...
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
