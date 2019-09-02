@@ -55,13 +55,13 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 ml-auto mr-auto">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">مدیریت اساتید</h5>
-                <form action="" class="row" style="">
+                <form action="{{url('/admin/users/master')}}" method="get" class="row" style="">
                     <div class="form-group col-md-8 py-4 d-flex ml-auto mr-auto">
                         <button class="custom-btn text-center m-0" type="submit" style="max-width: 60px;font-size: 0.8rem">جستجو</button>
-                        <input type="number" id="title" required=""
-                               class="form-control ml-2"  name="name" placeholder="شماره ملی">
-                        <input type="text" id="title" required=""
-                               class="form-control ml-2"  name="name" placeholder="نام و نام خانوادگی">
+                        <input type="number" id="title"
+                               class="form-control ml-2"  name="national_code" value="{{\Illuminate\Support\Facades\Session::get('national_code')}}" placeholder="شماره ملی">
+                        <input type="text" id="title"
+                               class="form-control ml-2"  name="name" value="{{\Illuminate\Support\Facades\Session::get('name')}}" placeholder="نام یا نام خانوادگی">
                     </div>
                 </form>
                 <table class="table table-striped text-center" style="direction: rtl;font-family: Vazir">
@@ -75,24 +75,18 @@
                     </tr>
                     </thead>
                     <tbody class="text-white" style="font-size: 0.9rem">
+                    @php($i=0)
+                   @foreach($masters as $master)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>4490337789</td>
-                        <td>09365018124</td>
+                        <th scope="row">{{++$i}}</th>
+                        <td>{{$master->first_name.' '.$master->last_name}}</td>
+                        <td>{{$master->national_code}}</td>
+                        <td>{{$master->mobile}}</td>
                         <td>
-                            <a href="{{asset('/admin/users/master-detailes')}}" class="custom-btn text-center mt-0" style="max-width: 80px;text-decoration: none">جزئیات</a>
+                            <a href="{{asset('/admin/users/master-detailes', $master->id)}}" class="custom-btn text-center mt-0" style="max-width: 80px;text-decoration: none">جزئیات</a>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>4490337789</td>
-                        <td>09365018124</td>
-                        <td>
-                            <a href="{{asset('/admin/users/master-detailes')}}" class="custom-btn text-center mt-0" style="max-width: 80px;text-decoration: none">جزئیات</a>
-                        </td>
-                    </tr>
+                    @endforeach
                     </tbody>
                 </table>
 

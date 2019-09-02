@@ -227,25 +227,17 @@ Route::get('/admin/success/startup/remove/{id}', 'Admin\AdminSuccessController@s
 
 
 //section users management
-Route::get('/admin/users/student',function (){
-  return view('admin.users.student');
-});
-
-Route::get('/admin/users/student-detailes',function (){
-  return view('admin.users.student-detailes');
-});
+Route::get('/admin/users/student', 'Admin\AdminUserController@students');
+Route::get('/admin/users/student-detailes/{id}', 'Admin\AdminUserController@studentDetail');
+Route::get('/admin/users/master', 'Admin\AdminUserController@masters');
+Route::get('/admin/users/master-detailes/{id}', 'Admin\AdminUserController@masterDetail');
+Route::get('/admin/users/master/add', 'Admin\AdminUserController@masterAdd');
 
 Route::get('/admin/users/forums',function (){
   return view('admin.users.forums');
 });
 
-Route::get('/admin/users/master',function (){
-  return view('admin.users.master');
-});
 
-Route::get('/admin/users/master-detailes',function (){
-  return view('admin.users.master-detailes');
-});
 
 
 

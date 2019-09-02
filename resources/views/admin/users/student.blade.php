@@ -26,13 +26,13 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 ml-auto mr-auto">
                 <h6 class="text-white text-right mb-2" style="font-family: Vazir">مدیریت دانشجویان</h6>
-                    <form action="" class="row" style="">
+                    <form action="{{url('/admin/users/student')}}" method="get" class="row" style="">
                         <div class="form-group col-md-8 py-4 d-flex ml-auto mr-auto">
                             <button class="custom-btn text-center m-0" type="submit" style="max-width: 60px;font-size: 0.8rem">جستجو</button>
-                            <input type="number" id="title" required=""
-                                   class="form-control ml-2"  name="name" placeholder="شماره ملی">
-                            <input type="text" id="title" required=""
-                                   class="form-control ml-2"  name="name" placeholder="نام و نام خانوادگی">
+                            <input type="number" id="title"
+                                   class="form-control ml-2" value="{{\Illuminate\Support\Facades\Session::get('national_code')}}"  name="national_code" placeholder="شماره ملی">
+                            <input type="text" id="title"
+                                   class="form-control ml-2" value="{{\Illuminate\Support\Facades\Session::get('name')}}"  name="name" placeholder="نام یا نام خانوادگی">
                         </div>
                     </form>
 
@@ -51,28 +51,21 @@
                     </tr>
                     </thead>
                     <tbody class="text-white" style="font-size: 0.9rem">
+                    @php($i=0)
+                    @foreach($students as $student)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>4490337789</td>
-                        <td>931831229</td>
-                        <td>09365018124</td>
-                        <td>کارشناسی فناوری اطلاعات</td>
+                        <th scope="row">{{++$i}}</th>
+                        <td>{{$student->first_name.' '.$student->last_name}}</td>
+                        <td>{{$student->national_code}}</td>
+                        <td>{{$student->student_number}}</td>
+                        <td>{{$student->mobile}}</td>
+                        <td>{{$student->studentField->name}}</td>
                         <td>
-                                <a href="{{asset('/admin/users/student-detailes')}}" class="custom-btn text-center mt-0" style="max-width: 80px;text-decoration: none">جزئیات</a>
+                            <a href="{{url('/admin/users/student-detailes', $student->id)}}" class="custom-btn text-center mt-0" style="max-width: 80px;text-decoration: none">جزئیات</a>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>4490337789</td>
-                        <td>931831229</td>
-                        <td>09365018124</td>
-                        <td>کارشناسی فناوری اطلاعات</td>
-                        <td>
-                                <a href="{{asset('/admin/users/student-detailes')}}" class="custom-btn text-center mt-0" style="max-width: 80px;text-decoration: none">جزئیات</a>
-                        </td>
-                    </tr>
+                     @endforeach
+
                     </tbody>
                 </table>
 
