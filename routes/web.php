@@ -230,24 +230,20 @@ Route::get('/admin/success/startup/remove/{id}', 'Admin\AdminSuccessController@s
 Route::get('/admin/users/student', 'Admin\AdminUserController@students');
 Route::get('/admin/users/student-detailes/{id}', 'Admin\AdminUserController@studentDetail');
 Route::get('/admin/users/master', 'Admin\AdminUserController@masters');
+Route::post('/admin/users/master/add', 'Admin\AdminUserController@masterAdd');
 Route::get('/admin/users/master-detailes/{id}', 'Admin\AdminUserController@masterDetail');
-Route::get('/admin/users/master/add', 'Admin\AdminUserController@masterAdd');
-
-Route::get('/admin/users/forums',function (){
-  return view('admin.users.forums');
-});
-
+Route::get('/admin/users/consult', 'Admin\AdminUserController@consult');
+Route::post('/admin/users/consult/add', 'Admin\AdminUserController@consultAdd');
+Route::get('/admin/users/forums', 'Admin\AdminUserController@forums');
+Route::post('/admin/users/forum/add', 'Admin\AdminUserController@forumAdd');
 
 
 
 
-Route::get('/admin/users/consult',function (){
-  return view('admin.users.consult');
-});
 
-Route::get('/admin/users/forums',function (){
-  return view('admin.users.forums');
-});
+
+
+
 
 
 

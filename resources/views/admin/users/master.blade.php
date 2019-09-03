@@ -26,27 +26,35 @@
         <div class="row mb-2">
             <div class="col-md-12 col-sm-12 ml-auto mr-auto">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">ثبت استاد جدید</h5>
-                <form action="" class="row" style="">
+                <form action="{{url('/admin/users/master/add')}}" method="post" class="row" style="">
+                    @csrf
                     <div class="form-group col-md-10 py-4 d-flex ml-auto mr-auto">
+
                         <input type="number" id="title" required=""
-                               class="form-control ml-4"  name="name" placeholder="شماره ملی">
+                               class="form-control ml-4"  name="national_code" placeholder="شماره ملی">
+
                         <input type="number" id="title" required=""
-                               class="form-control ml-4"  name="name" placeholder="شماره تماس">
+                               class="form-control ml-4"  name="mobile" placeholder="شماره تماس">
+
                         <input type="text" id="title" required=""
-                               class="form-control ml-4"  name="name" placeholder="نام و نام خانوادگی">
+                               class="form-control ml-4"  name="last_name" placeholder="نام خانوادگی">
+                        <input type="text" id="title" required=""
+                               class="form-control ml-4"  name="first_name" placeholder="نام ">
+
                     </div>
                     <div class="form-group col-md-11 py-4 d-flex ml-auto mr-auto">
                         <button class="custom-btn text-center m-0" type="submit" style="max-width: 60px;font-size: 0.8rem">ثبت</button>
 
+
                         <input type="text" id="title" required=""
-                               class="form-control ml-4"  name="name" placeholder="ایمیل">
-                        <select class="custom-select ml-4" style="font-family: Vazir;direction: rtl ">
-                            <option selected>جنسیت</option>
+                               class="form-control ml-4"  name="password" placeholder="رمز عبور">
+                        <input type="text" id="title" required=""
+                               class="form-control ml-4"  name="email" placeholder="ایمیل">
+                        <select class="custom-select ml-4" style="font-family: Vazir;direction: rtl " name="is_male">
                             <option value="1">مرد</option>
-                            <option value="2">زن</option>
+                            <option value="0">زن</option>
                         </select>
-                        <input type="text" id="title" required=""
-                               class="form-control ml-4"  name="name" placeholder="رمز عبور">
+
                     </div>
                 </form>
             </div>
@@ -83,7 +91,7 @@
                         <td>{{$master->national_code}}</td>
                         <td>{{$master->mobile}}</td>
                         <td>
-                            <a href="{{asset('/admin/users/master-detailes', $master->id)}}" class="custom-btn text-center mt-0" style="max-width: 80px;text-decoration: none">جزئیات</a>
+                            <a href="{{url('/admin/users/master-detailes', $master->id)}}" class="custom-btn text-center mt-0" style="max-width: 80px;text-decoration: none">جزئیات</a>
                         </td>
                     </tr>
                     @endforeach

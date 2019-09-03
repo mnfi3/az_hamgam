@@ -29,114 +29,77 @@
     <div class="container my-4 " id="side-list">
         <div class="row">
             <div class="col-md-5 col-sm-12">
-                <div class="d-flex flex-column">
-                    <div class="d-flex flex-column p-2" style="box-shadow: 0px 0px 15px rgba(10, 10, 10, 0.6);border-radius: 5px">
-                        <h5 class="text-white" style="font-family: Vazir;text-align: right">ارسال پیام به استاد</h5>
-                        <form action="" class="px-3" style="direction: rtl;font-family: Vazir">
-                            <div class="form-group row py-4">
-                                <label class="col-md-3 col-form-label ">متن پیام :</label>
-                                <div class="col-md-9 mr-auto">
-                    <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات" style="min-height: 260px"></textarea>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center mb-3">
-                                <button class="custom-btn text-center" type="submit" style="max-width: 100px">ارسال</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                {{--<div class="d-flex flex-column">--}}
+                    {{--<div class="d-flex flex-column p-2" style="box-shadow: 0px 0px 15px rgba(10, 10, 10, 0.6);border-radius: 5px">--}}
+                        {{--<h5 class="text-white" style="font-family: Vazir;text-align: right">ارسال پیام به استاد</h5>--}}
+                        {{--<form action="" class="px-3" style="direction: rtl;font-family: Vazir">--}}
+                            {{--<div class="form-group row py-4">--}}
+                                {{--<label class="col-md-3 col-form-label ">متن پیام :</label>--}}
+                                {{--<div class="col-md-9 mr-auto">--}}
+                    {{--<textarea type="text" id="editor1" required=""--}}
+                              {{--class="form-control" name="description" placeholder="توضیحات" style="min-height: 260px"></textarea>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="d-flex justify-content-center mb-3">--}}
+                                {{--<button class="custom-btn text-center" type="submit" style="max-width: 100px">ارسال</button>--}}
+                            {{--</div>--}}
+                        {{--</form>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
             </div>
             <div class="col-md-7 col-sm-12 ">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">دوره ها و کارگاه های استاد</h5>
                 <div class="row pt-5 m-auto">
+                    @foreach($master->masterCourses as $course)
                     <div class="col-md-6 col-lg-6 pb-3">
                         <div class="card card-custom bg-white border-white border-0">
-                            <div class="card-custom-img" style="background-image: url('/img/change.jpg')"></div>
+                            <div class="card-custom-img" style="background-image: url({{asset($course->image)}})"></div>
                             <div class="card-custom-avatar">
                                 {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                             </div>
                             <div class="card-body pt-2" style="overflow-y: hidden">
-                                <h4 class="card-title"> Swift دوره آموزش</h4>
+                                <h4 class="card-title">{{$course->title}}</h4>
                             </div>
                             <div class="card-footer" style="background: inherit; border-color: inherit;">
                                 <div align="right">
-                                    <a href="{{asset('/admin/course-detailes')}}">
-                                        <button class="custom-btn text-center m-0 "type="submit" >
-                                            <span>جزئیات</span>
-                                        </button>
-                                    </a>
+                                    {{--<a href="{{asset('/admin/course-detailes')}}">--}}
+                                        {{--<button class="custom-btn text-center m-0 "type="submit" >--}}
+                                            {{--<span>جزئیات</span>--}}
+                                        {{--</button>--}}
+                                    {{--</a>--}}
 
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-6 pb-3">
-                        <div class="card card-custom bg-white border-white border-0">
-                            <div class="card-custom-img" style="background-image: url('/img/change.jpg')"></div>
-                            <div class="card-custom-avatar">
-                                {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                            </div>
-                            <div class="card-body pt-2" style="overflow-y: hidden">
-                                <h4 class="card-title"> Swift دوره آموزش</h4>
-                            </div>
-                            <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                <div align="right">
-                                    <a href="{{asset('/admin/course-detailes')}}">
-                                        <button class="custom-btn text-center m-0 "type="submit" >
-                                            <span>جزئیات</span>
-                                        </button>
-                                    </a>
+                    @endforeach
 
+                        @foreach($master->masterWorkshops as $workshop)
+                            <div class="col-md-6 col-lg-6 pb-3">
+                                <div class="card card-custom bg-white border-white border-0">
+                                    <div class="card-custom-img" style="background-image: url({{asset($workshop->image)}})"></div>
+                                    <div class="card-custom-avatar">
+                                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
+                                    </div>
+                                    <div class="card-body pt-2" style="overflow-y: hidden">
+                                        <h4 class="card-title">{{$workshop->title}}</h4>
+                                    </div>
+                                    <div class="card-footer" style="background: inherit; border-color: inherit;">
+                                        <div align="right">
+                                            {{--<a href="{{asset('/admin/course-detailes')}}">--}}
+                                            {{--<button class="custom-btn text-center m-0 "type="submit" >--}}
+                                            {{--<span>جزئیات</span>--}}
+                                            {{--</button>--}}
+                                            {{--</a>--}}
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        @endforeach
                 </div>
-                <div class="row pt-5 m-auto">
-                    <div class="col-md-6 col-lg-6 pb-3">
-                        <div class="card card-custom bg-white border-white border-0">
-                            <div class="card-custom-img" style="background-image: url('/img/change.jpg')"></div>
-                            <div class="card-custom-avatar">
-                                {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                            </div>
-                            <div class="card-body pt-2" style="overflow-y: hidden">
-                                <h4 class="card-title"> Swift دوره آموزش</h4>
-                            </div>
-                            <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                <div align="right">
-                                    <a href="{{asset('/admin/workshop-detailes')}}">
-                                        <button class="custom-btn text-center m-0 "type="submit" >
-                                            <span>جزئیات</span>
-                                        </button>
-                                    </a>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 pb-3">
-                        <div class="card card-custom bg-white border-white border-0">
-                            <div class="card-custom-img" style="background-image: url('/img/change.jpg')"></div>
-                            <div class="card-custom-avatar">
-                                {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                            </div>
-                            <div class="card-body pt-2" style="overflow-y: hidden">
-                                <h4 class="card-title"> Swift دوره آموزش</h4>
-                            </div>
-                            <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                <div align="right">
-                                    <a href="{{asset('/admin/workshop-detailes')}}">
-                                        <button class="custom-btn text-center m-0 "type="submit" >
-                                            <span>جزئیات</span>
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

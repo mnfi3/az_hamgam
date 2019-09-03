@@ -26,17 +26,35 @@
         <div class="row mb-2">
             <div class="col-md-12 col-sm-12 ml-auto mr-auto">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir;direction: rtl">ثبت انجمن جدید </h5>
-                <form action="" class="row" style="">
-                    <div class="form-group col-md-10 py-4 d-flex ml-auto mr-auto" style="font-family: Vazir;direction: rtl">
+                <form action="{{url('/admin/users/forum/add')}}" method="post" class="row" style="">
+                    @csrf
+                    <div class="form-group col-md-10 py-4 d-flex ml-auto mr-auto">
+
+                        <input type="number" id="title" required=""
+                               class="form-control ml-4"  name="national_code" placeholder="شماره ملی">
+
+                        <input type="number" id="title" required=""
+                               class="form-control ml-4"  name="mobile" placeholder="شماره تماس">
+
                         <input type="text" id="title" required=""
-                               class="form-control ml-4"  name="name" placeholder="عنوان انجمن">
-                        <input type="email" id="title" required=""
-                               class="form-control ml-4"  name="name" placeholder="آدرس ایمیل">
-                        <input type="password" id="title" required=""
-                               class="form-control ml-4"  name="name" placeholder="رمز عبور">
+                               class="form-control ml-4"  name="last_name" placeholder="نام خانوادگی">
+                        <input type="text" id="title" required=""
+                               class="form-control ml-4"  name="first_name" placeholder="نام ">
+
                     </div>
-                    <div class="form-group col-md-11 py-1 ml-auto mr-auto">
+                    <div class="form-group col-md-11 py-4 d-flex ml-auto mr-auto">
                         <button class="custom-btn text-center m-0" type="submit" style="max-width: 60px;font-size: 0.8rem">ثبت</button>
+
+
+                        <input type="text" id="title" required=""
+                               class="form-control ml-4"  name="password" placeholder="رمز عبور">
+                        <input type="text" id="title" required=""
+                               class="form-control ml-4"  name="email" placeholder="ایمیل">
+                        <select class="custom-select ml-4" style="font-family: Vazir;direction: rtl " name="is_male">
+                            <option value="1">مرد</option>
+                            <option value="0">زن</option>
+                        </select>
+
                     </div>
                 </form>
             </div>
@@ -51,26 +69,18 @@
                         <th scope="col">#</th>
                         <th scope="col">عنوان انجمن</th>
                         <th scope="col">ایمیل</th>
-                        <th scope="col">ارسال پیام</th>
                     </tr>
                     </thead>
                     <tbody class="text-white" style="font-size: 0.9rem">
+                    @php($i=0)
+                    @foreach($forums as $forum)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>4490337789</td>
-                        <td>
-                            <a class="custom-btn text-center mt-0" style="max-width: 100px" data-toggle="modal" data-target="#myModal1">ارسال پیام</a>
-                        </td>
+                        <th scope="row">{{++$i}}</th>
+                        <td>{{$forum->first_name.' '.$forum->last_name}}</td>
+                        <td>{{$forum->email}}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>4490337789</td>
-                        <td>
-                            <a class="custom-btn text-center mt-0" style="max-width: 100px" data-toggle="modal" data-target="#myModal1">ارسال پیام</a>
-                        </td>
-                    </tr>
+                    @endforeach
+
                     </tbody>
                 </table>
 
@@ -79,101 +89,7 @@
         </div>
     </div>
 </div>
-<!-- The Modal -->
-<div class="modal fade" id="myModal" style="font-family: Vazir">
-    <div class="modal-dialog">
-        <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title text-right ml-auto">محتوای پیام</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body text-right">
-                سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد. یکی از مهمترین اهداف این سامانه را می توان مدیریت متمرکز کارآموزان در طول دوره کارآموزی به منظور ارتباط فعال صنعت و دانشگاه جهت شناسایی و حل مسائل موجود در صنایع بیان نمود. دانشگاه صنعتی امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان، مهندسین کارآزموده ای برای این مرزوبوم تربیت نماید
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="custom-btn btn-danger" data-dismiss="modal" style="max-width: 60px">بستن</button>
-            </div>
-
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="myModal1" style="font-family: Vazir">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title text-right ml-auto">نوشتن پاسخ</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body text-right">
-                <form action="" class="" style="direction: rtl;font-family: Vazir">
-                    <div class="form-group row ">
-                        <div class="col-md-12">
-                    <textarea type="text" id="editor1" required="" style="width: 100%;height: 100%;font-size: 0.8rem"
-                              class="form-control" name="description" placeholder="پاسخ">
-                    </textarea>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center ">
-                        <button class="custom-btn text-center" type="submit" style="max-width: 100px">ارسال</button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="custom-btn btn-danger" data-dismiss="modal" style="max-width: 60px">بستن</button>
-            </div>
-
-        </div>
-    </div>
-</div>
-</div>
-
-<!-- The Modal -->
-<div class="modal fade" id="myModal1" style="font-family: Vazir">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title text-right ml-auto">نوشتن پیام به مشاور</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body text-right">
-                <form action="" class="" style="direction: rtl;font-family: Vazir">
-                    <div class="form-group row ">
-                        <div class="col-md-12">
-                    <textarea type="text" id="editor1" required="" style="width: 100%;height: 100%;font-size: 0.8rem"
-                              class="form-control" name="description" placeholder="متن پیام">
-                    </textarea>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center ">
-                        <button class="custom-btn text-center" type="submit" style="max-width: 100px">ارسال</button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="custom-btn btn-danger" data-dismiss="modal" style="max-width: 60px">بستن</button>
-            </div>
-
-        </div>
-    </div>
-</div>
 @include('include.footer')
 </body>
 </html>
