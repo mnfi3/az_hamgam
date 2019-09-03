@@ -34,15 +34,22 @@
             </tr>
             </thead>
             <tbody class="text-white" style="font-size: 0.9rem">
+            @php($i=0)
+            @foreach($messages as $message)
             <tr>
-                <th scope="row">1</th>
-                <td> امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان</td>
+                <th scope="row">{{++$i}}</th>
+                <td>{{$message->question}}</td>
+                @if(strlen($message->answer > 0))
+                <td >پاسخ داده شده</td>
+                @else
                 <td >پاسخ داده نشده</td>
-                <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
+                @endif
+                <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal{{$message->id}}">مشاهده </button></td>
 
 
 
             </tr>
+            @endforeach
             </tbody>
         </table>
 
@@ -50,10 +57,11 @@
         <h5 style="text-align: right;color: #ffffff" class="py-3">:  ارسال پیام به مدیریت </h5>
         <div class="row">
             <div class="col-md-12">
-                <form action=" " class="row">
+                <form action="{{url('/master/contact/send-message')}}" method="post" class="row">
+                    @csrf
                     <div class="col-6 ml-auto">
                         <div class="form-group row">
-                            <textarea type="password" class="col-md-7 form-control" name="name" required placeholder="" style="direction: rtl"></textarea>
+                            <textarea type="text" class="col-md-7 form-control" name="question" required placeholder="" style="direction: rtl"></textarea>
                             <label for="name" class="col-md-4 mt-1">: متن پیام</label>
                         </div>
 
@@ -64,7 +72,8 @@
                 </form>
             </div>
         </div>
-        <div class="modal fade" id="myModal" style="font-family: Vazir">
+        @foreach($messages as $message)
+        <div class="modal fade" id="myModal{{$message->id}}" style="font-family: Vazir">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -76,7 +85,7 @@
 
                     <!-- Modal body -->
                     <div class="modal-body text-right">
-                        سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد. یکی از مهمترین اهداف این سامانه را می توان مدیریت متمرکز کارآموزان در طول دوره کارآموزی به منظور ارتباط فعال صنعت و دانشگاه جهت شناسایی و حل مسائل موجود در صنایع بیان نمود. دانشگاه صنعتی امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان، مهندسین کارآزموده ای برای این مرزوبوم تربیت نماید
+                       {{$message->answer}}
                     </div>
 
                     <!-- Modal footer -->
@@ -87,6 +96,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
     <!-- Modal footer -->
 

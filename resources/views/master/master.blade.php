@@ -25,26 +25,25 @@
     <div class="container my-4 " id="side-list">
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <h5 class="text-white text-right my-4" style="font-family: Vazir">دوره های مهارتی</h5>
+                <h5 class="text-white text-right my-4" style="font-family: Vazir"> دوره های مهارتی شما</h5>
                 <div style="height: 1px;background-color: #721c24; margin: 10px 5px"></div>
                 <div class="page-sections">
                     <div class="container">
                         <div class="row pt-5 m-auto">
+                            @foreach($courses as $course)
                             <div class="col-md-4 col-lg-4 pb-1">
                                 <div class="card card-custom bg-white border-white border-0">
-                                    <div class="card-custom-img" style="background-image: url('/img/change.jpg')"></div>
+                                    <div class="card-custom-img" style="background-image: url({{asset($course->image)}})"></div>
                                     <div class="card-custom-avatar">
                                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                                     </div>
                                     <div class="card-body pt-2" style="overflow-y: hidden">
-                                        <h4 class="card-title"> Swift دوره آموزش</h4>
-                                        </p>
-                                        <p>مدرس : علی عربگری</p>
-                                        <p>زمان : شنبه ها ساعت 11</p>
+                                        <h4 class="card-title">{{$course->title}}</h4>
+
                                     </div>
                                     <div class="card-footer" style="background: inherit; border-color: inherit;">
                                         <div align="right">
-                                            <a href="{{url('/master/course-detalis')}}">
+                                            <a href="{{url('/master/course-detalis', $course->id)}}">
                                                 <button class="custom-btn text-center m-0 "type="submit" >
                                                     <span>جزئیات</span>
                                                 </button>
@@ -54,52 +53,29 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-lg-4 pb-1">
-                                <div class="card card-custom bg-white border-white border-0">
-                                    <div class="card-custom-img" style="background-image: url('/img/change.jpg')"></div>
-                                    <div class="card-custom-avatar">
-                                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                                    </div>
-                                    <div class="card-body pt-2" style="overflow-y: hidden">
-                                        <h4 class="card-title"> Swift دوره آموزش</h4>
-                                        </p>
-                                        <p>مدرس : علی عربگری</p>
-                                        <p>زمان : شنبه ها ساعت 11</p>
-                                    </div>
-                                    <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                        <div align="right">
-                                            <a href="{{url('/master/course-detalis')}}">
-                                                <button class="custom-btn text-center m-0 "type="submit" >
-                                                    <span>جزئیات</span>
-                                                </button>
-                                            </a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
-                <div class="pagination-section">
-                    <div class="container my-3 ">
-                        <div class="row ">
-                            <div class="col-8 " align="center">
-                                <div class="pagination ">
-                                    <a href="#">&laquo;</a>
-                                    <a href="#">1</a>
-                                    <a href="#" class="active">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#">5</a>
-                                    <a href="#">6</a>
-                                    <a href="#">&raquo;</a>
-                                </div>
-                            </div>
-                        </div>
+                {{--<div class="pagination-section">--}}
+                    {{--<div class="container my-3 ">--}}
+                        {{--<div class="row ">--}}
+                            {{--<div class="col-8 " align="center">--}}
+                                {{--<div class="pagination ">--}}
+                                    {{--<a href="#">&laquo;</a>--}}
+                                    {{--<a href="#">1</a>--}}
+                                    {{--<a href="#" class="active">2</a>--}}
+                                    {{--<a href="#">3</a>--}}
+                                    {{--<a href="#">4</a>--}}
+                                    {{--<a href="#">5</a>--}}
+                                    {{--<a href="#">6</a>--}}
+                                    {{--<a href="#">&raquo;</a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
-                    </div>
-                </div>
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
         </div>
     </div>

@@ -46,8 +46,12 @@
                             @else
                                 @if($message->user->role == 'master')
                                     <td>استاد</td>
-                                @else
+                                @elseif($message->user->role == 'student')
                                     <td>دانشجو</td>
+                                @elseif($message->user->role == 'consultant')
+                                    <td>مشاور</td>
+                                @elseif($message->user->role == 'forum')
+                                    <td>انجمن</td>
                                 @endif
                             @endif
                             @if($message->user_id == 0 || $message->user_id == null)

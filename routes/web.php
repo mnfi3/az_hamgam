@@ -246,42 +246,15 @@ Route::post('/admin/users/forum/add', 'Admin\AdminUserController@forumAdd');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//master
-
-Route::get('/master/master',function (){
-  return view('master.master');
-});
-Route::get('/master/course-detalis',function (){
-  return view('master.course-detalis');
-});
-
-Route::get('/master/workshop',function (){
-  return view('master.workshop');
-});
-
-Route::get('/master/workshop-detalis',function (){
-  return view('master.workshop-detalis');
-});
-
-Route::get('/master/profile',function (){
-  return view('master.profile');
-});
-
-Route::get('/master/contact',function (){
-  return view('master.contact');
-});
+//master panel
+Route::get('/master/master', 'Master\MasterController@master');
+Route::get('/master/course-detalis/{id}', 'Master\MasterController@courseDetail');
+Route::get('/master/workshop', 'Master\MasterController@workshops');
+Route::get('/master/workshop-detalis/{id}', 'Master\MasterController@workshopDetail');
+Route::get('/master/profile', 'Master\MasterController@profile');
+Route::post('/master/change-pass', 'Master\MasterController@changePass');
+Route::get('/master/contact', 'Master\MasterController@contact');
+Route::post('/master/contact/send-message', 'Master\MasterController@sendMessage');
 
 //section 4
 

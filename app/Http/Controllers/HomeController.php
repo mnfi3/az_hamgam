@@ -30,8 +30,10 @@ class HomeController extends Controller
       }elseif ($user->role == 'admin'){
         return redirect(url('/admin/admin'));
       }elseif ($user->role == 'master'){
-
+        return redirect(url('/master/master'));
       }elseif ($user->role == 'consultant'){
+
+      }elseif ($user->role == 'forum'){
 
       }
 //        return view('home');

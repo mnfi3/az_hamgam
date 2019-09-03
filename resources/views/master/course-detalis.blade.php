@@ -34,24 +34,20 @@
                         <th scope="col">#</th>
                         <th scope="col">اطلاعات فردی</th>
                         <th scope="col">شماره دانشجویی</th>
+                        <th scope="col">کد ملی</th>
                     </tr>
                     </thead>
                     <tbody class="text-white">
+
+                    @php($i=0)
+                    @foreach($course->students as $student)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>931831229</td>
+                        <th scope="row">{{++$i}}</th>
+                        <td>{{$student->first_name.' '.$student->last_name}}</td>
+                        <td>{{$student->student_number}}</td>
+                        <td>{{$student->national_code}}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>931831229</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>931831229</td>
-                    </tr>
+                    @endforeach
                     </tbody>
                 </table>
                 <div class="row">
