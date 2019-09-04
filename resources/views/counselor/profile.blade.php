@@ -26,23 +26,27 @@
         <h5 style="text-align: right;color: #ffffff" class="py-3">:  تغییر رمز عبور </h5>
         <div class="row">
             <div class="col-md-12">
-                <form action=" " class="row">
+                <form action="{{url('/consultant/change-password')}}" method="post" class="row">
+                    @csrf
                     <div class="col-6 ml-auto">
                         <div class="form-group row">
-                            <input type="password" class="col-md-7 form-control" name="name" required placeholder="">
+                            <input type="password" class="col-md-7 form-control" name="old_password" required placeholder="رمز قبلی">
                             <label for="name" class="col-md-4 mt-1">: رمز قبلی</label>
                         </div>
                         <div class="form-group row">
-                            <input type="password" class="col-md-7 form-control" name="name" required placeholder="" value="">
+                            <input type="password" class="col-md-7 form-control" name="password" required placeholder="رمز جدید (حداقل 6 کاراکتر)" value="">
                             <label for="name" class="col-md-4 mt-1">:  رمز جدید</label>
                         </div>
                         <div class="form-group row">
-                            <input type="password" class="col-md-7 form-control" name="name" required placeholder="" value="">
+                            <input type="password" class="col-md-7 form-control" name="password_confirmation" required placeholder="تکرار رمز جدید" value="">
                             <label for="name" class="col-md-4 mt-1">: تکرار رمز جدید</label>
                         </div>
                         <div class="form-group row">
-                            <button class="custom-btn text-center" type="submit" style="max-width: 80px">اعمال</button>
+                            <button class="custom-btn text-center" type="submit">ثبت تغییرات</button>
                         </div>
+                        @if(\Illuminate\Support\Facades\Session::get('password') != null)
+                            <p>{{\Illuminate\Support\Facades\Session::get('password')}}</p>
+                        @endif
                     </div>
                 </form>
             </div>

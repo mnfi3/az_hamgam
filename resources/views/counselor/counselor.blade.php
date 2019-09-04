@@ -41,69 +41,56 @@
                     </tr>
                     </thead>
                     <tbody class="text-white" style="font-size: 0.9rem">
+                    @php($i=0)
+                    @foreach($consults as $consult)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>علی عربگری</td>
-                        <td>Aliarabgary2gmail.com</td>
-                        <td>09367904148</td>
-                        <td>کارشناسی فناوری اطلاعات</td>
-                        <td>هدایت تحصیلی</td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal1">پاسخ </button></td>
+                        <th scope="row">{{++$i}}</th>
+                        <td>{{$consult->user->first_name.' '.$consult->user->last_name}}</td>
+                        <td>{{$consult->user->email}}</td>
+                        <td>{{$consult->user->mobile}}</td>
+                        <td>{{$consult->user->studentField->name}}</td>
+                        <td>{{$consult->title}}</td>
+                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal{{$consult->id}}">مشاهده </button></td>
+                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal_{{$consult->id}}">پاسخ </button></td>
+                        @if(strlen($consult->answer) > 0)
+                        <td >پاسخ داده شده</td>
+                        @else
                         <td >پاسخ داده نشده</td>
+                        @endif
                     </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>Aliarabgary2gmail.com</td>
-                        <td>09367904148</td>
-                        <td>کارشناسی فناوری اطلاعات</td>
-                        <td>مشاغل</td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal1">پاسخ </button></td>
-                        <td >پاسخ داده نشده</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>علی عربگری</td>
-                        <td>Aliarabgary2gmail.com</td>
-                        <td>09367904148</td>
-                        <td>کارشناسی فناوری اطلاعات</td>
-                        <td>آینده شغلی</td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal">مشاهده </button></td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal1">پاسخ </button></td>
-                        <td >پاسخ داده نشده</td>
-                    </tr>
+                    @endforeach
+
                     </tbody>
                 </table>
 
 
             </div>
-            <div class="pagination-section">
-                <div class="container my-3 ">
-                    <div class="row ">
-                        <div class="col-8 " align="center">
-                            <div class="pagination ">
-                                <a href="#">&laquo;</a>
-                                <a href="#">1</a>
-                                <a href="#" class="active">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">6</a>
-                                <a href="#">&raquo;</a>
-                            </div>
-                        </div>
-                    </div>
+            {{--<div class="pagination-section">--}}
+                {{--<div class="container my-3 ">--}}
+                    {{--<div class="row ">--}}
+                        {{--<div class="col-8 " align="center">--}}
+                            {{--<div class="pagination ">--}}
+                                {{--<a href="#">&laquo;</a>--}}
+                                {{--<a href="#">1</a>--}}
+                                {{--<a href="#" class="active">2</a>--}}
+                                {{--<a href="#">3</a>--}}
+                                {{--<a href="#">4</a>--}}
+                                {{--<a href="#">5</a>--}}
+                                {{--<a href="#">6</a>--}}
+                                {{--<a href="#">&raquo;</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
-                </div>
-            </div>
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
     </div>
 </div>
+
+@foreach($consults as $consult)
 <!-- The Modals -->
-<div class="modal fade" id="myModal" style="font-family: Vazir">
+<div class="modal fade" id="myModal{{$consult->id}}" style="font-family: Vazir">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -115,7 +102,7 @@
 
             <!-- Modal body -->
             <div class="modal-body text-right">
-                سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد. یکی از مهمترین اهداف این سامانه را می توان مدیریت متمرکز کارآموزان در طول دوره کارآموزی به منظور ارتباط فعال صنعت و دانشگاه جهت شناسایی و حل مسائل موجود در صنایع بیان نمود. دانشگاه صنعتی امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان، مهندسین کارآزموده ای برای این مرزوبوم تربیت نماید
+                {{$consult->question}}
             </div>
 
             <!-- Modal footer -->
@@ -126,7 +113,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="myModal1" style="font-family: Vazir">
+@endforeach
+
+
+@foreach($consults as $consult)
+<div class="modal fade" id="myModal_{{$consult->id}}" style="font-family: Vazir">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -138,18 +129,24 @@
 
             <!-- Modal body -->
             <div class="modal-body text-right">
-                <form action="" class="" style="direction: rtl;font-family: Vazir">
+                @if(strlen($consult->answer) < 2)
+                <form action="{{url('/counselor/send-answer')}}" method="post" class="" style="direction: rtl;font-family: Vazir">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$consult->id}}">
                     <div class="form-group row ">
                         <div class="col-md-12">
-                    <textarea type="text" id="editor1" required style="width: 100%;height: 190px;font-size: 0.8rem"
-                              class="form-control" placeholder="پاسخ">
-                    </textarea>
+                    <textarea type="text" id="editor1" name="answer" required style="width: 100%;height: 190px;font-size: 0.8rem"
+                              class="form-control" placeholder="پاسخ"></textarea>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center ">
                         <button class="custom-btn text-center" type="submit" style="max-width: 100px">ارسال</button>
                     </div>
                 </form>
+                @else
+                    <span type="text" id="editor1" required style="width: 100%;height: 190px;font-size: 0.8rem"
+                              class="form-control">{{$consult->answer}}</span>
+                @endif
             </div>
 
             <!-- Modal footer -->
@@ -160,6 +157,7 @@
         </div>
     </div>
 </div>
+@endforeach
 @include('include.footer')
 </body>
 <script>

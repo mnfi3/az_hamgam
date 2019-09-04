@@ -256,16 +256,13 @@ Route::post('/master/change-pass', 'Master\MasterController@changePass');
 Route::get('/master/contact', 'Master\MasterController@contact');
 Route::post('/master/contact/send-message', 'Master\MasterController@sendMessage');
 
-//section 4
 
-Route::get('/counselor/counselor',function (){
-  return view('counselor.counselor');
-});
 
-Route::get('/counselor/contact',function (){
-  return view('counselor.contact');
-});
+//conultant panel
+Route::get('/counselor/counselor', 'Consultant\ConsultantController@consultant');
+Route::post('/counselor/send-answer', 'Consultant\ConsultantController@sendAnswer');
+Route::get('/counselor/profile', 'Consultant\ConsultantController@profile');
+Route::post('/consultant/change-password', 'Consultant\ConsultantController@changePass');
+Route::get('/counselor/contact', 'Consultant\ConsultantController@contact');
+Route::post('/counselor/send-message', 'Consultant\ConsultantController@sendMessage');
 
-Route::get('/counselor/profile',function (){
-  return view('counselor.profile');
-});
