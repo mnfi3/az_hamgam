@@ -16,19 +16,19 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             @auth
                                 <ul class="navbar-nav py-4 py-md-0">
-                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4  ">
                                         <form  method="post" action="{{route('logout')}}">
                                             @csrf
                                             <a class="nav-link" >
-                                            <button class="nav-link" type="submit">خروج</button>
+                                            <button class="nav-link " style="background-color: transparent ; padding: 10px 10px"  type="submit">
+                                                    خروج
+                                            </button>
                                             </a>
                                         </form>
                                     </li>
-
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
                                         <a class="nav-link" href="{{url('/home')}}">پنل کاربری</a>
                                     </li>
-
                                 </ul>
                             @endauth
 

@@ -31,62 +31,65 @@
 </div>
 <div class="filter-section mt-2">
     <div class="container  mt-4">
-        <div class="d-flex flex-row-reverse flex-wrap align-content-center ">
-            <div class="flex-item text-dark">
-                <h6>: فیلتر براساس  </h6>
+        <form action="">
+            <div class="d-flex flex-row-reverse flex-wrap align-content-center ">
+                <div class="flex-item text-dark">
+                    <h6>: فیلتر براساس  </h6>
+                </div>
+
+
+                <form method="get" action="{{url('/skill-learning/courses')}}">
+                    <div class="flex-item text-dark  mr-5 ">
+                        <p>: دانشکده  </p>
+                    </div>
+                    <div class="flex-item text-dark">
+                        <select class="browser-default custom-select " id="faculties" name="">
+                            <option selected>همه دانشکده ها</option>
+                            <option value="1"> فنی</option>
+                            <option value="2">علوم پایه</option>
+                            <option value="3">کامپیوتر</option>
+                            <option value="3">برق</option>
+                        </select>
+                    </div>
+                    <div class="flex-item text-dark  mr-2 ">
+                        <p>: رشته  </p>
+                    </div>
+
+                    <div class="flex-item text-dark ">
+                        <select class="browser-default custom-select" id="fields" name="field_id">
+                            <option value="0" selected>همه رشته ها</option>
+                            @foreach($fields as $field)
+                                <option value="{{$field->id}}" @if($field_id == $field->id) selected @endif> {{$field->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="flex-item text-dark  mr-2 ">
+                        <p>: نیم سال  </p>
+                    </div>
+
+                    <div class="flex-item text-dark ">
+                        <select class="browser-default custom-select" id="schedule" name="term">
+                            <option value="0" selected>همه</option>
+                            <option value="1" @if($term == 1) selected @endif> اول</option>
+                            <option value="2" @if($term == 2) selected @endif>دوم</option>
+                            <option value="3" @if($term == 3) selected @endif>تابستان</option>
+                        </select>
+                    </div>
+                    <div class="flex-item text-dark ">
+                        <a href="{{url('/')}}">
+                            <button class="custom-btn text-center mr-2 "type="submit" style="max-width: 130px">
+                                <span>جستجو</span>
+                            </button>
+                        </a>
+                    </div>
+                </form>
+
+
+
             </div>
 
-
-            <form method="get" action="{{url('/skill-learning/courses')}}">
-                <div class="flex-item text-dark  mr-5 ">
-                    <p>: دانشکده  </p>
-                </div>
-                <div class="flex-item text-dark">
-                    <select class="browser-default custom-select " id="faculties" name="">
-                        <option selected>همه دانشکده ها</option>
-                        <option value="1"> فنی</option>
-                        <option value="2">علوم پایه</option>
-                        <option value="3">کامپیوتر</option>
-                        <option value="3">برق</option>
-                    </select>
-                </div>
-                <div class="flex-item text-dark  mr-2 ">
-                    <p>: رشته  </p>
-                </div>
-
-                <div class="flex-item text-dark ">
-                    <select class="browser-default custom-select" id="fields" name="field_id">
-                        <option value="0" selected>همه رشته ها</option>
-                        @foreach($fields as $field)
-                        <option value="{{$field->id}}" @if($field_id == $field->id) selected @endif> {{$field->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="flex-item text-dark  mr-2 ">
-                    <p>: نیم سال  </p>
-                </div>
-
-                <div class="flex-item text-dark ">
-                    <select class="browser-default custom-select" id="schedule" name="term">
-                        <option value="0" selected>همه</option>
-                        <option value="1" @if($term == 1) selected @endif> اول</option>
-                        <option value="2" @if($term == 2) selected @endif>دوم</option>
-                        <option value="3" @if($term == 3) selected @endif>تابستان</option>
-                    </select>
-                </div>
-                <div class="flex-item text-dark ">
-                    <a href="{{url('/')}}">
-                        <button class="custom-btn text-center mr-2 "type="submit" style="max-width: 130px">
-                            <span>جستجو</span>
-                        </button>
-                    </a>
-                </div>
-            </form>
-
-
-
+        </form>
         </div>
-    </div>
 </div>
 
 
@@ -118,7 +121,7 @@
                                 <br>
                                 <br>
                             @foreach($course->prerequisites as $prerequisite)
-                                   <span class="m-auto bg-primary p-1"> {{$prerequisite->title}}</span>
+                                   <span class="m-auto p-1" style="border-radius: 2px; background-color: rgba(206,215,223,0.86)"> {{$prerequisite->title}}</span>
                             @endforeach
                             </p>
                         @endif

@@ -12,9 +12,6 @@
 */
 
 
-Route::get('/test', function (){
-  return date('Y-m-d');
-});
 
 //site
 Route::get('/', 'SiteController@index');

@@ -41,6 +41,10 @@
                     @error('password')
                     <p style="color: #721c24;text-align: right;font-family: Vazir;font-size: 0.8rem">{{ $message }}</p>
                     @enderror
+                    <a href="{{route('password.request')}}" style="text-decoration: none">
+                        <p style="color: #0000cc;text-align: right;font-family: Vazir;font-size: 0.8rem">فراموشی رمز عبور؟</p>
+
+                    </a>
 
                     {{--                    <a href="{{url('/admin/admin')}}" class="text-white">--}}
                     <button class="custom-btn text-center m-0 "type="submit" >
