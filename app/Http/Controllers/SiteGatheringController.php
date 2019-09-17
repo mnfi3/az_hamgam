@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Util\Sadad;
 use App\IndustryPost;
+use App\Order;
 use App\StudentWorkshops;
 use App\UserVisits;
 use App\Util;
@@ -86,15 +88,52 @@ class SiteGatheringController extends Controller
       return back()->with('fail', 'ظرفیت کارگاه پر شده است');
     }
 
-    $student_workshop = StudentWorkshops::create([
-      'student_id' => $user->id,
-      'workshop_id' => $workshop->id,
-      'has_certificate' => 0,
+
+
+
+
+
+    //if price==0
+    if ($workshop->price == 0){
+      $student_workshop = StudentWorkshops::create([
+        'student_id' => $user->id,
+        'workshop_id' => $workshop->id,
+        'has_certificate' => 0,
+      ]);
+      return back()->with('success', 'ثبت نام با موفقیت انجام شد');
+    }
+
+
+    $order = Order::create([
+      'user_id' => $user->id,
+      'orderable_id' => $workshop->id,
+      'orderable_type' => 'App\Workshop',
+      'amount' => $workshop->price,
     ]);
 
-    return back()->with('success', 'ثبت نام با موفقیت انجام شد');
+    $sadad = new Sadad(
+      env('SADAD_MERCHANT_ID'),
+      env('SADAD_TERMINAL_ID'),
+      env('SADAD_TERMINAL_KEY'),
+      env('SADAD_PAYMENT_IDENTITY')
+    );
+
+    $response = $sadad->request($order->amount, $order->id, url('/gathering/workshop/register/payment-verify'));
+
+    if($response->ResCode != 0){
+      $description = $response->Description;
+      return view('site.paymentFailed', compact('description'));
+    }else{
+      return redirect($sadad->getRedirectUrl() . $response->Token);
+    }
+
   }
 
+
+
+  public function workshopRegisterVerify(){
+
+  }
 
 
   public function industry() {

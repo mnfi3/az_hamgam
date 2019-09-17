@@ -60,6 +60,7 @@ Route::get('/gathering/industry-posts', 'SiteGatheringController@industryPosts')
 Route::get('/gathering/industry-post/{id}', 'SiteGatheringController@industryPost');
 Route::get('/gathering/workshop-detail/{id}', 'SiteGatheringController@workshopDetail');
 Route::get('/gathering/workshop/register/{id}', 'SiteGatheringController@workshopRegister');
+Route::get('/gathering/workshop/register/payment-verify', 'SiteGatheringController@workshopRegisterVerify');
 Route::get('/gathering/visit-industries', 'SiteGatheringController@industry');
 Route::get('/gathering/visit-industries-details/{id}', 'SiteGatheringController@industryDetail');
 Route::get('/gathering/visit-industries/register/{id}', 'SiteGatheringController@industryRegister');
