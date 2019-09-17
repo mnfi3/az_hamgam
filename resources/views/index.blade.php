@@ -6,15 +6,11 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- Title -->
     @include('include.page-title')
     @include('include.bootstrap')
     @include('include.nav-style-js')
 </head>
-
-
 <body>
 @include('include.navigation')
 @include('include.carousel', $sliders)
@@ -29,7 +25,6 @@
                     @php echo $about; @endphp
                 </p>
             </div>
-
         </div>
     </div>
 </div>
@@ -58,7 +53,6 @@
                     <div class="title"> دانشجو </div>
                 </div>
             </div>
-
             <div class="row py-4">
                 <div class="col-lg-3 col-md-6 col-sm-12 text-center my-1">
                     <i class="fa fa-industry "></i>

@@ -34,7 +34,9 @@ class HomeController extends Controller
       }elseif ($user->role == 'consultant'){
         return redirect(url('/counselor/counselor'));
       }elseif ($user->role == 'forum'){
-
+        return redirect(url('/forum/forum'));
+      }elseif ($user->role == 'industry'){
+        return redirect(url('/industry/industry'));
       }
 //        return view('home');
     }

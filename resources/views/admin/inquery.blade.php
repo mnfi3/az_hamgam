@@ -52,6 +52,8 @@
                                     <td>مشاور</td>
                                 @elseif($message->user->role == 'forum')
                                     <td>انجمن</td>
+                                @elseif($message->user->role == 'industry')
+                                    <td>صنعت</td>
                                 @endif
                             @endif
                             @if($message->user_id == 0 || $message->user_id == null)

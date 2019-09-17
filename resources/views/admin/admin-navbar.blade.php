@@ -22,6 +22,7 @@
                         <a class="dropdown-item" href="{{url('/admin/question')}}">سوالات متداول</a>
                         <a class="dropdown-item" href="{{url('/admin/connection')}}">راه های ارتباطی و لینک های مرتبط سامانه</a>
                         <a class="dropdown-item" href="{{url('/admin/inquery')}}">سوالات و درخواست های دریافتی</a>
+                        <a class="dropdown-item" href="{{url('/admin/managers')}}">مدیران معاونت پژوهشی</a>
 {{--                        <a class="dropdown-item" href="{{url('/admin/explanation')}}">توصیحات هر بخش</a>--}}
 
                     </div>
@@ -61,7 +62,7 @@
                         {{--<a class="dropdown-item" href="#">دوره های مهارتی</a>--}}
                         <a class="dropdown-item" href="{{url('/admin/workshop')}}">کارگاه های آموزشی</a>
                         <a class="dropdown-item" href="{{url('/admin/visit-industries')}}">بازدید از صنایع</a>
-                        <a class="dropdown-item" href="{{url('/admin/statistic')}}">دعوت از صاحبان صنایع</a>
+                        <a class="dropdown-item" href="{{url('/admin/invite-industries')}}">دعوت از صاحبان صنایع</a>
                     </div>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2">
@@ -101,15 +102,15 @@
                         <a class="dropdown-item" href="{{url('/admin/users/master')}}">اساتید</a>
                         <a class="dropdown-item" href="{{url('/admin/users/consult')}}">مشاور</a>
                         <a class="dropdown-item" href="{{url('/admin/users/forums')}}">انجمن ها</a>
-                        <a class="dropdown-item" href="{{url('/admin/')}}">صنایع</a>
+                        <a class="dropdown-item" href="{{url('/admin/industries')}}">صنایع</a>
                     </div>
                 </li>
-                {{--<li  class="dropdown nav-item mx-2 btn-primary">--}}
-                    {{--<a id="adminNavUsers" class="nav-link" href="#" role="button" >--}}
-                        {{--<i class=""></i>--}}
-                        {{--ایجاد فایل پشتیبان و دانلود--}}
-                    {{--</a>--}}
-                {{--</li>--}}
+                <li  class="dropdown nav-item mx-2 btn-primary">
+                    <a id="adminNavUsers" class="nav-link" href="{{url('/admin/backup')}}" role="button" >
+                        <i class=""></i>
+                        ایجاد فایل پشتیبان و دانلود
+                    </a>
+                </li>
             </ul>
 
         </div>

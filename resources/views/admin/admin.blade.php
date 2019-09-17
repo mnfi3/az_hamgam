@@ -31,7 +31,6 @@
                     <li>
                         <div class="d-flex flex-row align-items-center justify-content-between">
                             <p class="text-light text-right mb-2 pr-2">{{$slider->title}}</p>
-
                             <a href="{{url('/admin/slider/remove', $slider->id)}}" class="custom-btn text-center">حذف</a>
                         </div>
                     </li>
@@ -74,14 +73,4 @@
 </div>
 @include('include.footer')
 </body>
-<script>
-  function addDocumentInput() {
-    var referenceNode = document.getElementById('fileInputsContainer').lastChild;
-    var newNode = document.createElement("DIV");
-    newNode.className += 'mt-1'
-    newNode.innerHTML = '<input type="file"  required=""\n' +
-      '                       class="form-control-file" name="images[]">'
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-  }
-</script>
 </html>

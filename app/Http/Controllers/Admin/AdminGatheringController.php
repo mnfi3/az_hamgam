@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Util\PDate;
 use App\Http\Controllers\Util\PNum;
 use App\Http\Controllers\Util\Uploader;
+use App\IndustryPost;
 use App\StudentWorkshops;
 use App\User;
 use App\Util;
@@ -174,6 +175,22 @@ class AdminGatheringController extends Controller
     $visit->deadline = $d->toGregorian(PNum::toLatin($request->deadline));
     if($request->hasFile('image')) $visit->image = Uploader::image($request->file('image'));
     $visit->save();
+    return back();
+  }
+
+
+  public function industryPost(){
+    return view('admin.invite-industries');
+  }
+
+  public function industryPostAdd(Request $request){
+    $post = IndustryPost::create([
+      'title' => $request->title,
+      'description' => $request->description,
+      'image' => Uploader::image($request->file('image')),
+      'file' => Uploader::file($request->file('file')),
+    ]);
+
     return back();
   }
 

@@ -29,13 +29,6 @@
         </div>
     </div>
 </div>
-<div class="decleararion">
-    <div class="container-fluid ">
-        <p class="my-2 text-right p-3 ">
-            {{$util->description}}
-        </p>
-    </div>
-</div>
 <div class="page-sections">
     <div class="container bg-light">
         <div class="row pt-5 m-auto">

@@ -27,8 +27,8 @@
             @csrf
             <div class="form-group row py-4">
                 <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
-                <div class="col-md-5">
-                    <textarea type="text" id="editor1" required=""
+                <div class="col-md-8">
+                    <textarea type="text" id="editor1" required="" style="font-size: 0.8rem"
                               class="form-control" name="description" placeholder="توضیحات">{{$util->description}}</textarea>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <label class="col-md-3 col-form-label ">تصویر :</label>
                 <div class="col-md-5">
                     <input type="file" id="editor1" required=""
-                              class="form-control" name="image">
+                           class="form-control" name="image">
                 </div>
                 <div class="col-md-3">
                     <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
@@ -67,55 +67,55 @@
                     <tbody class="text-white" style="font-size: 0.9rem">
                     @php($i=0)
                     @foreach($consults as $consult)
-                    <tr>
-                        <th scope="row">{{++$i}}</th>
-                        <td>{{$consult->user->first_name.' '.$consult->user->last_name}}</td>
-                        <td>{{$consult->user->email}}</td>
-                        <td>{{$consult->user->mobile}}</td>
-                        <td>{{$consult->user->studentField->name}}</td>
-                        <td>{{$consult->title}}</td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal{{$consult->id}}">مشاهده </button></td>
+                        <tr>
+                            <th scope="row">{{++$i}}</th>
+                            <td>{{$consult->user->first_name.' '.$consult->user->last_name}}</td>
+                            <td>{{$consult->user->email}}</td>
+                            <td>{{$consult->user->mobile}}</td>
+                            <td>{{$consult->user->studentField->name}}</td>
+                            <td>{{$consult->title}}</td>
+                            <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal{{$consult->id}}">مشاهده </button></td>
 
-                        <td>
-                            @if(($consult->adviser_id == 0 || $consult->adviser_id == null) && strlen($consult->answer) < 2)
-                            <form action="{{url('/admin/consult/send-to-consultant')}}" method="post">
-                                @csrf
-                                <input type="hidden" name="consult_id" value="{{$consult->id}}">
-                                <div class="d-flex  p-2 justify-content-between">
-                                    <select name="consultant_id" class=" custom-select ml-2" style="font-size: 0.7rem;min-width: 120px">
-                                        @foreach($consultants as $consultant)
-                                        <option value="{{$consultant->id}}">{{$consultant->first_name.' '.$consultant->last_name}}</option>
-                                        @endforeach
-                                    </select>
-                                    <button class="custom-btn text-center mt-0" type="submit" style="max-width: 50px">ارسال</button>
+                            <td>
+                                @if(($consult->adviser_id == 0 || $consult->adviser_id == null) && strlen($consult->answer) < 2)
+                                    <form action="{{url('/admin/consult/send-to-consultant')}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="consult_id" value="{{$consult->id}}">
+                                        <div class="d-flex  p-2 justify-content-between">
+                                            <select name="consultant_id" class=" custom-select ml-2" style="font-size: 0.7rem;min-width: 120px">
+                                                @foreach($consultants as $consultant)
+                                                    <option value="{{$consultant->id}}">{{$consultant->first_name.' '.$consultant->last_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <button class="custom-btn text-center mt-0" type="submit" style="max-width: 50px">ارسال</button>
 
-                                </div>
-                            </form>
-                            @elseif($consult->adviser_id != 0 && $consult->adviser_id != null)
-                                <div class="d-flex  p-2 justify-content-between">
+                                        </div>
+                                    </form>
+                                @elseif($consult->adviser_id != 0 && $consult->adviser_id != null)
+                                    <div class="d-flex  p-2 justify-content-between">
                                     <span class=" custom-select ml-2" style="font-size: 0.7rem;min-width: 120px">
                                         {{$consult->consultant->first_name.' '.$consult->consultant->last_name}}
                                     </span>
-                                </div>
-                            @else
-                                <div class="d-flex  p-2 justify-content-between">
+                                    </div>
+                                @else
+                                    <div class="d-flex  p-2 justify-content-between">
                                     <span class=" custom-select  ml-2" style="font-size: 0.7rem;min-width: 120px">
                                        قبلا پاسخ داده شده
                                     </span>
-                                </div>
+                                    </div>
+                                @endif
+
+                            </td>
+                            <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal_{{$consult->id}}">پاسخ </button></td>
+
+                            @if($consult->adviser_id > 0 && $consult->adviser_id != null)
+                                <td>ارسال شده به مشاور</td>
+                            @elseif(strlen($consult->answer) > 1)
+                                <td >پاسخ داده شده</td>
+                            @else
+                                <td>پاسخ داده نشده</td>
                             @endif
-
-                        </td>
-                        <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal_{{$consult->id}}">پاسخ </button></td>
-
-                        @if($consult->adviser_id > 0 && $consult->adviser_id != null)
-                            <td>ارسال شده به مشاور</td>
-                        @elseif(strlen($consult->answer) > 1)
-                            <td >پاسخ داده شده</td>
-                        @else
-                            <td>پاسخ داده نشده</td>
-                        @endif
-                    </tr>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>
@@ -128,77 +128,77 @@
     </div>
 </div>
 @foreach($consults as $consult)
-<!-- The Modal -->
-<div class="modal fade" id="myModal{{$consult->id}}" style="font-family: Vazir">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal{{$consult->id}}" style="font-family: Vazir">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title text-right ml-auto">محتوای پیام</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-right ml-auto">محتوای پیام</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body text-right">
+                    {{$consult->question}}
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="custom-btn btn-danger" data-dismiss="modal" style="max-width: 60px">بستن</button>
+                </div>
+
             </div>
-
-            <!-- Modal body -->
-            <div class="modal-body text-right">
-                {{$consult->question}}
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="custom-btn btn-danger" data-dismiss="modal" style="max-width: 60px">بستن</button>
-            </div>
-
         </div>
     </div>
-</div>
 @endforeach
 
 @foreach($consults as $consult)
-<div class="modal fade" id="myModal_{{$consult->id}}" style="font-family: Vazir">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <div class="modal fade" id="myModal_{{$consult->id}}" style="font-family: Vazir">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title text-right ml-auto"> پاسخ</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-right ml-auto"> پاسخ</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
 
-            <!-- Modal body -->
-            <div class="modal-body text-right">
-                @if(($consult->adviser_id == null || $consult->adviser_id == 0) && (strlen($consult->answer) < 2))
-                <form action="{{url('/admin/consult/answer')}}" method="post" class="" style="direction: rtl;font-family: Vazir">
-                    @csrf
-                    <input type="hidden" name="consult_id" value="{{$consult->id}}">
-                    <div class="form-group row ">
-                        <div class="col-md-12">
+                <!-- Modal body -->
+                <div class="modal-body text-right">
+                    @if(($consult->adviser_id == null || $consult->adviser_id == 0) && (strlen($consult->answer) < 2))
+                        <form action="{{url('/admin/consult/answer')}}" method="post" class="" style="direction: rtl;font-family: Vazir">
+                            @csrf
+                            <input type="hidden" name="consult_id" value="{{$consult->id}}">
+                            <div class="form-group row ">
+                                <div class="col-md-12">
                     <textarea type="text" id="editor1" required="" style="width: 100%;height: 100%;font-size: 0.8rem"
                               class="form-control" name="answer" placeholder="پاسخ">{{$consult->answer}}</textarea>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center ">
-                        <button class="custom-btn text-center" type="submit" style="max-width: 100px">ارسال</button>
-                    </div>
-                </form>
-                @else
-                    <span type="text" id="editor1" required="" style="width: 100%;height: 100%;font-size: 0.8rem"
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center ">
+                                <button class="custom-btn text-center" type="submit" style="max-width: 100px">ارسال</button>
+                            </div>
+                        </form>
+                    @else
+                        <span type="text" id="editor1" required="" style="width: 100%;height: 100%;font-size: 0.8rem"
                               class="form-control" name="description" placeholder="پاسخ">{{$consult->answer}}</span>
-                @endif
-            </div>
+                    @endif
+                </div>
 
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="custom-btn btn-danger" data-dismiss="modal" style="max-width: 60px">بستن</button>
-            </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="custom-btn btn-danger" data-dismiss="modal" style="max-width: 60px">بستن</button>
+                </div>
 
+            </div>
         </div>
     </div>
-</div>
-@endforeach
+    @endforeach
 
 
-</div>
-@include('include.footer')
+    </div>
+    @include('include.footer')
 </body>
 </html>

@@ -56,6 +56,8 @@ Route::post('/skill-learning/offer-insert', 'SiteSkillController@offerInsert');
  */
 Route::get('/gathering', 'SiteGatheringController@gathering');
 Route::get('/gathering/workshop', 'SiteGatheringController@workshop');
+Route::get('/gathering/industry-posts', 'SiteGatheringController@industryPosts');
+Route::get('/gathering/industry-post/{id}', 'SiteGatheringController@industryPost');
 Route::get('/gathering/workshop-detail/{id}', 'SiteGatheringController@workshopDetail');
 Route::get('/gathering/workshop/register/{id}', 'SiteGatheringController@workshopRegister');
 Route::get('/gathering/visit-industries', 'SiteGatheringController@industry');
@@ -71,6 +73,10 @@ Route::get('/gathering/visit-industries/register/{id}', 'SiteGatheringController
 Route::get('/idea', 'SiteIdeaController@idea');
 Route::get('/idea/support', 'SiteIdeaController@support');
 Route::get('/idea/startup', 'SiteIdeaController@startup');
+
+
+
+
 
 
 /*
@@ -138,6 +144,9 @@ Route::get('/admin/connection', 'Admin\AdminSiteController@connection');
 Route::post('/admin/connection/update', 'Admin\AdminSiteController@connectionUpdate');
 Route::get('/admin/inquery', 'Admin\AdminSiteController@messages');
 Route::post('/admin/message/answer', 'Admin\AdminSiteController@messageAnswer');
+Route::get('/admin/managers', 'Admin\AdminSiteController@managers');
+Route::post('/admin/managers/update', 'Admin\AdminSiteController@managersUpdate');
+
 
 //section guidance
 Route::get('/admin/guidance', 'Admin\AdminGuidanceController@guidance');
@@ -190,6 +199,8 @@ Route::get('/admin/visit-industries/remove/{id}', 'Admin\AdminGatheringControlle
 Route::post('/admin/visit-industries/add', 'Admin\AdminGatheringController@visitIndustryAdd');
 Route::get('/admin/visit-details/{id}', 'Admin\AdminGatheringController@visitIndustryDetail');
 Route::post('/admin/visit-industries/edit', 'Admin\AdminGatheringController@visitIndustryEdit');
+Route::get('/admin/invite-industries', 'Admin\AdminGatheringController@industryPost');
+Route::post('/admin/industry-post/add', 'Admin\AdminGatheringController@industryPostAdd');
 
 
 
@@ -233,6 +244,15 @@ Route::get('/admin/users/consult', 'Admin\AdminUserController@consult');
 Route::post('/admin/users/consult/add', 'Admin\AdminUserController@consultAdd');
 Route::get('/admin/users/forums', 'Admin\AdminUserController@forums');
 Route::post('/admin/users/forum/add', 'Admin\AdminUserController@forumAdd');
+Route::get('/admin/industries', 'Admin\AdminUserController@industries');
+Route::post('/admin/industry/add', 'Admin\AdminUserController@industryAdd');
+
+
+//section backup
+Route::get('/admin/backup', 'Admin\BackupController@index');
+
+
+
 
 
 
@@ -262,4 +282,21 @@ Route::get('/counselor/profile', 'Consultant\ConsultantController@profile');
 Route::post('/consultant/change-password', 'Consultant\ConsultantController@changePass');
 Route::get('/counselor/contact', 'Consultant\ConsultantController@contact');
 Route::post('/counselor/send-message', 'Consultant\ConsultantController@sendMessage');
+
+
+
+//forum panel
+Route::get('/forum/forum', 'Forum\ForumController@forum');
+Route::post('/forum/send-message', 'Forum\ForumController@sendMessage');
+Route::get('/forum/profile', 'Forum\ForumController@profile');
+Route::post('/forum/change-pass', 'Forum\ForumController@changePassword');
+
+
+
+//industry panel
+Route::get('/industry/industry', 'Industry\IndustryController@industry');
+Route::post('/industry/send-message', 'Industry\IndustryController@sendMessage');
+Route::get('/industry/profile', 'Industry\IndustryController@profile');
+Route::post('/industry/change-pass', 'Industry\IndustryController@changePassword');
+
 

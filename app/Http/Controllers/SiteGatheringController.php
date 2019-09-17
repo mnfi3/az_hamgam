@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\IndustryPost;
 use App\StudentWorkshops;
 use App\UserVisits;
 use App\Util;
@@ -128,5 +129,18 @@ class SiteGatheringController extends Controller
 
     return back()->with('success', 'ثبت نام با موفقیت انجام شد');
 
+  }
+
+  public function industryPosts(){
+    $posts = IndustryPost::orderBy('id', 'desc')->paginate(4);
+    return view('site.industry-posts', compact('posts'));
+  }
+
+  public function industryPost($id) {
+    $post = IndustryPost::find($id);
+    $image = $post->image;
+    $description = $post->description;
+    $file = $post->file;
+    return view('site.content', compact('image', 'description', 'file'));
   }
 }

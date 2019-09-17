@@ -66,4 +66,9 @@ class Util extends Model
   const KEY_SUCCESS = 'success';
   const KEY_SUCCESS_GRADUATION = 'success-graduation';
   const KEY_SUCCESS_STARTUP = 'success-startup';
+
+
+  //managers
+  const KEY_MANAGER_RESEARCH = 'manager-research';
+  const KEY_MANAGER_INDUSTRY = 'manager-industry';
 }

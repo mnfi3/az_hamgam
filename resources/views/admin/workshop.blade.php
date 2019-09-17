@@ -31,8 +31,8 @@
             @csrf
             <div class="form-group row py-4">
                 <label class="col-md-3 col-form-label ">توضیح مختصر:</label>
-                <div class="col-md-5">
-                    <textarea type="text" id="editor1" required=""
+                <div class="col-md-8">
+                    <textarea type="text" id="editor1" required="" style="font-size: 0.8rem"
                               class="form-control" name="description" placeholder="توضیحات">{{$util->description}}</textarea>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                 <label class="col-md-3 col-form-label ">تصویر :</label>
                 <div class="col-md-5">
                     <input type="file" id="editor1" required=""
-                              class="form-control" name="image" >
+                           class="form-control" name="image" >
                 </div>
                 <div class="col-md-3">
                     <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
@@ -57,13 +57,13 @@
                         <h5 class="text-white" style="font-family: Vazir;text-align: right">همه کارگاه ها</h5>
                         <ul style="direction: rtl" class="side-list2">
                             @foreach($workshops as $workshop)
-                            <li>
-                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="text-light text-right mb-2 pr-2">{{$workshop->title}}</p>
-                                    <a href="{{url('/admin/workshop/remove', $workshop->id)}}" class="custom-btn text-center">حذف</a>
-                                    <a href="{{url('/admin/workshop-detailes', $workshop->id)}}" class="custom-btn text-center">جزئیات</a>
-                                </div>
-                            </li>
+                                <li>
+                                    <div class="d-flex flex-row align-items-center justify-content-between">
+                                        <p class="text-light text-right mb-2 pr-2">{{$workshop->title}}</p>
+                                        <a href="{{url('/admin/workshop/remove', $workshop->id)}}" class="custom-btn text-center">حذف</a>
+                                        <a href="{{url('/admin/workshop-detailes', $workshop->id)}}" class="custom-btn text-center">جزئیات</a>
+                                    </div>
+                                </li>
                             @endforeach
 
                         </ul>
@@ -102,7 +102,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-2 pt-0">زمان برگزاری :</label>
+                        <label class="col-form-label col-sm-2 pt-0" for="time">زمان برگزاری :</label>
                         <div class="col-sm-10">
                             <input  type="text"  name="time" class="form-control start-day example1" required>
                             {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
@@ -145,7 +145,7 @@
 <script>
   (function ($) {
     $(document).ready(function () {
-        console.log('hello Ali');
+      console.log('hello Ali');
       $(".start-day").persianDatepicker({
         format: 'YYYY/MM/DD',
         timePicker: {

@@ -133,4 +133,20 @@ class AdminSiteController extends Controller
     $message->save();
     return back();
   }
+
+  public function managers(){
+    $research_manager = Util::get(Util::KEY_MANAGER_RESEARCH)->description;
+    $industry_manager = Util::get(Util::KEY_MANAGER_INDUSTRY)->description;
+    return view('admin.managers', compact('industry_manager', 'research_manager'));
+  }
+
+  public function managersUpdate(Request $request){
+    $util = Util::get(Util::KEY_MANAGER_RESEARCH);
+    $util->description = $request->research_manager;
+    $util->save();
+    $util = Util::get(Util::KEY_MANAGER_INDUSTRY);
+    $util->description = $request->industry_manager;
+    $util->save();
+    return back();
+  }
 }

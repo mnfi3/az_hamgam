@@ -74,7 +74,7 @@
     <div class="container my-3 ">
         <div class="row ">
             <div class="col-8 " align="center">
-                <div class="pagination ">
+                <ul class="pagination">
                     {{$workshops->links()}}
                     {{--<a href="#">&laquo;</a>--}}
                     {{--<a href="#">1</a>--}}
@@ -84,7 +84,7 @@
                     {{--<a href="#">5</a>--}}
                     {{--<a href="#">6</a>--}}
                     {{--<a href="#">&raquo;</a>--}}
-                </div>
+                </ul>
             </div>
         </div>
 

@@ -55,7 +55,7 @@
                     @csrf
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label ">توضیح مختصر دوره های مهارتی :</label>
-                        <div class="col-md-5">
+                        <div class="col-md-9">
                     <textarea type="text" id="editor1" required=""
                               class="form-control" name="description" placeholder="توضیحات">{{$util->description}}</textarea>
                         </div>
@@ -85,25 +85,28 @@
                 <form action="{{url('/admin/skill-course/add')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
                     @csrf
                     <div class="form-group row py-4">
-                        <label class="col-md-2 col-form-label " style=""> عنوان دوره :</label>
+                        <label class="col-sm-2 col-form-label " style=""> عنوان دوره :</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-10 "  name="title" placeholder="نام دوره">
+                               class="form-control col-sm-8 "  name="title" placeholder="نام دوره">
                     </div>
                     <div class="form-group row py-4 ">
-                        <label class="col-md-3 col-form-label " style=""> رشته های مرتبط:</label>
-                        <div class="bg-light d-flex flex-wrap align-items-stretch justify-content-start p-2 set-font bg-danger" style="border-radius: 5px;min-height: 200px;width: 85%">
-                            @foreach($fields as $field)
-                            <div class=" p-1 mr-2 ">
-                                <span class="custom-control bg-warnin " style="">
+                        <label class="col-md-2 col-form-label " style=""> رشته های مرتبط:</label>
+                        <div class="col-md-8">
+                            <div class="bg-light d-flex flex-wrap align-items-stretch justify-content-start p-2 set-font bg-danger" style="border-radius: 5px;min-height: 200px;width: 100%">
+                                @foreach($fields as $field)
+                                    <div class=" p-1 mr-2 ">
+                                <span class="custom-control " style="">
                                          <input type="checkbox" class="custom-control-input" id="defaultUnchecked{{$field->id}}" name="fields[]" value="{{$field->id}}">
                                          <label class="custom-control-label text-dark set-font" for="defaultUnchecked{{$field->id}}">{{$field->name}}</label>
                                 </span>
-                            </div>
-                            @endforeach
+                                    </div>
+                                @endforeach
 
+
+                            </div>
 
                         </div>
-                    </div>
+                         </div>
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style="" >تصویر  :</label>
                         <div class="col-md-10 ">
@@ -117,7 +120,7 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-sm-2 pt-0">زمان برگزاری :</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input  type="text"  name="time" class="form-control" required>
                             {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
                         </div>
@@ -140,7 +143,7 @@
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style=""> جنسیت:</label>
-                        <select class="browser-default custom-select col-md-8" name="gender">
+                        <select class="browser-default custom-select col-sm-8" name="gender">
                             <option value="mixed" selected>مشترک</option>
                             <option value="male">مرد</option>
                             <option value="female">زن</option>
@@ -149,7 +152,7 @@
 
                     <div class="form-group row">
                         <label class="col-form-label col-sm-2 pt-0">ظرفیت (نفر): </label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input  type="number"  name="capacity" class="form-control" required>
                             {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
                         </div>
@@ -157,7 +160,7 @@
 
                     <div class="form-group row">
                         <label class="col-form-label col-sm-2 pt-0">هزینه (تومان) : </label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input  type="number"  name="price" class="form-control" value="0" required>
                             {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
                         </div>
@@ -165,14 +168,14 @@
 
                     <div class="form-group row">
                         <legend class="col-form-label col-sm-2 pt-0">آخرین مهلت ثبت نام</legend>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input  type="text" name="deadline" class="form-control start-day example1" required>
                         </div>
                     </div>
 
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
-                        <div class="col-md-9 mr-auto">
+                        <div class="col-md-8 mr-auto">
                     <textarea type="text" id="editor1" required=""
                               class="form-control" name="description" placeholder="توضیحات"></textarea>
                         </div>

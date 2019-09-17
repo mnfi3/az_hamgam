@@ -8,22 +8,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
-class AdminUserController extends Controller
-{
+class AdminUserController extends Controller {
   public function __construct() {
     $this->middleware('auth');
     $this->middleware('admin');
   }
 
-  public function students(Request $request){
-    if(strlen($request->national_code) > 0 && strlen($request->name) > 0){
+  public function students(Request $request) {
+    if (strlen($request->national_code) > 0 && strlen($request->name) > 0) {
       $students = User::where('role', '=', 'student')->where('national_code', '=', $request->national_code);
       $students = $students->where('first_name', 'like', $request->name)->orWhere('last_name', 'like', $request->name)->paginate(30);
-    }elseif (strlen($request->national_code) > 0 ){
+    } elseif (strlen($request->national_code) > 0) {
       $students = User::where('role', '=', 'student')->where('national_code', '=', $request->national_code)->paginate(30);
-    }elseif (strlen($request->name) > 0 ){
+    } elseif (strlen($request->name) > 0) {
       $students = User::where('role', '=', 'student')->where('first_name', 'like', $request->name)->orWhere('last_name', 'like', $request->name)->paginate(30);
-    }else {
+    } else {
       $students = User::where('role', '=', 'student')->paginate(30);
     }
     $national = $request->national_code;
@@ -34,20 +33,20 @@ class AdminUserController extends Controller
     return view('admin.users.student', compact('students'));
   }
 
-  public function studentDetail($id){
+  public function studentDetail($id) {
     $student = User::find($id);
     return view('admin.users.student-detailes', compact('student'));
   }
 
-  public function masters(Request $request){
-    if(strlen($request->national_code) > 0 && strlen($request->name) > 0){
+  public function masters(Request $request) {
+    if (strlen($request->national_code) > 0 && strlen($request->name) > 0) {
       $masters = User::where('role', '=', 'master')->where('national_code', '=', $request->national_code);
       $masters = $masters->where('first_name', 'like', $request->name)->orWhere('last_name', 'like', $request->name)->paginate(30);
-    }elseif (strlen($request->national_code) > 0 ){
+    } elseif (strlen($request->national_code) > 0) {
       $masters = User::where('role', '=', 'master')->where('national_code', '=', $request->national_code)->paginate(30);
-    }elseif (strlen($request->name) > 0 ){
+    } elseif (strlen($request->name) > 0) {
       $masters = User::where('role', '=', 'master')->where('first_name', 'like', $request->name)->orWhere('last_name', 'like', $request->name)->paginate(30);
-    }else {
+    } else {
       $masters = User::where('role', '=', 'master')->paginate(30);
     }
 
@@ -59,12 +58,12 @@ class AdminUserController extends Controller
     return view('admin.users.master', compact('masters'));
   }
 
-  public function masterDetail($id){
+  public function masterDetail($id) {
     $master = User::find($id);
     return view('admin.users.master-detailes', compact('master'));
   }
 
-  public function masterAdd(Request $request){
+  public function masterAdd(Request $request) {
     $master = User::create([
       'first_name' => $request->first_name,
       'last_name' => $request->last_name,
@@ -80,12 +79,12 @@ class AdminUserController extends Controller
   }
 
 
-  public function consult(){
+  public function consult() {
     $consultants = User::where('role', '=', 'consultant')->orderBy('id', 'desc')->get();
     return view('admin.users.consult', compact('consultants'));
   }
 
-  public function consultAdd(Request $request){
+  public function consultAdd(Request $request) {
     $consultant = User::create([
       'first_name' => $request->first_name,
       'last_name' => $request->last_name,
@@ -100,12 +99,12 @@ class AdminUserController extends Controller
     return back();
   }
 
-  public function forums(){
+  public function forums() {
     $forums = User::where('role', '=', 'forum')->orderBy('id', 'desc')->get();
     return view('admin.users.forums', compact('forums'));
   }
 
-  public function forumAdd(Request $request){
+  public function forumAdd(Request $request) {
     $consultant = User::create([
       'first_name' => $request->first_name,
       'last_name' => $request->last_name,
@@ -113,6 +112,27 @@ class AdminUserController extends Controller
       'mobile' => $request->mobile,
       'national_code' => $request->national_code,
       'role' => 'forum',
+      'email' => $request->email,
+      'password' => Hash::make($request->password),
+    ]);
+
+    return back();
+  }
+
+
+  public function industries() {
+    $industries = User::where('role', '=', 'industry')->orderBy('id', 'desc')->get();
+    return view('admin.users.industry', compact('industries'));
+  }
+
+  public function industryAdd(Request $request){
+    $industry = User::create([
+      'first_name' => $request->name,
+      'last_name' => '',
+      'is_male' => '1',
+      'mobile' => $request->mobile,
+      'national_code' => '',
+      'role' => 'industry',
       'email' => $request->email,
       'password' => Hash::make($request->password),
     ]);
