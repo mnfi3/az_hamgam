@@ -126,7 +126,7 @@
                                 <br>
                                 <br>
                             @foreach($course->prerequisites as $prerequisite)
-                                   <span class="m-auto p-1" style="border-radius: 2px; background-color: rgba(206,215,223,0.86)"> {{$prerequisite->title}}</span>
+                                   <a  href="{{url('/skill-learning/course', $prerequisite->id)}}" class="m-auto p-1" style="border-radius: 2px; background-color: rgba(206,215,223,0.86)"> {{$prerequisite->title}}</a>
                             @endforeach
                             </p>
                         @endif
