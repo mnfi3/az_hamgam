@@ -34,6 +34,7 @@
                         <th scope="col">نام</th>
                         <th scope="col">ایمیل</th>
                         <th scope="col">پیام دریافتی</th>
+                        <th scope="col">حذف</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -64,10 +65,17 @@
                                 <td>{{$message->user->email}}</td>
                             @endif
                             <td><button class="custom-btn text-center" style="max-width: 150px" data-toggle="modal" data-target="#myModal{{$message->id}}">مشاهده </button></td>
+                            <td><a href="{{url('/admin/message/delete', $message->id)}}"><button class="custom-btn text-center" style="max-width: 100px"  >حذف </button></a></td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+
+
+
+                <ul  class="pagination" style="text-align: center">
+                    {{$messages->links()}}
+                </ul>
 
 
             </div>

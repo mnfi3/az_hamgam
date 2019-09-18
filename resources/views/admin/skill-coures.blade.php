@@ -125,6 +125,13 @@
                             {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2 pt-0">مدت (ساعت) :</label>
+                        <div class="col-sm-8">
+                            <input  type="number"  name="duration" class="form-control" required>
+                            {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
+                        </div>
+                    </div>
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style=""> مدرس دوره :</label>
                         <select class="browser-default custom-select col-md-8" name="master_id">

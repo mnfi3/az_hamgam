@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <div class="row mt-2">
                 <div class="col-5 mr-auto ml-auto bottom-line">
-                    <h2 class="text-center  p-2 mt-5 text-dark" style="font-family: Vazir; font-size: 3rem ; text-align: center"> هدایت تحصیلی </h2>
+                    <h2 class="text-center  p-2 mt-5 text-dark" style="font-family: Vazir; font-size: 3rem ; text-align: center"> هدایت شغلی </h2>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">هدف</h4>
                         <p class="card-text ">
-                            {{substr(strip_tags($purpose), 0, 120)}} ...
+                            {{strip_tags($purpose)}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -72,7 +72,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">شغل های مرتبط با رشته</h4>
                         <p class="card-text">
-                            {{substr($jobs, 0, 120)}} ...
+                            {{$jobs}} ...
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -93,7 +93,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">مشاوره</h4>
                         <p class="card-text">
-                            {{substr($consult, 0, 120)}} ...
+                            {{$consult}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -119,7 +119,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">تغییر رشته</h4>
                         <p class="card-text">
-                            {{substr(strip_tags($change_field), 0, 120)}} ...
+                            {{strip_tags($change_field)}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">

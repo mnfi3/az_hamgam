@@ -69,7 +69,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">فارغ التحصیلان شاغل</h4>
                         <p class="card-text">
-                            {{substr($graduation, 0, 120)}}
+                            {{$graduation}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -91,7 +91,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">گروه های استارت آپی دانشگاه</h4>
                         <p class="card-text">
-                            {{substr($startup, 0, 120)}}
+                            {{$startup}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">

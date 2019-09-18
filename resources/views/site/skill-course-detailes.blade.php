@@ -34,6 +34,11 @@
                 <p class="my-2 text-right p-1 ">
                     زمان : {{$course->time}}
                 </p>
+                @if($course->price == 0)
+                    <p class="my-2 text-right p-1 " >هزینه : رایگان</p>
+                @else
+                    <p class="my-2 text-right p-1 ">هزینه : {{number_format($course->price)}} تومان</p>
+                @endif
 
                 @if(count($course->prerequisites) == 0)
                     <p class="my-2 text-right p-1 ">: پیش نیاز

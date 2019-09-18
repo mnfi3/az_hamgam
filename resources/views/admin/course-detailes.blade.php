@@ -60,7 +60,7 @@
                             <tr>
                                 <th scope="row">{{++$i}}</th>
                                 <td>{{$student->first_name.' '.$student->last_name}}</td>
-                                <td><a href="#" class="custom-btn text-center" style="max-width: 110px" data-toggle="modal" >مشاهده </a></td>
+                                <td><a href="{{url('/admin/users/student-detailes', $student->id)}}" class="custom-btn text-center m-2 p-2" style="max-width: 110px" >مشاهده </a></td>
                                 <td>
                                     @foreach($st_courses as $stc)
                                         @if($stc->student_id == $student->id && $stc->has_certificate == 1)
@@ -72,6 +72,8 @@
                                 </td>
                             </tr>
                         @endforeach
+
+                        <input class="custom-btn text-center" style="max-width: 110px" type="submit" value="ارسال">
 
                     </form>
 
@@ -104,6 +106,14 @@
                         <label class="col-form-label col-sm-2 pt-0">زمان برگزاری :</label>
                         <div class="col-sm-10">
                             <input  type="text"  name="time" value="{{$course->time}}" class="form-control" required>
+                            {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2 pt-0">مدت :</label>
+                        <div class="col-sm-10">
+                            <input  type="number"  name="duration" value="{{$course->duration}}" class="form-control" required>
                             {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
                         </div>
                     </div>

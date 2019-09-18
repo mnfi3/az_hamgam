@@ -57,7 +57,7 @@
                             <tr>
                                 <th scope="row">{{++$i}}</th>
                                 <td>{{$student->first_name.' '.$student->last_name}}</td>
-                                <td><a href="#" class="custom-btn text-center m-2 p-2" style="max-width: 110px" >مشاهده </a></td>
+                                <td><a href="{{url('/admin/users/student-detailes', $student->id)}}" class="custom-btn text-center m-2 p-2" style="max-width: 110px" >مشاهده </a></td>
                                 <td>
                                     @foreach($st_workshops as $stw)
                                         @if($stw->student_id == $student->id && $stw->has_certificate == 1)
@@ -69,6 +69,8 @@
                                 </td>
                             </tr>
                         @endforeach
+
+                        <input class="custom-btn text-center" style="max-width: 110px" type="submit" value="ارسال">
                     </form>
                     </tbody>
                 </table>
@@ -110,11 +112,24 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-3 pt-0">زمان برگزاری :</label>
+                        <label class="col-form-label col-sm-3 pt-0">تاریخ برگزاری :</label>
                             <input  type="text" name="time" value="{{$workshop->time}}" class="form-control col-sm-9 start-day example1" required>
                             {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
 
                     </div>
+
+                    <div class="form-group row py-4">
+                        <label class="col-md-2 col-form-label " style=""> ساعت برگزاری</label>
+                        <input type="text" id="title" required=""
+                               class="form-control col-md-10 "  name="hour" placeholder="ساعت" value="{{$workshop->hour}}">
+                    </div>
+
+                    <div class="form-group row py-4">
+                        <label class="col-md-2 col-form-label " style="">مدت</label>
+                        <input type="number" id="title" required=""
+                               class="form-control col-md-10 "  name="duration" placeholder="ساعت" value="{{$workshop->duration}}">
+                    </div>
+
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style=""> ظرفیت کارگاه</label>
                         <input type="number" id="title" required=""

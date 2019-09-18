@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Course;
 use App\User;
+use App\Util;
+use App\Workshop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -138,5 +141,22 @@ class AdminUserController extends Controller {
     ]);
 
     return back();
+  }
+
+
+  public function printCourseCert($studnet_id, $course_id){
+    $user = User::find($studnet_id);
+    $course = Course::find($course_id);
+    $authority1 = Util::get(Util::KEY_MANAGER_INDUSTRY)->description;
+    $authority2 = Util::get(Util::KEY_MANAGER_RESEARCH)->description;
+    return view('admin.users.certificate-print', compact('user', 'course', 'authority1', 'authority2'));
+  }
+
+  public function printWorkshopCert($studnet_id, $workshop_id){
+    $user = User::find($studnet_id);
+    $course = Workshop::find($workshop_id);
+    $authority1 = Util::get(Util::KEY_MANAGER_INDUSTRY)->description;
+    $authority2 = Util::get(Util::KEY_MANAGER_RESEARCH)->description;
+    return view('admin.users.certificate-print', compact('user', 'course', 'authority1', 'authority2'));
   }
 }

@@ -47,7 +47,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">کارگاه های آموزشی </h4>
                         <p class="card-text">
-                            {{substr($workshop, 0, 120)}}
+                            {{$workshop}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -71,7 +71,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">بازدید از صنایع</h4>
                         <p class="card-text">
-                            {{substr($visit, 0, 120)}}
+                            {{$visit}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -94,7 +94,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">دعوت از صاحبان صنایع</h4>
                         <p class="card-text">
-                            {{substr($invite, 0, 120)}}
+                            {{$invite}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">

@@ -67,41 +67,42 @@
     <img class="cert-logo" src="{{asset('img/certLogo.png')}}" alt="">
     <p class="content">
         احتراماً  گواهی می شود
-        {{--@if($user->is_male == 1)--}}
+        @if($user->is_male == 1)
             <span> آقای </span>
-        {{--@else--}}
-            {{--<span> سرکار خانم </span>--}}
-        {{--@endif--}}
-{{--        <span class="bolds"> «{{$user->name}}» </span>--}}
+        @else
+            <span> سرکار خانم </span>
+        @endif
+        <span class="bolds"> «{{$user->first_name. ' '.$user->last_name}}» </span>
         به شماره ملی
         <span class="bolds">
-            {{--«{{\App\Http\Controllers\helper\PersianNumber::latinToPersian($user->national_code)}}» --}}
+            «{{\App\Http\Controllers\Util\PNum::toPersian($user->national_code)}}»
         </span>
         دوره مهارتی
         <span class="bolds">
-            {{--«{{$course->title}}»--}}
+            «{{$course->title}}»
         </span>
         را به مدت
         <span class="bolds">
-            {{--«{{\App\Http\Controllers\helper\PersianNumber::latinToPersian($course->duration)}}» </span>--}}
+            «{{\App\Http\Controllers\Util\PNum::toPersian($course->duration)}}» </span>
         ساعت ، در تاریخ
-        {{--@php--}}
-            {{--$date = new \App\Http\Controllers\helper\PersianDate();--}}
-            {{--$date = $date->to_date($course->finish_date, 'Y/m/d')--}}
-        {{--@endphp--}}
+        @php
+            $date = new \App\Http\Controllers\Util\PDate();
+            $date = $date->toPersian($course->deadline, 'Y/m/d')
+        @endphp
         <span class="bolds">
-            {{--«{{\App\Http\Controllers\helper\PersianNumber::latinToPersian($date)}}»--}}
+            «{{\App\Http\Controllers\Util\PNum::toPersian($date)}}»
         </span>
         در دانشگاه شهید مدنی آذربایجان با موفقیت به پایان رسانده اند.
     </p>
+
     <p class="center-content d-flex justify-content-around">
-        <span>{{$authority1}}</span>
         <span>{{$authority2}}</span>
+        <span>{{$authority1}}</span>
     </p>
     <p class="footer-content d-flex justify-content-around">
-        {{--<span class="title-one">معاون پژوهش و فناوری</span>--}}
+        <span class="title-one">معاون پژوهش و فناوری</span>
         <span>مدیر امور فناوری</span>
-        <span>معاون پژوهش و فناوری</span>
+        {{--<span>معاون پژوهش و فناوری</span>--}}
     </p>
 </div>
 
@@ -111,7 +112,7 @@
 <body style="background-color: #ffffff">
 <div class="rtl container mt-3">
     <div class="d-flex justify-content-around align-items-center no-print">
-        <a href="{{route('admin-user-detail', $user->id)}}" class="btn btn-sm btn-blue"><i class="fal fa-arrow-alt-right mr-1"></i>بازگشت</a>
+        <a href="{{url('/admin/users/student-detailes', $user->id)}}" class="btn btn-sm btn-blue"><i class="fal fa-arrow-alt-right mr-1"></i>بازگشت</a>
         <button class="btn btn-sm btn-blue" onclick="window.print()"><i class="fal fa-print"></i> پرینت</button>
     </div>
 </div>

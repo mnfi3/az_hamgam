@@ -123,8 +123,15 @@ class AdminSiteController extends Controller
 
 
   public function messages(){
-    $messages = Message::orderBy('id', 'desc')->paginate(20);
+    $messages = Message::where('is_deleted', '=', 0)->orderBy('id', 'desc')->paginate(10);
     return view('admin.inquery', compact('messages'));
+  }
+
+  public function messageDelete($id){
+    $message = Message::find($id);
+    $message->is_deleted = 1;
+    $message->save();
+    return back();
   }
 
   public function messageAnswer(Request $request){

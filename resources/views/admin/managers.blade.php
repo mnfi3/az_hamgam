@@ -35,7 +35,7 @@
                                class="form-control col-md-8 "  name="research_manager" value="{{$research_manager}}" placeholder="نام و نام خانوادگی">
                     </div>
                     <div class="form-group row py-4">
-                        <label class="col-md-4 col-form-label " style=""> مدیر ارتباط با صنعت :</label>
+                        <label class="col-md-4 col-form-label " style=""> مدیر امور فناوری :</label>
                         <input type="text" id="title" required=""
                                class="form-control col-md-8"  name="industry_manager" value="{{$industry_manager}}" placeholder="نام و نام خانوادگی">
                     </div>

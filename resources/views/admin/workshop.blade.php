@@ -102,12 +102,29 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-2 pt-0" for="time">زمان برگزاری :</label>
+                        <label class="col-form-label col-sm-2 pt-0" for="time">تاریخ برگزاری :</label>
                         <div class="col-sm-10">
                             <input  type="text"  name="time" class="form-control start-day example1" required>
                             {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2 pt-0" for="time">ساعت برگزاری :</label>
+                        <div class="col-sm-10">
+                            <input  type="text"  name="hour" class="form-control col-md-10" required>
+                            {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2 pt-0" for="time">مدت (ساعت) :</label>
+                        <div class="col-sm-10">
+                            <input  type="number"  name="duration" placeholder="ساعت" class="form-control col-md-10" required>
+                            {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
+                        </div>
+                    </div>
+
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style=""> ظرفیت کارگاه</label>
                         <input type="number" id="title" required=""

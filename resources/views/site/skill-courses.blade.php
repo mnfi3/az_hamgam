@@ -106,10 +106,15 @@
                     <div class="card-body pt-2" style="overflow-y: hidden">
                         <h4 class="card-title"> {{$course->title}}</h4>
                         <p class="card-text">
-                            @php echo $course->description; @endphp
+{{--                            @php echo $course->description; @endphp--}}
                         </p>
                         <p>مدرس :  {{$course->master->first_name . ' ' . $course->master->last_name}}</p>
                         <p>زمان : {{$course->time}}</p>
+                        @if($course->price == 0)
+                            <p >هزینه : رایگان</p>
+                        @else
+                            <p >هزینه : {{number_format($course->price)}} تومان</p>
+                        @endif
                         @if(count($course->prerequisites) == 0)
                         <p>: پیش نیاز
                         <br>

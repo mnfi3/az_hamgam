@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Util\Sadad;
 use App\IndustryPost;
 use App\Order;
+use App\Payment;
 use App\StudentWorkshops;
 use App\UserVisits;
 use App\Util;
@@ -103,12 +104,13 @@ class SiteGatheringController extends Controller
       return back()->with('success', 'ثبت نام با موفقیت انجام شد');
     }
 
+    //payment tasks
 
     $order = Order::create([
       'user_id' => $user->id,
       'orderable_id' => $workshop->id,
       'orderable_type' => 'App\Workshop',
-      'amount' => $workshop->price,
+      'amount' => (int)($workshop->price * 10),
     ]);
 
     $sadad = new Sadad(
@@ -131,8 +133,60 @@ class SiteGatheringController extends Controller
 
 
 
-  public function workshopRegisterVerify(){
+  public function workshopRegisterVerify(Request $request){
+    $order_id = $request->OrderId;
+    $token = $request->token;
+    $pay_res_code = $request->ResCode;
 
+    $order = Order::find($order_id);
+
+    if ($pay_res_code != 0){
+      $description = 'تراکنش نا موفق بود در صورت کسر مبلغ از حساب شما حداکثر پس از 72 ساعت مبلغ به حسابتان برمی گردد';
+      return view('user.paymentFailed', compact('description'));
+    }
+
+
+    $sadad = new Sadad(
+      env('SADAD_MERCHANT_ID'),
+      env('SADAD_TERMINAL_ID'),
+      env('SADAD_TERMINAL_KEY'),
+      env('SADAD_PAYMENT_IDENTITY')
+    );
+
+    $verify_response = $sadad->verify($token);
+    $res_code = $verify_response->ResCode;
+
+    if($pay_res_code == 0 && $res_code == 0){
+      //success
+
+      $amount = $verify_response->Amount;
+      $description = $verify_response->Description;
+      $retrival_ref_no = $verify_response->RetrivalRefNo;
+      $system_trace_no = $verify_response->SystemTraceNo;
+      $order_id = $verify_response->OrderId;
+
+      $user_workshop = StudentWorkshops::create([
+        'student_id' => $order->user_id,
+        'workshop_id' => $order->orderable_id,
+        'has_certificate' => 0,
+      ]);
+
+      $payment = Payment::create([
+        'user_id' => $order->user_id,
+        'paymentable_id' => $order->orderable_id,
+        'paymentable_type' => 'App\Workshop',
+        'amount' => (int)(($order->amount)/10),
+        'retrival_ref_no' => $retrival_ref_no,
+        'system_trace_no' => $system_trace_no,
+      ]);
+
+      return view('user.paymentSuccess', compact(['description', 'retrival_ref_no', 'system_trace_no', 'amount']));
+
+    }else{
+      //failed
+      $description = 'تراکنش نا موفق بود در صورت کسر مبلغ از حساب شما حداکثر پس از 72 ساعت مبلغ به حسابتان برمی گردد';
+      return view('user.paymentFailed', compact('description'));
+    }
   }
 
 

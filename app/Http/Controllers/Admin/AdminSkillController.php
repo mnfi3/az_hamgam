@@ -64,23 +64,28 @@ class AdminSkillController extends Controller
       'capacity' => $request->capacity,
       'gender' => $request->gender,
       'deadline' =>$d->toGregorian(PNum::toLatin($request->deadline)),
+      'duration' => $request->duration,
     ]);
 
 
-    $field_ids = $request->fields;
-    foreach ($field_ids as $id){
-      $cf = CourseField::create([
-        'course_id' => $course->id,
-        'field_id' => $id
-      ]);
+    if($request->fields != null) {
+      $field_ids = $request->fields;
+      foreach ($field_ids as $id) {
+        $cf = CourseField::create([
+          'course_id' => $course->id,
+          'field_id' => $id
+        ]);
+      }
     }
 
-    $course_ids = $request->prerequisite;
-    foreach ($course_ids as $id) {
-      $p = Prerequisite::create([
-        'course_id' => $course->id,
-        'requisite_id' => $id,
-      ]);
+    if($request->prerequisite != null) {
+      $course_ids = $request->prerequisite;
+      foreach ($course_ids as $id) {
+        $p = Prerequisite::create([
+          'course_id' => $course->id,
+          'requisite_id' => $id,
+        ]);
+      }
     }
 
     return back();
@@ -100,6 +105,7 @@ class AdminSkillController extends Controller
     $course->capacity = $request->capacity;
     $course->gender = $request->gender;
     $course->deadline = $d->toGregorian(PNum::toLatin($request->deadline));
+    $course->duration = $request->duration;
     $course->save();
     return back();
   }

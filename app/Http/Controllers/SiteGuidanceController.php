@@ -26,46 +26,24 @@ class SiteGuidanceController extends Controller
   //academic-guidance section
 
   public function academicGuidance(){
-    $description = '';
-    $file = '';
-    $jobs = '';
-    $jobs_image = '';
-    $consult = '';
-    $consult_image = '';
-    $purpose = '';
-    $purpose_image = '';
-    $change_field = '';
-    $change_field_image = '';
     $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE);
-    if(!is_null($util)) {
-      $description = $util->description;
-      $file = $util->file;
-    }
-
-
+    $description = $util->description;
+    $file = $util->file;
 
     $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_JOBS);
-    if(!is_null($util)) {
-      $jobs = $util->description;
-      $jobs_image = $util->image;
-    }
+    $jobs = $util->description;
+    $jobs_image = $util->image;
 
     $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_CONSULT);
-    if(!is_null($util)) {
-      $consult = $util->description;
-      $consult_image = $util->image;
-    }
+    $consult = $util->description;
+    $consult_image = $util->image;
 
     $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_PURPOSE);
-    if(!is_null($util)){
-      $purpose = $util->description;
-      $purpose_image = $util->image;
-    }
+    $purpose = $util->description;
+    $purpose_image = $util->image;
     $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_CHANGE_FIELD);
-    if(!is_null($util)) {
-      $change_field = $util->description;
-      $change_field_image = $util->image;
-    }
+    $change_field = $util->description;
+    $change_field_image = $util->image;
 
 
 

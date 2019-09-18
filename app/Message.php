@@ -9,7 +9,7 @@ class Message extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['user_id', 'name', 'email', 'question', 'answer', 'is_seen'];
+  protected $fillable = ['user_id', 'name', 'email', 'question', 'answer', 'is_seen', 'is_deleted'];
 
   public function user(){
     return $this->belongsTo('App\User');

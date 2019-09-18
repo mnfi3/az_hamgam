@@ -49,7 +49,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title"> دوره های مهارتی</h4>
                         <p class="card-text">
-                            {{substr($courses, 0, 120)}} ...
+                            {{$courses}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -73,7 +73,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">پیشنهاد دوره</h4>
                         <p class="card-text">
-                            {{substr($suggest, 0, 120)}} ...
+                            {{$suggest}}
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
@@ -97,7 +97,7 @@
                     <div class="card-body pt-2" style="overflow-y: auto">
                         <h4 class="card-title">ترم بندی  دورهای مهارتی</h4>
                         <p class="card-text">
-                            {{substr($term, 0, 120)}} ...
+                            {{$term}} ...
                         </p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">

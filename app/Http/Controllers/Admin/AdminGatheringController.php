@@ -65,7 +65,9 @@ class AdminGatheringController extends Controller
       'capacity' => $request->capacity,
       'price' => $request->price,
       'time' => $d->toGregorian(PNum::toLatin($request->time)),
+      'hour' => $request->hour,
       'deadline' => $d->toGregorian(PNum::toLatin($request->time)),
+      'duration' => $request->duration,
     ]);
     return back();
   }
@@ -87,7 +89,9 @@ class AdminGatheringController extends Controller
     $workshop->capacity = $request->capacity;
     $workshop->price = $request->price;
     $workshop->time = $d->toGregorian(PNum::toLatin($request->time));
+    $workshop->hour = $request->hour;
     $workshop->deadline = $d->toGregorian(PNum::toLatin($request->time));
+    $workshop->duration = $request->duration;
     $workshop->save();
 
     return back();

@@ -75,5 +75,26 @@ class User extends Authenticatable
     return $this->hasMany('App\Advice', 'adviser_id');
   }
 
+  public function hasWorkshopCert($id){
+    $stWorkshop = StudentWorkshops::where('student_id' , '=', $this->id)->where('workshop_id', '=', $id)->first();
+    if($stWorkshop != null){
+      if($stWorkshop->has_certificate == 1){
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  public function hasCourseCert($id){
+    $stCourse = StudentCourses::where('student_id' , '=', $this->id)->where('course_id', '=', $id)->first();
+    if($stCourse != null){
+      if($stCourse->has_certificate == 1){
+        return true;
+      }
+    }
+    return false;
+  }
+
 
 }

@@ -45,6 +45,7 @@ Route::get('/skill-learning/termination','SiteSkillController@term');
 Route::get('/skill-learning/courses', 'SiteSkillController@courses');
 Route::get('/skill-learning/course/{id}', 'SiteSkillController@courseDetail');
 Route::get('/skill-learning/course/register/{id}', 'SiteSkillController@courseRegister');
+Route::post('/skill-learning/course/register/payment-verify', 'SiteSkillController@courseRegisterVerify');
 Route::get('/skill-learning/offer', 'SiteSkillController@offer');
 Route::post('/skill-learning/offer-insert', 'SiteSkillController@offerInsert');
 
@@ -60,7 +61,7 @@ Route::get('/gathering/industry-posts', 'SiteGatheringController@industryPosts')
 Route::get('/gathering/industry-post/{id}', 'SiteGatheringController@industryPost');
 Route::get('/gathering/workshop-detail/{id}', 'SiteGatheringController@workshopDetail');
 Route::get('/gathering/workshop/register/{id}', 'SiteGatheringController@workshopRegister');
-Route::get('/gathering/workshop/register/payment-verify', 'SiteGatheringController@workshopRegisterVerify');
+Route::post('/gathering/workshop/register/payment-verify', 'SiteGatheringController@workshopRegisterVerify');
 Route::get('/gathering/visit-industries', 'SiteGatheringController@industry');
 Route::get('/gathering/visit-industries-details/{id}', 'SiteGatheringController@industryDetail');
 Route::get('/gathering/visit-industries/register/{id}', 'SiteGatheringController@industryRegister');
@@ -145,6 +146,7 @@ Route::get('/admin/connection', 'Admin\AdminSiteController@connection');
 Route::post('/admin/connection/update', 'Admin\AdminSiteController@connectionUpdate');
 Route::get('/admin/inquery', 'Admin\AdminSiteController@messages');
 Route::post('/admin/message/answer', 'Admin\AdminSiteController@messageAnswer');
+Route::get('/admin/message/delete/{id}', 'Admin\AdminSiteController@messageDelete');
 Route::get('/admin/managers', 'Admin\AdminSiteController@managers');
 Route::post('/admin/managers/update', 'Admin\AdminSiteController@managersUpdate');
 
@@ -238,6 +240,8 @@ Route::get('/admin/success/startup/remove/{id}', 'Admin\AdminSuccessController@s
 //section users management
 Route::get('/admin/users/student', 'Admin\AdminUserController@students');
 Route::get('/admin/users/student-detailes/{id}', 'Admin\AdminUserController@studentDetail');
+Route::get('/admin/users/student/course/cert-print/{student_id}/{course_id}', 'Admin\AdminUserController@printCourseCert');
+Route::get('/admin/users/student/workshop/cert-print/{student_id}/{workshop_id}', 'Admin\AdminUserController@printWorkshopCert');
 Route::get('/admin/users/master', 'Admin\AdminUserController@masters');
 Route::post('/admin/users/master/add', 'Admin\AdminUserController@masterAdd');
 Route::get('/admin/users/master-detailes/{id}', 'Admin\AdminUserController@masterDetail');

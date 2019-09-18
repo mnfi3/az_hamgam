@@ -45,11 +45,17 @@
                     <div class="card-body pt-2" style="overflow-y: hidden">
                         <h4 class="card-title">{{$workshop->title}}</h4>
                         <p class="card-text">
-                            {{substr($workshop->description, 0, 120)}} ...
+{{--                            {{substr($workshop->description, 0, 120)}} ...--}}
                         </p>
                         <p>مدرس : {{$workshop->master->first_name . ' ' . $workshop->master->last_name}}</p>
                         @php($date = new \App\Http\Controllers\Util\PDate())
-                        <p >زمان : {{$date->toPersian($workshop->time, 'Y/m/d')}}</p>
+                        <p >تاریخ : {{$date->toPersian($workshop->time, 'Y/m/d')}}</p>
+                        <p >ساعت : {{$workshop->hour}}</p>
+                        @if($workshop->price == 0)
+                        <p >هزینه : رایگان</p>
+                        @else
+                        <p >هزینه : {{number_format($workshop->price)}} تومان</p>
+                        @endif
 
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">

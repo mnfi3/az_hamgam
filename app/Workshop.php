@@ -9,7 +9,7 @@ class Workshop extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['title', 'description', 'image', 'master_id', 'time', 'capacity', 'price', 'deadline'];
+  protected $fillable = ['title', 'description', 'image', 'master_id', 'time', 'hour', 'capacity', 'price', 'deadline', 'duration'];
 
 
   public function master(){

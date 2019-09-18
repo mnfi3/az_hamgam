@@ -55,6 +55,7 @@ class Sadad {
 
 
     $response = $this->callApi($this->start_pay_url, $str_data);//
+
     $response = json_decode($response);
     return $response;
     //$response_data->ResCode ?== 0 => success   &&  $response_data->Token && $response_data->Description

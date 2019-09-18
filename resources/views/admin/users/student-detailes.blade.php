@@ -48,7 +48,7 @@
                 {{--</div>--}}
 
             </div>
-                <h5 class="text-white text-right mb-2" style="font-family: Vazir">دوره ها و کارگاه های {{$student->first_name.' '.$student->last_name}}</h5>
+                <h5 class="text-white text-right mb-5 " style="font-family: Vazir">دوره ها و کارگاه های {{$student->first_name.' '.$student->last_name}}</h5>
             @foreach($student->studentCourses as $course)
                  <div class="col-md-6 col-lg-6 pb-3">
                         <div class="card card-custom bg-white border-white border-0">
@@ -60,8 +60,11 @@
                                 <h4 class="card-title">{{$course->title}}</h4>
                             </div>
                             <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                <div align="right">
+                                @if($student->hasCourseCert($course->id))
+                                <div align="center">
+                                    <a class="custom-btn text-center" style="max-width: 110px" href="{{url('/admin/users/student/course/cert-print', ['student_id' => $student->id, 'course_id' => $course->id])}}">پرینت گواهی</a>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -78,8 +81,11 @@
                             <h4 class="card-title">{{$workshop->title}}</h4>
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
-                            <div align="right">
-                            </div>
+                            @if($student->hasWorkshopCert($workshop->id))
+                                <div align="center">
+                                    <a class="custom-btn text-center" style="max-width: 110px" href="{{url('/admin/users/student/workshop/cert-print',['student_id' => $student->id, 'workshop_id' => $workshop->id])}}">پرینت گواهی</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

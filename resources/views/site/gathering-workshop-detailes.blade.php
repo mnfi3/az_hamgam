@@ -33,9 +33,18 @@
                 </p>
                 @php($date = new \App\Http\Controllers\Util\PDate())
                 <p class="my-2 text-right p-1 ">
-                    زمان : {{$date->toPersian($workshop->time, 'Y/m/d')}}
+                    تاریخ : {{$date->toPersian($workshop->time, 'Y/m/d')}}
                 </p>
 
+                <p class="my-2 text-right p-1 ">
+                    ساعت : {{$workshop->hour}}
+                </p>
+
+                @if($workshop->price == 0)
+                    <p class="my-2 text-right p-1 ">هزینه : رایگان</p>
+                @else
+                    <p class="my-2 text-right p-1 ">هزینه : {{number_format($workshop->price)}} تومان</p>
+                @endif
 
                 {{--<p class="my-2 text-right p-1 ">--}}
                 {{--جنسیت : مشترک--}}
