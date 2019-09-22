@@ -65,7 +65,7 @@
             @foreach($jobs as $job)
             <div class="col-md-4 col-lg-4 pb-3">
                 <div class="card card-custom2 bg-white border-white border-0">
-                    <div class="card-custom-img2" style="background-image: url({{asset($job->image)}});"></div>
+                    <div class="card-custom-img2" style="background-image: url('{{asset($job->image)}}');"></div>
                     <div class="card-body" style="overflow-y: auto">
                         <h5 class="card-title">{{$job->title}}</h5>
                         <p style="padding-top: 0px">

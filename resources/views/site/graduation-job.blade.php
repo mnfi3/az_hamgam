@@ -36,7 +36,7 @@
             @foreach($mans as $man)
                 <div class="col-md-4 col-lg-4 pb-3">
                     <div class="card card-custom bg-white border-white border-0">
-                        <div class="card-custom-img" style="background-image: url({{asset($man->image)}})"></div>
+                        <div class="card-custom-img" style="background-image: url('{{asset($man->image)}}')"></div>
                         <div class="card-custom-avatar">
                             {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                         </div>

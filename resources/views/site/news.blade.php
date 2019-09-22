@@ -37,7 +37,7 @@
             <div class="col-md-4 col-lg-4 pb-3">
                 <a href="{{url('/news/detailes', $post->id)}}" class="" style="color: black ;">
                     <div class="card news-card card-custom2 bg-white border-white border-0">
-                        <div class="card-custom-img2" style="background-image: url({{asset($post->image)}});"></div>
+                        <div class="card-custom-img2" style="background-image: url('{{asset($post->image)}}');"></div>
                         <div class="card-body" style="overflow-y: auto">
                             <h5 class="card-title">{{$post->title}}</h5>
                             <p style="padding-top: 0px">

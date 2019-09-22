@@ -52,7 +52,7 @@
             @foreach($student->studentCourses as $course)
                  <div class="col-md-6 col-lg-6 pb-3">
                         <div class="card card-custom bg-white border-white border-0">
-                            <div class="card-custom-img" style="background-image: url({{asset($course->image)}})"></div>
+                            <div class="card-custom-img" style="background-image: url('{{asset($course->image)}}')"></div>
                             <div class="card-custom-avatar">
                                 {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                             </div>
@@ -73,7 +73,7 @@
             @foreach($student->studentWorkshops as $workshop)
                 <div class="col-md-6 col-lg-6 pb-3">
                     <div class="card card-custom bg-white border-white border-0">
-                        <div class="card-custom-img" style="background-image: url({{asset($workshop->image)}})"></div>
+                        <div class="card-custom-img" style="background-image: url('{{asset($workshop->image)}}')"></div>
                         <div class="card-custom-avatar">
                             {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                         </div>
