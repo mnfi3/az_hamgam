@@ -28,7 +28,7 @@
 
 .start-header {
   opacity: 1;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,1);
   transform: translateY(0);
   padding: 0px 0;
   box-shadow: 0 3px 10px 0 rgba(138, 155, 165, 0.1);

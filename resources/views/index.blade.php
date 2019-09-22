@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     @include('include.page-title')
     @include('include.bootstrap')
     @include('include.nav-style-js')
@@ -14,14 +13,14 @@
 <body>
 @include('include.navigation')
 @include('include.carousel', $sliders)
-<div class="decription-section py-4">
+<div class="decription-section py-4" style="">
     <div class="container">
-        <div class="row">
+        <div class="row ">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <h2 class="mr-2 mt-3" style="text-align: center">
+                <h2 class="mr-2 mt-1 " style="text-align: center">
                     درباره سامانه همگام
                 </h2>
-                <p class=" py-3 my-2">
+                <p class=" pb-3 mb-2">
                     @php echo $about; @endphp
                 </p>
             </div>
@@ -134,6 +133,31 @@
 
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="question-section py-4">
+    <div class="container">
+        <h2 class="mt-2 py-2 text-center">آخرین اخبار و اطلاعیه ها </h2>
+        <div class="row my-3">
+           @foreach($posts as $post)
+            <div class="col-md-4 col-lg-4 pb-3">
+                <a href="{{url('/news/detailes', $post->id)}}" class="" style="color: black ;">
+                    <div class="card news-card card-custom2 bg-white border-white border-0">
+                        <div class="card-custom-img2" style="background-image: url({{asset($post->image)}});"></div>
+                        <div class="card-body" style="overflow-y: auto">
+                            <h5 class="card-title">{{$post->title}}</h5>
+                            <p style="padding-top: 0px">
+                                {{substr(strip_tags($post->description), 0, 30)}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+
+
         </div>
     </div>
 </div>

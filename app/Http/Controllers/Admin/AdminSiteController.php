@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\FrequentlyQuestion;
 use App\Http\Controllers\Util\Uploader;
 use App\Message;
+use App\Post;
 use App\Slider;
 use App\Util;
 use Illuminate\Http\Request;
@@ -36,6 +37,21 @@ class AdminSiteController extends Controller
       'link' => $request->link,
       'image' => $path,
     ]);
+
+    return back();
+  }
+
+  public function sliderEdit($id){
+    $slider = Slider::find($id);
+    return view('admin.slider-edit', compact('slider'));
+  }
+
+  public function sliderUpdate(Request $request){
+    $slider = Slider::find($request->id);
+    $path = Uploader::image($request->file('image'));
+    $slider->title = $request->title;
+    $slider->link = $request->link;
+    $slider->image = $path;
 
     return back();
   }
@@ -154,6 +170,32 @@ class AdminSiteController extends Controller
     $util = Util::get(Util::KEY_MANAGER_INDUSTRY);
     $util->description = $request->industry_manager;
     $util->save();
+    return back();
+  }
+
+  public function posts(){
+    $posts = Post::orderBy('id', 'desc')->get();
+    return view('admin.news', compact('posts'));
+  }
+
+  public function postAdd(Request $request){
+    $image = '';
+    $file = '';
+    if($request->hasFile('image')) $image = Uploader::image($request->file('image'));
+    if($request->hasFile('file')) $file = Uploader::image($request->file('file'));
+    $post = Post::create([
+      'title' => $request->title,
+      'description' => $request->description,
+      'image' => $image,
+      'file' => $file,
+    ]);
+
+    return back();
+  }
+
+  public function postRemove($id){
+    $post = Post::find($id);
+    $post->delete();
     return back();
   }
 }

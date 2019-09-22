@@ -7,6 +7,7 @@ use App\Field;
 use App\FrequentlyQuestion;
 use App\Idea;
 use App\Message;
+use App\Post;
 use App\Slider;
 use App\Startup;
 use App\User;
@@ -21,6 +22,7 @@ class SiteController extends Controller
 
   public function index(){
     $sliders = Slider::orderBy('id', 'desc')->get();
+    $posts = Post::orderBy('id', 'desc')->take(3)->get();
     $fields_count = Field::count();
     $students_count = User::where('role', '=', 'student')->count();
     $masters_count = User::where('role', '=', 'master')->count();
@@ -34,7 +36,7 @@ class SiteController extends Controller
     $util = Util::where('key', '=', Util::KEY_ABOUT)->orderBy('id', 'desc')->first();
     if(!is_null($util)) $about = $util->description;
     return view('index',
-      compact('sliders', 'students_count', 'masters_count', 'fields_count', 'ideas_count', 'courses_count', 'workshops_count', 'startups_count', 'visits_count', 'questions', 'about'));
+      compact('posts', 'sliders', 'students_count', 'masters_count', 'fields_count', 'ideas_count', 'courses_count', 'workshops_count', 'startups_count', 'visits_count', 'questions', 'about'));
   }
 
   public function questionAdd(Request $request){
@@ -48,5 +50,20 @@ class SiteController extends Controller
     ]);
 
     return back()->with('msg', 'پیام شما با موفقیت ارسال شد');
+  }
+
+
+
+  public function posts(){
+    $posts = Post::orderBy('id', 'desc')->paginate(9);
+    return view('site.news', compact('posts'));
+  }
+
+  public function post($id){
+    $post = Post::find($id);
+    $image = $post->image;
+    $file = $post->file;
+    $description = $post->description;
+    return view('site.content', compact('image', 'file', 'description'));
   }
 }

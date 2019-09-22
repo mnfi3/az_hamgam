@@ -24,29 +24,16 @@
     @include('admin.admin-navbar')
     <div class="container my-4 " id="side-list">
         <div class="row">
-            <div class="col-md-4 col-sm-12">
-                <h5 class="text-white text-right mb-2" style="font-family: Vazir">اسلایدرهای سایت</h5>
-                <ul style="direction: rtl" class="side-list">
-                    @foreach($sliders as $slider)
-                        <li>
-                            <div class="d-flex flex-row align-items-center justify-content-between">
-                                <p class="text-light text-right mb-2 pr-2">{{$slider->title}}</p>
-                                <a href="{{url('/admin/slider/remove', $slider->id)}}" class="custom-btn text-center">حذف</a>
-                                <a href="{{url('/admin/slider/edit', $slider->id)}}" class="custom-btn text-center">ویرایش</a>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="col-md-8 col-sm-12">
-                <h5 class="text-white text-right mb-2" style="font-family: Vazir">اضافه کردن اسلایدر</h5>
+            <div class="col-md-8 col-sm-12 ml-auto">
+                <h5 class="text-white text-right mb-2" style="font-family: Vazir">ویرایش اسلایدر</h5>
 
-                <form action="{{url('/admin/slider/add')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl">
+                <form action="{{url('/admin/slider/update')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl">
                     @csrf
+                    <input type="hidden" value="{{$slider->id}}" name="id">
                     <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style=""> عنوان :</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-10 "  name="title" placeholder="عنوان اسلایدر">
+                               class="form-control col-md-10 "  name="title" placeholder="" value="{{$slider->title}}">
                     </div>
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label " style="" >تصویر اسلایدر :</label>
@@ -62,7 +49,7 @@
                     <div class="form-group row py-4">
                         <label class="col-md-4 col-form-label " style=""> لینک (در صورت وجود) :</label>
                         <input type="text" id="title"
-                               class="form-control col-md-8 "  name="link" placeholder="اختیاری">
+                               class="form-control col-md-8 "  name="link" placeholder="" value="{{$slider->link}}">
                     </div>
                     <div class="d-flex justify-content-center mb-3">
                         <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>

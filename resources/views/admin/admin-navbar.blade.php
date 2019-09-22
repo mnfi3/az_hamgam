@@ -23,7 +23,8 @@
                         <a class="dropdown-item" href="{{url('/admin/connection')}}">راه های ارتباطی و لینک های مرتبط سامانه</a>
                         <a class="dropdown-item" href="{{url('/admin/inquery')}}">سوالات و درخواست های دریافتی</a>
                         <a class="dropdown-item" href="{{url('/admin/managers')}}">مدیران معاونت پژوهشی</a>
-{{--                        <a class="dropdown-item" href="{{url('/admin/explanation')}}">توصیحات هر بخش</a>--}}
+                        <a class="dropdown-item" href="{{url('/admin/news')}}">اخبار و اطلاعیه</a>
+                        {{--                        <a class="dropdown-item" href="{{url('/admin/explanation')}}">توصیحات هر بخش</a>--}}
 
                     </div>
                 </li>
@@ -87,7 +88,7 @@
                         {{--<a class="dropdown-item" href="#">دوره های مهارتی</a>--}}
                         {{--<a class="dropdown-item" href="{{url('/admin/idea-support')}}">الگوهای برتر اشتغال</a>--}}
                         <a class="dropdown-item" href="{{url('/admin/success/graduation-jobs')}}">فارغ التحصیلان شاغل</a>
-                            <a class="dropdown-item" href="{{url('/admin/success/startups')}}">گروه های استارت آپی دانشگاه</a>
+                        <a class="dropdown-item" href="{{url('/admin/success/startups')}}">گروه های استارت آپی دانشگاه</a>
                     </div>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2">
@@ -106,7 +107,7 @@
                     </div>
                 </li>
                 <li  class="dropdown nav-item mx-2 btn-primary">
-                    <a id="adminNavUsers" class="nav-link" href="{{url('/admin/backup')}}" role="button" >
+                    <a id="adminNavUsers" class="nav-link" href="#" role="button" >
                         <i class=""></i>
                         ایجاد فایل پشتیبان و دانلود
                     </a>

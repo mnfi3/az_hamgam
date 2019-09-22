@@ -25,6 +25,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 /*
+ * news section
+ */
+
+Route::get('/news', 'SiteController@posts');
+Route::get('/news/detailes/{id}', 'SiteController@post');
+
+
+
+/*
  * academic guidance section
  */
 
@@ -149,6 +158,11 @@ Route::post('/admin/message/answer', 'Admin\AdminSiteController@messageAnswer');
 Route::get('/admin/message/delete/{id}', 'Admin\AdminSiteController@messageDelete');
 Route::get('/admin/managers', 'Admin\AdminSiteController@managers');
 Route::post('/admin/managers/update', 'Admin\AdminSiteController@managersUpdate');
+Route::get('/admin/slider/edit/{id}', 'Admin\AdminSiteController@sliderEdit');
+Route::post('/admin/slider/update', 'Admin\AdminSiteController@sliderUpdate');
+Route::get('/admin/news', 'Admin\AdminSiteController@posts');
+Route::post('/admin/new/add', 'Admin\AdminSiteController@postAdd');
+Route::get('/admin/new/remove/{id}', 'Admin\AdminSiteController@postRemove');
 
 
 //section guidance
