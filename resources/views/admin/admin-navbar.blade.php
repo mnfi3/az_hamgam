@@ -107,7 +107,7 @@
                     </div>
                 </li>
                 <li  class="dropdown nav-item mx-2 btn-primary">
-                    <a id="adminNavUsers" class="nav-link" href="#" role="button" >
+                    <a id="adminNavUsers" class="nav-link" href="{{url('/admin/backup')}}" role="button" >
                         <i class=""></i>
                         ایجاد فایل پشتیبان و دانلود
                     </a>

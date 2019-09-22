@@ -65,7 +65,7 @@
             </div>
             <div class="col-md-6 col-lg-4 pb-3">
                 <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url({{asset($jobs_image)}});"></div>
+                    <div class="card-custom-img" style="background-image: url('{{asset($jobs_image)}}');"></div>
                     <div class="card-custom-avatar">
                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                     </div>
@@ -86,7 +86,7 @@
             </div>
             <div class="col-md-6 col-lg-4 pb-3">
                 <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url({{asset($consult_image)}})"></div>
+                    <div class="card-custom-img" style="background-image: url('{{asset($consult_image)}}')"></div>
                     <div class="card-custom-avatar">
                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                     </div>
@@ -112,7 +112,7 @@
 
             <div class="col-md-6 col-lg-4 pb-3 mr-auto ml-auto">
                 <div class="card card-custom bg-white border-white border-0">
-                    <div class="card-custom-img" style="background-image: url({{asset($change_field_image)}})"></div>
+                    <div class="card-custom-img" style="background-image: url('{{asset($change_field_image)}}')"></div>
                     <div class="card-custom-avatar">
                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                     </div>
