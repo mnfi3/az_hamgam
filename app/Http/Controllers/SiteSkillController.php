@@ -219,7 +219,7 @@ class SiteSkillController extends Controller
 
     if ($pay_res_code != 0){
       $description = 'تراکنش نا موفق بود در صورت کسر مبلغ از حساب شما حداکثر پس از 72 ساعت مبلغ به حسابتان برمی گردد';
-      return view('user.paymentFailed', compact('description'));
+      return view('site.paymentFailed', compact('description'));
     }
 
 
@@ -257,12 +257,12 @@ class SiteSkillController extends Controller
         'system_trace_no' => $system_trace_no,
       ]);
 
-      return view('user.paymentSuccess', compact(['description', 'retrival_ref_no', 'system_trace_no', 'amount']));
+      return view('site.paymentSuccess', compact(['description', 'retrival_ref_no', 'system_trace_no', 'amount']));
 
     }else{
       //failed
       $description = 'تراکنش نا موفق بود در صورت کسر مبلغ از حساب شما حداکثر پس از 72 ساعت مبلغ به حسابتان برمی گردد';
-      return view('user.paymentFailed', compact('description'));
+      return view('site.paymentFailed', compact('description'));
     }
   }
 

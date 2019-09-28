@@ -27,7 +27,7 @@
         </tbody>
     </table>
     <div class="text-center mt-2">
-        <a  href="{{route('user-courses')}}" class="m-auto btn btn-sm btn-blue">بازگشت به پنل کاربری</a>
+        <a  href="{{url('/home')}}" class="m-auto btn btn-sm btn-blue">بازگشت به پنل کاربری</a>
     </div>
 </div>
 </body>

@@ -19,6 +19,8 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        '/logout',
+        '/gathering/workshop/register/payment-verify',
+        '/skill-learning/course/register/payment-verify',
     ];
 }
