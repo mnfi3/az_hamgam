@@ -99,7 +99,7 @@
                     <div class="form-group row py-4">
                         <label class="col-md-3 col-form-label " style=""> ظرفیت :</label>
                         <input type="number" id="title" required=""
-                               class="form-control col-md-9 "  name="capacity" value="{{$visit->capacity}}" placeholder=" ظرفیت">
+                               class="form-control col-md-9 "  name="capacity" value="" placeholder=" ظرفیت">
                     </div>
                     <div class="form-group row py-4 ">
                         <label class="col-md-3 col-form-label">  زمان :</label>
