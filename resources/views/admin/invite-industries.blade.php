@@ -24,9 +24,60 @@
     @include('admin.admin-navbar')
     <div class="container my-4 " id="side-list">
 
+        <form action="{{url('/admin/invite-industries/update')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+            @csrf
+            <div class="form-group row py-4">
+                <label class="col-md-3 col-form-label ">توضیح مختصر:</label>
+                <div class="col-md-5">
+                    <textarea type="text" id="" required=""
+                              class="form-control" name="description" placeholder="توضیحات">{{$util->description}}</textarea>
+                </div>
+
+            </div>
+            <div class="form-group row py-4">
+                <label class="col-md-3 col-form-label ">تصویر:</label>
+                <div class="col-md-5">
+                    <input type="file" id="" required=""
+                           class="form-control" name="image" >
+                </div>
+                <div class="col-md-3">
+                    <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>
+                </div>
+            </div>
+        </form>
+
+        <div style="height: 2px;border-radius: 1px;margin: 10px 30px; background: #721c24; "></div>
+
         <div class="row">
-            <div class="col-md-8 col-sm-12 ml-auto">
-                <h5 class="text-white text-right mb-2" style="font-family: Vazir">دعوت از صنایع</h5>
+
+
+
+            <div class="col-md-4 col-sm-12">
+                <div class="d-flex flex-column">
+                    <div class="d-flex flex-column p-2" style="box-shadow: 0px 0px 15px rgba(10, 10, 10, 0.6);border-radius: 5px">
+                        <h5 class="text-white" style="font-family: Vazir;text-align: right">همه اخباردعوت از صاحبان صنایع</h5>
+                        <ul style="direction: rtl" class="side-list2">
+                            @foreach($posts as $post)
+                                <li>
+                                    <div class="d-flex flex-row align-items-center justify-content-between">
+                                        <p class="text-light text-right mb-2 pr-2">{{$post->title}}</p>
+                                        <a href="{{url('/admin/invite-industries/remove', $post->id)}}" class="custom-btn text-center">حذف</a>
+                                    </div>
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="col-md-8 col-sm-12 ">
+                <h5 class="text-white text-right mb-2" style="font-family: Vazir">دعوت از صنایع  </h5>
 
                 <form action="{{url('/admin/industry-post/add')}}" method="post" class="px-3" style="direction: rtl" enctype="multipart/form-data">
                     @csrf

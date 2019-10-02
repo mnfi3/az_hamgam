@@ -230,6 +230,8 @@ Route::get('/admin/visit-details/{id}', 'Admin\AdminGatheringController@visitInd
 Route::post('/admin/visit-industries/edit', 'Admin\AdminGatheringController@visitIndustryEdit');
 Route::get('/admin/invite-industries', 'Admin\AdminGatheringController@industryPost');
 Route::post('/admin/industry-post/add', 'Admin\AdminGatheringController@industryPostAdd');
+Route::get('/admin/invite-industries/remove/{id}', 'Admin\AdminGatheringController@industryPostRemove');
+Route::post('/admin/invite-industries/update', 'Admin\AdminGatheringController@inviteIndustryUpdate');
 
 
 

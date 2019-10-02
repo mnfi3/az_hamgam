@@ -184,20 +184,38 @@ class AdminGatheringController extends Controller
 
 
   public function industryPost(){
-    return view('admin.invite-industries');
+    $util = Util::get(Util::KEY_GATHERING_INDUSTRY_INVITE);
+    $posts = IndustryPost::orderBy('id', 'desc')->get();
+    return view('admin.invite-industries', compact('posts', 'util'));
   }
 
   public function industryPostAdd(Request $request){
+    $file = '';
+    if($request->hasFile('file')) $file = Uploader::file($request->file('file'));
     $post = IndustryPost::create([
       'title' => $request->title,
       'description' => $request->description,
       'image' => Uploader::image($request->file('image')),
-      'file' => Uploader::file($request->file('file')),
+      'file' => $file,
     ]);
 
     return back();
   }
 
+
+  public function inviteIndustryUpdate(Request $request){
+    $util = Util::get(Util::KEY_GATHERING_INDUSTRY_INVITE);
+    $util->description = $request->description;
+    if($request->hasFile('image')) $util->image = Uploader::image($request->file('image'));
+    $util->save();
+    return back();
+  }
+
+  public function industryPostRemove($id){
+    $post = IndustryPost::find($id);
+    $post->delete();
+    return back();
+  }
 
 
 
