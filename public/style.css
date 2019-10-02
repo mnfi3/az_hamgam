@@ -147,37 +147,37 @@ a:hover {
 @-webkit-keyframes anim-1 {
   0%, 8.3% { right: -100%; opacity: 1; }
   8.3%,25% { right: 25%; opacity: 1; }
-  33.33%, 100% { right: 110%; opacity: 0; }
+  33.33%, 100% { right: 210%; opacity: 0; }
 }
 
 @keyframes anim-1 {
   0%, 8.3% { right: -25%; opacity: 0; }
   8.3%,25% { right: 25%; opacity: 1; }
-  33.33%, 100% { right: 110%; opacity: 0; }
+  33.33%, 100% { right: 210%; opacity: 0; }
 }
 
 @-webkit-keyframes anim-2 {
-  0%, 33.33% { right: -100%; opacity: 1; }
+  0%, 33.33% { right: -200%; opacity: 1; }
   41.63%, 58.29% { right: 25%; opacity: 1; }
-  66.66%, 100% { right: 110%; opacity: 0; }
+  66.66%, 100% { right: 100%; opacity: 0; }
 }
 
 @keyframes anim-2 {
-  0%, 33.33% { right: -25%; opacity: 0; }
+  0%, 33.33% { right: -200%; opacity: 0; }
   41.63%, 58.29% { right: 25%; opacity: 1; }
-  66.66%, 100% { right: 110%; opacity: 0; }
+  66.66%, 100% { right: 100%; opacity: 0; }
 }
 
 @-webkit-keyframes anim-3 {
-  0%, 66.66% { right: -100%; opacity: 1; }
+  0%, 66.66% { right: -300%; opacity: 1; }
   74.96%, 91.62% { right: 25%; opacity: 1; }
-  100% { right: 110%; opacity: 0; }
+  100% { right: 100%; opacity: 0; }
 }
 
 @keyframes anim-3 {
-  0%, 66.66% { right: -25%; opacity: 0; }
+  0%, 66.66% { right: -300%; opacity: 0; }
   74.96%, 91.62% { right: 25%; opacity: 1; }
-  100% { right: 110%; opacity: 0; }
+  100% { right: 100%; opacity: 0; }
 }
 
 
@@ -267,7 +267,7 @@ a:hover {
   text-align: center;
 }
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.85);
   top: 0;
   left: 0;
   width: 100%;
@@ -328,7 +328,7 @@ a:hover {
 
 .mian-footer{
   color: white;
-  background: url("img/tile-bg-2.png");
+  background: url("img/bg.svg");
   background-repeat: repeat;
   background-attachment: fixed;
   font-family: Vazir;

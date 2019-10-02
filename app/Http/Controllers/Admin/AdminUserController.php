@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Course;
+use App\FreeCourse;
 use App\User;
 use App\Util;
 use App\Workshop;
@@ -155,6 +156,14 @@ class AdminUserController extends Controller {
   public function printWorkshopCert($studnet_id, $workshop_id){
     $user = User::find($studnet_id);
     $course = Workshop::find($workshop_id);
+    $authority1 = Util::get(Util::KEY_MANAGER_INDUSTRY)->description;
+    $authority2 = Util::get(Util::KEY_MANAGER_RESEARCH)->description;
+    return view('admin.users.certificate-print', compact('user', 'course', 'authority1', 'authority2'));
+  }
+
+  public function printFreeCourseCert($studnet_id, $free_course_id){
+    $user = User::find($studnet_id);
+    $course = FreeCourse::find($free_course_id);
     $authority1 = Util::get(Util::KEY_MANAGER_INDUSTRY)->description;
     $authority2 = Util::get(Util::KEY_MANAGER_RESEARCH)->description;
     return view('admin.users.certificate-print', compact('user', 'course', 'authority1', 'authority2'));

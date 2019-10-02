@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Field;
+use App\FreeCourse;
 use App\Http\Controllers\Util\Sadad;
 use App\Order;
 use App\Payment;
 use App\StudentCourses;
+use App\StudentFreeCourses;
 use App\Suggest;
 use App\Util;
 use Illuminate\Http\Request;
@@ -32,25 +34,21 @@ class SiteSkillController extends Controller
     $courses_image = '';
 
     $util = Util::get(Util::KEY_SKILL);
-    if ($util != null) $description = $util->description;
+    $description = $util->description;
     $util = Util::get(Util::KEY_SKILL_TERM);
-    if ($util != null){
-      $term = $util->description;
-      $term_image = $util->image;
-    }
+    $term = $util->description;
+    $term_image = $util->image;
     $util = Util::get(Util::KEY_SKILL_SUGGEST);
-    if ($util != null) {
-      $suggest = $util->description;
-      $suggest_image = $util->image;
-    }
+    $suggest = $util->description;
+    $suggest_image = $util->image;
     $util = Util::get(Util::KEY_SKILL_COURSES);
-    if ($util != null) {
-      $courses = $util->description;
-      $courses_image = $util->image;
-    }
+    $courses = $util->description;
+    $courses_image = $util->image;
+
+    $free_course = Util::get(Util::KEY_SKILL_FREE_COURSES);
 
     return view('site.skill-learning',
-      compact('description', 'term', 'term_image', 'suggest', 'suggest_image', 'courses', 'courses_image'));
+      compact('description', 'term', 'term_image', 'suggest', 'suggest_image', 'courses', 'courses_image', 'free_course'));
   }
 
 
@@ -252,6 +250,144 @@ class SiteSkillController extends Controller
         'user_id' => $order->user_id,
         'paymentable_id' => $order->orderable_id,
         'paymentable_type' => 'App\Course',
+        'amount' => (int)(($order->amount)/10),
+        'retrival_ref_no' => $retrival_ref_no,
+        'system_trace_no' => $system_trace_no,
+      ]);
+
+      return view('site.paymentSuccess', compact(['description', 'retrival_ref_no', 'system_trace_no', 'amount']));
+
+    }else{
+      //failed
+      $description = 'تراکنش نا موفق بود در صورت کسر مبلغ از حساب شما حداکثر پس از 72 ساعت مبلغ به حسابتان برمی گردد';
+      return view('site.paymentFailed', compact('description'));
+    }
+  }
+
+
+  public function freeCourses(){
+    $courses = FreeCourse::orderBy('id', 'desc')->paginate(9);
+    return view('site.free-courses', compact('courses'));
+  }
+
+  public function freeCourseDetail($id){
+    $course = FreeCourse::find($id);
+    return view('site.free-course-detailes', compact('course'));
+  }
+
+
+
+  public function freeCourseRegister($id){
+    $user = Auth::user();
+    $user_free_course = $user->studentFreeCourses;
+    $freeCourse = FreeCourse::find($id);
+
+
+    //check re register
+    foreach ($user_free_course as $item) {
+      if($item->id == $freeCourse->id){
+        return back()->with('fail', 'شما قبلا در این دوره ثبت نام کرده اید');
+      }
+    }
+
+    //check deadline
+    if (date('Y-m-d') > $freeCourse->time){
+      return back()->with('fail', 'مهلت ثبت نام تمام شده است');
+    }
+    //check workshop capacity
+    if ($freeCourse->students()->count() >= $freeCourse->capacity){
+      return back()->with('fail', 'ظرفیت کارگاه پر شده است');
+    }
+
+
+
+
+
+
+    //if price==0
+    if ($freeCourse->price == 0){
+      $student_free_course = StudentFreeCourses::create([
+        'student_id' => $user->id,
+        'free_course_id' => $freeCourse->id,
+        'has_certificate' => 0,
+      ]);
+      return back()->with('success', 'ثبت نام با موفقیت انجام شد');
+    }
+
+    //payment tasks
+
+    $order = Order::create([
+      'user_id' => $user->id,
+      'orderable_id' => $freeCourse->id,
+      'orderable_type' => 'App\FreeCourse',
+      'amount' => (int)($freeCourse->price * 10),
+    ]);
+
+    $sadad = new Sadad(
+      env('SADAD_MERCHANT_ID'),
+      env('SADAD_TERMINAL_ID'),
+      env('SADAD_TERMINAL_KEY'),
+      env('SADAD_PAYMENT_IDENTITY')
+    );
+
+    $response = $sadad->request($order->amount, $order->id, url('/skill-learning/free-course/register/payment-verify'));
+
+    if($response->ResCode != 0){
+      $description = $response->Description;
+      return view('site.paymentFailed', compact('description'));
+    }else{
+      return redirect($sadad->getRedirectUrl() . $response->Token);
+    }
+  }
+
+
+
+
+
+
+
+  public function freeCourseRegisterVerify(Request $request){
+    $order_id = $request->OrderId;
+    $token = $request->token;
+    $pay_res_code = $request->ResCode;
+
+    $order = Order::find($order_id);
+
+    if ($pay_res_code != 0){
+      $description = 'تراکنش نا موفق بود در صورت کسر مبلغ از حساب شما حداکثر پس از 72 ساعت مبلغ به حسابتان برمی گردد';
+      return view('site.paymentFailed', compact('description'));
+    }
+
+
+    $sadad = new Sadad(
+      env('SADAD_MERCHANT_ID'),
+      env('SADAD_TERMINAL_ID'),
+      env('SADAD_TERMINAL_KEY'),
+      env('SADAD_PAYMENT_IDENTITY')
+    );
+
+    $verify_response = $sadad->verify($token);
+    $res_code = $verify_response->ResCode;
+
+    if($pay_res_code == 0 && $res_code == 0){
+      //success
+
+      $amount = $verify_response->Amount;
+      $description = $verify_response->Description;
+      $retrival_ref_no = $verify_response->RetrivalRefNo;
+      $system_trace_no = $verify_response->SystemTraceNo;
+      $order_id = $verify_response->OrderId;
+
+      $user_workshop = StudentFreeCourses::create([
+        'student_id' => $order->user_id,
+        'free_course_id' => $order->orderable_id,
+        'has_certificate' => 0,
+      ]);
+
+      $payment = Payment::create([
+        'user_id' => $order->user_id,
+        'paymentable_id' => $order->orderable_id,
+        'paymentable_type' => 'App\FreeCourse',
         'amount' => (int)(($order->amount)/10),
         'retrival_ref_no' => $retrival_ref_no,
         'system_trace_no' => $system_trace_no,

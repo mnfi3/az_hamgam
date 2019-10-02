@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Course;
+use App\FreeCourse;
 use App\Message;
 use App\Workshop;
 use Illuminate\Http\Request;
@@ -35,8 +36,20 @@ class MasterController extends Controller
     return view('master.workshop', compact('workshops'));
   }
 
+  public function freeCourse(){
+    $courses = Auth::user()->masterFreeCourses;
+    return view('master.free-course', compact('courses'));
+  }
+
   public function workshopDetail($id){
     $workshop = Workshop::find($id);
+    if (Auth::user()->id == $workshop->master_id) {
+      return view('master.workshop-detalis', compact('workshop'));
+    }
+  }
+
+  public function freeCourseDetail($id){
+    $workshop = FreeCourse::find($id);
     if (Auth::user()->id == $workshop->master_id) {
       return view('master.workshop-detalis', compact('workshop'));
     }

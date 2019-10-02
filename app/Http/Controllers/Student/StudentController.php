@@ -29,6 +29,11 @@ class StudentController extends Controller
     return view('student.workshop', compact('workshops'));
   }
 
+  public function freeCourse(){
+    $courses = Auth::user()->studentFreeCourses()->orderBy('id', 'desc')->paginate(9);
+    return view('student.free-course', compact('courses'));
+  }
+
   public function consults(){
     $consults = Auth::user()->studentConsults()->orderBy('id', 'desc')->paginate(9);
     foreach ($consults as $consult){

@@ -50,6 +50,7 @@ class Util extends Model
   const KEY_SKILL_TERM = 'skill-term';
   const KEY_SKILL_COURSES = 'skill-courses';
   const KEY_SKILL_SUGGEST = 'skill-suggest';
+  const KEY_SKILL_FREE_COURSES = 'skill-free-courses';
 
   //gathering
   const KEY_GATHERING = 'gathering';

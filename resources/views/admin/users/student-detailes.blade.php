@@ -91,6 +91,27 @@
                 </div>
             @endforeach
 
+            @foreach($student->studentFreeCourses as $course)
+                <div class="col-md-6 col-lg-6 pb-3">
+                    <div class="card card-custom bg-white border-white border-0">
+                        <div class="card-custom-img" style="background-image: url('{{asset($course->image)}}')"></div>
+                        <div class="card-custom-avatar">
+                            {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
+                        </div>
+                        <div class="card-body pt-2" style="overflow-y: hidden">
+                            <h4 class="card-title">{{$course->title}}</h4>
+                        </div>
+                        <div class="card-footer" style="background: inherit; border-color: inherit;">
+                            @if($student->hasFreeCourseCert($course->id))
+                                <div align="center">
+                                    <a class="custom-btn text-center" style="max-width: 110px" href="{{url('/admin/users/student/free-course/cert-print',['student_id' => $student->id, 'free_course_id' => $course->id])}}">پرینت گواهی</a>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
         </div>
     </div>
 </div>

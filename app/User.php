@@ -38,6 +38,10 @@ class User extends Authenticatable
     return $this->belongsToMany('App\Workshop', 'student_workshops', 'student_id', 'workshop_id');
   }
 
+  public function studentFreeCourses(){
+    return $this->belongsToMany('App\FreeCourse', 'student_free_courses', 'student_id', 'free_course_id');
+  }
+
   public function studentConsults(){
     return $this->hasMany('App\Advice');
   }
@@ -67,6 +71,10 @@ class User extends Authenticatable
     return $this->hasMany('App\Workshop', 'master_id');
   }
 
+  public function masterFreeCourses(){
+    return $this->hasMany('App\FreeCourse', 'master_id');
+  }
+
   public function messages(){
     return $this->hasMany('App\Message');
   }
@@ -93,6 +101,17 @@ class User extends Authenticatable
         return true;
       }
     }
+    return false;
+  }
+
+  public function hasFreeCourseCert($id){
+    $stWorkshop = StudentFreeCourses::where('student_id' , '=', $this->id)->where('free_course_id', '=', $id)->first();
+    if($stWorkshop != null){
+      if($stWorkshop->has_certificate == 1){
+        return true;
+      }
+    }
+
     return false;
   }
 

@@ -19,6 +19,7 @@
                         {{--<a class="dropdown-item" href="#">دوره های مهارتی</a>--}}
                         <a class="dropdown-item" href="{{url('/student/student')}}">دوره های مهارتی</a>
                         <a class="dropdown-item" href="{{url('/student/workshop')}}">کارگاه های آموزشی</a>
+                        <a class="dropdown-item" href="{{url('/student/free-course')}}">دوره های آزاد</a>
 
                     </div>
                 </li>

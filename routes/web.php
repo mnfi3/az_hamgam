@@ -57,6 +57,10 @@ Route::get('/skill-learning/course/register/{id}', 'SiteSkillController@courseRe
 Route::post('/skill-learning/course/register/payment-verify', 'SiteSkillController@courseRegisterVerify');
 Route::get('/skill-learning/offer', 'SiteSkillController@offer');
 Route::post('/skill-learning/offer-insert', 'SiteSkillController@offerInsert');
+Route::get('/skill-learning/free-courses', 'SiteSkillController@freeCourses');
+Route::get('/skill-learning/free-courses-detailes/{id}', 'SiteSkillController@freeCourseDetail');
+Route::get('/skill-learning/free-course/register/{id}', 'SiteSkillController@freeCourseRegister');
+Route::post('/skill-learning/free-course/register/payment-verify', 'SiteSkillController@freeCourseRegisterVerify');
 
 
 
@@ -124,6 +128,7 @@ Route::get('/success/university-startups', 'SiteSuccessController@startup');
 
 Route::get('/student/student', 'Student\StudentController@student');
 Route::get('/student/workshop', 'Student\StudentController@workshop');
+Route::get('/student/free-course', 'Student\StudentController@freeCourse');
 Route::get('/student/consult', 'Student\StudentController@consults');
 Route::get('/student/profile', 'Student\StudentController@profile');
 Route::post('/student/profile-update', 'Student\StudentController@profileUpdate');
@@ -197,6 +202,13 @@ Route::get('/admin/course-offer', 'Admin\AdminSkillController@courseOffer');
 Route::post('/admin/course-offer/update', 'Admin\AdminSkillController@courseOfferUpdate');
 Route::get('/admin/schedule', 'Admin\AdminSkillController@schedule');
 Route::post('/admin/schedule/update', 'Admin\AdminSkillController@scheduleUpdate');
+Route::get('/admin/free-courses', 'Admin\AdminSkillController@freeCourses');
+Route::get('/admin/free-course-details/{id}', 'Admin\AdminSkillController@freeCourseDetail');
+Route::post('/admin/free-courses/update', 'Admin\AdminSkillController@freeCourseUpdate');
+Route::get('/admin/free-courses/remove/{id}', 'Admin\AdminSkillController@freeCourseRemove');
+Route::post('/admin/free-course/add', 'Admin\AdminSkillController@freeCourseAdd');
+Route::post('/admin/free-course/edit', 'Admin\AdminSkillController@freeCourseEdit');
+Route::post('/admin/free-course/send-cert', 'Admin\AdminSkillController@freeCourseSendCert');
 
 
 
@@ -256,6 +268,7 @@ Route::get('/admin/users/student', 'Admin\AdminUserController@students');
 Route::get('/admin/users/student-detailes/{id}', 'Admin\AdminUserController@studentDetail');
 Route::get('/admin/users/student/course/cert-print/{student_id}/{course_id}', 'Admin\AdminUserController@printCourseCert');
 Route::get('/admin/users/student/workshop/cert-print/{student_id}/{workshop_id}', 'Admin\AdminUserController@printWorkshopCert');
+Route::get('/admin/users/student/free-course/cert-print/{student_id}/{free_course_id}', 'Admin\AdminUserController@printFreeCourseCert');
 Route::get('/admin/users/master', 'Admin\AdminUserController@masters');
 Route::post('/admin/users/master/add', 'Admin\AdminUserController@masterAdd');
 Route::get('/admin/users/master-detailes/{id}', 'Admin\AdminUserController@masterDetail');
@@ -286,7 +299,9 @@ Route::get('/admin/backup', 'Admin\BackupController@index');
 Route::get('/master/master', 'Master\MasterController@master');
 Route::get('/master/course-detalis/{id}', 'Master\MasterController@courseDetail');
 Route::get('/master/workshop', 'Master\MasterController@workshops');
+Route::get('/master/free-course', 'Master\MasterController@freeCourse');
 Route::get('/master/workshop-detalis/{id}', 'Master\MasterController@workshopDetail');
+Route::get('/master/free-course-detalis/{id}', 'Master\MasterController@freeCourseDetail');
 Route::get('/master/profile', 'Master\MasterController@profile');
 Route::post('/master/change-pass', 'Master\MasterController@changePass');
 Route::get('/master/contact', 'Master\MasterController@contact');

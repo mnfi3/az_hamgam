@@ -49,6 +49,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarSite">
                         {{--<a class="dropdown-item" hskill-couresref="#">دوره های مهارتی</a>--}}
                         <a class="dropdown-item" href="{{url('/admin/skill-courses')}}">دوره های مهارتی</a>
+                        <a class="dropdown-item" href="{{url('/admin/free-courses')}}">دوره های آزاد</a>
                         <a class="dropdown-item" href="{{url('/admin/course-offer')}}">پیشنهاد دوره</a>
                         <a class="dropdown-item" href="{{url('/admin/schedule')}}">ترم بندی دورهای مهارتی</a>
                     </div>

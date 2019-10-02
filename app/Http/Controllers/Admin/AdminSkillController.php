@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Course;
 use App\CourseField;
 use App\Field;
+use App\FreeCourse;
 use App\Http\Controllers\Util\PDate;
 use App\Http\Controllers\Util\PNum;
 use App\Http\Controllers\Util\Uploader;
 use App\Prerequisite;
+use App\StudentFreeCourses;
 use App\StudentCourses;
 use App\Suggest;
 use App\User;
@@ -159,7 +161,6 @@ class AdminSkillController extends Controller
   }
 
 
-
   public function courseOffer(){
     $suggests = Suggest::orderBy('id', 'desc')->paginate(40);
     $util = Util::get(Util::KEY_SKILL_SUGGEST);
@@ -185,6 +186,106 @@ class AdminSkillController extends Controller
     if($request->hasFile('image')) $util->image = Uploader::image($request->file('image'));
     if($request->hasFile('file')) $util->file = Uploader::file($request->file('file'));
     $util->save();
+    return back();
+  }
+
+
+
+  public function freeCourses(){
+    $util = Util::get(Util::KEY_SKILL_FREE_COURSES);
+    $fields = Field::orderBy('id', 'desc')->get();
+    $masters = User::where('role', '=', 'master')->orderBy('id', 'desc')->get();
+    $courses = FreeCourse::orderBy('id', 'desc')->get();
+    return view('admin.free-courses', compact('util', 'fields', 'masters', 'courses'));
+  }
+
+  public function freeCourseDetail($id){
+    $course = FreeCourse::find($id);
+    $st_courses = StudentFreeCourses::where('free_course_id', '=', $id)->get();
+    $masters = User::where('role', '=', 'master')->orderBy('id', 'desc')->get();
+    return view('admin.free-course-details', compact('course', 'masters', 'st_courses'));
+  }
+
+  public function freeCourseUpdate(Request $request){
+    $util = Util::get(Util::KEY_SKILL_FREE_COURSES);
+    $util->description = $request->description;
+    if($request->hasFile('image')) $util->image = Uploader::image($request->file('image'));
+    $util->save();
+    return back();
+  }
+
+  public function freeCourseRemove($id){
+    $course = FreeCourse::find($id);
+    $course->delete();
+    return back();
+  }
+
+  public function freeCourseAdd(Request $request){
+    $d = new PDate();
+    $course = FreeCourse::create([
+      'title' => $request->title,
+      'description' => $request->description,
+      'image' => Uploader::image($request->file('image')),
+      'master_id' => $request->master_id,
+      'capacity' => $request->capacity,
+      'price' => $request->price,
+      'time' => $d->toGregorian(PNum::toLatin($request->time)),
+      'hour' => $request->hour,
+      'deadline' => $d->toGregorian(PNum::toLatin($request->time)),
+      'duration' => $request->duration,
+    ]);
+    return back();
+  }
+
+
+  public function freeCourseEdit(Request $request){
+    $course = FreeCourse::find($request->id);
+    $d = new PDate();
+    $course->title = $request->title;
+    $course->description = $request->description;
+    if($request->hasFile('image')) $course->image = Uploader::image($request->file('image'));
+    $course->master_id = $request->master_id;
+    $course->capacity = $request->capacity;
+    $course->price = $request->price;
+    $course->time = $d->toGregorian(PNum::toLatin($request->time));
+    $course->hour = $request->hour;
+    $course->deadline = $d->toGregorian(PNum::toLatin($request->time));
+    $course->duration = $request->duration;
+    $course->save();
+
+    return back();
+  }
+
+  public function freeCourseSendCert(Request $request){
+    $certs = $request->certs;
+    if ($certs == null){
+      $st_courses = StudentFreeCourses::where('free_course_id', '=', $request->free_course_id)->get();
+      foreach ($st_courses as $stw){
+        $stw->has_certificate = 0;
+        $stw->save();
+      }
+      return back();
+    }
+
+    $st_courses = StudentFreeCourses::where('free_course_id', '=', $request->free_course_id)->get();
+    foreach ($st_courses as $stw){
+      $is_find = false;
+      foreach ($certs as $id){
+        if($stw->student_id == $id){
+          $is_find = true;
+          $stw->has_certificate = 1;
+          $stw->save();
+          break;
+        }
+      }
+
+      if ($is_find == false)  {
+        $stw->has_certificate = 0;
+        $stw->save();
+      }
+
+    }
+
     return back();
   }
 }
