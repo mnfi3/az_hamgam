@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Field;
+use App\FreeCourse;
 use App\FrequentlyQuestion;
 use App\Idea;
 use App\Message;
@@ -23,20 +24,21 @@ class SiteController extends Controller
   public function index(){
     $sliders = Slider::orderBy('id', 'desc')->get();
     $posts = Post::orderBy('id', 'desc')->take(3)->get();
-    $fields_count = Field::count();
-    $students_count = User::where('role', '=', 'student')->count();
-    $masters_count = User::where('role', '=', 'master')->count();
-    $ideas_count = Idea::count();
-    $courses_count = Course::count();
-    $workshops_count = Workshop::count();
-    $startups_count = Startup::count();
-    $visits_count = VisitIndustry::count();
     $questions = FrequentlyQuestion::all();
-    $about = '';
-    $util = Util::where('key', '=', Util::KEY_ABOUT)->orderBy('id', 'desc')->first();
-    if(!is_null($util)) $about = $util->description;
+    $about = Util::get(Util::KEY_ABOUT)->description;
+
+    $now = date('Y-m-d H:i:s');
+    $free_courses1 = FreeCourse::orderBy('id', 'desc')->where('deadline', '>', $now)->get();
+    $courses1 = Course::orderBy('id', 'desc')->where('deadline', '>', $now)->get();
+    $workshops1 = Workshop::orderBy('id', 'desc')->where('deadline', '>', $now)->get();
+
+    $free_courses2 = FreeCourse::orderBy('id', 'desc')->where('deadline', '<', $now)->get();
+    $courses2 = Course::orderBy('id', 'desc')->where('deadline', '<', $now)->get();
+    $workshops2 = Workshop::orderBy('id', 'desc')->where('deadline', '<', $now)->get();
     return view('index',
-      compact('posts', 'sliders', 'students_count', 'masters_count', 'fields_count', 'ideas_count', 'courses_count', 'workshops_count', 'startups_count', 'visits_count', 'questions', 'about'));
+      compact(
+        'posts', 'sliders', 'questions', 'about', 'free_courses1', 'courses1', 'workshops1',
+      'free_courses2', 'courses2', 'workshops2'));
   }
 
   public function questionAdd(Request $request){

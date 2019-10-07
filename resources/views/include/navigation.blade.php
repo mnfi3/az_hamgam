@@ -3,30 +3,7 @@
 <!-- partial:index.partial.html -->
 
 <div class="navigation-wrap  start-header start-style " >
-    <div class="row" style="z-index: 200">
-        @php($posts = \App\Post::orderBy('id', 'desc')->take(3)->get())
-        <div class="col-12 " style="max-height: 20px">
-            <div class="row">
-                <div class="col-md-9 mb-2 ">
-                    @php($i=0)
-                    @foreach($posts as $post)
-                        @php($i++)
-                        @if($i==1)
-                        <a class="item-1" href="{{url('/news/detailes', $post->id)}}">{{$post->title}}</a>
-                        @elseif($i==2)
-                        <a class="item-2" href="{{url('/news/detailes', $post->id)}}">{{$post->title}}</a>
-                        @elseif($i==3)
-                        <a class="item-3" href="{{url('/news/detailes', $post->id)}}">{{$post->title}}</a>
-                        @endif
 
-                    @endforeach
-                </div>
-                <div class="col-md-3  text-white">
-                    <h6 style="font-family: Vazir;text-align: center; background:linear-gradient(to right, #8d0c35, #eb185c) !important;border-radius: 3px;padding: 5px 0px;max-width: 180px ">: آخرین اخبار و اطلاعیه ها </h6>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="container ">
         <div class="row">
             {{--<div class="col-12 " style="max-height: 20px">--}}
