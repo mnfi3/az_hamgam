@@ -28,9 +28,9 @@ class SiteController extends Controller
     $about = Util::get(Util::KEY_ABOUT)->description;
 
     $now = date('Y-m-d');
-    $free_courses1 = FreeCourse::orderBy('id', 'desc')->where('deadline', '>=', $now)->take(3)->get();
-    $courses1 = Course::orderBy('id', 'desc')->where('deadline', '>=', $now)->take(3)->get();
-    $workshops1 = Workshop::orderBy('id', 'desc')->where('deadline', '>=', $now)->take(3)->get();
+    $free_courses1 = FreeCourse::orderBy('id', 'desc')->where('deadline', '>=', $now)->take(10)->get();
+    $courses1 = Course::orderBy('id', 'desc')->where('deadline', '>=', $now)->take(10)->get();
+    $workshops1 = Workshop::orderBy('id', 'desc')->where('deadline', '>=', $now)->take(10)->get();
 
     $free_courses2 = FreeCourse::orderBy('id', 'desc')->where('deadline', '<', $now)->take(3)->get();
     $courses2 = Course::orderBy('id', 'desc')->where('deadline', '<', $now)->take(3)->get();
