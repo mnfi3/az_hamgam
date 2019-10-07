@@ -94,7 +94,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        @foreach($courses2 as $course)
+                        @foreach($workshops2 as $course)
                             <div class="col-md-4 col-lg-4 pb-3">
                                 <div class="card card-custom bg-white border-white border-0">
                                     <div class="card-custom-img" style="background-image: url('{{asset($course->image)}}')"></div>
@@ -189,7 +189,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        @foreach($courses1 as $course)
+                        @foreach($workshops1 as $course)
                             <div class="col-md-4 col-lg-4 pb-3">
                                 <div class="card card-custom bg-white border-white border-0">
                                     <div class="card-custom-img" style="background-image: url('{{asset($course->image)}}')"></div>

@@ -27,14 +27,14 @@ class SiteController extends Controller
     $questions = FrequentlyQuestion::all();
     $about = Util::get(Util::KEY_ABOUT)->description;
 
-    $now = date('Y-m-d H:i:s');
-    $free_courses1 = FreeCourse::orderBy('id', 'desc')->where('deadline', '>', $now)->get();
-    $courses1 = Course::orderBy('id', 'desc')->where('deadline', '>', $now)->get();
-    $workshops1 = Workshop::orderBy('id', 'desc')->where('deadline', '>', $now)->get();
+    $now = date('Y-m-d');
+    $free_courses1 = FreeCourse::orderBy('id', 'desc')->where('deadline', '>=', $now)->take(3)->get();
+    $courses1 = Course::orderBy('id', 'desc')->where('deadline', '>=', $now)->take(3)->get();
+    $workshops1 = Workshop::orderBy('id', 'desc')->where('deadline', '>=', $now)->take(3)->get();
 
-    $free_courses2 = FreeCourse::orderBy('id', 'desc')->where('deadline', '<', $now)->get();
-    $courses2 = Course::orderBy('id', 'desc')->where('deadline', '<', $now)->get();
-    $workshops2 = Workshop::orderBy('id', 'desc')->where('deadline', '<', $now)->get();
+    $free_courses2 = FreeCourse::orderBy('id', 'desc')->where('deadline', '<', $now)->take(3)->get();
+    $courses2 = Course::orderBy('id', 'desc')->where('deadline', '<', $now)->take(3)->get();
+    $workshops2 = Workshop::orderBy('id', 'desc')->where('deadline', '<', $now)->take(3)->get();
     return view('index',
       compact(
         'posts', 'sliders', 'questions', 'about', 'free_courses1', 'courses1', 'workshops1',
