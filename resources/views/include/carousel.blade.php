@@ -11,7 +11,7 @@
         <div class="carousel-inner" role="listbox">
             @php($i=0)
             @foreach($sliders as $slider)
-                <div class="carousel-item bg-imge @if($i==0) active @endif" style="
+                <div class="carousel-item bg-imge @if($i==0) active @endif " style="
                         background-image: url( '@if($slider->image != null) {{asset($slider->image)}} @endif');height: 80vh">
                     @php($i++)
                     <div class="carousel-caption p-5 ">

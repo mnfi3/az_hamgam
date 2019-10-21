@@ -64,6 +64,7 @@
                     @enderror
                     @php($fields = \App\Field::all())
                     <select name="field_id" class="browser-default custom-select" >
+                            <option value="" ></option>
                         @foreach($fields as $field)
                             <option value="{{$field->id}}" >{{$field->name}}</option>
                         @endforeach

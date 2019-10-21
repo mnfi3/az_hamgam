@@ -59,7 +59,11 @@
                         <td>{{$student->national_code}}</td>
                         <td>{{$student->student_number}}</td>
                         <td>{{$student->mobile}}</td>
+                        @if($student->studentField != null)
                         <td>{{$student->studentField->name}}</td>
+                        @else
+                        <td></td>
+                        @endif
                         <td>
                             <a href="{{url('/admin/users/student-detailes', $student->id)}}" class="custom-btn text-center mt-0" style="max-width: 80px;text-decoration: none">جزئیات</a>
                         </td>
@@ -75,63 +79,7 @@
     </div>
 </div>
 <!-- The Modal -->
-<div class="modal fade" id="myModal" style="font-family: Vazir">
-    <div class="modal-dialog">
-        <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title text-right ml-auto">محتوای پیام</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body text-right">
-                سامانه همگام به منظور برقراری ارتباط فعال و سازنده مابین دانشجویان، اساتید و صنایع در شهریور ماه 1398 راه اندازی شد. یکی از مهمترین اهداف این سامانه را می توان مدیریت متمرکز کارآموزان در طول دوره کارآموزی به منظور ارتباط فعال صنعت و دانشگاه جهت شناسایی و حل مسائل موجود در صنایع بیان نمود. دانشگاه صنعتی امیرکبیر مفتخر است که با امید به خدا، تعهد اساتید، توجه صنایع و تلاش کارآموزان، مهندسین کارآزموده ای برای این مرزوبوم تربیت نماید
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="custom-btn btn-danger" data-dismiss="modal" style="max-width: 60px">بستن</button>
-            </div>
-
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="myModal1" style="font-family: Vazir">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title text-right ml-auto">نوشتن پاسخ</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body text-right">
-                <form action="" class="" style="direction: rtl;font-family: Vazir">
-                    <div class="form-group row ">
-                        <div class="col-md-12">
-                    <textarea type="text" id="editor1" required="" style="width: 100%;height: 100%;font-size: 0.8rem"
-                              class="form-control" name="description" placeholder="پاسخ">
-                    </textarea>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center ">
-                        <button class="custom-btn text-center" type="submit" style="max-width: 100px">ارسال</button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="custom-btn btn-danger" data-dismiss="modal" style="max-width: 60px">بستن</button>
-            </div>
-
-        </div>
-    </div>
-</div>
 </div>
 @include('include.footer')
 </body>

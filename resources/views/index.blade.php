@@ -16,7 +16,40 @@
 @include('include.navigation')
 @include('include.carousel', $sliders)
 
+<div id="latest-news">
+    <div class="row ">
+        <div class="col-md-10 col-sm-12 ">
 
+            <div id="carouselContent" class="carousel slide" data-ride="carousel" style="height: 40px;padding-top: 10px">
+                <div class="carousel-inner" role="listbox" style="">
+                    @php($i=0)
+                    @foreach($posts as $post)
+                    <div class="carousel-item @if($i==0) active @endif text-center ">
+                        <a href="{{url('/news/detailes', $post->id)}}" class="">{{$post->title}}</a>
+                    </div>
+                        @php($i++)
+                    @endforeach
+
+                </div>
+                <a class="carousel-control-prev" href="#carouselContent" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselContent" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-2 d-none d-md-block" style="background: linear-gradient(to right, #8d0c35, #eb185c) !important;">
+            <div class="d-flex flex-column-reverse justify-content-center align-items-center" style="height:100% " >
+                <h6 class="text-center text-white mt-2"> : آخرین اخبار و اطلاعیه ها</h6>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 
 
 
@@ -40,7 +73,7 @@
     <div class="dark-overlay" style="background-color: rgba(0, 0, 0, 0.7);">
         <div class="row" style="background: #151f33;border-top: 1px solid #eb185c;border-bottom: 3px solid #3d3d3d;">
             <section class="tabs col-md-10 m-auto col-sm-12">
-                <div class="container">
+                <div class="container ">
                     <div id="tab-1" class="tab-item ">
                         <i class="fa fa-close fa-5x"></i>
                         <p class="hide-sm">آخرین رویداد های برگزار شده</p>
@@ -49,10 +82,10 @@
                         <i class="fa fa-clock-o fa-5x"></i>
                         <p class="hide-sm">رویداد های نزدیک</p>
                     </div>
-                    {{--<div id="tab-3" class="tab-item">--}}
-                    {{--<i class="fa fa-universal-access fa-5x"></i>--}}
-                    {{--<p class="hide-sm">رویداد های در حال برگزاری</p>--}}
-                    {{--</div>--}}
+                    <div id="tab-3" class="tab-item">
+                        <i class="fa fa-universal-access fa-5x"></i>
+                        <p class="hide-sm">رویداد های در حال برگزاری</p>
+                    </div>
                 </div>
             </section>
             {{--<div class="col-md-4 d-flex flex-column align-items-center justify-content-center">--}}
@@ -112,7 +145,7 @@
                                     </div>
                                     <div class="card-footer" style="background: inherit; border-color: inherit;">
                                         <div align="right">
-                                            <a href="{{url('/skill-learning/free-courses-detailes', $course->id)}}">
+                                            <a href="{{url('/gathering/workshop-detail', $course->id)}}">
                                                 <button class="custom-btn text-center m-0 "type="submit" >
                                                     <span>ثبت نام</span>
                                                 </button>
@@ -141,7 +174,7 @@
                                     </div>
                                     <div class="card-footer" style="background: inherit; border-color: inherit;">
                                         <div align="right">
-                                            <a href="{{url('/skill-learning/free-courses-detailes', $course->id)}}">
+                                            <a href="{{url('/skill-learning/course', $course->id)}}">
                                                 <button class="custom-btn text-center m-0 "type="submit" >
                                                     <span>ثبت نام</span>
                                                 </button>
@@ -207,7 +240,7 @@
                                     </div>
                                     <div class="card-footer" style="background: inherit; border-color: inherit;">
                                         <div align="right">
-                                            <a href="{{url('/skill-learning/free-courses-detailes', $course->id)}}">
+                                            <a href="{{url('/gathering/workshop-detail', $course->id)}}">
                                                 <button class="custom-btn text-center m-0 "type="submit" >
                                                     <span>ثبت نام</span>
                                                 </button>
@@ -219,34 +252,34 @@
                             </div>
                         @endforeach
 
-                            @foreach($courses1 as $course)
-                                <div class="col-md-4 col-lg-4 pb-3">
-                                    <div class="card card-custom bg-white border-white border-0">
-                                        <div class="card-custom-img" style="background-image: url('{{asset($course->image)}}')"></div>
-                                        <div class="card-custom-avatar">
-                                            {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                                        </div>
-                                        <div class="card-body pt-2" style="overflow-y: hidden">
-                                            <h4 class="card-title text-dark"> {{$course->title}} </h4>
-                                            <p class="card-text">
-                                                {{$course->description}}
-                                            </p>
-                                            <p>مدرس :  {{$course->master->first_name.' '.$course->master->last_name}}</p>
-                                            <p>زمان : {{$course->time}}</p>
-                                        </div>
-                                        <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                            <div align="right">
-                                                <a href="{{url('/skill-learning/free-courses-detailes', $course->id)}}">
-                                                    <button class="custom-btn text-center m-0 "type="submit" >
-                                                        <span>ثبت نام</span>
-                                                    </button>
-                                                </a>
+                        @foreach($courses1 as $course)
+                            <div class="col-md-4 col-lg-4 pb-3">
+                                <div class="card card-custom bg-white border-white border-0">
+                                    <div class="card-custom-img" style="background-image: url('{{asset($course->image)}}')"></div>
+                                    <div class="card-custom-avatar">
+                                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
+                                    </div>
+                                    <div class="card-body pt-2" style="overflow-y: hidden">
+                                        <h4 class="card-title text-dark"> {{$course->title}} </h4>
+                                        <p class="card-text">
+                                            {{$course->description}}
+                                        </p>
+                                        <p>مدرس :  {{$course->master->first_name.' '.$course->master->last_name}}</p>
+                                        <p>زمان : {{$course->time}}</p>
+                                    </div>
+                                    <div class="card-footer" style="background: inherit; border-color: inherit;">
+                                        <div align="right">
+                                            <a href="{{url('/skill-learning/course', $course->id)}}">
+                                                <button class="custom-btn text-center m-0 "type="submit" >
+                                                    <span>ثبت نام</span>
+                                                </button>
+                                            </a>
 
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            </div>
+                        @endforeach
 
 
 
