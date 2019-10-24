@@ -22,12 +22,12 @@
 
             <div id="carouselContent" class="carousel slide" data-ride="carousel" style="height: 40px;padding-top: 10px">
                 <div class="carousel-inner" role="listbox" style="">
-                    @php($i=0)
+                    <?php $i=0; ?>
                     @foreach($posts as $post)
-                    <div class="carousel-item @if($i==0) active @endif text-center ">
-                        <a href="{{url('/news/detailes', $post->id)}}" class="">{{$post->title}}</a>
-                    </div>
-                        @php($i++)
+                        <div class="carousel-item @if($i==0) active @endif text-center ">
+                            <a href="{{url('/news/detailes', $post->id)}}" class="">{{$post->title}}</a>
+                        </div>
+                        <?php $i++; ?>
                     @endforeach
 
                 </div>
