@@ -58,6 +58,38 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+
+            <div class="col-md-4 col-lg-4 pb-3">
+                <div class="card card-custom bg-white border-white border-0">
+                    <div class="card-custom-img" style="background-image: url('{{asset($festivals_image)}}')"></div>
+                    <div class="card-custom-avatar">
+                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
+                    </div>
+                    <div class="card-body pt-2" style="overflow-y: auto">
+                        <h4 class="card-title">جشنواره ها</h4>
+                        <p class="card-text">
+                            {{strip_tags($festivals)}}
+                        </p>
+                    </div>
+                    <div class="card-footer" style="background: inherit; border-color: inherit;">
+                        <div align="right">
+                            <a href="{{url('/idea/festivals')}}">
+                                <button class="custom-btn text-center m-0 "type="submit" >
+                                    <span>بیشتر</span>
+                                </button>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
             <div class="col-md-4 col-lg-4 pb-3">
                 <div class="card card-custom bg-white border-white border-0">
                     <div class="card-custom-img" style="background-image: url('{{asset($startup_image)}}');"></div>

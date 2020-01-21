@@ -37,9 +37,9 @@
                                class="form-control ml-4"  name="mobile" placeholder="شماره تماس">
 
                         <input type="text" id="title" required=""
-                               class="form-control ml-4"  name="last_name" placeholder="نام خانوادگی">
+                               class="form-control ml-4"  name="last_name" placeholder="نام و نام خانوادگی دبیر انجمن">
                         <input type="text" id="title" required=""
-                               class="form-control ml-4"  name="first_name" placeholder="نام ">
+                               class="form-control ml-4"  name="first_name" placeholder="نام انجمن ">
 
                     </div>
                     <div class="form-group col-md-11 py-4 d-flex ml-auto mr-auto">
@@ -68,7 +68,8 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">عنوان انجمن</th>
-                        <th scope="col">ایمیل</th>
+                        <th scope="col">دبیر</th>
+						<th scope="col">ایمیل</th>
                     </tr>
                     </thead>
                     <tbody class="text-white" style="font-size: 0.9rem">
@@ -76,8 +77,9 @@
                     @foreach($forums as $forum)
                     <tr>
                         <th scope="row">{{++$i}}</th>
-                        <td>{{$forum->first_name.' '.$forum->last_name}}</td>
-                        <td>{{$forum->email}}</td>
+                        <td>{{$forum->first_name}}</td>
+                        <td>{{$forum->last_name}}</td>
+						<td>{{$forum->email}}</td>
                     </tr>
                     @endforeach
 

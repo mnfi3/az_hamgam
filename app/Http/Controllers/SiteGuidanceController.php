@@ -8,6 +8,7 @@ use App\Field;
 use App\FrequentlyQuestion;
 use App\Idea;
 use App\Job;
+use App\JobAd;
 use App\Slider;
 use App\User;
 use App\Util;
@@ -45,12 +46,16 @@ class SiteGuidanceController extends Controller
     $change_field = $util->description;
     $change_field_image = $util->image;
 
+    $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_JOB_ADS);
+    $job_ads = $util->description;
+    $job_ads_image = $util->image;
+
 
 
 
 
     return view('site.academic-guidance',
-      compact('description', 'file', 'jobs', 'jobs_image', 'consult', 'consult_image', 'purpose', 'purpose_image', 'change_field', 'change_field_image')
+      compact('description', 'file', 'jobs', 'jobs_image', 'consult', 'consult_image', 'purpose', 'purpose_image', 'change_field', 'change_field_image', 'job_ads', 'job_ads_image')
     );
   }
 
@@ -64,8 +69,11 @@ class SiteGuidanceController extends Controller
     return view('site.relative-jobs', compact('jobs', 'fields'));
   }
 
-  public function consult(){
-    return view('site.consult');
+ public function consult(){
+    $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_CONSULT);
+    $consults = Advice::orderBy('id', 'desc')->paginate(20);
+    $consultants = User::where('role', '=', 'consultant')->orderBy('id', 'desc')->get();
+    return view('site.consult', compact('consultants'));
   }
 
   public function consultInsert(Request $request){
@@ -109,6 +117,13 @@ class SiteGuidanceController extends Controller
     }
 
     return view('site.content', compact('description', 'file', 'image'));
+  }
+
+
+
+  public function jobAds(){
+    $ads = JobAd::orderBy('id', 'desc')->paginate(27);
+    return view('site.job-adds', compact('ads'));
   }
 
 

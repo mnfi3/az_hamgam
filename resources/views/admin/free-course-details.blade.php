@@ -168,7 +168,7 @@
 <script>
   (function ($) {
     $(document).ready(function () {
-      console.log('hello Ali');
+      
       $(".start-day").persianDatepicker({
         format: 'YYYY/MM/DD',
         timePicker: {

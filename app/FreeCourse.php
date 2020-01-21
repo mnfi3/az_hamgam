@@ -20,4 +20,6 @@ class FreeCourse extends Model
   public function students(){
     return $this->belongsToMany('App\User', 'student_free_courses', 'free_course_id', 'student_id');
   }
+
+
 }

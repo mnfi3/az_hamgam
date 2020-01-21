@@ -19,8 +19,8 @@ class SiteSkillController extends Controller
 {
 
   public function __construct() {
-    $this->middleware('auth', ['only' => ['offerInsert', 'courseRegister']]);
-    $this->middleware('student', ['only' => ['offerInsert', 'courseRegister']]);
+    $this->middleware('auth', ['only' => ['offerInsert', 'courseRegister', 'freeCourseRegister', ]]);
+    $this->middleware('student', ['only' => ['offerInsert', 'courseRegister', 'freeCourseRegister', ]]);
   }
 
 
@@ -285,7 +285,7 @@ class SiteSkillController extends Controller
 
     //check re register
     foreach ($user_free_course as $item) {
-      if($item->id == $freeCourse->id){
+      if($item->free_course_id == $freeCourse->id){
         return back()->with('fail', 'شما قبلا در این دوره ثبت نام کرده اید');
       }
     }
@@ -296,7 +296,7 @@ class SiteSkillController extends Controller
     }
     //check workshop capacity
     if ($freeCourse->students()->count() >= $freeCourse->capacity){
-      return back()->with('fail', 'ظرفیت کارگاه پر شده است');
+      return back()->with('fail', 'ظرفیت دوره پر شده است');
     }
 
 

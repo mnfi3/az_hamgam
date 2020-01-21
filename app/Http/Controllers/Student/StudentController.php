@@ -6,6 +6,7 @@ use App\Field;
 use App\Http\Controllers\Util\Uploader;
 use App\Idea;
 use App\Message;
+use App\StudentFestivals;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -87,6 +88,19 @@ class StudentController extends Controller
       'answer' => '',
     ]);
     return back()->with('msg', 'ایده شما با موفقیت ثبت شد');
+  }
+
+  public function festivals(){
+    $festivals = Auth::user()->studentFestivals()->orderBy('id', 'desc')->paginate(9);
+    return view('student.festivals', compact('festivals'));
+  }
+
+  public function festivalSendFile(Request $request){
+    $student_festival = StudentFestivals::where('student_id', '=', Auth::user()->id)->where('festival_id', '=', $request->festival_id)->first();
+    $file = Uploader::file($request->file('file'));
+    $student_festival->file = $file;
+    $student_festival->save();
+    return back()->with('success', 'آپلود فایل با موفقیت انجام شد');
   }
 
 

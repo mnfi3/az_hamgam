@@ -37,9 +37,9 @@
                                class="form-control ml-4"  name="mobile" placeholder="شماره تماس">
 
                         <input type="text" id="title" required=""
-                               class="form-control ml-4"  name="last_name" placeholder="نام خانوادگی">
+                               class="form-control ml-4"  name="last_name" placeholder="تخصص">
                         <input type="text" id="title" required=""
-                               class="form-control ml-4"  name="first_name" placeholder="نام ">
+                               class="form-control ml-4"  name="first_name" placeholder="نام و نام خانوادگی ">
 
                     </div>
                     <div class="form-group col-md-11 py-4 d-flex ml-auto mr-auto">
@@ -77,7 +77,7 @@
                     @foreach($consultants as $consultant)
                     <tr>
                         <th scope="row">{{++$i}}</th>
-                        <td>{{$consultant->first_name.' '.$consultant->last_name}}</td>
+                        <td>{{$consultant->first_name.' - '.$consultant->last_name}}</td>
                         <td>{{$consultant->email}}</td>
                         <td>{{$consultant->mobile}}</td>
                     </tr>

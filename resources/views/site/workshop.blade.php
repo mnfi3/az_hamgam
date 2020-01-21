@@ -19,7 +19,7 @@
 <body>
 @include('include.navigation')
 <div>
-    <div class="pt-5 mt-5 ">
+    <div class="pt-5 mt-2 ">
         <div class="container-fluid">
             <div class="row mt-2">
                 <div class="col-5 mr-auto ml-auto bottom-line">
@@ -33,20 +33,14 @@
 
 <div class="page-sections">
     <div class="container bg-light">
-        <div class="row pt-5 m-auto">
+        <div class="row pt-3 m-auto">
 
             @foreach($workshops as $workshop)
             <div class="col-md-4 col-lg-4 pb-3">
                 <div class="card card-custom bg-white border-white border-0">
                     <div class="card-custom-img" style="background-image: url('{{asset($workshop->image)}}')"></div>
-                    <div class="card-custom-avatar">
-                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                    </div>
                     <div class="card-body pt-2" style="overflow-y: hidden">
-                        <h4 class="card-title">{{$workshop->title}}</h4>
-                        <p class="card-text">
-{{--                            {{substr($workshop->description, 0, 120)}} ...--}}
-                        </p>
+                        <h6 class="card-title mb-1">{{$workshop->title}}</h6>
                         <p>مدرس : {{$workshop->master->first_name . ' ' . $workshop->master->last_name}}</p>
                         @php($date = new \App\Http\Controllers\Util\PDate())
                         <p >تاریخ : {{$date->toPersian($workshop->time, 'Y/m/d')}}</p>
@@ -58,7 +52,7 @@
                         @endif
 
                     </div>
-                    <div class="card-footer" style="background: inherit; border-color: inherit;">
+                    <div class="card-footer py-1" style="background: inherit; border-color: inherit;">
                         <div align="right">
                             <a href="{{url('/gathering/workshop-detail', $workshop->id)}}">
                                 <button class="custom-btn text-center m-0 "type="submit" >

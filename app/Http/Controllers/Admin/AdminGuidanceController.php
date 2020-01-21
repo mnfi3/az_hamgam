@@ -7,6 +7,7 @@ use App\Field;
 use App\FieldJob;
 use App\Http\Controllers\Util\Uploader;
 use App\Job;
+use App\JobAd;
 use App\User;
 use App\Util;
 use Illuminate\Http\Request;
@@ -131,6 +132,38 @@ class AdminGuidanceController extends Controller
     if($request->hasFile('image')) $util->image = Uploader::image($request->file('image'));
     if($request->hasFile('file')) $util->file = Uploader::file($request->file('file'));
     $util->save();
+    return back();
+  }
+
+
+
+  public function jobAdsUpdate(Request $request){
+    $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_JOB_ADS);
+    $util->description = $request->description;
+    if($request->hasFile('image')) $util->image = Uploader::image($request->file('image'));
+    $util->save();
+    return back();
+  }
+
+  public function jobAds(){
+    $ads = JobAd::orderBy('id', 'desc')->get();
+    return view('admin.job-adds', compact('ads'));
+  }
+
+  public function jobAdInsert(Request $request){
+//    $image = Uploader::image($request->file('image'));
+    $ad = JobAd::create([
+      'title' => $request->title,
+//      'image' => $image,
+      'description' => $request->description,
+    ]);
+
+    return back();
+  }
+
+  public function jobAdRemove($id){
+    $ad = JobAd::find($id);
+    $ad->delete();
     return back();
   }
 }

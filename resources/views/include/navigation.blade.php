@@ -62,32 +62,34 @@
                             @endguest
                             <ul class="navbar-nav ml-auto py-4 py-md-0">
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
-                                    <a class="nav-link dropdown-toggle" href="{{url('/success')}}">موفقیت</a>
+                                    <a class="nav-link dropdown-toggle" href="{{url('/success')}}"> <span style="color: #45a3ff">م</span>وفقیت</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{{url('/success/graduation-job')}}">فارغ التحصیلان شاغل</a>
+                                        <a class="dropdown-item" href="{{url('/success/graduation-job')}}">فارغ التحصیلان </a>
+                                        {{--<a class="dropdown-item" href="{{url('/success/proud')}}">افتخار آفرینان</a>--}}
                                         <a class="dropdown-item" href="{{url('/success/university-startups')}}">
                                             گروه های استارت آپی دانشگاه</a>
                                     </div>
                                 </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="{{url('/idea')}}">ایدها</a>
-                                    <div class="dropdown-menu">
 
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="{{url('/idea')}}"> <span style="color: #45a3ff">ا</span>یده ها</a>
+                                    <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{{url('/idea/support')}}">ایده و حمایت </a>
+                                        <a class="dropdown-item" href="{{url('/idea/festivals')}}">جشنواره ها</a>
                                         <a class="dropdown-item" href="{{url('/idea/startup')}}">تشکیل گروه های استارت آپی</a>
                                     </div>
                                 </li>
                                 <li class="nav-item  pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="{{url('/gathering')}}">گردهمایی</a>
+                                    <a class="nav-link" href="{{url('/gathering')}}"> <span style="color: #45a3ff">گ</span>ردهمایی</a>
                                     <div class="dropdown-menu">
 
                                         <a class="dropdown-item" href="{{url('/gathering/workshop')}}">کارگاه های آموزشی </a>
                                         <a class="dropdown-item text-right" href="{{url('/gathering/visit-industries')}}" >بازدید از صنایع</a>
-                                        <a class="dropdown-item" href="{{url('/gathering/industry-posts')}}">دعوت از صاحبان صنایع</a>
+                                        {{--<a class="dropdown-item" href="{{url('/gathering/industry-posts')}}">دعوت از صاحبان صنایع</a>--}}
                                     </div>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link dropdown-toggle" href="{{url('/skill-learning')}}" >مهارت آموزی</a>
+                                    <a class="nav-link dropdown-toggle" href="{{url('/skill-learning')}}" > <span style="color: #45a3ff">م</span>هارت آموزی</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{{url('/skill-learning/courses')}}">دوره های مهارتی </a>
                                         <a class="dropdown-item" href="{{url('/skill-learning/free-courses')}}">دوره های آزاد </a>
@@ -95,17 +97,17 @@
                                         <a class="dropdown-item" href="{{url('/skill-learning/offer')}}">پیشنهاد دوره</a>
                                     </div>
                                 </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
-                                    <a class="nav-link" href="{{url('/academic-guidance')}}">هدایت شغلی</a>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 mr-5">
+                                    <a class="nav-link" href="{{url('/academic-guidance')}}"> <span style="color: #45a3ff">ه</span>دایت شغلی</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{{url('/academic-guidance/relative-jobs')}}">شغل های مرتبط با رشته </a>
                                         <a class="dropdown-item text-right" href="{{url('/academic-guidance/consult')}}" >مشاوره</a>
-                                        <a class="dropdown-item" href="{{url('/academic-guidance/purpose')}}">هدف</a>
-                                        <a class="dropdown-item" href="{{url('/academic-guidance/change-field')}}">تغییر رشته</a>
+                                        <a class="dropdown-item" href="{{url('/academic-guidance/job-ads')}}">فرصت های شغلی</a>
+                                        <a class="dropdown-item" href="{{url('/academic-guidance/change-field')}}">ضوابط و شرایط تغییر رشته</a>
 
                                     </div>
                                 </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ml-5">
                                     <a class="nav-link" href="{{url('/')}}">خانه</a>
                                 </li>
                             </ul>

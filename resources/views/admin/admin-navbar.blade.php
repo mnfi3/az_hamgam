@@ -35,10 +35,10 @@
                     </a>
                     <div class="dropdown-menu mr-5" aria-labelledby="navbarSite" style="">
                         {{--<a class="dropdown-item" href="#">دوره های مهارتی</a>--}}
-                        <a class="dropdown-item" href="{{url('/admin/purpose')}}">هدف</a>
+                        <a class="dropdown-item" href="{{url('/admin/job-ads')}}">معرفی فرصت های شغلی</a>
                         <a class="dropdown-item" href="{{url('/admin/jobs')}}">شغل های مرتبط با رشته</a>
                         <a class="dropdown-item" href="{{url('/admin/consult')}}">مشاوره</a>
-                        <a class="dropdown-item" href="{{url('/admin/change-field')}}">تغییر رشته</a>
+                        <a class="dropdown-item" href="{{url('/admin/change-field')}}">ضوابط و شرایط تغییر رشته</a>
                     </div>
                 </li>
                 <li  class="dropdown nav-item mt-1 mx-2">
@@ -76,6 +76,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarSite">
                         {{--<a class="dropdown-item" href="#">دوره های مهارتی</a>--}}
                         <a class="dropdown-item" href="{{url('/admin/idea-support')}}">ایده و حمایت</a>
+                        <a class="dropdown-item" href="{{url('/admin/idea/festivals')}}">جشنواره ها</a>
                         <a class="dropdown-item" href="{{url('/admin/startup')}}">تشکیل گروه های استارت آپی</a>
                     </div>
                 </li>

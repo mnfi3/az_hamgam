@@ -1,5 +1,5 @@
 <div class="mian-footer " >
-    <div class="dark-overlay py-5">
+    <div class="py-5">
         <div class="container-fluid px-5">
             <div class="row my-2">
                 <div class="col-md-4">

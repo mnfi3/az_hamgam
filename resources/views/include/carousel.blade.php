@@ -1,5 +1,5 @@
 <!--Carousel Wrapper-->
-<section class="hero-area" style="max-height: 700px;margin-top: 115px">
+<section class="hero-area" style="max-height: 700px;margin-top: 85px">
     <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel" style="">
         <!--Indicators-->
         <ol class="carousel-indicators">
@@ -11,8 +11,8 @@
         <div class="carousel-inner" role="listbox">
             @php($i=0)
             @foreach($sliders as $slider)
-                <div class="carousel-item bg-imge @if($i==0) active @endif " style="
-                        background-image: url( '@if($slider->image != null) {{asset($slider->image)}} @endif');height: 80vh">
+                <div class="carousel-item bg-imge @if($i==0) active @endif" style="
+                        background-image: url( '@if($slider->image != null) {{asset($slider->image)}} @endif');height: 70vh">
                     @php($i++)
                     <div class="carousel-caption p-5 ">
 

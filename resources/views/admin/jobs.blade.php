@@ -92,6 +92,7 @@
                             <li>
                                 <div class="d-flex flex-row align-items-center justify-content-between">
                                     <p class="text-light text-right mb-2 pr-2">{{$job->title}}</p>
+                                    <a href="" class="custom-btn text-center">حذف</a>
                                 </div>
                             </li>
                             @endforeach
@@ -118,6 +119,7 @@
                             <li>
                                 <div class="d-flex flex-row align-items-center justify-content-between">
                                     <p class="text-light text-right mb-2 pr-2">{{$field->name}} </p>
+                                    <a href="" class="custom-btn text-center">حذف</a>
                                 </div>
                             </li>
                              @endforeach

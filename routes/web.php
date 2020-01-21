@@ -41,7 +41,7 @@ Route::get('/academic-guidance', 'SiteGuidanceController@academicGuidance');
 Route::get('/academic-guidance/relative-jobs','SiteGuidanceController@relativeJobs');
 Route::get('/academic-guidance/consult', 'SiteGuidanceController@consult');
 Route::post('/academic-guidance/consult-insert', 'SiteGuidanceController@consultInsert');
-Route::get('/academic-guidance/purpose', 'SiteGuidanceController@goal');
+Route::get('/academic-guidance/job-ads', 'SiteGuidanceController@jobAds');
 Route::get('/academic-guidance/change-field', 'SiteGuidanceController@changeField');
 
 
@@ -87,6 +87,10 @@ Route::get('/gathering/visit-industries/register/{id}', 'SiteGatheringController
  */
 Route::get('/idea', 'SiteIdeaController@idea');
 Route::get('/idea/support', 'SiteIdeaController@support');
+Route::get('/idea/festivals', 'SiteIdeaController@festivals');
+Route::get('/idea/festival-detail/{id}', 'SiteIdeaController@festival');
+Route::get('/idea/festival-register/{id}', 'SiteIdeaController@festivalRegister');
+Route::post('/idea/festival-register/payment-verify', 'SiteIdeaController@festivalPaymentVerify');
 Route::get('/idea/startup', 'SiteIdeaController@startup');
 
 
@@ -120,10 +124,6 @@ Route::get('/success/university-startups', 'SiteSuccessController@startup');
 
 
 
-
-
-
-
 //student section
 
 Route::get('/student/student', 'Student\StudentController@student');
@@ -137,11 +137,8 @@ Route::get('/student/contact', 'Student\StudentController@contact');
 Route::post('/student/send-message', 'Student\StudentController@sentMessage');
 Route::get('/student/idea', 'Student\StudentController@idea');
 Route::post('/student/idea-insert', 'Student\StudentController@ideaInsert');
-
-
-
-
-
+Route::get('/student/festivals', 'Student\StudentController@festivals');
+Route::post('/student/festival/send-file', 'Student\StudentController@festivalSendFile');
 
 
 
@@ -173,7 +170,6 @@ Route::get('/admin/new/remove/{id}', 'Admin\AdminSiteController@postRemove');
 //section guidance
 Route::get('/admin/guidance', 'Admin\AdminGuidanceController@guidance');
 Route::post('/admin/guidance/add', 'Admin\AdminGuidanceController@guidanceAdd');
-Route::get('/admin/purpose', 'Admin\AdminGuidanceController@purpose');
 Route::post('/admin/purpose/update', 'Admin\AdminGuidanceController@purposeUpdate');
 Route::get('/admin/jobs', 'Admin\AdminGuidanceController@jobs');
 Route::post('/admin/jobs/update', 'Admin\AdminGuidanceController@jobsUpdate');
@@ -186,6 +182,10 @@ Route::post('/admin/consult/send-to-consultant', 'Admin\AdminGuidanceController@
 Route::post('/admin/consult/answer', 'Admin\AdminGuidanceController@consultAnswer');
 Route::get('/admin/change-field', 'Admin\AdminGuidanceController@changeField');
 Route::post('/admin/change-field/update', 'Admin\AdminGuidanceController@changeFieldUpdate');
+Route::get('/admin/job-ads', 'Admin\AdminGuidanceController@jobAds');
+Route::post('/admin/job-ad/insert', 'Admin\AdminGuidanceController@jobAdInsert');
+Route::get('/admin/job-ad/remove/{id}', 'Admin\AdminGuidanceController@jobAdRemove');
+Route::post('/admin/job-ads/update', 'Admin\AdminGuidanceController@jobAdsUpdate');
 
 
 //section skill
@@ -247,6 +247,12 @@ Route::post('/admin/idea-support/update', 'Admin\AdminIdeaController@ideaSupport
 Route::post('/admin/idea-support/answer', 'Admin\AdminIdeaController@ideaSupportAnswer');
 Route::get('/admin/startup', 'Admin\AdminIdeaController@startup');
 Route::post('/admin/startup/update', 'Admin\AdminIdeaController@startupUpdate');
+Route::post('/admin/idea/festivals-update', 'Admin\AdminIdeaController@ideaFestivalsUpdate');
+Route::get('/admin/idea/festivals', 'Admin\AdminIdeaController@festivals');
+Route::post('/admin/idea/festival-insert', 'Admin\AdminIdeaController@festivalAdd');
+Route::get('/admin/idea/festival-detail/{id}', 'Admin\AdminIdeaController@festivalDetail');
+Route::get('/admin/idea/festival-remove/{id}', 'Admin\AdminIdeaController@festivalRemove');
+Route::post('/admin/idea/festival-update', 'Admin\AdminIdeaController@festivalUpdate');
 
 
 
@@ -284,16 +290,6 @@ Route::post('/admin/industry/add', 'Admin\AdminUserController@industryAdd');
 
 //section backup
 Route::get('/admin/backup', 'Admin\BackupController@index');
-
-
-
-
-
-
-
-
-
-
 
 
 

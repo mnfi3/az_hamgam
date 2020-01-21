@@ -51,8 +51,6 @@
 
 </div>
 
-
-
 <div class="decription-section py-4" style="">
     <div class="container">
         <div class="row ">
@@ -100,24 +98,24 @@
                     <div class="row m-auto">
                         @foreach($free_courses2 as $course)
                             <div class="col-md-4 col-lg-4 pb-3">
-                                <div class="card card-custom bg-white border-white border-0">
+                                <div class="card card-custom border-white border-0">
                                     <div class="card-custom-img" style="background-image: url('{{asset($course->image)}}')"></div>
                                     <div class="card-custom-avatar">
                                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                                     </div>
-                                    <div class="card-body pt-2" style="overflow-y: hidden">
-                                        <h4 class="card-title text-dark"> {{$course->title}} </h4>
-                                        <p class="card-text">
+                                    <div class="card-body pt-1" style="overflow-y: hidden">
+                                        <h6 class="card-title text-dark m-0"> {{$course->title}} </h6>
+                                        <p class="card-text mt-0">
                                             {{$course->description}}
                                         </p>
                                         <p>مدرس :  {{$course->master->first_name.' '.$course->master->last_name}}</p>
                                         @php($date = new \App\Http\Controllers\Util\PDate())
                                         <p >تاریخ : {{$date->toPersian($course->time, 'Y/m/d')}}</p>
                                     </div>
-                                    <div class="card-footer" style="background: inherit; border-color: inherit;">
+                                    <div class="card-footer pb-1" style="background: inherit; border-color: inherit;">
                                         <div align="right">
                                             <a href="{{url('/skill-learning/free-courses-detailes', $course->id)}}">
-                                                <button class="custom-btn text-center m-0 "type="submit" >
+                                                <button class="custom-btn text-center m-0 m-auto "type="submit" >
                                                     <span>ثبت نام</span>
                                                 </button>
                                             </a>
@@ -135,7 +133,7 @@
                                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                                     </div>
                                     <div class="card-body pt-2" style="overflow-y: hidden">
-                                        <h4 class="card-title text-dark"> {{$course->title}} </h4>
+                                        <h6 class="card-title text-dark"> {{$course->title}} </h6>
                                         <p class="card-text">
                                             {{$course->description}}
                                         </p>
@@ -165,7 +163,7 @@
                                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                                     </div>
                                     <div class="card-body pt-2" style="overflow-y: hidden">
-                                        <h4 class="card-title text-dark"> {{$course->title}} </h4>
+                                        <h6 class="card-title text-dark"> {{$course->title}} </h6>
                                         <p class="card-text">
                                             {{$course->description}}
                                         </p>
@@ -201,7 +199,7 @@
                                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                                     </div>
                                     <div class="card-body pt-2" style="overflow-y: hidden">
-                                        <h4 class="card-title text-dark"> {{$course->title}} </h4>
+                                        <h6 class="card-title text-dark"> {{$course->title}} </h6>
                                         <p class="card-text">
                                             {{$course->description}}
                                         </p>
@@ -230,7 +228,7 @@
                                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                                     </div>
                                     <div class="card-body pt-2" style="overflow-y: hidden">
-                                        <h4 class="card-title text-dark"> {{$course->title}} </h4>
+                                        <h6 class="card-title text-dark"> {{$course->title}} </h6>
                                         <p class="card-text">
                                             {{$course->description}}
                                         </p>
@@ -260,7 +258,7 @@
                                         {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                                     </div>
                                     <div class="card-body pt-2" style="overflow-y: hidden">
-                                        <h4 class="card-title text-dark"> {{$course->title}} </h4>
+                                        <h6 class="card-title text-dark"> {{$course->title}} </h6>
                                         <p class="card-text">
                                             {{$course->description}}
                                         </p>
@@ -362,7 +360,7 @@
                             <div class="card news-card card-custom2 bg-white border-white border-0">
                                 <div class="card-custom-img2" style="background-image: url('{{asset($post->image)}}');"></div>
                                 <div class="card-body" style="overflow-y: auto">
-                                    <h5 class="card-title">{{$post->title}}</h5>
+                                    <h6 class="card-title">{{$post->title}}</h6>
                                     <p style="padding-top: 0px">
                                         {{substr(strip_tags($post->description), 0, 30)}}
                                     </p>

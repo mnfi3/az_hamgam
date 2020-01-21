@@ -41,6 +41,12 @@
                     @if(\Illuminate\Support\Facades\Session::get('msg') != null)
                         <p>سوال شما ثبت شد.پاسخ دهی به پرسش ها در اسرع وقت انجام خواهد شد و نتایج آن در پنل کاربری قابل مشاهده خواهد بود</p>
                     @endif
+                    <label for="is_male" class="text-right ml-auto d-flex flex-row-reverse ">: نام و سمت مشاور   </label>
+                    <select name="consultant_id"  class="browser-default custom-select mb-4" >
+                        @foreach($consultants as $consultant)
+                            <option value="{{$consultant->id}}">{{$consultant->first_name.' '.$consultant->last_name}}</option>
+                        @endforeach
+                    </select>
                     <button  class="custom-btn text-center m-0 "type="submit" >
                         <span>ارسال پرسش </span>
                     </button>

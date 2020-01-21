@@ -35,32 +35,32 @@
     <div class="container bg-light">
         <div class="row pt-3 m-auto">
 
-            @foreach($courses as $workshop)
+            @foreach($festivals as $festival)
                 <div class="col-md-4 col-lg-4 pb-3">
                     <div class="card card-custom bg-white border-white border-0">
-                        <div class="card-custom-img" style="background-image: url('{{asset($workshop->image)}}')"></div>
+                        <div class="card-custom-img" style="background-image: url('{{asset($festival->image)}}')"></div>
                         <div class="card-custom-avatar">
                             {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                         </div>
                         <div class="card-body" style="overflow-y: hidden">
-                            <h4 class="card-title">{{$workshop->title}}</h4>
+                            <h4 class="card-title">{{$festival->title}}</h4>
                             <p class="card-text">
                                 {{--                            {{substr($workshop->description, 0, 120)}} ...--}}
                             </p>
-                            <p>مدرس : {{$workshop->master->first_name . ' ' . $workshop->master->last_name}}</p>
+                            {{--<p>مدرس : {{$workshop->master->first_name . ' ' . $workshop->master->last_name}}</p>--}}
                             @php($date = new \App\Http\Controllers\Util\PDate())
-                            <p >تاریخ : {{$date->toPersian($workshop->time, 'Y/m/d')}}</p>
-                            <p >ساعت : {{$workshop->hour}}</p>
-                            @if($workshop->price == 0)
+                            <p >تاریخ : {{$date->toPersian($festival->date, 'Y/m/d')}}</p>
+                            <p >ساعت : {{$festival->hour}}</p>
+                            @if($festival->price == 0)
                                 <p >هزینه : رایگان</p>
                             @else
-                                <p >هزینه : {{number_format($workshop->price)}} تومان</p>
+                                <p >هزینه : {{number_format($festival->price)}} تومان</p>
                             @endif
 
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                             <div align="right">
-                                <a href="{{url('/skill-learning/free-courses-detailes', $workshop->id)}}">
+                                <a href="{{url('/idea/festival-detail', $festival->id)}}">
                                     <button class="custom-btn text-center m-0 "type="submit" >
                                         <span>مشاهده جزئیات</span>
                                     </button>
@@ -81,7 +81,7 @@
             <div class="col-8 " align="center">
                 <ul class="pagination">
                     {{--{{$workshops->links()}}--}}
-                    {{$courses->links()}}
+                    {{$festivals->links()}}
 
                 </ul>
             </div>

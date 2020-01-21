@@ -419,7 +419,7 @@ input::placeholder{
 /*numbers animations */
 .card-custom {
   overflow: hidden;
-  min-height: 300px;
+  min-height: 250px;
   box-shadow: 0 0 15px rgba(10, 10, 10, 0.6);
   font-family: Vazir;
   text-align: right;
@@ -436,8 +436,8 @@ input::placeholder{
 }
 .card-custom-img {
   background-position: center;
-  height: 200px;
-  min-height: 200px;
+  height: 160px;
+  min-height: 160px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -445,24 +445,24 @@ input::placeholder{
 }
 
 /* First border-left-width setting is a fallback */
-.card-custom-img::after {
-  position: absolute;
-  content: '';
-  top: 161px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-top-width: 40px;
-  border-left-width: 0;
-  border-bottom-width: 0;
-  border-right-width: 545px;
-  border-right-width: calc(575px - 5vw);
-  border-top-color: transparent;
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-  border-right-color: inherit;
-}
+/*.card-custom-img::after {*/
+  /*position: absolute;*/
+  /*content: '';*/
+  /*top: 161px;*/
+  /*left: 0;*/
+  /*width: 0;*/
+  /*height: 0;*/
+  /*border-style: solid;*/
+  /*border-top-width: 40px;*/
+  /*border-left-width: 0;*/
+  /*border-bottom-width: 0;*/
+  /*border-right-width: 545px;*/
+  /*border-right-width: calc(575px - 5vw);*/
+  /*border-top-color: transparent;*/
+  /*border-left-color: transparent;*/
+  /*border-bottom-color: transparent;*/
+  /*border-right-color: inherit;*/
+/*}*/
 
 .card-custom-avatar img {
   border-radius: 50%;
@@ -577,6 +577,21 @@ input::placeholder{
   text-align: right;
   color: rgba(0,0,0,0.8);
   font-size: 0.8rem;
+}
+.align-placeholder::placeholder{
+   font-family: Vazir;
+   text-align: center;
+   color: rgba(0,0,0,0.8);
+   font-size: 0.8rem;
+ }
+.align-placeholder{
+  font-family: Vazir;
+  text-align: center;
+  color: rgba(0,0,0,0.8);
+  font-size: 0.99rem;
+  width: 33%;
+  border-radius: 5px;
+  border: 2px solid #eb185c;
 }
 .login button{
   text-align: center;
@@ -926,7 +941,7 @@ form  textarea{
 }
 
 .table tbody tr td {
-  color: #999;
+  color: #fff;
   padding: 0.8rem 1.2rem;
   text-align: center;
 }
@@ -938,6 +953,21 @@ form  textarea{
 .table tbody tr:nth-child(odd) {
   background: #222;
 }
+#latest-news{
+  position: relative;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: #151f33;
+}
 
+#latest-news a{
+  color: #eeeeee;
+  font-size: 0.9rem;
+  font-family: Vazir;
+}
+#latest-news a:hover{
+  color:#eb185c;
+}
 
 

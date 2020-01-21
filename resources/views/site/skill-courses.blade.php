@@ -39,18 +39,21 @@
 
 
                 <form method="get" action="{{url('/skill-learning/courses')}}">
-                    <div class="flex-item text-dark  mr-5 ">
-                        <p>: دانشکده  </p>
-                    </div>
-                    <div class="flex-item text-dark">
-                        <select class="browser-default custom-select " id="faculties" name="">
-                            <option selected>همه دانشکده ها</option>
-                            <option value="1"> فنی</option>
-                            <option value="2">علوم پایه</option>
-                            <option value="3">کامپیوتر</option>
-                            <option value="3">برق</option>
-                        </select>
-                    </div>
+                  {{--<div class="flex-item text-dark  mr-5 ">--}}
+                        {{--<p>: دانشکده  </p>--}}
+                    {{--</div>--}}
+                    {{--<div class="flex-item text-dark">--}}
+                        {{--<select class="browser-default custom-select " id="faculties" name="">--}}
+                            {{--<option selected>همه دانشکده ها</option>--}}
+                            {{--<option value="1"> فنی مهندسی</option>--}}
+                            {{--<option value="2">فناوری اطلاعات و مهندسی کامپیوتر</option>--}}
+                            {{--<option value="3">ادبیات و علوم انسانی</option>--}}
+                            {{--<option value="3">علوم تربیتی و روانشناختی</option>--}}
+                            {{--<option value="3">علوم پایه</option>--}}
+                            {{--<option value="3">کشاورزی</option>--}}
+                            {{--<option value="3">الهیات و معارف اسلامی</option>--}}
+                        {{--</select>--}}
+                    {{--</div>--}}
                     <div class="flex-item text-dark  mr-2 ">
                         <p>: رشته  </p>
                     </div>

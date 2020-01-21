@@ -21,43 +21,44 @@
             </div>
             <div class="col-md-8 " style="">
                 <div class="d-flex flex-row justify-content-center">
-                    <img src="{{asset($course->image)}}" alt="" style=" max-width: 650px;max-height: 300px " class="">
+                    <img src="{{asset($festival->image)}}" alt="" style=" max-width: 650px;max-height: 300px " class="">
                 </div>
-                <h3 class="my-2 text-right p-3 ">{{$course->title}}</h3>
+                <h3 class="my-2 text-right p-3 ">{{$festival->title}}</h3>
 
                 <p class="my-2 text-right p-3 ">
-                    @php echo $course->description; @endphp
+                    @php echo $festival->description; @endphp
                 </p>
-                <p class="my-2 text-right p-1 ">
-                    نام استاد : {{$course->master->first_name . ' ' . $course->master->last_name}}
-                </p>
+               
                 @php($date = new \App\Http\Controllers\Util\PDate())
                 <p class="my-2 text-right p-1 ">
-                    تاریخ : {{$date->toPersian($course->time, 'Y/m/d')}}
+                    تاریخ : {{$date->toPersian($festival->date, 'Y/m/d')}}
                 </p>
 
                 <p class="my-2 text-right p-1 ">
-                    ساعت : {{$course->hour}}
+                    ساعت : {{$festival->hour}}
                 </p>
 
-                @if($course->price == 0)
+                @if($festival->price == 0)
                     <p class="my-2 text-right p-1 ">هزینه : رایگان</p>
                 @else
-                    <p class="my-2 text-right p-1 ">هزینه : {{number_format($course->price)}} تومان</p>
+                    <p class="my-2 text-right p-1 ">هزینه : {{number_format($festival->price)}} تومان</p>
                 @endif
+                <p class="my-2 text-right p-1 mt-3 text-danger"> بعد از ثبت نام می توانید از طریق پنل خود اقدام به ارسال فایل به جشنواره نمایید *</p>
                 <div class="d-flex flex-row-reverse flex-wrap justify-content-between">
-                    <a href="{{url('/skill-learning/free-course/register', $course->id)}}">
-                        {{--<button class="custom-btn text-center m-4 "type="submit" style="max-width: 130px">--}}
-                            {{--<span> دانلود فایل</span>--}}
-                        {{--</button>--}}
+                    @if(strlen($festival->file) > 3)
+                    <a href="{{asset($festival->file)}}">
+                        <button class="custom-btn text-center m-4 "type="submit" style="max-width: 130px">
+                            <span> دانلود فایل</span>
+                        </button>
                     </a>
+                    @endif
                     @if(\Illuminate\Support\Facades\Session::get('fail') != null)
                         <p style=" color: #b91d19;text-align: right;font-family: Vazir;font-size: 1.5rem">{{ \Illuminate\Support\Facades\Session::get('fail') }}</p>
                     @endif
                     @if(\Illuminate\Support\Facades\Session::get('success') != null)
                         <p style=" color: #1e7e34;text-align: right;font-family: Vazir;font-size: 1.5rem">{{ \Illuminate\Support\Facades\Session::get('success') }}</p>
                     @endif
-                    <a href="{{url('/skill-learning/free-course/register', $course->id)}}">
+                    <a href="{{url('/idea/festival-register', $festival->id)}}" download>
                         <button class="custom-btn text-center m-4 "type="submit" style="max-width: 150px">
                             <span> پرداخت و ثبت نام</span>
                         </button>

@@ -1,0 +1,14 @@
+enp0s3
+
+
+vi /etc/sysconfig/network-scripts/ifcfg-eth0
+DEVICE=eth0
+BOOTPROTO=static
+BROADCAST=192.168.1.205
+IPADDR=192.168.1.205
+NETMASK=255.255.255.255
+NETWORK=192.168.1.0
+ONBOOT=yes
+NM_CONTROLLED=no
+
+

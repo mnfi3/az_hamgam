@@ -44,6 +44,7 @@ class Util extends Model
   const KEY_ACADEMIC_GUIDANCE_CONSULT = 'academic-guidance-consult';
   const KEY_ACADEMIC_GUIDANCE_PURPOSE = 'academic-guidance-purpose';
   const KEY_ACADEMIC_GUIDANCE_CHANGE_FIELD = 'academic-guidance-change-field';
+  const KEY_ACADEMIC_GUIDANCE_JOB_ADS = 'academic-guidance-job-adds';
 
   //skills
   const KEY_SKILL = 'skill';
@@ -62,6 +63,7 @@ class Util extends Model
   const KEY_IDEA = 'idea';
   const KEY_IDEA_SUPPROT = 'idea-support';
   const KEY_IDEA_STARTUP = 'idea-startup';
+  const KEY_IDEA_FESTIVALS = 'idea-festivals';
 
   //success
   const KEY_SUCCESS = 'success';

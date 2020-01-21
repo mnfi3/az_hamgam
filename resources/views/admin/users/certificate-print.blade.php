@@ -96,12 +96,12 @@
     </p>
 
     <p class="center-content d-flex justify-content-around">
-        <span>{{$authority2}}</span>
         <span>{{$authority1}}</span>
+        <span>{{$authority2}}</span>
     </p>
     <p class="footer-content d-flex justify-content-around">
-        <span class="title-one">معاون پژوهش و فناوری</span>
         <span>مدیر امور فناوری</span>
+        <span class="title-one">معاون پژوهش و فناوری</span>
         {{--<span>معاون پژوهش و فناوری</span>--}}
     </p>
 </div>

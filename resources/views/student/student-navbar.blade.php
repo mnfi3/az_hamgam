@@ -51,6 +51,13 @@
                         <span class="new-ticket"></span>
                     </a>
                 </li>
+                <li class="navbar-ticket nav-item  mx-2 mr-3">
+                    <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/student/festivals')}}" id="navbarTicket" role="button">
+                        <i class="fa fa-graduation-cap mt-1"></i>
+                        جشنواره ها
+                        <span class="new-ticket"></span>
+                    </a>
+                </li>
             </ul>
 
         </div>
