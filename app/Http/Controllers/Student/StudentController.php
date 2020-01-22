@@ -7,9 +7,11 @@ use App\Http\Controllers\Util\Uploader;
 use App\Idea;
 use App\Message;
 use App\StudentFestivals;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
@@ -36,12 +38,12 @@ class StudentController extends Controller
   }
 
   public function consults(){
-    $consults = Auth::user()->studentConsults()->orderBy('id', 'desc')->paginate(9);
-    foreach ($consults as $consult){
-      $consult->is_seen = 1;
-      $consult->save();
-    }
-    return view('student.consult', compact('consults'));
+    $user = Auth::user();
+    $consults = $user->studentConsults()->orderBy('id', 'desc')->paginate(9);
+    $consultants = User::where('role', '=', 'consultant')->orderBy('id', 'desc')->get();
+
+    DB::update("update advices set is_seen = 1 where user_id='$user->id'  and answer is not null");
+    return view('student.consult', compact('consults', 'consultants'));
   }
 
   public function profile(){

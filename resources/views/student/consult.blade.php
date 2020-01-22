@@ -32,6 +32,7 @@
                         <th scope="col">#</th>
                         <th scope="col">موضوع</th>
                         <th scope="col">سوال</th>
+                        <th scope="col">مشاور</th>
                         <th scope="col">وضعیت</th>
                         <th scope="col">پاسخ</th>
                     </tr>
@@ -43,6 +44,11 @@
                         <th scope="row">{{++$i}}</th>
                         <td>{{$consult->title}}</td>
                         <td>{{$consult->question}}</td>
+                        @if($consult->consultant != null)
+                        <td>{{$consult->consultant->first_name.' '. $consult->consultant->last_name}}</td>
+                        @else
+                        <td></td>
+                        @endif
                         @if(strlen($consult->answer) > 1)
                             <td >پاسخ داده شده</td>
                         @else
@@ -60,7 +66,40 @@
             </div>
         </div>
     </div>
+
+    <div class="signup-section">
+        <div class="container" style=" min-height: 450px">
+            <div class="row">
+                <div class="col-12">
+                    <form class="login ml-auto mr-auto mt-3" align ="center" method="post" action="{{url('/academic-guidance/consult-insert')}}">
+                        <h6>از این قسمت میتوانید سوال خود را مطرح کنید</h6>
+                        @csrf
+                        <input name="title" type="text" required class=" ml-auto mr-auto" placeholder="موضوع سوال">
+                        <textarea name="question" type="text" required class=" ml-auto mr-auto" placeholder="متن سوال" style="min-height: 190px"></textarea>
+
+                        <label for="is_male" class="text-right ml-auto d-flex flex-row-reverse ">: نام و سمت مشاور   </label>
+                        <select name="consultant_id"  class="browser-default custom-select mb-4" >
+                            @foreach($consultants as $consultant)
+                                <option value="{{$consultant->id}}">{{$consultant->first_name.' '.$consultant->last_name}}</option>
+                            @endforeach
+                        </select>
+                        @if(\Illuminate\Support\Facades\Session::get('msg') != null)
+                            <p>سوال شما ثبت شد.پاسخ دهی به پرسش ها در اسرع وقت انجام خواهد شد و نتایج آن در پنل کاربری قابل مشاهده خواهد بود</p>
+                        @endif
+                        <button  class="custom-btn text-center m-0 "type="submit" >
+                            <span>ارسال پرسش </span>
+                        </button>
+                        @guest
+                            <br><span>برای ارسال سوال باید وارد حساب کاربری خود شوید </span>
+                        @endguest
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 @foreach($consults as $consult)
 <div class="modal fade" id="myModal{{$consult->id}}" style="font-family: Vazir">

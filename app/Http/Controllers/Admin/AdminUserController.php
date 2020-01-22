@@ -62,6 +62,12 @@ class AdminUserController extends Controller {
     return view('admin.users.master', compact('masters'));
   }
 
+  public function masterRemove(Request $request){
+    $user = User::find($request->id);
+    $user->delete();
+    return back();
+  }
+
   public function masterDetail($id) {
     $master = User::find($id);
     return view('admin.users.master-detailes', compact('master'));

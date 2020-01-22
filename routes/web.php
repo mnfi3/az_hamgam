@@ -185,7 +185,7 @@ Route::post('/admin/change-field/update', 'Admin\AdminGuidanceController@changeF
 Route::get('/admin/job-ads', 'Admin\AdminGuidanceController@jobAds');
 Route::post('/admin/job-ad/insert', 'Admin\AdminGuidanceController@jobAdInsert');
 Route::get('/admin/job-ad/remove/{id}', 'Admin\AdminGuidanceController@jobAdRemove');
-Route::post('/admin/job-ads/update', 'Admin\AdminGuidanceController@jobAdsUpdate');
+Route::post(' ', 'Admin\AdminGuidanceController@jobAdsUpdate');
 
 
 //section skill
@@ -278,6 +278,7 @@ Route::get('/admin/users/student/course/cert-print/{student_id}/{course_id}', 'A
 Route::get('/admin/users/student/workshop/cert-print/{student_id}/{workshop_id}', 'Admin\AdminUserController@printWorkshopCert');
 Route::get('/admin/users/student/free-course/cert-print/{student_id}/{free_course_id}', 'Admin\AdminUserController@printFreeCourseCert');
 Route::get('/admin/users/master', 'Admin\AdminUserController@masters');
+Route::post('/admin/users/master-remove', 'Admin\AdminUserController@masterRemove');
 Route::post('/admin/users/master/add', 'Admin\AdminUserController@masterAdd');
 Route::get('/admin/users/master-detailes/{id}', 'Admin\AdminUserController@masterDetail');
 Route::get('/admin/users/consult', 'Admin\AdminUserController@consult');

@@ -54,9 +54,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">نام</th>
-                        <th scope="col">ایمیل</th>
-                        <th scope="col">شماره تماس</th>
-                        <th scope="col">رشته تحصیلی</th>
+                        <th scope="col">جزئیات</th>
                         <th scope="col">موضوع</th>
                         <th scope="col">مشاهده پرسش</th>
                         <th scope="col">ارسال به مشاور</th>
@@ -70,9 +68,7 @@
                         <tr>
                             <th scope="row">{{++$i}}</th>
                             <td>{{$consult->user->first_name.' '.$consult->user->last_name}}</td>
-                            <td>{{$consult->user->email}}</td>
-                            <td>{{$consult->user->mobile}}</td>
-                            <td>{{$consult->user->studentField->name}}</td>
+                            <td><a class="custom-btn text-center mt-0" href="{{url('/admin/users/student-detailes', $consult->user->id)}}">جزئیات</a></td>
                             <td>{{$consult->title}}</td>
                             <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal{{$consult->id}}">مشاهده </button></td>
 

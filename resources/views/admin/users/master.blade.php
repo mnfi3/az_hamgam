@@ -80,6 +80,7 @@
                         <th scope="col">کد ملی</th>
                         <th scope="col">شماره تماس</th>
                         <th scope="col">جزئیات</th>
+                        <th scope="col">حذف</th>
                     </tr>
                     </thead>
                     <tbody class="text-white" style="font-size: 0.9rem">
@@ -92,6 +93,13 @@
                         <td>{{$master->mobile}}</td>
                         <td>
                             <a href="{{url('/admin/users/master-detailes', $master->id)}}" class="custom-btn text-center mt-0" style="max-width: 80px;text-decoration: none">جزئیات</a>
+                        </td>
+                        <td>
+                            <form method="post" action="{{url('/admin/users/master-remove')}}" onsubmit="">
+                                @csrf
+                                <input type="hidden" name="id" value="{{$master->id}}">
+                                <button type="submit" class="custom-btn text-center mt-0" style="max-width: 80px;text-decoration: none">حذف</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

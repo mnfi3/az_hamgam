@@ -70,18 +70,16 @@ class SiteGuidanceController extends Controller
   }
 
  public function consult(){
-    $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_CONSULT);
-    $consults = Advice::orderBy('id', 'desc')->paginate(20);
     $consultants = User::where('role', '=', 'consultant')->orderBy('id', 'desc')->get();
     return view('site.consult', compact('consultants'));
   }
 
   public function consultInsert(Request $request){
-
     $advice = Advice::create([
       'user_id' => Auth::user()->id,
       'title' => $request->title,
       'question' => $request->question,
+      'adviser_id' => $request->consultant_id,
       'is_seen' => 0,
     ]);
 
