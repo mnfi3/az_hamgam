@@ -41,6 +41,7 @@
                         <th scope="col">#</th>
                         <th scope="col">اطلاعات فردی</th>
                         <th scope="col">فایل ارسال شده توسط دانشجو</th>
+                        <th scope="col">مبلغ پرداختی</th>
                         <th scope="col">جرئیات</th>
 
                     </tr>
@@ -59,6 +60,14 @@
                             @else
                                 <td>فایلی وجود ندارد</td>
                             @endif
+                            @php($payment = \App\Payment::where('paymentable_type', '=', 'App\Festival')
+                                ->where('paymentable_id', '=', $festival->id)->where('user_id', '=', $student->id)->first())
+                            @if($payment != null)
+                                <td>{{number_format($payment->amount)}} تومان</td>
+                            @else
+                                <td> 0 تومان</td>
+                            @endif
+
                             <td><a href="{{url('/admin/users/student-detailes', $student->id)}}" class="custom-btn text-center m-2 p-2" style="max-width: 110px" >مشاهده </a></td>
 
                         </tr>

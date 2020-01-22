@@ -54,7 +54,14 @@
                 @else
                     <td class="text-danger">فایلی ارسال نکرده اید</td>
                 @endif
-                <td>{{number_format($festival->price)}} تومان</td>
+                @php($payment = \App\Payment::where('paymentable_type', '=', 'App\Festival')
+                ->where('paymentable_id', '=', $festival->id)->where('user_id', '=', \Illuminate\Support\Facades\Auth::user()->id)->first())
+                @if($payment != null)
+                 <td>{{number_format($payment->amount)}} تومان</td>
+                @else
+                 <td> 0 تومان</td>
+                @endif
+
             </tr>
             @endforeach
 

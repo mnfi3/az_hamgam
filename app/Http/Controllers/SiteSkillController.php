@@ -240,6 +240,10 @@ class SiteSkillController extends Controller
       $system_trace_no = $verify_response->SystemTraceNo;
       $order_id = $verify_response->OrderId;
 
+      //check re register
+      $st_c = StudentCourses::where('student_id', '=', $order->user_id)->where('course_id', '=', $order->orderable_id)->first();
+      if($st_c != null)  return view('site.paymentSuccess', compact(['description', 'retrival_ref_no', 'system_trace_no', 'amount']));
+
       $user_course = StudentCourses::create([
         'student_id' => $order->user_id,
         'course_id' => $order->orderable_id,
@@ -377,6 +381,10 @@ class SiteSkillController extends Controller
       $retrival_ref_no = $verify_response->RetrivalRefNo;
       $system_trace_no = $verify_response->SystemTraceNo;
       $order_id = $verify_response->OrderId;
+
+      //check re register
+      $st_fc = StudentFreeCourses::where('student_id', '=', $order->user_id)->where('free_course_id', '=', $order->orderable_id)->first();
+      if($st_fc != null) return view('site.paymentSuccess', compact(['description', 'retrival_ref_no', 'system_trace_no', 'amount']));
 
       $user_workshop = StudentFreeCourses::create([
         'student_id' => $order->user_id,

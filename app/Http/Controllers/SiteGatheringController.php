@@ -165,6 +165,10 @@ class SiteGatheringController extends Controller
       $system_trace_no = $verify_response->SystemTraceNo;
       $order_id = $verify_response->OrderId;
 
+      //check re register
+      $st_w = StudentWorkshops::where('student_id', '=', $order->user_id)->where('workshop_id', '=', $order->orderable_id)->first();
+      if ($st_w != null) return view('site.paymentSuccess', compact(['description', 'retrival_ref_no', 'system_trace_no', 'amount']));
+
       $user_workshop = StudentWorkshops::create([
         'student_id' => $order->user_id,
         'workshop_id' => $order->orderable_id,
