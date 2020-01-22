@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav ml-auto " style="direction: rtl !important;">
                 <li class="dropdown nav-item mx-2">
-                    <a id="adminNavSite" class="nav-link dropdown-toggle nav-hover" href="" id="navbarSite" role="button" aria-haspopup="true" aria-expanded="false" >
+                    <a id="adminNavSite" class="nav-link dropdown-toggle nav-hover" href="#" id="navbarSite" role="button" aria-haspopup="true" aria-expanded="false" >
                         <i class="fa fa-book mt-1"></i>
                         آموزش
                     </a>

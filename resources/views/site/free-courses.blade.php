@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <div class="row mt-3">
                 <div class="col-5 mr-auto ml-auto bottom-line">
-                    <h2 class="text-center  p-2  text-dark" style="font-family: Vazir; font-size: 2.2rem ; text-align: center">جشنواره ها</h2>
+                    <h2 class="text-center  p-2  text-dark" style="font-family: Vazir; font-size: 2.2rem ; text-align: center">دوره های آزاد</h2>
                 </div>
             </div>
         </div>
