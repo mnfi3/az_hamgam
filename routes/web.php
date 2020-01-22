@@ -283,6 +283,7 @@ Route::post('/admin/users/master/add', 'Admin\AdminUserController@masterAdd');
 Route::get('/admin/users/master-detailes/{id}', 'Admin\AdminUserController@masterDetail');
 Route::get('/admin/users/consult', 'Admin\AdminUserController@consult');
 Route::post('/admin/users/consult/add', 'Admin\AdminUserController@consultAdd');
+Route::post('/admin/users/consult-remove', 'Admin\AdminUserController@consultRemove');
 Route::get('/admin/users/forums', 'Admin\AdminUserController@forums');
 Route::post('/admin/users/forum/add', 'Admin\AdminUserController@forumAdd');
 Route::get('/admin/industries', 'Admin\AdminUserController@industries');

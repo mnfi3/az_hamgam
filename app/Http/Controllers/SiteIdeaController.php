@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Festival;
 use App\Http\Controllers\Util\Sadad;
 use App\Order;
+use App\Payment;
 use App\StudentFestivals;
 use App\Util;
 use Illuminate\Http\Request;
@@ -174,14 +175,17 @@ class SiteIdeaController extends Controller
       //success
 
       $amount = $verify_response->Amount;
-      $description = $verify_response->Description . "<br><br>" . 'لطفا در صورت نیاز به ارسال فایل به جشنواره از طریق پنل خود اقدام نمایید';
+      $description = $verify_response->Description . "." . 'لطفا در صورت نیاز به ارسال فایل به جشنواره از طریق پنل خود اقدام نمایید';
       $retrival_ref_no = $verify_response->RetrivalRefNo;
       $system_trace_no = $verify_response->SystemTraceNo;
       $order_id = $verify_response->OrderId;
 
+      $st_f = StudentFestivals::where('student_id', '=', $order->user_id)->where('festival_id', '=' , $order->orderable_id)->firset();
+      if ($st_f != null) return view('site.paymentSuccess', compact(['description', 'retrival_ref_no', 'system_trace_no', 'amount']));
+
       $user_festival = StudentFestivals::create([
         'student_id' => $order->user_id,
-        'fesival_id' => $order->orderable_id,
+        'festival_id' => $order->orderable_id,
         'file' => '',
       ]);
 

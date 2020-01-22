@@ -109,6 +109,12 @@ class AdminUserController extends Controller {
     return back();
   }
 
+  public function consultRemove(Request $request){
+    $user = User::find($request->id);
+    $user->delete();
+    return back();
+  }
+
   public function forums() {
     $forums = User::where('role', '=', 'forum')->orderBy('id', 'desc')->get();
     return view('admin.users.forums', compact('forums'));

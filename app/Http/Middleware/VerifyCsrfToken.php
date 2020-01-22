@@ -23,5 +23,6 @@ class VerifyCsrfToken extends Middleware
         '/gathering/workshop/register/payment-verify',
         '/skill-learning/course/register/payment-verify',
         '/skill-learning/free-course/register/payment-verify',
+        '/idea/festival-register/payment-verify',
     ];
 }

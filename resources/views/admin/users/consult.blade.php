@@ -70,6 +70,7 @@
                         <th scope="col">اطلاعات فردی</th>
                         <th scope="col">ایمیل</th>
                         <th scope="col">شماره تماس</th>
+                        <th scope="col">حذف</th>
                     </tr>
                     </thead>
                     <tbody class="text-white" style="font-size: 0.9rem">
@@ -80,6 +81,13 @@
                         <td>{{$consultant->first_name.' - '.$consultant->last_name}}</td>
                         <td>{{$consultant->email}}</td>
                         <td>{{$consultant->mobile}}</td>
+                        <td>
+                            <form method="post" action="{{url('/admin/users/consult-remove')}}" onsubmit="">
+                                @csrf
+                                <input type="hidden" name="id" value="{{$consultant->id}}">
+                                <button type="submit" class="custom-btn text-center mt-0" style="max-width: 80px;text-decoration: none">حذف</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                     </tbody>
