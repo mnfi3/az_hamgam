@@ -40,6 +40,7 @@
                     </div>
                 @endif
                 <form class="login ml-auto mr-auto mt-3" align ="center" method="POST" action="{{ route('password.email') }}">
+                    @csrf
                     <input id="email" type="email" required class=" ml-auto mr-auto" placeholder="ایمیل" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -48,12 +49,16 @@
                     @enderror
 
                     <p>توجه : ایمیلی حاوی لینک بازیابی رمز عبور برای شما ارسال خواهد شد</p>
-                    <a href="{{url('/admin/admin')}}" class="text-white">
                         <button  class="custom-btn text-center m-0 "type="submit" >
                             <span>ارسال ایمیل بازیابی</span>
                         </button>
-                    </a>
+
                 </form>
+
+
+
+
+
             </div>
         </div>
     </div>
