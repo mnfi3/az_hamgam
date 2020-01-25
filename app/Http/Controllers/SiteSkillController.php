@@ -289,7 +289,7 @@ class SiteSkillController extends Controller
 
     //check re register
     foreach ($user_free_course as $item) {
-      if($item->free_course_id == $freeCourse->id){
+      if($item->id == $freeCourse->id){
         return back()->with('fail', 'شما قبلا در این دوره ثبت نام کرده اید');
       }
     }

@@ -100,7 +100,7 @@ class SiteIdeaController extends Controller
 
     //check re register
     foreach ($user_festivals as $item) {
-      if($item->festival_id == $festival->id){
+      if($item->id == $festival->id){
         return back()->with('fail', 'شما قبلا در این جشنواره ثبت نام کرده اید');
       }
     }

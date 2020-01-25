@@ -58,7 +58,7 @@
                     @if(\Illuminate\Support\Facades\Session::get('success') != null)
                         <p style=" color: #1e7e34;text-align: right;font-family: Vazir;font-size: 1.5rem">{{ \Illuminate\Support\Facades\Session::get('success') }}</p>
                     @endif
-                    <a href="{{url('/idea/festival-register', $festival->id)}}" download>
+                    <a href="{{url('/idea/festival-register', $festival->id)}}" >
                         <button class="custom-btn text-center m-4 "type="submit" style="max-width: 150px">
                             <span> پرداخت و ثبت نام</span>
                         </button>

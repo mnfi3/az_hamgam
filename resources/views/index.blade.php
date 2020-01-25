@@ -96,6 +96,38 @@
                 <!-- Tab Content 1 -->
                 <div id="tab-1-content" class="tab-content-item ">
                     <div class="row m-auto">
+
+                        @foreach($festivals2 as $course)
+                            <div class="col-md-4 col-lg-4 pb-3">
+                                <div class="card card-custom border-white border-0">
+                                    <div class="card-custom-img" style="background-image: url('{{asset($course->image)}}')"></div>
+                                    <div class="card-custom-avatar">
+                                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
+                                    </div>
+                                    <div class="card-body pt-1" style="overflow-y: hidden">
+                                        <h6 class="card-title text-dark m-0"> {{$course->title}} </h6>
+                                        <p class="card-text mt-0">
+                                            {{$course->description}}
+                                        </p>
+                                        @php($date = new \App\Http\Controllers\Util\PDate())
+                                        <p >تاریخ : {{$date->toPersian($course->date, 'Y/m/d')}}</p>
+                                        <p >ساعت : {{$course->hour}}</p>
+                                    </div>
+                                    <div class="card-footer pb-1" style="background: inherit; border-color: inherit;">
+                                        <div align="right">
+                                            <a href="{{url('/idea/festival-detail', $course->id)}}">
+                                                <button class="custom-btn text-center m-0 m-auto "type="submit" >
+                                                    <span>ثبت نام</span>
+                                                </button>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+
                         @foreach($free_courses2 as $course)
                             <div class="col-md-4 col-lg-4 pb-3">
                                 <div class="card card-custom border-white border-0">
@@ -190,6 +222,36 @@
                 <!-- Tab Content 2 -->
                 <div id="tab-2-content" class="tab-content-item show">
                     <div class="row m-auto">
+
+                        @foreach($festivals1 as $course)
+                            <div class="col-md-4 col-lg-4 pb-3">
+                                <div class="card card-custom bg-white border-white border-0">
+                                    <div class="card-custom-img" style="background-image: url('{{asset($course->image)}}')"></div>
+                                    <div class="card-custom-avatar">
+                                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
+                                    </div>
+                                    <div class="card-body pt-2" style="overflow-y: hidden">
+                                        <h6 class="card-title text-dark"> {{$course->title}} </h6>
+                                        <p class="card-text">
+                                            {{$course->description}}
+                                        </p>
+                                        @php($date = new \App\Http\Controllers\Util\PDate())
+                                        <p >تاریخ : {{$date->toPersian($course->date, 'Y/m/d')}}</p>
+                                        <p >ساعت : {{$course->hour}}</p>
+                                    </div>
+                                    <div class="card-footer" style="background: inherit; border-color: inherit;">
+                                        <div align="right">
+                                            <a href="{{url('/idea/festival-detail', $course->id)}}">
+                                                <button class="custom-btn text-center m-0 "type="submit" >
+                                                    <span>ثبت نام</span>
+                                                </button>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
 
                         @foreach($free_courses1 as $course)
                             <div class="col-md-4 col-lg-4 pb-3">
