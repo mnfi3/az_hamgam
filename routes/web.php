@@ -183,6 +183,7 @@ Route::post('/admin/consult/answer', 'Admin\AdminGuidanceController@consultAnswe
 Route::get('/admin/change-field', 'Admin\AdminGuidanceController@changeField');
 Route::post('/admin/change-field/update', 'Admin\AdminGuidanceController@changeFieldUpdate');
 Route::get('/admin/job-ads', 'Admin\AdminGuidanceController@jobAds');
+Route::post('admin/job-ads/update', 'Admin\AdminGuidanceController@jobAdsUpdate');
 Route::post('/admin/job-ad/insert', 'Admin\AdminGuidanceController@jobAdInsert');
 Route::get('/admin/job-ad/remove/{id}', 'Admin\AdminGuidanceController@jobAdRemove');
 Route::post(' ', 'Admin\AdminGuidanceController@jobAdsUpdate');

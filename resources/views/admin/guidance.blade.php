@@ -31,7 +31,7 @@
                 <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
                 <div class="col-md-5">
                     <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description" placeholder="توضیحات بخش"></textarea>
+                              class="form-control" name="description" placeholder="توضیحات بخش">{{$guidance->description}}</textarea>
                 </div>
                 <div class="col-md-3">
                     <button class="custom-btn text-center" type="submit" style="max-width: 120px">ذخیره</button>

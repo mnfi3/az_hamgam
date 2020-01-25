@@ -147,7 +147,8 @@ class AdminGuidanceController extends Controller
 
   public function jobAds(){
     $ads = JobAd::orderBy('id', 'desc')->get();
-    return view('admin.job-adds', compact('ads'));
+    $util = Util::get(Util::KEY_ACADEMIC_GUIDANCE_JOB_ADS);
+    return view('admin.job-adds', compact('ads', 'util'));
   }
 
   public function jobAdInsert(Request $request){
