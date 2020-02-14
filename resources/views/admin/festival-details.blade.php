@@ -56,7 +56,7 @@
 
                             @php($st_f = \App\StudentFestivals::where('student_id', '=', $student->id)->where('festival_id', '=', $festival->id)->first())
                             @if(strlen($st_f->file) > 3)
-                            <td><a class="btn-primary p-2" href="{{asset($st_f->file)}}">دانلود </a></td>
+                                <td><a class="btn-primary p-2" href="{{asset($st_f->file)}}">دانلود </a></td>
                             @else
                                 <td>فایلی وجود ندارد</td>
                             @endif
@@ -156,6 +156,28 @@
                 </form>
             </div>
         </div>
+        <div class="bg-warning " style="width:  100%;height: 2px" ></div>
+        <div class="row mt-5">
+            <div class="col-md-10 m-auto ">
+                <h5 class="text-white text-right mb-2" style="font-family: Vazir">اضافه کردن دانشجو</h5>
+
+                <form action="{{url('/admin/idea/festival/add-student')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$festival->id}}">
+
+                    <div class="form-group row py-4">
+                        <label class="col-md-2 col-form-label " style=""> کد ملی کاربر :</label>
+                        <input type="number" id="title" required=""
+                               class="form-control col-md-10 "  name="national_code" placeholder="کد ملی" value="">
+                    </div>
+                    <div class="d-flex justify-content-center mb-3">
+                        <button class="custom-btn text-center" type="submit" style="max-width: 120px">اضافه کن</button>
+                    </div>
+                    <h5 class="d-flex text-center">{{\Illuminate\Support\Facades\Session::get('mess')}}</h5>
+                </form>
+
+            </div>
+        </div>
     </div>
 </div>
 @include('include.footer')
@@ -170,7 +192,7 @@
 <script>
   (function ($) {
     $(document).ready(function () {
-      
+
       $(".start-day").persianDatepicker({
         format: 'YYYY/MM/DD',
         timePicker: {

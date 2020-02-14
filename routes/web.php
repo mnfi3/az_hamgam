@@ -249,6 +249,7 @@ Route::post('/admin/idea-support/answer', 'Admin\AdminIdeaController@ideaSupport
 Route::get('/admin/startup', 'Admin\AdminIdeaController@startup');
 Route::post('/admin/startup/update', 'Admin\AdminIdeaController@startupUpdate');
 Route::post('/admin/idea/festivals-update', 'Admin\AdminIdeaController@ideaFestivalsUpdate');
+Route::post('/admin/idea/festival/add-student', 'Admin\AdminIdeaController@ideaFestivalAddStudnet');
 Route::get('/admin/idea/festivals', 'Admin\AdminIdeaController@festivals');
 Route::post('/admin/idea/festival-insert', 'Admin\AdminIdeaController@festivalAdd');
 Route::get('/admin/idea/festival-detail/{id}', 'Admin\AdminIdeaController@festivalDetail');

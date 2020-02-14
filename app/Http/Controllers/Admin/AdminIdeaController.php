@@ -7,6 +7,9 @@ use App\Http\Controllers\Util\PDate;
 use App\Http\Controllers\Util\PNum;
 use App\Http\Controllers\Util\Uploader;
 use App\Idea;
+use App\Payment;
+use App\StudentFestivals;
+use App\User;
 use App\Util;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -78,6 +81,49 @@ class AdminIdeaController extends Controller
     }
     $util->save();
     return back();
+  }
+
+  public function ideaFestivalAddStudnet(Request $request){
+    $user = User::orderBy('id', 'desc')->where('national_code', '=', $request->national_code)->where('role', '=', 'student')->first();
+    $id = $request->id;
+    if($user == null) return back()->with('mess', 'کد ملی وارد شده اشتباه است');
+
+    $user_festivals = $user->studentFestivals;
+    $festival = Festival::find($id);
+
+
+    //check re register
+    foreach ($user_festivals as $item) {
+      if($item->id == $festival->id){
+        return back()->with('mess', 'این دانشجو قبلا در این جشنواره ثبت نام کرده است');
+      }
+    }
+
+    //check deadline
+    if (date('Y-m-d') > $festival->date){
+      return back()->with('mess', 'مهلت ثبت نام تمام شده است');
+    }
+
+    $student_festival = StudentFestivals::create([
+      'student_id' => $user->id,
+      'festival_id' => $festival->id,
+      'file' => '',
+    ]);
+
+    //if price>0
+    if ($festival->price > 0){
+      $payment = Payment::create([
+        'user_id' => $user->id,
+        'paymentable_id' => $festival->id,
+        'paymentable_type' => 'App\Festival',
+        'amount' => $festival->price,
+        'retrival_ref_no' => 'cash payment',
+        'system_trace_no' => 'cash payment',
+      ]);
+    }
+
+    $name = $user->first_name . ' ' . $user->last_name;
+    return back()->with('mess', " ثبت نام با موفقیت انجام شد. $name با موفقیت در این جشنواره ثبت شد");
   }
 
 
