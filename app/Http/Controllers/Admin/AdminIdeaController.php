@@ -153,6 +153,7 @@ class AdminIdeaController extends Controller
       'date' => $d->toGregorian(PNum::toLatin($request->date)),
       'hour' => $request->hour,
       'price' => $request->price,
+      'is_cash_pay' => $request->is_cash_pay,
     ]);
     return back();
   }
@@ -175,6 +176,7 @@ class AdminIdeaController extends Controller
     $festival->date = $d->toGregorian(PNum::toLatin($request->date));
     $festival->hour = $request->hour;
     $festival->price = $request->price;
+    $festival->is_cash_pay = $request->is_cash_pay;
     $festival->save();
     return back();
   }

@@ -58,11 +58,15 @@
                     @if(\Illuminate\Support\Facades\Session::get('success') != null)
                         <p style=" color: #1e7e34;text-align: right;font-family: Vazir;font-size: 1.5rem">{{ \Illuminate\Support\Facades\Session::get('success') }}</p>
                     @endif
+                    @if($festival->is_cash_pay != 1)
                     <a href="{{url('/idea/festival-register', $festival->id)}}" >
                         <button class="custom-btn text-center m-4 "type="submit" style="max-width: 150px">
                             <span> پرداخت و ثبت نام</span>
                         </button>
                     </a>
+                    @else
+                        <p style=" color: #2f48b9;text-align: right;font-family: Vazir;font-size: 1.5rem">برای ثبت نام در این جشنواره به معاونت پژوهشی و دفتر ارتباط با صنعت دانشگاه مراجعه نمایید</p>
+                    @endif
                 </div>
             </div>
         </div>

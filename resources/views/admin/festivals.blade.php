@@ -77,13 +77,13 @@
                 <form action="{{url('/admin/idea/festival-insert')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
                     @csrf
                     <div class="form-group row py-4">
-                        <label class="col-md-2 col-form-label " style=""> عنوان جشنواره :</label>
+                        <label class="col-md-3 col-form-label " style=""> عنوان جشنواره :</label>
                         <input type="text" id="title" required=""
-                               class="form-control col-md-10 "  name="title" placeholder="نام جشنواره">
+                               class="form-control col-md-9 "  name="title" placeholder="نام جشنواره">
                     </div>
                     <div class="form-group row py-4">
-                        <label class="col-md-2 col-form-label " style="" >تصویر  :</label>
-                        <div class="col-md-10 ">
+                        <label class="col-md-3 col-form-label " style="" >تصویر  :</label>
+                        <div class="col-md-9 ">
                             <div  id="">
                                 <div class="d-flex flex-row justify-content-between">
                                     <input type="file"  required
@@ -95,22 +95,18 @@
 
 
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-2 pt-0" for="time">تاریخ برگزاری :</label>
-                        <div class="col-sm-10">
-                            <input  type="text"  name="date" class="form-control start-day example1" required>
-                        </div>
+                        <label class="col-form-label col-sm-3" for="time">تاریخ برگزاری :</label>
+                        <input  type="text"  name="date" class="col-sm-9 form-control start-day example1" required>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-2 pt-0" for="time">ساعت برگزاری :</label>
-                        <div class="col-sm-10">
-                            <input  type="text"  name="hour" class="form-control col-md-10" required>
-                        </div>
+                        <label class="col-form-label col-md-3" for="time">ساعت برگزاری :</label>
+                        <input  type="text"  name="hour" class="form-control col-md-9" required>
                     </div>
 
                     <div class="form-group row py-4">
-                        <label class="col-md-2 col-form-label " style="" >فایل جشنواره  :</label>
-                        <div class="col-md-10 ">
+                        <label class="col-md-3 col-form-label " style="" >فایل جشنواره  :</label>
+                        <div class="col-md-9 ">
                             <div  id="">
                                 <div class="d-flex flex-row justify-content-between">
                                     <input type="file"
@@ -120,19 +116,22 @@
                         </div>
                     </div>
 
-
-
-
-
-
                     <div class="form-group row py-4">
-                        <label class="col-md-2 col-form-label " style=""> هزینه جشنواره</label>
+                        <label class="col-md-3 col-form-label " style=""> هزینه جشنواره</label>
                         <input type="number" id="title" required=""
-                               class="form-control col-md-10 "  name="price" placeholder="هزینه (تومان)">
+                               class="form-control col-md-9 "  name="price" placeholder="هزینه (تومان)">
+                    </div>
+
+                    <div class="form-group row ">
+                        <label class="col-md-3 col-form-label " style=""> نوع پرداخت :</label>
+                        <select class="browser-default custom-select col-md-9" name="is_cash_pay" required>
+                            <option value="1" >نقدی</option>
+                            <option value="0" selected >اینترنتی</option>
+                        </select>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label ">توضیح مختصر </label>
-                        <div class="col-md-9 mr-auto">
+                        <div class="col-md-9">
                     <textarea type="text" id="editor1" required=""
                               class="form-control" name="description" placeholder="توضیحات"></textarea>
                         </div>

@@ -136,10 +136,19 @@
 
 
                     <div class="form-group row py-4">
-                        <label class="col-md-2 col-form-label " style=""> هزینه دوره</label>
+                        <label class="col-md-2 col-form-label " style=""> هزینه جشنواره</label>
                         <input type="number" id="title" required=""
                                class="form-control col-md-10 "  name="price" placeholder="هزینه (تومان)" value="{{$festival->price}}">
                     </div>
+
+                    <div class="form-group row ">
+                        <label class="col-md-3 col-form-label " style=""> نوع پرداخت :</label>
+                        <select class="browser-default custom-select col-md-9" name="is_cash_pay" required>
+                            <option value="1" @if($festival->is_cash_pay == 1) selected @endif>نقدی</option>
+                            <option value="0"  @if($festival->is_cash_pay != 1) selected @endif  >اینترنتی</option>
+                        </select>
+                    </div>
+
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label ">توضیح مختصر </label>
                         <div class="col-md-9 mr-auto">

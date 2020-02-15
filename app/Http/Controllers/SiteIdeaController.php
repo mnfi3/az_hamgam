@@ -96,6 +96,7 @@ class SiteIdeaController extends Controller
     $user = Auth::user();
     $user_festivals = $user->studentFestivals;
     $festival = Festival::find($id);
+    if($festival->is_cash_pay == 1) return back();
 
 
     //check re register

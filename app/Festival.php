@@ -9,7 +9,7 @@ class Festival extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['title', 'description', 'image', 'file', 'date', 'hour', 'price'];
+  protected $fillable = ['title', 'description', 'image', 'file', 'date', 'hour', 'price', 'is_cash_pay'];
 
 
   public function students(){
