@@ -105,6 +105,16 @@
                 {{$consult->question}}
             </div>
 
+            <div class=" row ">
+                <div class="col-md-12">
+                    @if(strlen($consult->question_file) > 2)
+                        <button type="button" class="btn btn-primary ">
+                            <a class="text-white" style="text-decoration: none" href="{{Illuminate\Support\Facades\URL::to('/') .'/'.$consult->question_file}}" download="" >دانلود فایل </a>
+                        </button>
+                    @endif
+                </div>
+            </div>
+
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="custom-btn btn-danger" data-dismiss="modal" style="max-width: 60px">بستن</button>
@@ -130,7 +140,7 @@
             <!-- Modal body -->
             <div class="modal-body text-right">
                 @if(strlen($consult->answer) < 2)
-                <form action="{{url('/counselor/send-answer')}}" method="post" class="" style="direction: rtl;font-family: Vazir">
+                <form action="{{url('/counselor/send-answer')}}" method="post" class="" style="direction: rtl;font-family: Vazir" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{$consult->id}}">
                     <div class="form-group row ">
@@ -139,6 +149,28 @@
                               class="form-control" placeholder="پاسخ"></textarea>
                         </div>
                     </div>
+
+
+
+
+
+                    <div class="row py-2">
+
+                        <label class="col-md-6 ml-auto" style="text-align: right; font-size: 15px" >:انتخاب صوت یا ویدئو</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="fileInputsContainer ">
+                                <div class="d-flex flex-row">
+                                    <input type="file" id="file"
+                                           class=""  name="file">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
                     <div class="d-flex justify-content-center ">
                         <button class="custom-btn text-center" type="submit" style="max-width: 100px">ارسال</button>
                     </div>
@@ -146,6 +178,17 @@
                 @else
                     <span type="text" id="editor1" required style="width: 100%;height: 190px;font-size: 0.8rem"
                               class="form-control">{{$consult->answer}}</span>
+
+                    <div class=" row ">
+                        <div class="col-md-12">
+                            @if(strlen($consult->answer_file) > 2)
+                                <button type="button" class="btn btn-primary ">
+                                    <a class="text-white" style="text-decoration: none" href="{{Illuminate\Support\Facades\URL::to('/') .'/'.$consult->answer_file}}" download="" >دانلود فایل </a>
+                                </button>
+                            @endif
+                        </div>
+                    </div>
+
                 @endif
             </div>
 

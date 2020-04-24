@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\CounselorReport;
 use App\Course;
 use App\FreeCourse;
 use App\User;
@@ -179,5 +180,16 @@ class AdminUserController extends Controller {
     $authority1 = Util::get(Util::KEY_MANAGER_INDUSTRY)->description;
     $authority2 = Util::get(Util::KEY_MANAGER_RESEARCH)->description;
     return view('admin.users.certificate-print', compact('user', 'course', 'authority1', 'authority2'));
+  }
+
+
+  public function counselorReports(){
+    $reports = CounselorReport::orderBy('id', 'desc')->paginate(200);
+    return view('admin.performance-report', compact('reports'));
+  }
+
+  public function counselorReportPrint($id){
+    $report = CounselorReport::find($id);
+    return view('admin.report-print', compact('report'));
   }
 }

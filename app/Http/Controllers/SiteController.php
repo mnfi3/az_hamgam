@@ -32,13 +32,13 @@ class SiteController extends Controller
     $free_courses1 = FreeCourse::orderBy('id', 'desc')->where('deadline', '>=', $now)->take(10)->get();
     $courses1 = Course::orderBy('id', 'desc')->where('deadline', '>=', $now)->take(10)->get();
     $workshops1 = Workshop::orderBy('id', 'desc')->where('deadline', '>=', $now)->take(10)->get();
-    $festivals1 = Festival::orderBy('id', 'desc')->where('date', '>', $now)->take(10)->get();
+    $festivals1 = Festival::orderBy('id', 'desc')->where('date', '>=', $now)->take(10)->get();
 
     $free_courses2 = FreeCourse::orderBy('id', 'desc')->where('deadline', '<', $now)->take(3)->get();
     $courses2 = Course::orderBy('id', 'desc')->where('deadline', '<', $now)->take(3)->get();
     $workshops2 = Workshop::orderBy('id', 'desc')->where('deadline', '<', $now)->take(3)->get();
     $festivals2 = Festival::orderBy('id', 'desc')->where('date', '<', $now)->take(3)->get();
-//    return json_encode($festivals2);
+	//return json_encode(festivals2);
     return view('index',
       compact(
         'posts', 'sliders', 'questions', 'about', 'free_courses1', 'courses1', 'workshops1',

@@ -12,6 +12,7 @@ use App\User;
 use App\Util;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Ipecompany\Smsirlaravel\Smsirlaravel;
 
 class AdminGuidanceController extends Controller
 {
@@ -117,7 +118,19 @@ class AdminGuidanceController extends Controller
   public function consultAnswer(Request $request){
     $advice = Advice::find($request->consult_id);
     $advice->answer = $request->answer;
+    if($request->hasFile('file')) {
+      $file = Uploader::file($request->file('file'));
+      $advice->answer_file = $file;
+    }
     $advice->save();
+
+
+    $user = $advice->user;
+    $message = "پاسخی به پرسش شما با موضوع $advice->title ارسال شد. لطفا برای مشاهده به پنل خود مراجعه کنید.\n سیستم همگام دانشگاه شهید مدنی آذربایجان";
+    str_replace('title', $advice->title, $message);
+    str_replace('br', "\n", $message);
+    Smsirlaravel::send([$message], [$user->mobile]);
+
     return back();
   }
 

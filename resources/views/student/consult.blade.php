@@ -32,6 +32,7 @@
                         <th scope="col">#</th>
                         <th scope="col">موضوع</th>
                         <th scope="col">سوال</th>
+                        <th scope="col">فایل ارسالی</th>
                         <th scope="col">مشاور</th>
                         <th scope="col">وضعیت</th>
                         <th scope="col">پاسخ</th>
@@ -44,12 +45,22 @@
                         <th scope="row">{{++$i}}</th>
                         <td>{{$consult->title}}</td>
                         <td>{{$consult->question}}</td>
+
+                        @if(strlen($consult->question_file) > 2)
+                            <td>
+                            <button type="button" class="btn btn-primary ">
+                                <a class="text-white" style="text-decoration: none" href="{{Illuminate\Support\Facades\URL::to('/') .'/'.$consult->question_file}}" download="" >دانلود </a>
+                            </button>
+                            </td>
+                        @else
+                            <td>ندارد</td>
+                        @endif
                         @if($consult->consultant != null)
                         <td>{{$consult->consultant->first_name.' '. $consult->consultant->last_name}}</td>
                         @else
                         <td></td>
                         @endif
-                        @if(strlen($consult->answer) > 1)
+                        @if(strlen($consult->answer) > 0)
                             <td >پاسخ داده شده</td>
                         @else
                             <td >پاسخ داده نشده</td>
@@ -71,7 +82,7 @@
         <div class="container" style=" min-height: 450px">
             <div class="row">
                 <div class="col-12">
-                    <form class="login ml-auto mr-auto mt-3" align ="center" method="post" action="{{url('/academic-guidance/consult-insert')}}">
+                    <form class="login ml-auto mr-auto mt-3" align ="center" method="post" action="{{url('/academic-guidance/consult-insert')}}" enctype="multipart/form-data">
                         <h6>از این قسمت میتوانید سوال خود را مطرح کنید</h6>
                         @csrf
                         <input name="title" type="text" required class=" ml-auto mr-auto" placeholder="موضوع سوال">
@@ -86,7 +97,23 @@
                         @if(\Illuminate\Support\Facades\Session::get('msg') != null)
                             <p>سوال شما ثبت شد.پاسخ دهی به پرسش ها در اسرع وقت انجام خواهد شد و نتایج آن در پنل کاربری قابل مشاهده خواهد بود</p>
                         @endif
-                        <button  class="custom-btn text-center m-0 "type="submit" >
+                        <div class="row py-2">
+
+                            <label class="col-md-6 ml-auto" style="text-align: right; font-size: 15px" >:انتخاب صوت یا ویدئو</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="fileInputsContainer ">
+                                    <div class="d-flex flex-row">
+                                        <input type="file" id="file"
+                                               class=""  name="file">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button  class="custom-btn text-center m-0 mt-3"type="submit" >
                             <span>ارسال پرسش </span>
                         </button>
                         @guest
@@ -121,6 +148,18 @@
                               class="form-control" name="description" placeholder="پاسخ دریافتی">{{$consult->answer}}</span>
                         </div>
                     </div>
+
+
+                    <div class="form-group row ">
+                        <div class="col-md-12">
+                            @if(strlen($consult->answer_file) > 2)
+                                <button type="button" class="btn btn-primary ">
+                                    <a class="text-white" style="text-decoration: none" href="{{Illuminate\Support\Facades\URL::to('/') .'/'.$consult->answer_file}}" download="" >دانلود فایل </a>
+                                </button>
+                            @endif
+                        </div>
+                    </div>
+
                 </form>
             </div>
             <!-- Modal footer -->

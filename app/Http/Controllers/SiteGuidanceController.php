@@ -6,6 +6,7 @@ use App\Advice;
 use App\Course;
 use App\Field;
 use App\FrequentlyQuestion;
+use App\Http\Controllers\Util\Uploader;
 use App\Idea;
 use App\Job;
 use App\JobAd;
@@ -14,6 +15,7 @@ use App\User;
 use App\Util;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Ipecompany\Smsirlaravel\Smsirlaravel;
 
 class SiteGuidanceController extends Controller
 {
@@ -69,19 +71,39 @@ class SiteGuidanceController extends Controller
     return view('site.relative-jobs', compact('jobs', 'fields'));
   }
 
- public function consult(){
+  public function consult(){
     $consultants = User::where('role', '=', 'consultant')->orderBy('id', 'desc')->get();
     return view('site.consult', compact('consultants'));
   }
 
+  public function coronaConsult(){
+    $consultants = User::where('role', '=', 'consultant')->orderBy('id', 'desc')->get();
+    return view('site.corona-consultation', compact('consultants'));
+  }
+
   public function consultInsert(Request $request){
+    $file = '';
+    if($request->hasFile('file')) {
+      $file = Uploader::file($request->file('file'));
+    }
     $advice = Advice::create([
       'user_id' => Auth::user()->id,
       'title' => $request->title,
       'question' => $request->question,
+      'question_file' => $file,
       'adviser_id' => $request->consultant_id,
       'is_seen' => 0,
     ]);
+
+    if ($advice->adviser_id != 0 && $advice->adviser_id != null) {
+      $counselor = $advice->consultant;
+      $message = " پرسشی با موضوع $advice->title برای شما ارسال شد. لطفا برای مشاهده به پنل خود مراجعه کنید.\n سیستم همگام دانشگاه شهید مدنی آذربایجان";
+//      str_replace('title', $advice->title, $message);
+//      str_replace('br', "\n", $message);
+      Smsirlaravel::send([$message], [$counselor->mobile]);
+    }
+
+
 
     $msg = 1;
     return back()->with('msg', $msg);;

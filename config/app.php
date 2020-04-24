@@ -176,6 +176,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+      //sms.ir
+      Ipecompany\Smsirlaravel\SmsirlaravelServiceProvider::class,
+
     ],
 
     /*
@@ -226,6 +229,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+      //sms.ir
+      'Smsirlaravel' => Ipecompany\Smsirlaravel\SmsirlaravelFacade::class,
 
     ],
 

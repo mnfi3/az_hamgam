@@ -106,6 +106,7 @@
                         <a class="dropdown-item" href="{{url('/admin/users/consult')}}">مشاور</a>
                         <a class="dropdown-item" href="{{url('/admin/users/forums')}}">انجمن ها</a>
                         <a class="dropdown-item" href="{{url('/admin/industries')}}">صنایع</a>
+                        <a class="dropdown-item" href="{{url('/admin/performance-report')}}">گزارش های عملکرد</a>
                     </div>
                 </li>
                 <li  class="dropdown nav-item mx-2 btn-primary">

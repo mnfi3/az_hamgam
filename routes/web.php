@@ -40,6 +40,7 @@ Route::get('/news/detailes/{id}', 'SiteController@post');
 Route::get('/academic-guidance', 'SiteGuidanceController@academicGuidance');
 Route::get('/academic-guidance/relative-jobs','SiteGuidanceController@relativeJobs');
 Route::get('/academic-guidance/consult', 'SiteGuidanceController@consult');
+Route::get('/academic-guidance/corona-consultation', 'SiteGuidanceController@coronaConsult');
 Route::post('/academic-guidance/consult-insert', 'SiteGuidanceController@consultInsert');
 Route::get('/academic-guidance/job-ads', 'SiteGuidanceController@jobAds');
 Route::get('/academic-guidance/change-field', 'SiteGuidanceController@changeField');
@@ -290,6 +291,8 @@ Route::get('/admin/users/forums', 'Admin\AdminUserController@forums');
 Route::post('/admin/users/forum/add', 'Admin\AdminUserController@forumAdd');
 Route::get('/admin/industries', 'Admin\AdminUserController@industries');
 Route::post('/admin/industry/add', 'Admin\AdminUserController@industryAdd');
+Route::get('/admin/performance-report', 'Admin\AdminUserController@counselorReports');
+Route::get('/admin/performance-report-print/{id}', 'Admin\AdminUserController@counselorReportPrint');
 
 
 //section backup
@@ -318,6 +321,8 @@ Route::get('/counselor/profile', 'Consultant\ConsultantController@profile');
 Route::post('/consultant/change-password', 'Consultant\ConsultantController@changePass');
 Route::get('/counselor/contact', 'Consultant\ConsultantController@contact');
 Route::post('/counselor/send-message', 'Consultant\ConsultantController@sendMessage');
+Route::get('/counselor/performant-report', 'Consultant\ConsultantController@reports');
+Route::post('/counselor/performant-report-send', 'Consultant\ConsultantController@sendReport');
 
 
 

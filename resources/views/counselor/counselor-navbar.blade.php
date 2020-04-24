@@ -29,6 +29,13 @@
                         <span class="new-ticket"></span>
                     </a>
                 </li>
+                <li class="navbar-ticket nav-item  mx-2 mr-3">
+                    <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/counselor/performant-report')}}" id="navbarTicket" role="button">
+                        <i class="fa fa-mail-reply mt-1"></i>
+                       ارسال گزارش عملکرد
+                        <span class="new-ticket"></span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

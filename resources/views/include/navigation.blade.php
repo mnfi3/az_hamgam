@@ -39,10 +39,13 @@
                                         </form>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
-                                        <a class="nav-link" href="{{url('/home')}}">پنل کاربری</a>
+                                        <a class="nav-link" style="font-size: 0.7rem" href="{{url('/home')}}">پنل کاربری</a>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
-                                        <a class="nav-link " href="{{url('/news')}}">اخبار و اطلاعیه ها</a>
+                                        <a class="nav-link " style="font-size: 0.7rem" href="{{url('/news')}}">اخبار و اطلاعیه ها</a>
+                                    </li>
+									<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
+                                        <a class="nav-link "  style="font-size: 0.7rem; border-color: #721c24;border: 2px #721c24 solid;border-radius: 3px;background: linear-gradient(to right, #8d0c35, #eb185c) !important;"  href="{{url('/academic-guidance/corona-consultation')}}">مشاوره سلامت روان-اجتماعی(ویژه کرونا)</a>
                                     </li>
                                 </ul>
                             @endauth
@@ -58,6 +61,10 @@
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
                                         <a class="nav-link " href="{{url('/news')}}">اخبار و اطلاعیه ها</a>
                                     </li>
+									<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-3 ">
+                                        <a class="nav-link " style="font-size: 0.7rem; border-color: #721c24;border: 2px #721c24 solid;border-radius: 3px;background: linear-gradient(to right, #8d0c35, #eb185c) !important;" href="{{url('/academic-guidance/corona-consultation')}}">مشاوره سلامت روان-اجتماعی(ویژه کرونا)</a>
+                                    </li>
+									
                                 </ul>
                             @endguest
                             <ul class="navbar-nav ml-auto py-4 py-md-0">

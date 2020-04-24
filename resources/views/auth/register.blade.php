@@ -66,7 +66,7 @@
                     <select name="field_id" class="browser-default custom-select" >
                             <option value="" ></option>
                         @foreach($fields as $field)
-                            <option value="{{$field->id}}" >{{$field->name}}</option>
+                            <option value="{{$field->id}}" selected>{{$field->name}}</option>
                         @endforeach
                     </select>
                     <input name="email"  value="{{old('email')}}" type="email" required class=" ml-auto mr-auto" placeholder="ایمیل">

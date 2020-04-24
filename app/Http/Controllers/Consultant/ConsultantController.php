@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Consultant;
 
 use App\Advice;
+use App\CounselorReport;
+use App\Http\Controllers\Util\Uploader;
 use App\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Ipecompany\Smsirlaravel\Smsirlaravel;
 
 class ConsultantController extends Controller
 {
@@ -26,7 +29,18 @@ class ConsultantController extends Controller
     if($consult->adviser_id != Auth::user()->id) return back();
 
     $consult->answer = $request->answer;
+    if($request->hasFile('file')) {
+      $file = Uploader::file($request->file('file'));
+      $consult->answer_file = $file;
+    }
     $consult->save();
+
+    $user = $consult->user;
+    $message = "پاسخی به پرسش شما با موضوع $consult->title ارسال شد. لطفا برای مشاهده به پنل خود مراجعه کنید.\n سیستم همگام دانشگاه شهید مدنی آذربایجان";
+//    str_replace('title', $consult->title, $message);
+//    str_replace('br', "\n", $message);
+    Smsirlaravel::send([$message], [$user->mobile]);
+
     return back();
   }
 
@@ -66,6 +80,22 @@ class ConsultantController extends Controller
       'name' => Auth::user()->first_name.' '.Auth::user()->last_name,
       'email' => Auth::user()->email,
       'question' => $request->question,
+    ]);
+
+    return back();
+  }
+
+
+  public function reports(){
+    $user = Auth::user();
+    $reports = $user->counselorReports()->orderBy('id', 'desc')->get();
+    return view('counselor.performant-report', compact('reports'));
+  }
+
+  public function sendReport(Request $request){
+    $report = CounselorReport::create([
+      'user_id' => Auth::user()->id,
+      'message' => $request->message
     ]);
 
     return back();

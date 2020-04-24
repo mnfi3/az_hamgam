@@ -87,6 +87,10 @@ class User extends Authenticatable
     return $this->hasMany('App\Advice', 'adviser_id');
   }
 
+  public function counselorReports(){
+    return $this->hasMany('App\CounselorReport');
+  }
+
   public function hasWorkshopCert($id){
     $stWorkshop = StudentWorkshops::where('student_id' , '=', $this->id)->where('workshop_id', '=', $id)->first();
     if($stWorkshop != null){
@@ -118,6 +122,9 @@ class User extends Authenticatable
 
     return false;
   }
+
+
+
 
 
 }
