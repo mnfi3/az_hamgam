@@ -90,7 +90,9 @@
                                 @elseif($consult->adviser_id != 0 && $consult->adviser_id != null)
                                     <div class="d-flex  p-2 justify-content-between">
                                     <span class=" custom-select ml-2" style="font-size: 0.7rem;min-width: 120px">
-                                        {{$consult->user->first_name.' '.$consult->user->last_name}}
+                                        @if($consult->consultant != null)
+                                            {{$consult->consultant->first_name.' '.$consult->consultant->last_name}}
+                                        @endif
                                     </span>
                                     </div>
                                 @else
