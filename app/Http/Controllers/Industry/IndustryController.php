@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Industry;
 
+use App\Http\Controllers\Util\Uploader;
+use App\JobAd;
 use App\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -56,5 +58,57 @@ class IndustryController extends Controller
     }
 
     return back()->with('password', $msg);
+  }
+
+  public function jobs(){
+    $user = Auth::user();
+    $ads = $user->industryJobAds;
+    return view('industry.jobs', compact('ads'));
+  }
+
+  public function jobAdInsert(Request $request){
+    $image = Uploader::image($request->file('image'));
+    $ad = JobAd::create([
+      'industry_id' => Auth::user()->id,
+      'title' => $request->title,
+      'image' => $image,
+      'description' => $request->description,
+      'salary' => $request->salary,
+      'skills' => $request->skills,
+      'is_accepted' => 0,
+    ]);
+
+    return back();
+  }
+
+
+
+  public function jobEdit($id){
+    $ad = JobAd::find($id);
+    if ($ad->industry_id != Auth::user()->id) return back();
+    return view('industry.job-edit', compact('ad'));
+  }
+
+
+  public function jobAdUpdate(Request $request){
+    $ad = JobAd::find($request->id);
+    if ($ad->industry_id != Auth::user()->id) return back();
+    $ad->title = $request->title;
+    if($request->hasFile('image')){
+      $ad->image = Uploader::image($request->file('image'));
+    }
+    $ad->description = $request->description;
+    $ad->skills = $request->skills;
+    $ad->salary = $request->salary;
+    $ad->save();
+    return back();
+  }
+
+
+  public function jobRemove($id){
+    $ad = JobAd::find($id);
+    if ($ad->industry_id != Auth::user()->id) return back();
+    $ad->delete();
+    return back();
   }
 }

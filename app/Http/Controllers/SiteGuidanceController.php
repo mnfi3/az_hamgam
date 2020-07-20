@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Advice;
-use App\Course;
 use App\Field;
-use App\FrequentlyQuestion;
 use App\Http\Controllers\Util\Uploader;
-use App\Idea;
 use App\Job;
 use App\JobAd;
-use App\Slider;
 use App\User;
 use App\Util;
 use Illuminate\Http\Request;
@@ -141,10 +137,22 @@ class SiteGuidanceController extends Controller
 
 
 
-  public function jobAds(){
-    $ads = JobAd::orderBy('id', 'desc')->paginate(27);
-    return view('site.job-adds', compact('ads'));
+  public function jobAds(Request $request){
+    $text = $request->text;
+    if (strlen($text) > 2)
+      $ads = JobAd::orderBy('id', 'desc')->where('title', 'like' , '%'.$text.'%')->where('is_accepted', '=', 1)->paginate(30);
+    else
+      $ads = JobAd::orderBy('id', 'desc')->where('is_accepted', '=', 1)->paginate(30);
+    return view('site.job-adds', compact('ads'))->with('text', $text);
   }
+
+  public function jobAdsDetails($id){
+    $ad = JobAd::find($id);
+    if($ad->is_accepted != 1) return back();
+    return view('site.job-details', compact('ad'));
+  }
+
+
 
 
 }

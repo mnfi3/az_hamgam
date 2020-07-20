@@ -164,20 +164,63 @@ class AdminGuidanceController extends Controller
     return view('admin.job-adds', compact('ads', 'util'));
   }
 
+
   public function jobAdInsert(Request $request){
-//    $image = Uploader::image($request->file('image'));
+    $image = Uploader::image($request->file('image'));
     $ad = JobAd::create([
+      'industry_id' => 0,
       'title' => $request->title,
-//      'image' => $image,
+      'image' => $image,
       'description' => $request->description,
+      'salary' => $request->salary,
+      'skills' => $request->skills,
+      'is_accepted' => 1,
     ]);
 
     return back();
   }
+
+
+  public function jobAdEdit($id){
+    $ad = JobAd::find($id);
+    return view('admin.edit-job_ad', compact('ad'));
+  }
+
+  public function jobAdUpdate(Request $request){
+    $ad = JobAd::find($request->id);
+    $ad->title = $request->title;
+    if($request->hasFile('image')){
+      $ad->image = Uploader::image($request->file('image'));
+    }
+    $ad->description = $request->description;
+    $ad->skills = $request->skills;
+    $ad->salary = $request->salary;
+    $ad->save();
+    return back();
+  }
+
+
 
   public function jobAdRemove($id){
     $ad = JobAd::find($id);
     $ad->delete();
     return back();
   }
+
+
+  public function jobAdAccept($id){
+    $ad = JobAd::find($id);
+    $ad->is_accepted = 1;
+    $ad->save();
+    return back();
+  }
+
+  public function jobAdReject($id){
+    $ad = JobAd::find($id);
+    $ad->is_accepted = -1;
+    $ad->save();
+    return back();
+  }
+
+
 }

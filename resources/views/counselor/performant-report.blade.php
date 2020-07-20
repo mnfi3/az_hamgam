@@ -57,9 +57,9 @@
                         <div class="form-group row mt-1">
                              <div class="col-md-12 mr-auto">
                           <textarea type="text" id="editor1" required
-                                    class="form-control" name="message" placeholder="set content here" ></textarea>
+                                    class="form-control" name="message" placeholder="متن گزارش رااینجا بنویسید" ></textarea>
                                 <script>
-                                  CKEDITOR.replace( 'editor1' );
+                                 // CKEDITOR.replace( 'editor1' );
                                 </script>
                             </div>
                         </div>

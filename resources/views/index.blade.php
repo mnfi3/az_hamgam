@@ -424,8 +424,8 @@
                                 <div class="card-body" style="overflow-y: auto">
                                     <h6 class="card-title">{{$post->title}}</h6>
                                     <p style="padding-top: 0px">
-                                        {{substr(strip_tags($post->description), 0, 30)}}
                                     </p>
+
                                 </div>
                             </div>
                         </a>

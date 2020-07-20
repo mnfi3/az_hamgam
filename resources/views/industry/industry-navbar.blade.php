@@ -15,7 +15,13 @@
                         <i class="fa fa-book mt-1"></i>
                         ارتباط با دانشگاه
                     </a>
-
+                </li>
+                <li class="navbar-ticket nav-item  mx-2 mr-3">
+                    <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/industry/jobs')}}" id="navbarTicket" role="button">
+                        <i class="fa fa-graduation-cap mt-1"></i>
+                        فرصت های شغلی
+                        <span class="new-ticket"></span>
+                    </a>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2 mr-3">
                     <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/industry/profile')}}" id="navbarTicket" role="button">
@@ -28,4 +34,4 @@
         </div>
     </div>
 </nav>
-</nav>
+

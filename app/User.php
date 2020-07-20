@@ -124,6 +124,11 @@ class User extends Authenticatable
   }
 
 
+  public function industryJobAds(){
+    return $this->hasMany('App\JobAd', 'industry_id');
+  }
+
+
 
 
 

@@ -43,6 +43,7 @@ Route::get('/academic-guidance/consult', 'SiteGuidanceController@consult');
 Route::get('/academic-guidance/corona-consultation', 'SiteGuidanceController@coronaConsult');
 Route::post('/academic-guidance/consult-insert', 'SiteGuidanceController@consultInsert');
 Route::get('/academic-guidance/job-ads', 'SiteGuidanceController@jobAds');
+Route::get('/academic-guidance/job-details/{id}', 'SiteGuidanceController@jobAdsDetails');
 Route::get('/academic-guidance/change-field', 'SiteGuidanceController@changeField');
 
 
@@ -183,11 +184,16 @@ Route::post('/admin/consult/send-to-consultant', 'Admin\AdminGuidanceController@
 Route::post('/admin/consult/answer', 'Admin\AdminGuidanceController@consultAnswer');
 Route::get('/admin/change-field', 'Admin\AdminGuidanceController@changeField');
 Route::post('/admin/change-field/update', 'Admin\AdminGuidanceController@changeFieldUpdate');
-Route::get('/admin/job-ads', 'Admin\AdminGuidanceController@jobAds');
 Route::post('admin/job-ads/update', 'Admin\AdminGuidanceController@jobAdsUpdate');
+Route::get('/admin/job-ads', 'Admin\AdminGuidanceController@jobAds');
+Route::get('/admin/job-ad/edit/{id}', 'Admin\AdminGuidanceController@jobAdEdit');
+Route::post('admin/job-ad/update', 'Admin\AdminGuidanceController@jobAdUpdate');
 Route::post('/admin/job-ad/insert', 'Admin\AdminGuidanceController@jobAdInsert');
 Route::get('/admin/job-ad/remove/{id}', 'Admin\AdminGuidanceController@jobAdRemove');
-Route::post(' ', 'Admin\AdminGuidanceController@jobAdsUpdate');
+Route::get('/admin/job-ad/accept/{id}', 'Admin\AdminGuidanceController@jobAdAccept');
+Route::get('/admin/job-ad/reject/{id}', 'Admin\AdminGuidanceController@jobAdReject');
+
+//Route::get('/admin/industry-inquiries', 'Admin\AdminGuidanceController@industryInquiries');
 
 
 //section skill
@@ -295,6 +301,12 @@ Route::get('/admin/performance-report', 'Admin\AdminUserController@counselorRepo
 Route::get('/admin/performance-report-print/{id}', 'Admin\AdminUserController@counselorReportPrint');
 
 
+
+
+
+
+
+
 //section backup
 Route::get('/admin/backup', 'Admin\BackupController@index');
 
@@ -339,5 +351,11 @@ Route::get('/industry/industry', 'Industry\IndustryController@industry');
 Route::post('/industry/send-message', 'Industry\IndustryController@sendMessage');
 Route::get('/industry/profile', 'Industry\IndustryController@profile');
 Route::post('/industry/change-pass', 'Industry\IndustryController@changePassword');
+Route::get('/industry/jobs', 'Industry\IndustryController@jobs');
+Route::post('/industry/job/insert', 'Industry\IndustryController@jobAdInsert');
+Route::get('/industry/job/edit/{id}', 'Industry\IndustryController@jobEdit');
+Route::post('/industry/job/update', 'Industry\IndustryController@jobAdUpdate');
+Route::get('/industry/job/remove/{id}', 'Industry\IndustryController@jobRemove');
+
 
 
