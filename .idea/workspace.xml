@@ -2,52 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3183850b-de0a-4313-91fe-dd76c3c1a3d9" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/js/table2excel.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/master/free_course-detalis.blade.php" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/Course.php" afterPath="$PROJECT_DIR$/app/Course.php" />
-      <change beforePath="$PROJECT_DIR$/app/FreeCourse.php" afterPath="$PROJECT_DIR$/app/FreeCourse.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminGuidanceController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminGuidanceController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminSkillController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminSkillController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminUserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminUserController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Industry/IndustryController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Industry/IndustryController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Master/MasterController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Master/MasterController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SiteGuidanceController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SiteGuidanceController.php" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SiteSkillController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SiteSkillController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/StudentController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/StudentController.php" />
-      <change beforePath="$PROJECT_DIR$/app/JobAd.php" afterPath="$PROJECT_DIR$/app/JobAd.php" />
-      <change beforePath="$PROJECT_DIR$/app/StudentCourses.php" afterPath="$PROJECT_DIR$/app/StudentCourses.php" />
-      <change beforePath="$PROJECT_DIR$/app/StudentFreeCourses.php" afterPath="$PROJECT_DIR$/app/StudentFreeCourses.php" />
-      <change beforePath="$PROJECT_DIR$/app/StudentWorkshops.php" afterPath="$PROJECT_DIR$/app/StudentWorkshops.php" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/admin-navbar.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/admin-navbar.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/course-detailes.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/course-detailes.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/free-course-details.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/free-course-details.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/free-courses.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/free-courses.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/job-adds.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/job-adds.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/report-print.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/report-print.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/skill-coures.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/skill-coures.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/industry.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/users/industry.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/student-detailes.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/users/student-detailes.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/student.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/users/student.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/workshop-detailes.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/workshop-detailes.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/include/nav-style-js.blade.php" afterPath="$PROJECT_DIR$/resources/views/include/nav-style-js.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/include/navigation.blade.php" afterPath="$PROJECT_DIR$/resources/views/include/navigation.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/industry/industry-navbar.blade.php" afterPath="$PROJECT_DIR$/resources/views/industry/industry-navbar.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/industry/industry.blade.php" afterPath="$PROJECT_DIR$/resources/views/industry/industry.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/industry/jobs.blade.php" afterPath="$PROJECT_DIR$/resources/views/industry/jobs.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/course-detalis.blade.php" afterPath="$PROJECT_DIR$/resources/views/master/course-detalis.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/free-course.blade.php" afterPath="$PROJECT_DIR$/resources/views/master/free-course.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/master.blade.php" afterPath="$PROJECT_DIR$/resources/views/master/master.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/workshop-detalis.blade.php" afterPath="$PROJECT_DIR$/resources/views/master/workshop-detalis.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/workshop.blade.php" afterPath="$PROJECT_DIR$/resources/views/master/workshop.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/festivals.blade.php" afterPath="$PROJECT_DIR$/resources/views/site/festivals.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/job-adds.blade.php" afterPath="$PROJECT_DIR$/resources/views/site/job-adds.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/job-details.blade.php" afterPath="$PROJECT_DIR$/resources/views/site/job-details.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/contact.blade.php" afterPath="$PROJECT_DIR$/resources/views/student/contact.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/profile.blade.php" afterPath="$PROJECT_DIR$/resources/views/student/profile.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/student-navbar.blade.php" afterPath="$PROJECT_DIR$/resources/views/student/student-navbar.blade.php" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -118,21 +73,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SiteSkillController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SiteSkillController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SiteSkillController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="413" column="38" lean-forward="false" selection-start-line="413" selection-start-column="38" selection-end-line="413" selection-end-column="38" />
+            <state relative-caret-position="675">
+              <caret line="426" column="23" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="432" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="certificate-auth.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="certificate-auth.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/site/certificate-auth.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="57" column="16" lean-forward="false" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+            <state relative-caret-position="468">
+              <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="34" />
               <folding>
                 <marker date="1597246456301" expanded="true" signature="409:429" ph="..." />
                 <marker date="1597246456301" expanded="true" signature="444:463" ph="..." />
@@ -354,9 +309,9 @@
         <option value="$PROJECT_DIR$/resources/views/admin/users/student-reset-password.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/include/navigation.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/SiteSkillController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminUserController.php" />
         <option value="$PROJECT_DIR$/resources/views/site/certificate-auth.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/SiteSkillController.php" />
       </list>
     </option>
   </component>
@@ -506,84 +461,7 @@
             <path>
               <item name="hamgam" type="b2602c69:ProjectViewProjectNode" />
               <item name="hamgam" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamgam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamgam" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamgam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamgam" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Admin" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamgam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamgam" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Master" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamgam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamgam" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Student" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamgam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamgam" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamgam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamgam" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamgam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamgam" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamgam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamgam" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamgam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamgam" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="users" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamgam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamgam" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="include" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamgam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamgam" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -750,12 +628,12 @@
       <workItem from="1596457541875" duration="873000" />
       <workItem from="1597128043999" duration="12333000" />
       <workItem from="1597164930433" duration="4927000" />
-      <workItem from="1597234674911" duration="11335000" />
+      <workItem from="1597234674911" duration="11952000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="309015000" />
+    <option name="totallyTimeSpent" value="309632000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1535,14 +1413,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SiteSkillController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="413" column="38" lean-forward="false" selection-start-line="413" selection-start-column="38" selection-end-line="413" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/users/report.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2439">
@@ -1604,8 +1474,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/site/certificate-auth.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="57" column="16" lean-forward="false" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+        <state relative-caret-position="468">
+          <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="34" />
           <folding>
             <marker date="1597246456301" expanded="true" signature="409:429" ph="..." />
             <marker date="1597246456301" expanded="true" signature="444:463" ph="..." />
@@ -1656,6 +1526,14 @@
             <marker date="1597246456301" expanded="true" signature="7558:7574" ph="..." />
             <marker date="1597246456301" expanded="true" signature="7699:7724" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SiteSkillController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="426" column="23" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="432" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

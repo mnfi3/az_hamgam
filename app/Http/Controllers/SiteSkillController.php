@@ -410,7 +410,7 @@ class SiteSkillController extends Controller
     $tracking_code = (int)$request->code;
     $not_found = false;
 
-    if (strlen($tracking_code) > 0) {
+    if (strlen($tracking_code) > 0 && $tracking_code != 0) {
       $id = (int)($tracking_code - 321) / 123;
       $student = User::find($id);
       if ($student == null){
@@ -424,6 +424,7 @@ class SiteSkillController extends Controller
 
     }else{
       $student = null;
+      $tracking_code = '';
     }
     return view('site.certificate-auth', compact('student', 'tracking_code', 'not_found'));
   }
