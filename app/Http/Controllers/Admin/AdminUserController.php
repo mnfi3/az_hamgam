@@ -21,12 +21,12 @@ class AdminUserController extends Controller {
 
   public function students(Request $request) {
     if (strlen($request->national_code) > 0 && strlen($request->name) > 0) {
-      $students = User::where('role', '=', 'student')->where('national_code', '=', $request->national_code);
-      $students = $students->where('first_name', 'like', $request->name)->orWhere('last_name', 'like', $request->name)->paginate(30000);
+      $students = User::where('role', '=', 'student')->where('national_code', 'like', "%".$request->national_code."%");
+      $students = $students->where('first_name', 'like', "%".$request->name."%")->orWhere('last_name', 'like', "%".$request->name."%")->paginate(30000);
     } elseif (strlen($request->national_code) > 0) {
-      $students = User::where('role', '=', 'student')->where('national_code', '=', $request->national_code)->paginate(30000);
+      $students = User::where('role', '=', 'student')->where('national_code', 'like', "%".$request->national_code."%")->paginate(30000);
     } elseif (strlen($request->name) > 0) {
-      $students = User::where('role', '=', 'student')->where('first_name', 'like', $request->name)->orWhere('last_name', 'like', $request->name)->paginate(30000);
+      $students = User::where('role', '=', 'student')->where('first_name', 'like', "%".$request->name."%")->orWhere('last_name', 'like', "%".$request->name."%")->paginate(30000);
     } else {
       $students = User::where('role', '=', 'student')->paginate(30000);
     }
