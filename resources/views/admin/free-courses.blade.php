@@ -82,6 +82,11 @@
                                class="form-control col-md-10 "  name="title" placeholder="نام دوره">
                     </div>
                     <div class="form-group row py-4">
+                        <label class="col-md-2 col-form-label " style=""> کد دوره :</label>
+                        <input type="text" id="title" required=""
+                               class="form-control col-md-10 "  name="code" placeholder="کد دوره">
+                    </div>
+                    <div class="form-group row py-4">
                         <label class="col-md-2 col-form-label " style="" >تصویر  :</label>
                         <div class="col-md-10 ">
                             <div  id="">

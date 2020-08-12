@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Master;
 use App\Course;
 use App\FreeCourse;
 use App\Message;
+use App\StudentCourses;
+use App\StudentFreeCourses;
+use App\StudentWorkshops;
 use App\Workshop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -31,14 +34,18 @@ class MasterController extends Controller
     }
   }
 
+  public function courseDetailAddMark(Request $request){
+    $course = Course::find($request->course_id);
+    if($course->master_id != Auth::user()->id) return back();
+    $student_course = StudentCourses::where('course_id', '=', $course->id)->where('student_id', '=', $request->student_id)->first();
+    $student_course->mark = $request->mark;
+    $student_course->save();
+    return back();
+  }
+
   public function workshops(){
     $workshops = Auth::user()->masterWorkshops;
     return view('master.workshop', compact('workshops'));
-  }
-
-  public function freeCourse(){
-    $courses = Auth::user()->masterFreeCourses;
-    return view('master.free-course', compact('courses'));
   }
 
   public function workshopDetail($id){
@@ -48,11 +55,34 @@ class MasterController extends Controller
     }
   }
 
+  public function workshopDetailAddMark(Request $request){
+    $workshop = Workshop::find($request->workshop_id);
+    if($workshop->master_id != Auth::user()->id) return back();
+    $student_workshop = StudentWorkshops::where('workshop_id', '=', $workshop->id)->where('student_id', '=', $request->student_id)->first();
+    $student_workshop->mark = $request->mark;
+    $student_workshop->save();
+    return back();
+  }
+
+  public function freeCourse(){
+    $courses = Auth::user()->masterFreeCourses;
+    return view('master.free-course', compact('courses'));
+  }
+
   public function freeCourseDetail($id){
-    $workshop = FreeCourse::find($id);
-    if (Auth::user()->id == $workshop->master_id) {
-      return view('master.workshop-detalis', compact('workshop'));
+    $free_course = FreeCourse::find($id);
+    if (Auth::user()->id == $free_course->master_id) {
+      return view('master.free_course-detalis', compact('free_course'));
     }
+  }
+
+  public function freeCourseDetailAddMark(Request $request){
+    $free_course = FreeCourse::find($request->free_course_id);
+    if($free_course->master_id != Auth::user()->id) return back();
+    $student_free_course = StudentFreeCourses::where('free_course_id', '=', $free_course->id)->where('student_id', '=', $request->student_id)->first();
+    $student_free_course->mark = $request->mark;
+    $student_free_course->save();
+    return back();
   }
 
   public function profile(){

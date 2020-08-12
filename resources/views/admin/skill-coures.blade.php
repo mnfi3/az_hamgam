@@ -12,8 +12,6 @@
     @include('include.page-title')
     @include('include.bootstrap')
     @include('include.nav-style-js')
-
-
 </head>
 
 <body>
@@ -22,9 +20,7 @@
     <div class="d-flex flex-row-reverse">
         <div class="text-white text-right ">
             <h3 style="font-family: Vazir;"> پنل مدیریت </h3>
-
         </div>
-
     </div>
     @include('admin.admin-navbar')
     <div class="container my-4 " id="">
@@ -77,9 +73,6 @@
                 <div style="height: 2px;border-radius: 1px;margin: 10px 30px; background: #721c24; "></div>
 
 
-
-
-
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">دوره های مهارتی</h5>
 
                 <form action="{{url('/admin/skill-course/add')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
@@ -88,6 +81,11 @@
                         <label class="col-sm-2 col-form-label " style=""> عنوان دوره :</label>
                         <input type="text" id="title" required=""
                                class="form-control col-sm-8 "  name="title" placeholder="نام دوره">
+                    </div>
+                    <div class="form-group row py-4">
+                        <label class="col-sm-2 col-form-label " style=""> کد دوره :</label>
+                        <input type="text" id="title" required=""
+                               class="form-control col-sm-8 "  name="code" placeholder="کد دوره">
                     </div>
                     <div class="form-group row py-4 ">
                         <label class="col-md-2 col-form-label " style=""> رشته های مرتبط:</label>
@@ -101,8 +99,6 @@
                                 </span>
                                     </div>
                                 @endforeach
-
-
                             </div>
 
                         </div>
@@ -219,7 +215,6 @@
 <script>
   (function ($) {
     $(document).ready(function () {
-      console.log('hello Ali');
       $(".start-day").persianDatepicker({
         format: 'YYYY/MM/DD',
         timePicker: {

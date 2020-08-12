@@ -105,10 +105,13 @@ class StudentController extends Controller
     return back()->with('success', 'آپلود فایل با موفقیت انجام شد');
   }
 
-
-
-
-
+  public function jobDetailUpdate(Request $request){
+    $user = Auth::user();
+    $user->job_name = $request->job_name;
+    $user->job_company = $request->job_company;
+    $user->save();
+    return back();
+  }
 
   public function profileUpdate(Request $request){
     $user = Auth::user();
@@ -141,6 +144,14 @@ class StudentController extends Controller
     }
 
     return back()->with('password', $msg);
+  }
+
+
+  public function resume(){
+    $user = Auth::user();
+    $user_ads = $user->userJobAd()->orderBy('id', 'desc')->get();
+//    $job_ads = $user->resumeSendedJobs()->orderBy('id', 'desc')->get();
+    return view('student.resume', compact('user_ads'));
   }
 
 

@@ -42,19 +42,16 @@
                         <div class="card-custom-avatar">
                             {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
                         </div>
-                        <div class="card-body" style="overflow-y: hidden">
-                            <h4 class="card-title">{{$festival->title}}</h4>
-                            <p class="card-text">
-                                {{--                            {{substr($workshop->description, 0, 120)}} ...--}}
-                            </p>
+                        <div class="card-body" style="overflow-y: hidden;padding:0.9rem">
+                            <h5 class="card-title">{{$festival->title}}</h5>
                             {{--<p>مدرس : {{$workshop->master->first_name . ' ' . $workshop->master->last_name}}</p>--}}
                             @php($date = new \App\Http\Controllers\Util\PDate())
-                            <p >تاریخ : {{$date->toPersian($festival->date, 'Y/m/d')}}</p>
-                            <p >ساعت : {{$festival->hour}}</p>
+                            <p class="m-0">تاریخ : {{$date->toPersian($festival->date, 'Y/m/d')}}</p>
+                            <p class="m-0">ساعت : {{$festival->hour}}</p>
                             @if($festival->price == 0)
-                                <p >هزینه : رایگان</p>
+                                <p class="m-0">هزینه : رایگان</p>
                             @else
-                                <p >هزینه : {{number_format($festival->price)}} تومان</p>
+                                <p class="m-0">هزینه : {{number_format($festival->price)}} تومان</p>
                             @endif
 
                         </div>

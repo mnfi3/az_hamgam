@@ -72,23 +72,28 @@
         </div>
         <div style="height: 2px;border-radius: 1px;margin: 10px 30px; background: #721c24; "></div>
 		<h5 style="text-align: right;color: #ffffff" class="py-3">:  اطلاعات شغلی </h5>
-		 <div class="row">
-            <div class="col-6 ml-auto">
-                <div class="form-group row">
-                    <input type="text" class="col-md-8 form-control" name="first_name" required placeholder="اگر شاغل هستید اطلاعات را وارد کنید">
-                    <label for="name" class="col-md-3 mt-1">: نام شغل </label>
-                </div>
-                <div class="form-group row">
-                    <input type="text" class="col-md-8 form-control" name="mobile" required placeholder="عنوان شرکتی که درآن شاغلید">
-                    <label for="name" class="col-md-3 mt-1">: عنوان شرکت </label>
-                </div>
-                <div class="form-group row">
-                    <button class="custom-btn text-center" type="submit">ثبت</button>
 
+        <form method="post" action="{{url('/student/job-detail/update')}}">
+            @csrf
+            <div class="row">
+                <div class="col-6 ml-auto">
+                    <div class="form-group row">
+                        <input type="text" class="col-md-8 form-control" name="job_name" value="{{$user->job_name}}"  placeholder="اگر شاغل هستید اطلاعات را وارد کنید">
+                        <label for="name" class="col-md-3 mt-1">: نام شغل </label>
+                    </div>
+                    <div class="form-group row">
+                        <input type="text" class="col-md-8 form-control" name="job_company" value="{{$user->job_company}}"  placeholder="عنوان شرکتی که درآن شاغلید">
+                        <label for="name" class="col-md-3 mt-1">: عنوان شرکت </label>
+                    </div>
+                    <div class="form-group row">
+                        <button class="custom-btn text-center" type="submit">ثبت</button>
+
+                    </div>
                 </div>
             </div>
-        </div>
-            <h5 style="text-align: right;color: #ffffff" class="py-3">:  تغییر رمز عبور </h5>
+        </form>
+
+        <h5 style="text-align: right;color: #ffffff" class="py-3">:  تغییر رمز عبور </h5>
         <div class="row">
             <div class="col-md-12">
                 <form action="{{url('/student/change-password')}}" method="post" class="row">

@@ -11,7 +11,9 @@ use App\Payment;
 use App\StudentCourses;
 use App\StudentFreeCourses;
 use App\Suggest;
+use App\User;
 use App\Util;
+use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -279,8 +281,6 @@ class SiteSkillController extends Controller
     return view('site.free-course-detailes', compact('course'));
   }
 
-
-
   public function freeCourseRegister($id){
     $user = Auth::user();
     $user_free_course = $user->studentFreeCourses;
@@ -344,12 +344,6 @@ class SiteSkillController extends Controller
     }
   }
 
-
-
-
-
-
-
   public function freeCourseRegisterVerify(Request $request){
     $order_id = $request->OrderId;
     $token = $request->token;
@@ -408,6 +402,30 @@ class SiteSkillController extends Controller
       $description = 'تراکنش نا موفق بود در صورت کسر مبلغ از حساب شما حداکثر پس از 72 ساعت مبلغ به حسابتان برمی گردد';
       return view('site.paymentFailed', compact('description'));
     }
+  }
+
+
+
+  public function certificateAuth(Request $request){
+    $tracking_code = (int)$request->code;
+    $not_found = false;
+
+    if (strlen($tracking_code) > 0) {
+      $id = (int)($tracking_code - 321) / 123;
+      $student = User::find($id);
+      if ($student == null){
+        $not_found = true;
+      }else{
+        if ($student->role != 'student'){
+          $student = null;
+          $not_found = true;
+        }
+      }
+
+    }else{
+      $student = null;
+    }
+    return view('site.certificate-auth', compact('student', 'tracking_code', 'not_found'));
   }
 
 }

@@ -10,11 +10,11 @@
 
         @font-face {
             font-family: Vazir;
-            src: url('../../../../public/fonts/Vazir-FD.eot');
-            src: url('../../../../public/fonts/Vazir-FD.eot?#iefix') format('embedded-opentype'),
-            url('../../../../public/fonts/Vazir-FD.woff2') format('woff2'),
-            url('../../../../public/fonts/Vazir-FD.woff') format('woff'),
-            url('../../../../public/fonts/Vazir-FD.ttf') format('truetype');
+            src: url('../../../public/fonts/Vazir-FD.eot');
+            src: url('../../../public/fonts/Vazir-FD.eot?#iefix') format('embedded-opentype'),
+            url('../../../public/fonts/Vazir-FD.woff2') format('woff2'),
+            url('../../../public/fonts/Vazir-FD.woff') format('woff'),
+            url('../../../public/fonts/Vazir-FD.ttf') format('truetype');
             font-weight: normal;
         }
         @page{

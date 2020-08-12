@@ -31,29 +31,36 @@
                     </a>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2 mr-3">
+                    <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/student/resume')}}" id="navbarTicket" role="button">
+                        <i class="fa fa-envelope-square mt-1"></i>
+                        رزومه های  ارسالی
+                        <span class="new-ticket"></span>
+                    </a>
+                </li>
+                <li class="navbar-ticket nav-item  mx-2 mr-3">
                     <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/student/profile')}}" id="navbarTicket" role="button">
-                        <i class="fa fa-file mt-1"></i>
+                        <i class="fa fa-user-circle mt-1"></i>
                         پروفایل
                         <span class="new-ticket"></span>
                     </a>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2 mr-3">
                     <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/student/contact')}}" id="navbarTicket" role="button">
-                        <i class="fa fa-male mt-1"></i>
+                        <i class="fa fa-comment mt-1"></i>
                         ارتباط با مدیریت
                         <span class="new-ticket"></span>
                     </a>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2 mr-3">
                     <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/student/idea')}}" id="navbarTicket" role="button">
-                        <i class="fa fa-graduation-cap mt-1"></i>
+                        <i class="fa fa-ticket mt-1"></i>
                         ایده و حمایت
                         <span class="new-ticket"></span>
                     </a>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2 mr-3">
                     <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/student/festivals')}}" id="navbarTicket" role="button">
-                        <i class="fa fa-graduation-cap mt-1"></i>
+                        <i class="fa fa-building mt-1"></i>
                         جشنواره ها
                         <span class="new-ticket"></span>
                     </a>

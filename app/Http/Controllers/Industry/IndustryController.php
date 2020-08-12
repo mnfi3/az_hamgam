@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Industry;
 use App\Http\Controllers\Util\Uploader;
 use App\JobAd;
 use App\Message;
+use App\UserJobAd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\URL;
 
 class IndustryController extends Controller
 {
@@ -110,5 +112,22 @@ class IndustryController extends Controller
     if ($ad->industry_id != Auth::user()->id) return back();
     $ad->delete();
     return back();
+  }
+
+  public function jobDetails($id){
+    $user = Auth::user();
+    $ad = JobAd::find($id);
+    if ($ad->industry_id != $user->id) return back();
+    return view('industry.job-details', compact('ad'));
+  }
+
+  public function resumeDownload($id){
+    $user = Auth::user();
+    $user_ad = UserJobAd::find($id);
+    $ad = $user_ad->jobAd;
+    if ($ad->industry_id != $user->id) return back();
+    $user_ad->is_seen = 1;
+    $user_ad->save();
+    return response()->download(public_path().'/'.$user_ad->file);
   }
 }

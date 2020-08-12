@@ -56,6 +56,7 @@ class AdminSkillController extends Controller
   public function courseAdd(Request $request){
     $d = new PDate();
     $course = Course::create([
+      'code' => $request->code,
       'title' => $request->title,
       'description' => $request->description,
       'image' => Uploader::image($request->file('image')),
@@ -97,6 +98,7 @@ class AdminSkillController extends Controller
   public function courseEdit(Request $request){
     $d = new PDate();
     $course = Course::find($request->id);
+    $course->code = $request->code;
     $course->title = $request->title;
     $course->description = $request->description;
     if($request->hasFile('image'))$course->image = Uploader::image($request->file('image'));
@@ -223,6 +225,7 @@ class AdminSkillController extends Controller
   public function freeCourseAdd(Request $request){
     $d = new PDate();
     $course = FreeCourse::create([
+      'code' => $request->code,
       'title' => $request->title,
       'description' => $request->description,
       'image' => Uploader::image($request->file('image')),
@@ -241,6 +244,7 @@ class AdminSkillController extends Controller
   public function freeCourseEdit(Request $request){
     $course = FreeCourse::find($request->id);
     $d = new PDate();
+    $course->code = $request->code;
     $course->title = $request->title;
     $course->description = $request->description;
     if($request->hasFile('image')) $course->image = Uploader::image($request->file('image'));

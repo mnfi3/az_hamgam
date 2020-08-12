@@ -11,21 +11,21 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav ml-auto " style="direction: rtl !important;">
                 <li class="dropdown nav-item mx-2">
-                    <a id="adminNavSite" class="nav-link dropdown-toggle nav-hover" href="{{url('/industry/industry')}}" id="navbarSite" role="button" aria-haspopup="true" aria-expanded="false" >
-                        <i class="fa fa-book mt-1"></i>
+                    <a id="adminNavSite" class="nav-link nav-hover" href="{{url('/industry/industry')}}" id="navbarSite" role="button" aria-haspopup="true" aria-expanded="false" >
+                        <i class="fa fa-envelope mt-1"></i>
                         ارتباط با دانشگاه
                     </a>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2 mr-3">
                     <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/industry/jobs')}}" id="navbarTicket" role="button">
-                        <i class="fa fa-graduation-cap mt-1"></i>
+                        <i class="fa fa-money mt-1"></i>
                         فرصت های شغلی
                         <span class="new-ticket"></span>
                     </a>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2 mr-3">
                     <a id="adminNavTickets" class="nav-link navbar-ticket-a nav-hover" href="{{url('/industry/profile')}}" id="navbarTicket" role="button">
-                        <i class="fa fa-graduation-cap mt-1"></i>
+                        <i class="fa fa-key mt-1"></i>
                         تغییر رمز عبور
                         <span class="new-ticket"></span>
                     </a>

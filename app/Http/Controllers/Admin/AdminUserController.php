@@ -43,6 +43,46 @@ class AdminUserController extends Controller {
     return view('admin.users.student-detailes', compact('student'));
   }
 
+  public function studentSkillCourses($id){
+    $student = User::find($id);
+    return view('admin.users.student-skill-courses',compact('student'));
+  }
+
+  public function studentFreeCourses($id){
+    $student = User::find($id);
+    return view('admin.users.student-free-courses', compact('student'));
+  }
+
+  public function studentWorkshops($id){
+    $student = User::find($id);
+    return view('admin.users.student-workshops', compact('student'));
+  }
+
+  public function studentReportCard($id){
+    $student = User::find($id);
+    return view('admin.users.student-report-card', compact('student'));
+  }
+
+  public function studentCertPrint($id){
+    $student = User::find($id);
+    $tracking_code = $id * 123 + 321;
+    return view('admin.users.report', compact('student', 'tracking_code'));
+  }
+
+  public function studentResetPassword($id){
+    $student = User::find($id);
+    return view('admin.users.student-reset-password', compact('student'));
+  }
+
+  public function studentResetPasswordUpdate($id){
+    $student = User::find($id);
+    $student->password = Hash::make($student->national_code);
+    $student->save();
+    return back()->with('mess', 'رمز عبور کاربر به کد ملی تغییر یافت');
+  }
+
+
+
   public function masters(Request $request) {
     if (strlen($request->national_code) > 0 && strlen($request->name) > 0) {
       $masters = User::where('role', '=', 'master')->where('national_code', '=', $request->national_code);

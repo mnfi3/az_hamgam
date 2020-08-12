@@ -9,9 +9,11 @@ use App\Http\Controllers\Util\Uploader;
 use App\Job;
 use App\JobAd;
 use App\User;
+use App\UserJobAd;
 use App\Util;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Ipecompany\Smsirlaravel\Smsirlaravel;
 
 class AdminGuidanceController extends Controller
@@ -220,6 +222,22 @@ class AdminGuidanceController extends Controller
     $ad->is_accepted = -1;
     $ad->save();
     return back();
+  }
+
+
+  public function jobAdDetail($id){
+    $ad = JobAd::find($id);
+    return view('admin.job-adds-details', compact('ad'));
+  }
+
+  public function resumeDownload($id){
+    $user_ad = UserJobAd::find($id);
+    $ad = $user_ad->jobAd;
+    if ($ad->industry_id == 0) {
+      $user_ad->is_seen = 1;
+      $user_ad->save();
+    }
+    return response()->download(public_path().'/'.$user_ad->file);
   }
 
 

@@ -175,7 +175,7 @@
                 <form action="" class="" style="direction: rtl;font-family: Vazir">
                     <div class="form-group row ">
                         <div class="col-md-12">
-                    <textarea type="text" id="editor1" required="" style="width: 100%;height: 100%;font-size: 0.8rem"
+                    <textarea type="text" id="editor1" required="" style="height: 180px !important;font-size: 0.8rem"
                               class="form-control" name="description" placeholder="متن پیام"></textarea>
                         </div>
                     </div>

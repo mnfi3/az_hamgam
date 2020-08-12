@@ -67,12 +67,12 @@
 									<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-3 ">
                                         <a class="nav-link " style="font-size: 0.7rem; border-color: #721c24;border: 2px #721c24 solid;border-radius: 3px;background: linear-gradient(to right, #8d0c35, #eb185c) !important;" href="{{url('/academic-guidance/corona-consultation')}}">مشاوره سلامت روان-اجتماعی(ویژه کرونا)</a>
                                     </li>
-									
+
                                 </ul>
                             @endguest
                             <ul class="navbar-nav ml-auto py-4 py-md-0">
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-1 ">
-                                    <a class="nav-link dropdown-toggle" href="{{url('/success')}}" style="font-size:13px !important"> <span style="color: #45a3ff">م</span>وفقیت</a>
+                                    <a class="nav-link " href="{{url('/success')}}" style="font-size:13px !important"> <span style="color: #45a3ff">م</span>وفقیت</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{{url('/success/graduation-job')}}">فارغ التحصیلان </a>
                                         {{--<a class="dropdown-item" href="{{url('/success/proud')}}">افتخار آفرینان</a>--}}
@@ -99,12 +99,13 @@
                                     </div>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-2">
-                                    <a class="nav-link dropdown-toggle" style="font-size:13px !important" href="{{url('/skill-learning')}}" > <span style="color: #45a3ff">م</span>هارت آموزی</a>
+                                    <a class="nav-link " style="font-size:13px !important" href="{{url('/skill-learning')}}" > <span style="color: #45a3ff">م</span>هارت آموزی</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{{url('/skill-learning/courses')}}">دوره های مهارتی </a>
                                         <a class="dropdown-item" href="{{url('/skill-learning/free-courses')}}">دوره های آزاد </a>
                                         <a class="dropdown-item text-right" href="{{url('/skill-learning/termination')}}" >ترم بندی دوره های مهارتی </a>
                                         <a class="dropdown-item" href="{{url('/skill-learning/offer')}}">پیشنهاد دوره</a>
+                                        <a class="dropdown-item" href="{{url('/skill-learning/certificate-auth')}}">رهگیری کارنامه مهارتی</a>
                                     </div>
                                 </li>
                                 <li class="nav-item pl-md-0 ml-md-2 mr-1">
@@ -123,7 +124,7 @@
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ml-5">
                                     <a class="nav-link" style="font-size:13px !important" href="{{url('/')}}">خانه</a>
                                 </li>
-							
+
                             </ul>
                         </div>
                     </nav>

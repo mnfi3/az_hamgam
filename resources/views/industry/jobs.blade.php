@@ -38,7 +38,10 @@
                         <th scope="col">#</th>
                         <th scope="col">عنوان فرصت</th>
                         <th scope="col">محتوای آگهی</th>
+                        <th scope="col">رزومه های جدید</th>
+                        <th scope="col">کل رزومه ها</th>
                         <th scope="col">وضعیت</th>
+                        <th scope="col">جزییات</th>
                         <th scope="col">ویرایش</th>
                         <th scope="col">حذف</th>
                     </tr>
@@ -50,8 +53,12 @@
                             <th scope="row">{{++$i}}</th>
                             <td>{{$ad->title}}</td>
 
-
                             <td><button class="custom-btn text-center" style="max-width: 100px" data-toggle="modal" data-target="#myModal{{$ad->id}}">مشاهده </button></td>
+
+                            <td>{{$ad->userJobAd()->where('is_seen', '=', 0)->count()}}</td>
+                            <td>{{$ad->userJobAd()->count()}}</td>
+
+
                             @if($ad->is_accepted == 0)
                                 <td>بررسی نشده</td>
                             @elseif($ad->is_accepted == -1)
@@ -59,7 +66,11 @@
                             @elseif($ad->is_accepted == 1)
                                 <td>تایید شده</td>
                             @endif
-
+                            <td>
+                                <a href="{{url('/industry/job-details', $ad->id)}}">
+                                    <button class="btn bg-success text-center text-white mt-0" type="submit" style="">مشاهده</button>
+                                </a>
+                            </td>
 
                             <td>
                                 <a href="{{url('/industry/job/edit', $ad->id)}}">
@@ -115,15 +126,22 @@
                 <label class="col-md-3 col-form-label " style="">حقوق :</label>
                 <input  type="text" placeholder="مثلا توافقی یا سه تا پنج میلیون"  name="salary" class="col-sm-7 form-control start-day example1" required>
             </div>
+            <div class="form-group row  my-3">
+                <label class="col-md-3 col-form-label " style="">امکان آپلود رزومه توسط کاربر :</label>
+                <select name="consultant_id"  class="col-sm-7  ml-auto form-control" >
+                    <option value="true">بله</option>
+                    <option value="false">خیر</option>
+                </select>
+            </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label ">توضیح مختصر </label>
 
                 <textarea type="text" id="editor1" required=""
-                          class="form-control col-sm-7" style="height: 150px"  name="description" placeholder=" توضیحات درباره فرصت شغلی و یا شرکت"></textarea>
+                          class="form-control col-sm-7" style="height: 150px"  name="description" placeholder=" توضیحات درباره فرصت شغلی و یا شرکت و راه های ارتباطی"></textarea>
 
             </div>
             <div class="d-flex justify-content-center mb-3">
-                <button class="custom-btn text-center" type="submit" style="max-width: 120px">ثبت تغییرات</button>
+                <button class="custom-btn text-center" type="submit" style="max-width: 120px">ثبت</button>
             </div>
         </form>
 

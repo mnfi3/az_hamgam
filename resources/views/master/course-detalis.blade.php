@@ -27,7 +27,8 @@
     <div class="container my-4 " id="side-list">
         <div class="row">
             <div class="col-md-12 col-sm-12 ">
-                <h5 class="text-white text-right mb-2" style="font-family: Vazir">لیست دانشجویان</h5>
+                <h5 class="text-white text-right mb-2" style="font-family: Vazir">لیست دانشجویان {{$course->title}}</h5>
+                <button class="custom-btn text-center" id="btn" style="max-width: 110px">خروجی اکسل </button>
                 <table class="table table-striped text-center usr-table" style="direction: rtl;font-family: Vazir">
                     <thead>
                     <tr>
@@ -35,26 +36,40 @@
                         <th scope="col">اطلاعات فردی</th>
                         <th scope="col">شماره دانشجویی</th>
                         <th scope="col">کد ملی</th>
+                        <th scope="col">نمره</th>
                     </tr>
                     </thead>
                     <tbody class="text-white">
 
                     @php($i=0)
                     @foreach($course->students as $student)
-                    <tr>
-                        <th scope="row">{{++$i}}</th>
-                        <td>{{$student->first_name.' '.$student->last_name}}</td>
-                        <td>{{$student->student_number}}</td>
-                        <td>{{$student->national_code}}</td>
-                    </tr>
+                        <tr>
+                            <td scope="row">{{++$i}}</td>
+                            <td>{{$student->first_name.' '.$student->last_name}}</td>
+                            <td>{{$student->student_number}}</td>
+                            <td>{{$student->national_code}}</td>
+
+
+                            @if(strlen($student->studentPivotCourses()->where('course_id', '=', $course->id)->first()->mark) == 0)
+                                <td style="width: 290px">
+                                    <form action="{{url('/master/course-detalis/add-mark')}}" method="post"  class="px-3" style="direction: rtl;font-family: Vazir">
+                                        @csrf
+                                        <input type="hidden" name="course_id" value="{{$course->id}}">
+                                        <input type="hidden" name="student_id" value="{{$student->id}}">
+                                        <div class="form-group row py-4">
+                                            <input type="number" id="title" required=""
+                                                   class="form-control col-md-6 col-sm-12 mx-2"  name="mark" value="" placeholder="نمره به عدد">
+                                            <button class="btn btn-warning col-md-3 col-sm-8 text-center" type="submit" style="width: 120px;text-align: center">ثبت</button>
+                                        </div>
+                                    </form>
+                                </td>
+                            @else
+                                <td>{{$student->studentPivotCourses()->where('course_id', '=', $course->id)->first()->mark}}</td>
+                            @endif
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="custom-btn text-center" style="max-width: 145px" onclick="excelReport(this)">گرفتن خروجی اکسل </button></td>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -65,82 +80,20 @@
     $(".example1").pDatepicker();
   });
 </script>
+<script src="{{asset('js/jquery.js/jquery1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/table2excel.js')}}"></script>
 <script>
-  window.excelReport = function (elm) {
-    var sheetname = " لیست ";
-    var tableId = "کاربران";
-    tableToExcel(tableId, sheetname);
-  }
-  $(document).on('click', '#exportreptoexcelfile', function (event) {
-    //working great with Arabic without filename
-    console.log(event)
-    var sheetname = $("#chainnames").children(":selected").text();
-    tableToExcel('students', sheetname);
-
-  });
-
-  var tableToExcel = (function () {
-    var uri = 'data:application/vnd.ms-excel;base64,'
-      ,
-      template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table border="2px"><tr>{table}</table></body></html>'
-      , base64 = function (s) {
-        return window.btoa(unescape(encodeURIComponent(s)))
-      }
-      , format = function (s, c) {
-        return s.replace(/{(\w+)}/g, function (m, p) {
-          return c[p];
-        })
-      }
-    return function (table, name) {
-      var tableId = table
-      if (!table.nodeType) table = document.getElementById(table)
-      var orginalTable = table.innerHTML
-      var lastColValid = false
-      if ($(table).hasClass('course-payment')) {
-        lastColValid = true
-      }
-      for (var j = 0; j < table.rows.length; j++) {
-        if (j == 3) {
-          table.rows[j].cells[1].width = 180
-          table.rows[j].cells[2].width = 180
-          table.rows[j].cells[3].width = 180
-          try {
-            table.rows[j].cells[4].width = 180
-          } catch (err) {
-          }
-        }
-        if (!lastColValid) {
-          var lastIndex = $(table.rows[j]).children(":last").index()
-          var firstElm = $(table.rows[j]).children(":first")
-          if ($(firstElm).attr("type") == "hidden") {
-            lastIndex = lastIndex - 1
-            table.rows[j].deleteCell(lastIndex)
-            table.rows[j].deleteCell(lastIndex - 1)
-            table.rows[j].deleteCell(lastIndex - 2)
-          } else if (lastIndex >= 5) {
-            table.rows[j].deleteCell(lastIndex)
-            table.rows[j].deleteCell(lastIndex - 1)
-          }
-        }
-      }
-      // table.innerHTML=table.innerHTML.replace('/?????/g','')
-      var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
-      table.innerHTML = orginalTable
-      // window.location.href = uri + base64(format(template, ctx))
-      var dt = new Date();
-      var day = dt.getDate();
-      var month = dt.getMonth() + 1;
-      var year = dt.getFullYear();
-      var postfix = day + "." + month + "." + year;
-      var result = uri + base64(format(template, ctx));
-      var a = document.createElement('a');
-      a.href = result;
-      a.download = name + tableId + ' _ ' + postfix + '.xls';
-      a.click();
-      return true;
-    }
-  })()
-
+  $("#btn").click(function () {
+    var $table =  $('.table')
+    $table.table2excel({
+      name: "Excel Document Name",
+      filename: "دانشجویان دوره",
+      exclude_img: true,
+      exclude_links: true,
+      exclude_inputs: true,
+      columns : [0,1,2,3]
+    })
+  })
 
 </script>
 </body>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Util\Uploader;
 use App\Job;
 use App\JobAd;
 use App\User;
+use App\UserJobAd;
 use App\Util;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,7 @@ class SiteGuidanceController extends Controller
 {
 
   public function __construct() {
-    $this->middleware('student', ['only'=>['consultInsert']]);
+    $this->middleware('student', ['only'=>['consultInsert', 'uploadResume']]);
   }
 
 
@@ -150,6 +151,26 @@ class SiteGuidanceController extends Controller
     $ad = JobAd::find($id);
     if($ad->is_accepted != 1) return back();
     return view('site.job-details', compact('ad'));
+  }
+
+
+
+  public function uploadResume(Request $request){
+    $user = Auth::user();
+    $ad = JobAd::find($request->id);
+    $file = $request->file('file');
+    if ($file == null) return back()->with('mess' , 'فایل یافت نشد');
+//    return $file->getSize();
+    if ($file->getSize()/1024/1024 > 10) return back()->with('mess' , 'اندازه فایل بیشتر از حد مجاز می باشد');
+    $path = Uploader::file($file);
+    $user_ad = UserJobAd::create([
+      'user_id' => $user->id,
+      'job_ad_id' => $ad->id,
+      'file' => $path,
+      'is_seen' => 0,
+    ]);
+
+    return back()->with('mess', 'رزومه شما با موفقیت ارسال شد');
   }
 
 

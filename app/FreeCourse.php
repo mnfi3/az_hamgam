@@ -10,7 +10,7 @@ class FreeCourse extends Model
   use SoftDeletes;
 
 
-  protected $fillable = ['title', 'description', 'image', 'master_id', 'time', 'hour', 'capacity', 'price', 'deadline', 'duration'];
+  protected $fillable = ['code', 'title', 'description', 'image', 'master_id', 'time', 'hour', 'capacity', 'price', 'deadline', 'duration'];
 
 
   public function master(){

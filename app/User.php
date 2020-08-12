@@ -17,7 +17,7 @@ class User extends Authenticatable
    * @var array
    */
   protected $fillable = [
-    'first_name', 'last_name', 'is_male', 'mobile', 'student_number', 'national_code', 'field_id', 'role', 'email', 'password',
+    'first_name', 'last_name', 'is_male', 'mobile', 'student_number', 'national_code', 'field_id', 'role', 'email', 'job_name', 'job_company', 'password',
   ];
 
   /**
@@ -34,16 +34,32 @@ class User extends Authenticatable
     return $this->belongsToMany('App\Course', 'student_courses', 'student_id', 'course_id');
   }
 
+  public function studentPivotCourses(){
+    return $this->hasMany('App\StudentCourses', 'student_id');
+  }
+
   public function studentWorkshops(){
     return $this->belongsToMany('App\Workshop', 'student_workshops', 'student_id', 'workshop_id');
+  }
+
+  public function studentPivotWorkshops(){
+    return $this->hasMany('App\StudentWorkshops', 'student_id');
   }
 
   public function studentFreeCourses(){
     return $this->belongsToMany('App\FreeCourse', 'student_free_courses', 'student_id', 'free_course_id');
   }
 
+  public function studentPivotFreeCourses(){
+    return $this->hasMany('App\StudentFreeCourses', 'student_id');
+  }
+
   public function studentFestivals(){
     return $this->belongsToMany('App\Festival', 'student_festivals', 'student_id', 'festival_id');
+  }
+
+  public function studentPivotFestivals(){
+    return $this->hasMany('App\StudentFestivals', 'student_id');
   }
 
   public function studentConsults(){
@@ -126,6 +142,15 @@ class User extends Authenticatable
 
   public function industryJobAds(){
     return $this->hasMany('App\JobAd', 'industry_id');
+  }
+
+
+  public function resumeSendedJobs(){
+    return $this->belongsToMany('App\JobAd', 'user_job_ads');
+  }
+
+  public function userJobAd(){
+    return $this->hasMany('App\UserJobAd');
   }
 
 

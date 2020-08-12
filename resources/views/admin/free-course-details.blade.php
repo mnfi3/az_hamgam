@@ -26,23 +26,115 @@
     </div>
     @include('admin.admin-navbar')
     <div class="container my-4 " id="side-list">
+
         <div class="row">
-            <div class="col-md-4">
-                <button class="custom-btn text-center" type="submit" style="max-width: 110px" onclick="excelReport(this)" >خروجی اکسل </button></td>
+
+            <div class="col-md-12 col-sm-12 ">
+                <h5 class="text-white text-right mb-2" style="font-family: Vazir">جزئیات کارگاه</h5>
+                <hr>
+                <form action="{{url('/admin/free-course/edit')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$course->id}}">
+                    <div class="d-flex flex-row justify-content-between">
+
+                        <div class="form-group row py-1" style="width: 50%">
+                            <label class="col-md-4 col-form-label " style=""> عنوان دوره :</label>
+                            <input type="text" id="title" required=""
+                                   class="form-control col-md-8 "  name="title" value="{{$course->title}}" placeholder="نام دوره">
+                        </div>
+                        <div class="form-group row py-3" style="width: 50%">
+                            <label class="col-md-3 col-form-label " style=""> کد دوره :</label>
+                            <input type="text" id="title" required=""
+                                   class="form-control col-md-9 "  name="code" value="{{$course->code}}" placeholder="کد دوره">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                    <div class="form-group row py-3" style="width: 50%">
+                        <label class="col-md-3 col-form-label " style="" >تصویر  :</label>
+                        <div class="col-md-9 ">
+                            <div  id="">
+                                <div class="d-flex flex-row justify-content-between">
+                                    <input type="file"
+                                           class="form-control-file" name="image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row py-1" style="width: 50%">
+                        <label class="col-md-3 col-form-label " style=""> مدرس دوره :</label>
+                        <select class="browser-default custom-select col-md-9" name="master_id">
+                            @foreach($masters as $master)
+                                <option value="{{$master->id}}" @if($master->id == $course->master_id) selected @endif>{{$master->first_name.' '.$master->last_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                    <div class="form-group row py-3"  style="width: 50%">
+                        <label class="col-form-label col-sm-3 pt-0">تاریخ برگزاری :</label>
+                        <input  type="text" name="time" value="{{$course->time}}" class="form-control col-sm-9 start-day example1" required>
+                        {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
+
+                    </div>
+
+                    <div class="form-group row py-3" style="width: 50%">
+                        <label class="col-md-3 col-form-label " style=""> ساعت برگزاری :</label>
+                        <input type="text" id="title" required=""
+                               class="form-control col-md-9 "  name="hour" placeholder="ساعت" value="{{$course->hour}}">
+                    </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                    <div class="form-group row py-3" style="width: 50%">
+                        <label class="col-md-3 col-form-label " style="">مدت :</label>
+                        <input type="number" id="title" required=""
+                               class="form-control col-md-9 "  name="duration" placeholder="ساعت" value="{{$course->duration}}">
+                    </div>
+
+                    <div class="form-group row py-3" style="width: 50%">
+                        <label class="col-md-3 col-form-label " style=""> ظرفیت کارگاه :</label>
+                        <input type="number" id="title" required=""
+                               class="form-control col-md-9 "  name="capacity" placeholder="ظرفیت" value="{{$course->capacity}}">
+                    </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                    <div class="form-group row py-3" style="width: 50%;height: 40px">
+                        <label class="col-md-3 col-form-label " style=""> هزینه کارگاه</label>
+                        <input type="number" id="title" required=""
+                               class="form-control col-md-9 "  name="price" value="{{$course->price}}" placeholder="هزینه (تومان)">
+                    </div>
+
+                    <div class="form-group row py-3" style="width: 50%">
+                        <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
+                        <div class="col-md-9 ">
+                    <textarea type="text" id="editor1" required=""
+                              class="form-control" name="description"  placeholder="توضیحات">{{$course->description}}</textarea>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="d-flex justify-content-center mb-3" >
+                        <button class="custom-btn text-center" type="submit" style="max-width: 120px">ویرایش</button>
+                    </div>
+                </form>
             </div>
         </div>
+        <hr>
         <div class="row">
-            <div class="col-md-6 col-sm-12 ">
+            <div class="col-md-12 col-sm-12 ">
                 <h5 class="text-white text-right mb-2" style="font-family: Vazir">دانشجویان ثبت نامی</h5>
+                <button class="custom-btn text-center" id="btn" type="submit" style="max-width: 110px" >خروجی اکسل </button>
                 <table class="table table-striped text-center usr-table" id="کاربران" style="direction: rtl;font-family: Vazir">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">اطلاعات فردی</th>
+                        <th scope="col">شماره دانشجویی</th>
+                        <th scope="col">شماره تماس</th>
+                        <th scope="col">رشته تحصیلی</th>
+                        <th scope="col">نمره</th>
                         <th scope="col">جرئیات</th>
+
                         <th scope="col">
                             ارسال گواهی
-
                         </th>
                     </tr>
                     </thead>
@@ -55,9 +147,21 @@
                         @foreach($course->students as $student)
                             @php($bool = false)
                             <tr>
-                                <th scope="row">{{++$i}}</th>
+                                <td scope="row">{{++$i}}</td>
                                 <td>{{$student->first_name.' '.$student->last_name}}</td>
-                                <td><a href="{{url('/admin/users/student-detailes', $student->id)}}" class="custom-btn text-center m-2 p-2" style="max-width: 110px" >مشاهده </a></td>
+                                <td>{{$student->student_number}}</td>
+                                <td>{{$student->mobile}}</td>
+                                @if($student->studentField != null)
+                                    <td>{{$student->studentField->name}}</td>
+                                @else
+                                    <td>----</td>
+                                @endif
+                                @if(strlen($student->studentPivotFreeCourses()->where('free_course_id', '=', $course->id)->first()->mark) > 0)
+                                <td>{{$student->studentPivotFreeCourses()->where('free_course_id', '=', $course->id)->first()->mark}}</td>
+                                @else
+                                    <td>نمره وارد نشده است</td>
+                                @endif
+                                <td><a href="{{url('/admin/users/student-details', $student->id)}}" class="custom-btn text-center m-2 p-2" style="max-width: 110px" >مشاهده </a></td>
                                 <td>
                                     @foreach($st_courses as $stw)
                                         @if($stw->student_id == $student->id && $stw->has_certificate == 1)
@@ -76,83 +180,6 @@
                 </table>
 
             </div>
-
-
-
-
-            <div class="col-md-6 col-sm-12 ">
-                <h5 class="text-white text-right mb-2" style="font-family: Vazir">جزئیات کارگاه</h5>
-
-                <form action="{{url('/admin/free-course/edit')}}" method="post" enctype="multipart/form-data" class="px-3" style="direction: rtl;font-family: Vazir">
-                    @csrf
-                    <input type="hidden" name="id" value="{{$course->id}}">
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> عنوان کارگاه :</label>
-                        <input type="text" id="title" required=""
-                               class="form-control col-md-9 "  name="title" value="{{$course->title}}" placeholder="نام دوره">
-                    </div>
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style="" >تصویر  :</label>
-                        <div class="col-md-9 ">
-                            <div  id="">
-                                <div class="d-flex flex-row justify-content-between">
-                                    <input type="file"
-                                           class="form-control-file" name="image">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label " style=""> مدرس دوره :</label>
-                        <select class="browser-default custom-select col-md-9" name="master_id">
-                            @foreach($masters as $master)
-                                <option value="{{$master->id}}" @if($master->id == $course->master_id) selected @endif>{{$master->first_name.' '.$master->last_name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-form-label col-sm-3 pt-0">تاریخ برگزاری :</label>
-                        <input  type="text" name="time" value="{{$course->time}}" class="form-control col-sm-9 start-day example1" required>
-                        {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
-
-                    </div>
-
-                    <div class="form-group row py-4">
-                        <label class="col-md-2 col-form-label " style=""> ساعت برگزاری</label>
-                        <input type="text" id="title" required=""
-                               class="form-control col-md-10 "  name="hour" placeholder="ساعت" value="{{$course->hour}}">
-                    </div>
-
-                    <div class="form-group row py-4">
-                        <label class="col-md-2 col-form-label " style="">مدت</label>
-                        <input type="number" id="title" required=""
-                               class="form-control col-md-10 "  name="duration" placeholder="ساعت" value="{{$course->duration}}">
-                    </div>
-
-                    <div class="form-group row py-4">
-                        <label class="col-md-2 col-form-label " style=""> ظرفیت کارگاه</label>
-                        <input type="number" id="title" required=""
-                               class="form-control col-md-10 "  name="capacity" placeholder="ظرفیت" value="{{$course->capacity}}">
-                    </div>
-                    <div class="form-group row py-4">
-                        <label class="col-md-2 col-form-label " style=""> هزینه کارگاه</label>
-                        <input type="number" id="title" required=""
-                               class="form-control col-md-10 "  name="price" value="{{$course->price}}" placeholder="هزینه (تومان)">
-                    </div>
-
-                    <div class="form-group row py-4">
-                        <label class="col-md-3 col-form-label ">توضیح مختصر :</label>
-                        <div class="col-md-9 mr-auto">
-                    <textarea type="text" id="editor1" required=""
-                              class="form-control" name="description"  placeholder="توضیحات">{{$course->description}}</textarea>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center mb-3">
-                        <button class="custom-btn text-center" type="submit" style="max-width: 120px">ویرایش</button>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
 </div>
@@ -168,7 +195,7 @@
 <script>
   (function ($) {
     $(document).ready(function () {
-      
+
       $(".start-day").persianDatepicker({
         format: 'YYYY/MM/DD',
         timePicker: {
@@ -181,82 +208,20 @@
 </script>
 
 
+<script src="{{asset('js/jquery.js/jquery1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/table2excel.js')}}"></script>
 <script>
-  window.excelReport = function (elm) {
-    var sheetname = " لیست ";
-    var tableId = "کاربران";
-    tableToExcel(tableId, sheetname);
-  }
-  $(document).on('click', '#exportreptoexcelfile', function (event) {
-    //working great with Arabic without filename
-    console.log(event)
-    var sheetname = $("#chainnames").children(":selected").text();
-    tableToExcel('students', sheetname);
-
-  });
-
-  var tableToExcel = (function () {
-    var uri = 'data:application/vnd.ms-excel;base64,'
-      ,
-      template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table border="2px"><tr>{table}</table></body></html>'
-      , base64 = function (s) {
-        return window.btoa(unescape(encodeURIComponent(s)))
-      }
-      , format = function (s, c) {
-        return s.replace(/{(\w+)}/g, function (m, p) {
-          return c[p];
+    $("#btn").click(function () {
+        var $table =  $('.table')
+        $table.table2excel({
+            name: "Excel Document Name",
+            filename: "دانشجویان دوره",
+            exclude_img: true,
+            exclude_links: true,
+            exclude_inputs: true,
+            columns : [0,1,2,3,4,5]
         })
-      }
-    return function (table, name) {
-      var tableId = table
-      if (!table.nodeType) table = document.getElementById(table)
-      var orginalTable = table.innerHTML
-      var lastColValid = false
-      if ($(table).hasClass('course-payment')) {
-        lastColValid = true
-      }
-      for (var j = 0; j < table.rows.length; j++) {
-        if (j == 3) {
-          table.rows[j].cells[1].width = 180
-          table.rows[j].cells[2].width = 180
-          table.rows[j].cells[3].width = 180
-          try {
-            table.rows[j].cells[4].width = 180
-          } catch (err) {
-          }
-        }
-        if (!lastColValid) {
-          var lastIndex = $(table.rows[j]).children(":last").index()
-          var firstElm = $(table.rows[j]).children(":first")
-          if ($(firstElm).attr("type") == "hidden") {
-            lastIndex = lastIndex - 1
-            table.rows[j].deleteCell(lastIndex)
-            table.rows[j].deleteCell(lastIndex - 1)
-            table.rows[j].deleteCell(lastIndex - 2)
-          } else if (lastIndex >= 5) {
-            table.rows[j].deleteCell(lastIndex)
-            table.rows[j].deleteCell(lastIndex - 1)
-          }
-        }
-      }
-      // table.innerHTML=table.innerHTML.replace('/?????/g','')
-      var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
-      table.innerHTML = orginalTable
-      // window.location.href = uri + base64(format(template, ctx))
-      var dt = new Date();
-      var day = dt.getDate();
-      var month = dt.getMonth() + 1;
-      var year = dt.getFullYear();
-      var postfix = day + "." + month + "." + year;
-      var result = uri + base64(format(template, ctx));
-      var a = document.createElement('a');
-      a.href = result;
-      a.download = name + tableId + ' _ ' + postfix + '.xls';
-      a.click();
-      return true;
-    }
-  })()
-
+    })
 
 </script>
 

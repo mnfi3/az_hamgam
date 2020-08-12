@@ -23,7 +23,7 @@
     </div>
     @include('student.student-navbar')
     <div class="container my-4 " id="profile">
-        <h5 style="text-align: right;color: #ffffff" class="py-3">:  پیام های ارسالی </h5>
+        <h5 style="text-align: right;color: #ffffff" class="py-3">:  ارتباط با مدیریت </h5>
         <table class="table table-striped text-center" style="direction: rtl;font-family: Vazir">
             <thead>
             <tr>
@@ -60,9 +60,9 @@
             <div class="col-md-12">
                 <form action="{{url('/student/send-message')}}" method="post" class="row">
                     @csrf
-                    <div class="col-6 ml-auto">
+                    <div class="col-8 ml-auto">
                         <div class="form-group row">
-                            <textarea  class="col-md-7 form-control" name="question" required placeholder="متن پیام را وارد کنید" style="direction: rtl"></textarea>
+                            <textarea  class="col-md-8 form-control"  name="question" required placeholder="متن پیام را وارد کنید" style="direction: rtl;height: 180px !important;"></textarea>
                             <label for="name" class="col-md-4 mt-1">: متن پیام</label>
                         </div>
                         <div class="form-group row">

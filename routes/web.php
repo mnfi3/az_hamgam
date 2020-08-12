@@ -44,6 +44,7 @@ Route::get('/academic-guidance/corona-consultation', 'SiteGuidanceController@cor
 Route::post('/academic-guidance/consult-insert', 'SiteGuidanceController@consultInsert');
 Route::get('/academic-guidance/job-ads', 'SiteGuidanceController@jobAds');
 Route::get('/academic-guidance/job-details/{id}', 'SiteGuidanceController@jobAdsDetails');
+Route::post('/academic-guidance/job-details/upload-resume', 'SiteGuidanceController@uploadResume');
 Route::get('/academic-guidance/change-field', 'SiteGuidanceController@changeField');
 
 
@@ -63,7 +64,7 @@ Route::get('/skill-learning/free-courses', 'SiteSkillController@freeCourses');
 Route::get('/skill-learning/free-courses-detailes/{id}', 'SiteSkillController@freeCourseDetail');
 Route::get('/skill-learning/free-course/register/{id}', 'SiteSkillController@freeCourseRegister');
 Route::post('/skill-learning/free-course/register/payment-verify', 'SiteSkillController@freeCourseRegisterVerify');
-
+Route::get('/skill-learning/certificate-auth', 'SiteSkillController@certificateAuth');
 
 
 
@@ -140,8 +141,9 @@ Route::post('/student/send-message', 'Student\StudentController@sentMessage');
 Route::get('/student/idea', 'Student\StudentController@idea');
 Route::post('/student/idea-insert', 'Student\StudentController@ideaInsert');
 Route::get('/student/festivals', 'Student\StudentController@festivals');
+Route::post('/student/job-detail/update', 'Student\StudentController@jobDetailUpdate');
 Route::post('/student/festival/send-file', 'Student\StudentController@festivalSendFile');
-
+Route::Get('/student/resume', 'Student\StudentController@resume');
 
 
 //Admins
@@ -192,6 +194,8 @@ Route::post('/admin/job-ad/insert', 'Admin\AdminGuidanceController@jobAdInsert')
 Route::get('/admin/job-ad/remove/{id}', 'Admin\AdminGuidanceController@jobAdRemove');
 Route::get('/admin/job-ad/accept/{id}', 'Admin\AdminGuidanceController@jobAdAccept');
 Route::get('/admin/job-ad/reject/{id}', 'Admin\AdminGuidanceController@jobAdReject');
+Route::get('/admin/job-ads/details/{id}', 'Admin\AdminGuidanceController@jobAdDetail');
+Route::get('/admin/job-ads/details/resume-download/{id}', 'Admin\AdminGuidanceController@resumeDownload');
 
 //Route::get('/admin/industry-inquiries', 'Admin\AdminGuidanceController@industryInquiries');
 
@@ -282,10 +286,20 @@ Route::get('/admin/success/startup/remove/{id}', 'Admin\AdminSuccessController@s
 
 //section users management
 Route::get('/admin/users/student', 'Admin\AdminUserController@students');
-Route::get('/admin/users/student-detailes/{id}', 'Admin\AdminUserController@studentDetail');
+Route::get('/admin/users/student-details/{id}', 'Admin\AdminUserController@studentDetail');
 Route::get('/admin/users/student/course/cert-print/{student_id}/{course_id}', 'Admin\AdminUserController@printCourseCert');
 Route::get('/admin/users/student/workshop/cert-print/{student_id}/{workshop_id}', 'Admin\AdminUserController@printWorkshopCert');
 Route::get('/admin/users/student/free-course/cert-print/{student_id}/{free_course_id}', 'Admin\AdminUserController@printFreeCourseCert');
+Route::get('/admin/users/student/details/skill-courses/{id}', 'Admin\AdminUserController@studentSkillCourses');
+Route::get('/admin/users/student/details/free-courses/{id}','Admin\AdminUserController@studentFreeCourses');
+Route::get('/admin/users/student/details/workshops/{id}', 'Admin\AdminUserController@studentWorkshops');
+Route::get('/admin/users/student/report-card/{id}', 'Admin\AdminUserController@studentReportCard');
+Route::get('/admin/users/student/cert-print/{id}', 'Admin\AdminUserController@studentCertPrint');
+Route::get('/admin/users/student/reset-password/{id}', 'Admin\AdminUserController@studentResetPassword');
+Route::get('/admin/users/student/reset-password/update/{id}', 'Admin\AdminUserController@studentResetPasswordUpdate');
+
+
+
 Route::get('/admin/users/master', 'Admin\AdminUserController@masters');
 Route::post('/admin/users/master-remove', 'Admin\AdminUserController@masterRemove');
 Route::post('/admin/users/master/add', 'Admin\AdminUserController@masterAdd');
@@ -306,7 +320,6 @@ Route::get('/admin/performance-report-print/{id}', 'Admin\AdminUserController@co
 
 
 
-
 //section backup
 Route::get('/admin/backup', 'Admin\BackupController@index');
 
@@ -315,10 +328,13 @@ Route::get('/admin/backup', 'Admin\BackupController@index');
 //master panel
 Route::get('/master/master', 'Master\MasterController@master');
 Route::get('/master/course-detalis/{id}', 'Master\MasterController@courseDetail');
+Route::post('/master/course-detalis/add-mark', 'Master\MasterController@courseDetailAddMark');
 Route::get('/master/workshop', 'Master\MasterController@workshops');
-Route::get('/master/free-course', 'Master\MasterController@freeCourse');
 Route::get('/master/workshop-detalis/{id}', 'Master\MasterController@workshopDetail');
+Route::post('/master/workshop-detalis/add-mark', 'Master\MasterController@workshopDetailAddMark');
+Route::get('/master/free-course', 'Master\MasterController@freeCourse');
 Route::get('/master/free-course-detalis/{id}', 'Master\MasterController@freeCourseDetail');
+Route::post('/master/free-course-detalis/add-mark', 'Master\MasterController@freeCourseDetailAddMark');
 Route::get('/master/profile', 'Master\MasterController@profile');
 Route::post('/master/change-pass', 'Master\MasterController@changePass');
 Route::get('/master/contact', 'Master\MasterController@contact');
@@ -356,6 +372,8 @@ Route::post('/industry/job/insert', 'Industry\IndustryController@jobAdInsert');
 Route::get('/industry/job/edit/{id}', 'Industry\IndustryController@jobEdit');
 Route::post('/industry/job/update', 'Industry\IndustryController@jobAdUpdate');
 Route::get('/industry/job/remove/{id}', 'Industry\IndustryController@jobRemove');
+Route::get('/industry/job-details/{id}', 'Industry\IndustryController@jobDetails');
+Route::get('/industry/job-details/resume-download/{id}', 'Industry\IndustryController@resumeDownload');
 
 
 

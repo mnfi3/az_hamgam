@@ -27,55 +27,29 @@
             <div class="col-md-12 col-sm-12">
                 <h5 class="text-white text-right my-4" style="font-family: Vazir">کارگاه ها</h5>
                 <div style="height: 1px;background-color: #721c24; margin: 10px 5px"></div>
-                <div class="page-sections">
-                    <div class="container">
-                        <div class="row pt-5 m-auto">
-                            @foreach($workshops as $workshop)
-                            <div class="col-md-4 col-lg-4 pb-1">
-                                <div class="card card-custom bg-white border-white border-0">
-                                    <div class="card-custom-img" style="background-image: url('{{asset($workshop->image)}}')"></div>
-                                    <div class="card-custom-avatar">
-                                        {{--<img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />--}}
-                                    </div>
-                                    <div class="card-body pt-2" style="overflow-y: hidden">
-                                        <h4 class="card-title">{{$workshop->title}}</h4>
-                                        </p>
-                                    </div>
-                                    <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                        <div align="right">
-                                            <a href="{{url('/master/workshop-detalis', $workshop->id)}}">
-                                                <button class="custom-btn text-center m-0 "type="submit" >
-                                                    <span>جزئیات</span>
-                                                </button>
-                                            </a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                {{--<div class="pagination-section">--}}
-                    {{--<div class="container my-3 ">--}}
-                        {{--<div class="row ">--}}
-                            {{--<div class="col-8 " align="center">--}}
-                                {{--<div class="pagination ">--}}
-                                    {{--<a href="#">&laquo;</a>--}}
-                                    {{--<a href="#">1</a>--}}
-                                    {{--<a href="#" class="active">2</a>--}}
-                                    {{--<a href="#">3</a>--}}
-                                    {{--<a href="#">4</a>--}}
-                                    {{--<a href="#">5</a>--}}
-                                    {{--<a href="#">6</a>--}}
-                                    {{--<a href="#">&raquo;</a>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                    {{--</div>--}}
-                {{--</div>--}}
+                <table class="table table-striped text-center usr-table" id="کاربران" style="direction: rtl;font-family: Vazir">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">نام دوره</th>
+                        <th scope="col">تاریخ برگزاری</th>
+                        <th scope="col">جرئیات</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-white">
+                    @csrf
+                    @php($i=0)
+                    @php($date = new \App\Http\Controllers\Util\PDate())
+                    @foreach($workshops as $workshop)
+                        <tr>
+                            <td scope="row">{{++$i}}</td>
+                            <td>{{$workshop->title}}</td>
+                            <td>{{$date->toPersian($workshop->time, 'Y/m/d')}}</td>
+                            <td><a href="{{url('/master/workshop-detalis', $workshop->id)}}" class="custom-btn text-center m-2 p-2" style="max-width: 110px" >مشاهده </a></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

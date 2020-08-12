@@ -48,15 +48,15 @@
     </div>
 </div>
 <div class="container mt-1">
-	<div class="row pt-5 m-auto">
+	<div class="row pt-2 m-auto">
 
         @foreach($ads as $ad)
             <div class="col-md-6 col-lg-4 pb-3">
                 <div class="card card-custom bg-white border-white border-0">
                     <div class="card-custom-img" style="background-image: url({{asset($ad->image)}})"></div>
-                    <div class="card-body pt-2" style="overflow-y: auto">
-                        <h4 class="card-title">{{$ad->title}} </h4>
-                        <p class="card-text ">
+                    <div class="card-body" style="overflow-y: auto">
+                        <h5 class="card-title">{{$ad->title}} </h5>
+                        <p class="card-text m-0">
                             @if($ad->industry_id > 0)
                                 آگهی دهنده : <span style="font-weight:600"> {{$ad->industry->first_name}} </span>
                             @else
@@ -64,14 +64,14 @@
                             @endif
                         </p>
                         @if(strlen($ad->skills) > 3)
-						<p class="card-text ">
+						<p class="card-text m-0">
                             مهارت های مورد نیاز  : <span style="font-weight:600">{{$ad->skills}}</span>
                         </p>
                         @endif
 
                         @if(strlen($ad->salary) > 3)
-						<p class="card-text ">
-                             حقوق  : <span style="font-weight:600"> {{$ad->salary}} </span>
+						<p class="card-text m-0">
+                             حقوق  : <span style="font-weight:800"> {{$ad->salary}} </span>
                         </p>
                         @endif
                     </div>

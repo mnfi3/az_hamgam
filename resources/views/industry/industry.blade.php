@@ -60,10 +60,10 @@
                     <div class="col-md-12">
                         <form action="{{url('/industry/send-message')}}" method="post" class="row">
                             @csrf
-                            <div class="col-6 ml-auto">
+                            <div class="col-10 ml-auto">
                                 <div class="form-group row">
-                                    <textarea type="text" class="col-md-7 form-control" name="question" required placeholder="" style="direction: rtl"></textarea>
-                                    <label for="name" class="col-md-4 mt-1">: متن درخواست </label>
+                                    <textarea type="text" class="col-md-8 form-control" name="question" required placeholder="" style="direction: rtl;height: 180px"></textarea>
+                                    <label for="name" class="col-md-3 mt-1">: متن درخواست </label>
                                 </div>
 
 

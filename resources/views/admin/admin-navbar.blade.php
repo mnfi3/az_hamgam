@@ -7,15 +7,15 @@
             <i class="fa  fa-bars"></i>
         </button>
 
-        <div class="collapse navbar-collapse " id="adminNavbarContent" style="background: linear-gradient(to right, #8d0c35, #eb185c) !important; border-radius: 5px">
+        <div class="collapse navbar-collapse  " id="adminNavbarContent" style="background: linear-gradient(to right, #8d0c35, #eb185c) !important; border-radius: 5px">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav ml-auto mr-auto " style="direction: rtl !important;">
                 <li class="dropdown nav-item mx-2">
-                    <a id="adminNavSite" class="nav-link dropdown-toggle nav-hover" href="{{url('/admin/admin')}}" id="navbarSite" role="button" aria-haspopup="true" aria-expanded="false" >
+                    <a id="adminNavSite" class="nav-link  nav-hover" style="font-size: 0.8rem" href="{{url('/admin/admin')}}" role="button" aria-haspopup="true" aria-expanded="false" >
                         <i class="fa fa-globe mt-1"></i>
                         مدیریت سایت
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarSite">
+                    <div class="dropdown-menu" aria-labelledby="navbarSite" style="left: -70px">
                         {{--<a class="dropdown-item" href="#">دوره های مهارتی</a>--}}
                         <a class="dropdown-item" href="{{url('/admin/admin')}}">اسلایدر سایت</a>
                         <a class="dropdown-item" href="{{url('/admin/about-hamgam')}}">درباره سامانه همگام</a>
@@ -29,13 +29,13 @@
                     </div>
                 </li>
                 <li class="nav-item mx-2">
-                    <a id="adminNavSite" class="nav-link dropdown-toggle nav-hover" href="{{url('/admin/job-ads')}}" id="navbarSite" role="button" aria-haspopup="true" aria-expanded="false" >
+                    <a id="adminNavSite" style="font-size: 0.8rem" class="nav-link  nav-hover " href="{{url('/admin/job-ads')}}" id="navbarSite" role="button" aria-haspopup="true" aria-expanded="false" >
                         <i class="fa fa-globe mt-1"></i>
                         نیازهای شغلی صنایع و سازمان ها
                     </a>
                 </li>
                 <li class="dropdown nav-item mx-2">
-                    <a id="adminNavSite" class="nav-link nav-hover" href="{{url('/admin/guidance')}}" role="button"   aria-expanded="false">
+                    <a id="adminNavSite" style="font-size: 0.8rem" class="nav-link nav-hover" href="{{url('/admin/guidance')}}" role="button"   aria-expanded="false">
                         <i class="fa fa-teamspeak"></i>
                         هدایت شغلی
                     </a>
@@ -48,7 +48,7 @@
                     </div>
                 </li>
                 <li  class="dropdown nav-item mx-2">
-                    <a id="adminNavSite" class="nav-link nav-hover" href="{{url('/admin/skill-learning')}}" role="button" >
+                    <a id="adminNavSite" style="font-size: 0.8rem" class="nav-link nav-hover " href="{{url('/admin/skill-learning')}}" role="button" >
                         <i class="fa fa-users"></i>
                         مهارت آموزی
                     </a>
@@ -61,7 +61,7 @@
                     </div>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2">
-                    <a id="adminNavSite" class="nav-link navbar-ticket-a nav-hover" href="{{url('/admin/gathering')}}" id="navbarTicket" role="button">
+                    <a id="adminNavSite" style="font-size: 0.8rem" class="nav-link navbar-ticket-a nav-hover" href="{{url('/admin/gathering')}}" id="navbarTicket" role="button">
                         <i class="fa fa-ticket mt-1"></i>
                         گردهمایی
                         <span class="new-ticket"></span>
@@ -74,7 +74,7 @@
                     </div>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2">
-                    <a id="adminNavSite" class="nav-link navbar-ticket-a nav-hover" href="{{url('/admin/idea')}}" id="navbarTicket" role="button">
+                    <a id="adminNavSite" style="font-size: 0.8rem" class="nav-link navbar-ticket-a nav-hover" href="{{url('/admin/idea')}}" id="navbarTicket" role="button">
                         <i class="fa fa-ticket mt-1"></i>
                         ایده ها
                         <span class="new-ticket"></span>
@@ -87,7 +87,7 @@
                     </div>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2">
-                    <a id="adminNavSite" class="nav-link navbar-ticket-a nav-hover" href="{{url('/admin/success')}}" id="navbarTicket" role="button">
+                    <a id="adminNavSite" style="font-size: 0.8rem" class="nav-link navbar-ticket-a nav-hover" href="{{url('/admin/success')}}" id="navbarTicket" role="button">
                         <i class="fa fa-ticket mt-1"></i>
                         موفقیت
                         <span class="new-ticket"></span>
@@ -100,7 +100,7 @@
                     </div>
                 </li>
                 <li class="navbar-ticket nav-item  mx-2">
-                    <a id="adminNavSite" class="nav-link navbar-ticket-a nav-hover" href="#" id="navbarTicket" role="button">
+                    <a id="adminNavSite" style="font-size: 0.8rem" class="nav-link navbar-ticket-a nav-hover" href="#" id="navbarTicket" role="button">
                         <i class="fa fa-ticket mt-1"></i>
                         مدیریت کاربران
                         <span class="new-ticket"></span>
@@ -116,7 +116,7 @@
                     </div>
                 </li>
                 <li  class="dropdown nav-item mx-2 btn-primary">
-                    <a id="adminNavSite" class="nav-link" href="{{url('/admin/backup')}}" role="button" >
+                    <a id="adminNavSite" style="font-size: 0.8rem" class="nav-link" href="{{url('/admin/backup')}}" role="button" >
                         <i class=""></i>
                         ایجاد فایل پشتیبان و دانلود
                     </a>
