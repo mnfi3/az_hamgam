@@ -17,6 +17,7 @@ use App\User;
 use App\Util;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class AdminSkillController extends Controller
 {
@@ -96,6 +97,7 @@ class AdminSkillController extends Controller
   }
 
   public function courseEdit(Request $request){
+
     $d = new PDate();
     $course = Course::find($request->id);
     $course->code = $request->code;
@@ -111,6 +113,24 @@ class AdminSkillController extends Controller
     $course->deadline = $d->toGregorian(PNum::toLatin($request->deadline));
     $course->duration = $request->duration;
     $course->save();
+
+
+    DB::delete("delete from course_fields where course_id = ?", [$course->id]);
+
+
+
+
+
+    if($request->fields != null) {
+      $field_ids = $request->fields;
+      foreach ($field_ids as $id) {
+        $cf = CourseField::create([
+          'course_id' => $course->id,
+          'field_id' => $id
+        ]);
+      }
+    }
+
     return back();
   }
 
@@ -122,9 +142,10 @@ class AdminSkillController extends Controller
 
   public function courseDetail($id){
     $course = Course::find($id);
+    $fields = Field::all();
     $st_courses = StudentCourses::where('course_id', '=', $id)->get();
     $masters = User::where('role', '=', 'master')->orderBy('id', 'desc')->get();
-    return view('admin.course-detailes', compact('course', 'masters', 'st_courses'));
+    return view('admin.course-detailes', compact('course', 'masters', 'st_courses', 'fields'));
   }
 
   public function sendCert(Request $request){

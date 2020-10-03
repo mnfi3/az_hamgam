@@ -133,11 +133,7 @@
                     </div>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
-                        <div class="form-group row py-3"  style="width: 50%">
-                            <label class="col-form-label col-sm-4 pt-0"> کد دوره :</label>
-                            <input type="text" name="deadline" value="" class="form-control col-sm-8" style="height: 40px" required>
-                            {{--                                <input value="{{date('Y-m-d')}}" type="text" name="start_date" >--}}
-                        </div>
+
                         <div class="form-group row py-3" style="width: 50%">
                         <label class="col-md-4 col-form-label ">توضیح مختصر :</label>
                         <div class="col-md-8 mr-auto">
@@ -146,6 +142,37 @@
                         </div>
                     </div>
                     </div>
+
+
+                    <div class="form-group row py-4 ">
+                        <label class="col-md-2 col-form-label " style=""> رشته های مرتبط:</label>
+                        <div class="col-md-8">
+                            <div class="bg-light d-flex flex-wrap align-items-stretch justify-content-start p-2 set-font bg-danger" style="border-radius: 5px;min-height: 200px;width: 100%">
+                                @foreach($fields as $field)
+                                    @php($flag = 0)
+                                    @foreach($course->fields as $field1)
+                                        @if($field->id == $field1->id )
+                                            @php($flag = 1)
+                                        @continue
+                                        @endif
+                                    @endforeach
+
+                                    <div class=" p-1 mr-2 ">
+                                <span class="custom-control " style="">
+                                         <input type="checkbox" @if($flag == 1) checked @endif class="custom-control-input" id="defaultUnchecked{{$field->id}}" name="fields[]" value="{{$field->id}}">
+                                         <label class="custom-control-label text-dark set-font" for="defaultUnchecked{{$field->id}}">{{$field->name}}</label>
+                                </span>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
                     <div class="d-flex justify-content-center mb-3">
                         <button class="custom-btn text-center" type="submit" style="max-width: 120px">ویرایش</button>
                     </div>

@@ -11,6 +11,10 @@
 .bg-them{
   background-color: #eb185c;
 }
+.dropdown-menu{
+  text-align: right!important;
+  left: -60px;
+}
 @font-face {
   font-family: Vazir;
   src: url('fonts/Vazir-FD.eot');
@@ -85,6 +89,7 @@ body{
   overflow-x: hidden;
   transition: all 200ms linear;
 }
+
 h3{
   font-family: Vazir;
 }
@@ -102,7 +107,10 @@ h3{
   padding-bottom: 10px;
   border-radius: 5px;
 }
-
+.font-sizeee{
+  font-size: 0.8rem !important;
+  color: springgreen;
+}
 
 .item-1,
 .item-2,
@@ -446,22 +454,22 @@ input::placeholder{
 
 /* First border-left-width setting is a fallback */
 /*.card-custom-img::after {*/
-  /*position: absolute;*/
-  /*content: '';*/
-  /*top: 161px;*/
-  /*left: 0;*/
-  /*width: 0;*/
-  /*height: 0;*/
-  /*border-style: solid;*/
-  /*border-top-width: 40px;*/
-  /*border-left-width: 0;*/
-  /*border-bottom-width: 0;*/
-  /*border-right-width: 545px;*/
-  /*border-right-width: calc(575px - 5vw);*/
-  /*border-top-color: transparent;*/
-  /*border-left-color: transparent;*/
-  /*border-bottom-color: transparent;*/
-  /*border-right-color: inherit;*/
+/*position: absolute;*/
+/*content: '';*/
+/*top: 161px;*/
+/*left: 0;*/
+/*width: 0;*/
+/*height: 0;*/
+/*border-style: solid;*/
+/*border-top-width: 40px;*/
+/*border-left-width: 0;*/
+/*border-bottom-width: 0;*/
+/*border-right-width: 545px;*/
+/*border-right-width: calc(575px - 5vw);*/
+/*border-top-color: transparent;*/
+/*border-left-color: transparent;*/
+/*border-bottom-color: transparent;*/
+/*border-right-color: inherit;*/
 /*}*/
 
 .card-custom-avatar img {
@@ -579,11 +587,11 @@ input::placeholder{
   font-size: 0.8rem;
 }
 .align-placeholder::placeholder{
-   font-family: Vazir;
-   text-align: center;
-   color: rgba(0,0,0,0.8);
-   font-size: 0.8rem;
- }
+  font-family: Vazir;
+  text-align: center;
+  color: rgba(0,0,0,0.8);
+  font-size: 0.8rem;
+}
 .align-placeholder{
   font-family: Vazir;
   text-align: center;

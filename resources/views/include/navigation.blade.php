@@ -39,35 +39,46 @@
                                         </form>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
-                                        <a class="nav-link" style="font-size:13px !important" href="{{url('/home')}}">پنل کاربری</a>
+                                        <a class="nav-link" style="font-size:12spx !important" href="{{url('/home')}}">پنل کاربری</a>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
-                                        <a class="nav-link " style="font-size:13px !important" href="{{url('/news')}}">اخبار و اطلاعیه ها</a>
+                                        <a class="nav-link " style="font-size:12px !important" href="{{url('/news')}}">اخبار و اطلاعیه ها</a>
                                     </li>
-									<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
-                                        <a class="nav-link "  style="font-size: 13px !important; border-color: #721c24;border: 2px #721c24 solid;border-radius: 3px;background: linear-gradient(to right, #8d0c35, #eb185c) !important;"  href="{{url('/academic-guidance/corona-consultation')}}">مشاوره سلامت روان-اجتماعی(ویژه کرونا)</a>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
+                                        <a class="nav-link "  style="font-size: 11px !important; border-color: #721c24;border: 2px #721c24 solid;border-radius: 3px;background: linear-gradient(to right, #8d0c35, #eb185c) !important;"  href="{{url('/academic-guidance/corona-consultation')}}">مشاوره سلامت روان-اجتماعی(ویژه کرونا)</a>
                                     </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
+                                        <a class="nav-link" href="https://rasad.azaruniv.ac.ir" style="font-size:12px !important">سامانه رصد شغلی</a></li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
+                                        <a class="nav-link" href="http://tps.azaruniv.ac.ir" style="font-size:12px !important">فروشگاه محصولات فناورانه</a>
+                                    </li>
+
                                 </ul>
                             @endauth
 
                             @guest
                                 <ul class="navbar-nav py-4 py-md-0">
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
-                                        <a class="nav-link" href="{{url('/login')}}" style="font-size:13px !important">ورود</a>
+                                        <a class="nav-link" href="{{url('/login')}}" style="font-size:11px !important">ورود</a>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
-                                        <a class="nav-link" style="font-size:13px !important" href="{{url('/register')}}">ثبت نام</a>
+                                        <a class="nav-link" style="font-size:11px !important" href="{{url('/register')}}">ثبت نام</a>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
                                         <a class="nav-link " href="{{url('/news')}}" style="font-size:12px !important">اخبار و اطلاعیه ها</a>
                                     </li>
-									<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ml-5">
-                                    <a class="nav-link" style="font-size:13px !important" href="#">نمایشگاه نیازمندی های فناورانه</a>
-									</li>
-									<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-3 ">
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ml-5">
+                                        <a class="nav-link" style="font-size:13px !important" href="#">نمایشگاه نیازمندی های فناورانه</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-3 ">
                                         <a class="nav-link " style="font-size: 0.7rem; border-color: #721c24;border: 2px #721c24 solid;border-radius: 3px;background: linear-gradient(to right, #8d0c35, #eb185c) !important;" href="{{url('/academic-guidance/corona-consultation')}}">مشاوره سلامت روان-اجتماعی(ویژه کرونا)</a>
                                     </li>
 
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
+                                        <a class="nav-link" href="https://rasad.azaruniv.ac.ir" style="font-size:12px !important">سامانه رصد شغلی</a></li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
+                                        <a class="nav-link" href="http://tps.azaruniv.ac.ir" style="font-size:12px !important">فروشگاه محصولات فناورانه</a>
+                                    </li>
                                 </ul>
                             @endguest
                             <ul class="navbar-nav ml-auto py-4 py-md-0">
@@ -83,7 +94,7 @@
 
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-3">
                                     <a class="nav-link" href="{{url('/idea')}}" style="font-size:13px !important"> <span style="color: #45a3ff">ا</span>یده ها</a>
-                                    <div class="dropdown-menu">
+                                    <div class="dropdown-menu" style="text-align: right">
                                         <a class="dropdown-item" href="{{url('/idea/support')}}">ایده و حمایت </a>
                                         <a class="dropdown-item" href="{{url('/idea/festivals')}}">جشنواره ها</a>
                                         <a class="dropdown-item" href="{{url('/idea/startup')}}">تشکیل گروه های استارت آپی</a>
@@ -110,7 +121,7 @@
                                 </li>
                                 <li class="nav-item pl-md-0 ml-md-2 mr-1">
                                     <a class="nav-link"  style="font-size:13px !important " href="{{url('/academic-guidance')}}"> <span style="color: #45a3ff">ه</span>دایت شغلی</a>
-                                    <div class="dropdown-menu">
+                                    <div class="dropdown-menu" style="left: -130px">
                                         <a class="dropdown-item" href="{{url('/academic-guidance/relative-jobs')}}"> فرصت های شغلی مرتبط</a>
                                         <a class="dropdown-item text-right" href="{{url('/academic-guidance/consult')}}" >مشاوره</a>
                                         <a class="dropdown-item" href="{{url('/academic-guidance/job-ads')}}">نیازهای شغلی صنایع و سازمان ها</a>
@@ -118,9 +129,10 @@
 
                                     </div>
                                 </li>
-								<li class="nav-item pl-4 pl-md-2">
-                                    <a class="nav-link" style="font-size:12px !important" href="{{url('/academic-guidance/job-ads')}}">نیازهای شغلی صنایع و سازمان ها</a>
-                                </li>
+                                {{--								<li class="nav-item pl-4 pl-md-2">--}}
+                                {{--                                    <a class="nav-link" style="font-size:12px !important" href="{{url('/academic-guidance/job-ads')}}">نیازهای شغلی صنایع و سازمان ها</a>--}}
+                                {{--                                </li>--}}
+
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ml-5">
                                     <a class="nav-link" style="font-size:13px !important" href="{{url('/')}}">خانه</a>
                                 </li>
