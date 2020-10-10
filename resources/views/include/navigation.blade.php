@@ -39,7 +39,7 @@
                                         </form>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
-                                        <a class="nav-link" style="font-size:12spx !important" href="{{url('/home')}}">پنل کاربری</a>
+                                        <a class="nav-link" style="font-size:12px !important" href="{{url('/home')}}">پنل کاربری</a>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
                                         <a class="nav-link " style="font-size:12px !important" href="{{url('/news')}}">اخبار و اطلاعیه ها</a>
