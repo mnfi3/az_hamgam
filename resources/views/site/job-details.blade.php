@@ -59,6 +59,8 @@
                     <span class="col-md-6"> <p  style="text-align: right; font-family: Vazir">برای ارسال رزومه باید وارد حساب کاربری خود شوید و یا ثبت نام کنید </p></span>
                 @endguest
 
+                @auth
+
                 @php
                     $is_sended = false;
                     foreach ($ad->users as $user){
@@ -70,7 +72,9 @@
                 @endphp
 
 
-                @auth
+
+
+
 
                 @if($is_sended == true)
                 <span class="text-success text-right">شما قبلا به این فرصت شغلی رزومه ارسال کرده اید</span>
