@@ -125,6 +125,9 @@
                         <th scope="col">اطلاعات فردی</th>
                         <th scope="col">شماره تماس</th>
                         <th scope="col">شماره دانشجویی</th>
+                        <th scope="col">مبلغ(تومان)</th>
+                        <th scope="col">شماره مرجع تراکنش</th>
+                        <th scope="col">شماره پیگیری</th>
                         <th scope="col">نمره</th>
                         <th scope="col">جرئیات</th>
                         <th scope="col">
@@ -146,6 +149,27 @@
                                 <td>{{$student->first_name.' '.$student->last_name}}</td>
                                 <td>{{$student->mobile}}</td>
                                 <td>{{$student->national_code}}</td>
+
+
+                                <td>
+                                    @php($payment = $student->payments()->where('paymentable_type', '=', \App\Workshop::class)->where('paymentable_id', '=', $workshop->id)->first())
+                                    @if($payment == null)
+                                        -
+                                    @else
+                                        {{number_format($payment->amount)}}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($payment != null)
+                                        {{$payment->retrival_ref_no}}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($payment != null)
+                                        {{$payment->system_trace_no}}
+                                    @endif
+                                </td>
+
 
                                 @if(strlen($student->studentPivotWorkshops()->where('workshop_id', '=', $workshop->id)->first()->mark) > 0)
                                     <td>{{$student->studentPivotWorkshops()->where('workshop_id', '=', $workshop->id)->first()->mark}}</td>
@@ -212,7 +236,7 @@
             exclude_img: true,
             exclude_links: true,
             exclude_inputs: true,
-            columns : [0,1,2,3,4]
+            columns : [0,1,2,3,4,5,6,7]
         })
     })
 

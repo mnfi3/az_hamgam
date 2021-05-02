@@ -130,6 +130,9 @@
                         <th scope="col">شماره دانشجویی</th>
                         <th scope="col">شماره تماس</th>
                         <th scope="col">رشته تحصیلی</th>
+                        <th scope="col">مبلغ(تومان)</th>
+                        <th scope="col">شماره مرجع تراکنش</th>
+                        <th scope="col">شماره پیگیری</th>
                         <th scope="col">نمره</th>
                         <th scope="col">جرئیات</th>
 
@@ -156,6 +159,27 @@
                                 @else
                                     <td>----</td>
                                 @endif
+
+                                <td>
+                                    @php($payment = $student->payments()->where('paymentable_type', '=', \App\FreeCourse::class)->where('paymentable_id', '=', $course->id)->first())
+                                    @if($payment == null)
+                                        -
+                                    @else
+                                        {{number_format($payment->amount)}}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($payment != null)
+                                        {{$payment->retrival_ref_no}}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($payment != null)
+                                        {{$payment->system_trace_no}}
+                                    @endif
+                                </td>
+
+
                                 @if(strlen($student->studentPivotFreeCourses()->where('free_course_id', '=', $course->id)->first()->mark) > 0)
                                 <td>{{$student->studentPivotFreeCourses()->where('free_course_id', '=', $course->id)->first()->mark}}</td>
                                 @else
@@ -219,7 +243,7 @@
             exclude_img: true,
             exclude_links: true,
             exclude_inputs: true,
-            columns : [0,1,2,3,4,5]
+            columns : [0,1,2,3,4,5,6,7,8]
         })
     })
 

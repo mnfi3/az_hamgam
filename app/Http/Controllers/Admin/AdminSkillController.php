@@ -224,9 +224,10 @@ class AdminSkillController extends Controller
 
   public function freeCourseDetail($id){
     $course = FreeCourse::find($id);
+    $fields = Field::all();
     $st_courses = StudentFreeCourses::where('free_course_id', '=', $id)->get();
     $masters = User::where('role', '=', 'master')->orderBy('id', 'desc')->get();
-    return view('admin.free-course-details', compact('course', 'masters', 'st_courses'));
+    return view('admin.free-course-details', compact('course', 'masters', 'st_courses', 'fields'));
   }
 
   public function freeCourseUpdate(Request $request){
